@@ -40,15 +40,16 @@ class Contact(Model):
         return full_name.strip()
 
     def get_full_name(self):
-        return self.first_name + " " + self.last_name
+        full_name = '%s %s' % (self.first_name, self.last_name)
+        return full_name.strip()
 
     get_full_name.short_description = "Full Name"
 
     def get_phones(self):
-        return "\n-\n".join([p.phone for p in self.phone.all()])
+        return "\n-\n".join([p.phone for p in self.phone.all()[:2]])
     get_phones.short_description = "Phone"
 
     def get_emails(self):
-        return "\n-\n".join([p.email for p in self.email.all()])
+        return "\n-\n".join([p.email for p in self.email.all()[:2]])
     get_emails.short_description = "Email"
 

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}Contacts - {{ block.super }}{% endblock %}
+
+{% block breadcrumb %}
+
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-primary">Contacts</h3></div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Contacts</li>
+                <li class="breadcrumb-item active">Contacts</li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-title">
+                <h4>{% trans 'Contacts' %}</h4>
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for contact in contacts %}
+                                <tr>
+                                    <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}</th>
+                                    <td><a href="#">{{ contact }}</a></td>
+                                    <td><span class="badge badge-primary">{{ contact.get_gender_display }}</span></td>
+                                    <td>{% with contact.email.all.0 as email %}{{ email.email }} {% endwith %}</td>
+                                    <td>{% with contact.phone.all.0 as phone %}{{ phone.phone }} {% endwith %}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

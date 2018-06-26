@@ -47,9 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Apps
-    'rcrm_contact',
     'rcrm_account',
+    'rcrm_contact',
+    'rcrm_dashboard',
     'rcrm_utils',
+
 
     # Third Party Apps
     'import_export',
@@ -71,7 +73,7 @@ ROOT_URLCONF = 'rcrm.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': (os.path.join(BASE_DIR, 'templates'),),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
