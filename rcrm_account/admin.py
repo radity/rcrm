@@ -13,8 +13,8 @@ from .models import Account
 class AdminAccount(ImportExportModelAdmin):
     list_display = ('name', 'get_phones', 'get_emails', 'is_active', 'is_deleted')
     list_filter = ('is_active', 'is_deleted')
-    readonly_fields = ('created_at', 'modified_at',)
-    search_fields = ('name', 'phone',)
+    readonly_fields = ('created_at', 'modified_at')
+    search_fields = ('name', 'phone')
     ordering = ('name',)
     paginator = Paginator
     list_per_page = 50
