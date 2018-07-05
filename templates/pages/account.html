@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block breadcrumb %}
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Account</h3></div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active">Account</li>
+        </ol>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+{% if not request.user.account %}
+<div class="card card-outline-primary">
+    <div class="card-body">
+        <div class="row p-t-20">
+            <div class="col-md-6">
+                <form method="post" action="{% url 'Accounts:Account_Request' %}">
+                {% csrf_token %}
+                    <h3 class="card-title m-t-15">Join to a Company Account</h3>
+                    <div class="form-group">
+                        {% with field=account_request_form.account %}
+                        {{ field }}
+                        {% endwith %}
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success">Send request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="card card-outline-primary">
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-body">
+                <h3 class="card-title m-t-15">{% if request.user.account %}Account Informations{% else %}or Create a New
+                    Company Account{% endif %}</h3>
+                <hr>
+                <div class="row p-t-20">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {% with field=form.name %}
+                            <label class="control-label">{% trans "Account Name:" %}</label>
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            {% with field=form.company_email %}
+                            <label class="control-label">{% trans "Account Email:" %}</label>
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            {% with field=form.company_phone %}
+                            <label class="control-label">{% trans "Account Phone Number:" %}</label>
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            {% with field=form.description %}
+                            <label class="control-label">{% trans "Description:" %}</label>
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            {% with field=form.logo %}
+                            <label class="control-label">{% trans "Logo:" %}</label>
+                            <div class="form-control" style="min-height:75px;">{{ field }}</div>
+                            {% endwith %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Save</button>
+                <a href="{% url 'Accounts:Account' %}"><button type="button" class="btn btn-inverse">Cancel</button></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% if request.user.account %}
+<div class="card card-outline-primary">
+    <div class="card-body">
+        <h3 class="card-title m-t-15">Users</h3>
+        <div class="col-md-6">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{% trans 'Email' %}</th>
+                            <th>{% trans 'Remove / Add' %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in account.users %}
+                        <tr>
+                            <th scope="row">
+                                {% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                            </th>
+                            <td><a href="#">{{ user }}</a></td>
+                            <td>
+                                <a href="{{ user.get_delete_url }}"><button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <table class="table">
+            <tr>
+                <form method="post" action="{% url 'Accounts:Account_Add_User' %}">
+                    {% csrf_token %}
+                    <th>+</th>
+                    <td>
+                        {% with field=add_user_for.email %}
+                        {{ field }}
+                        {% endwith %}
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i></button>
+                    </td>
+                </form>
+            </tr>
+        </table>
+    </div>
+</div>
+
+{% if account.requests %}
+<div class="card card-outline-primary">
+    <div class="card-body">
+        <h3 class="card-title m-t-15">Account Requests</h3>
+        <div class="col-md-6">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>{% trans 'Email' %}</th>
+                            <th>{% trans 'Accept / Decline' %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for request in account.requests %}
+                        <tr>
+                            <th scope="row">
+                                {% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                            </th>
+                            <td>{{ request.user.email }}</td>
+                            <td>
+                                <a href="{{ request.get_absolute_url }}"><button type="submit" class="btn btn-success"><i class="fa fa-check"></i>{% trans ' Accept' %}</button></a>
+                                <a href="{{ request.get_delete_url }}"><button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+
+{% endblock %}

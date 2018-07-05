@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}Contacts - {{ block.super }}{% endblock %}
+
+{% block breadcrumb %}
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Contacts</h3></div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
+            <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contact' %}</a></li>
+        </ol>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="row">
+            <div class="col-5">
+                <form method="get" class="col-10" style="float:left;">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <div class="input-group input-group-default">
+                            <input type="text" value="{{ request.GET.q }}" placeholder="Search > Bu kismin fe'sini duzenle" name="q" class="form-control">
+                            <span class="input-group-btn"><button class="btn btn-primary" type="submit"><i class="ti-search"></i></button></span>
+                        </div>
+                    </div>
+                </form>
+                {% if all_contacts.count > contacts.count %}
+                <a href="{% url 'Contacts:Contact' %}"><span class="input-group-btn"><button type="button" class="btn btn-inverse"><i class="fa fa-close"></i></button></span></a>
+                {% endif %}
+            </div>
+            <div class="col-3"></div>
+            <div class="col-4">
+                <div class="pull-right">
+                    <a href="{% url 'Contacts:Contact_Import' %}">
+                        <button type="button" class="btn btn-inverse"><i class="fa fa-upload"></i> {% trans 'Import' %}</button>
+                    </a>
+                    <a href="{% url 'Contacts:Contact_Export' %}">
+                        <button type="button" class="btn btn-inverse"><i class="fa fa-download"></i> {% trans 'Export' %}</button>
+                    </a>
+                    <a href="{% url 'Contacts:Contact_Create' %}">
+                        <button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'New Contact' %}</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-title">
+            <h4>{% trans 'Contacts' %}</h4>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Address</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for contact in contacts %}
+                    <tr>
+                        <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}</th>
+                        <td><a href="{{ contact.get_absolute_url }}">{{ contact }}</a></td>
+                        <td>{% with contact.emails|first as email %}{{ email.email }}{% endwith %}</td>
+                        <td>{% with contact.phones|first as phone %}{{ phone.phone }}{% endwith %}</td>
+                        <td>{% with contact.addresses|first as address %}{{ address.address }}, {{ address.state }}, {{ address.city }}, {{ address.get_country_display }} {% endwith %}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

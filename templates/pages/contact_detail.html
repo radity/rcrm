@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{{ contact }} - {{ block.super }}{% endblock %}
+
+{% block breadcrumb %}
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Contacts</h3></div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
+            <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contact' %}</a></li>
+            <li class="breadcrumb-item active">{{ contact }}</li>
+        </ol>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="col-lg-12 align-self-center">
+    <div class="card">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="pull-right">
+                    <a href="{{ contact.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans 'Edit' %}</button></a>
+                    <a href="{{ contact.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i> {% trans 'Delete' %}</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-two">
+                <header>
+                    <div class="avatar">
+                        {% if contact.gender == 'M' %}
+                        <img src="{% static 'icons/icons/man.png' %}" alt="{{ contact }}"/>
+                        {% elif contact.gender == 'F' %}
+                        <img src="{% static 'icons/icons/woman.png' %}" alt="{{ contact }}"/>
+                        {% else %}
+                        <img src="{% static 'icons/icons/person.png' %}" alt="{{ contact }}"/>
+                        {% endif %}
+                    </div>
+                </header>
+
+                <h3>{{ contact }}</h3>
+                <div class="desc">{{ contact.title }} - {{ contact.date_of_birth }}</div>
+                <div class="desc">
+                    {{ contact.description }}
+                </div>
+            </div>
+        </div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs profile-tab" role="tablist">
+            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#phones" role="tab">Phones</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#emails" role="tab">Emails</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#addresses" role="tab">Address</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#social" role="tab">Social</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="phones" role="tabpanel">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{% trans 'Number' %}</th>
+                                <th>{% trans 'Edit / Delete' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for phone in contact.phones %}
+                            <tr>
+                                <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                                </th>
+                                <td>{{ phone.phone }}</td>
+                                <td>
+                                    <a href="{{ phone.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                                    <a href="{{ phone.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="{{ contact.get_add_phone_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans 'Add New' %}</button></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--second tab-->
+            <div class="tab-pane" id="emails" role="tabpanel">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{% trans 'Email' %}</th>
+                                <th>{% trans 'Edit / Delete' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for email in contact.emails %}
+                            <tr>
+                                <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                                </th>
+                                <td>{{ email.email }}</td>
+                                <td>
+                                    <a href="{{ email.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                                    <a href="{{ email.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="{{ contact.get_add_email_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans 'Add New' %}</button></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--third tab-->
+            <div class="tab-pane" id="addresses" role="tabpanel">
+                <div class="card-body">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{% trans 'Address' %}</th>
+                                <th>{% trans 'State' %}</th>
+                                <th>{% trans 'City' %}</th>
+                                <th>{% trans 'Post Code' %}</th>
+                                <th>{% trans 'Country' %}</th>
+                                <th>{% trans 'Edit / Delete' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for address in contact.addresses %}
+                            <tr>
+                                <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                                </th>
+                                <td>{{ address.address }}</td>
+                                <td>{{ address.state }}</td>
+                                <td>{{ address.city }}</td>
+                                <td>{{ address.postcode }}</td>
+                                <td>{{ address.get_country_display }}</td>
+                                <td>
+                                    <a href="{{ address.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                                    <a href="{{ address.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="{{ contact.get_add_address_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans 'Add New' %}</button></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!--fourth tab-->
+            <div class="tab-pane" id="social" role="tabpanel">
+                <div class="card-body">
+                <div class="row">
+                    <div class="table-responsive">
+                        {% for social in contact.social_profiles %}
+                        <table class="table">
+                            <tr>
+                                <th>#</th>
+                                <td scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Skype' %}</th>
+                                <td>{{ social.skype }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Twitter' %}</th>
+                                <td>{{ social.twitter }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Instagram' %}</th>
+                                <td>{{ social.instagram }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Website' %}</th>
+                                <td>{{ social.website }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Linkedin' %}</th>
+                                <td>{{ social.linkedin }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Facebook' %}</th>
+                                <td>{{ social.facebook }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Edit / Delete' %}</th>
+                                <td>
+                                    <a href="{{ social.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                                    <a href="{{ social.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <a href="{{ contact.get_add_social_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans 'Add New' %}</button></a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

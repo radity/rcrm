@@ -25,10 +25,11 @@
 </head>
 <body class="fix-header fix-sidebar">
     <div id="main-wrapper">
-            {% block content %}
+        {% include 'partials/messages.html' %}
+        {% block content %}
 
 
-            {% endblock %}
+        {% endblock %}
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->

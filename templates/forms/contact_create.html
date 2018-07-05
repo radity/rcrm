@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}Add Contact - {{ block.super }}{% endblock %}
+
+{% block breadcrumb %}
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Contacts</h3></div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
+            <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contact' %}</a></li>
+            <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contacts' %}</a></li>
+            <li class="breadcrumb-item active">{% trans 'Add Contact' %}</li>
+        </ol>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<div class="card card-outline-primary">
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-body">
+                <h3 class="card-title m-t-15">Add Contact</h3>
+                <hr>
+                <div class="row p-t-20">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{% trans 'First Name' %}</label>
+                            {% with field=form.first_name %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Last Name' %}</label>
+                            {% with field=form.last_name %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Gender' %}</label>
+                            {% with field=form.gender %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Position/Title' %}</label>
+                            {% with field=form.title %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Date of Birth' %}</label>
+                            {% with field=form.date_of_birth %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Short Description' %}</label>
+                            {% with field=form.description %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Add</button>
+                            <a href="{{ request.META.HTTP_REFERER }}">
+                                <button type="button" class="btn btn-inverse">Cancel</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

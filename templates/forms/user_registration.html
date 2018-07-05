@@ -16,8 +16,8 @@
                                 <form method="post">
                                     {% csrf_token %}
                                     <div class="form-group">
-                                        <label>Username</label>
-                                        {% with field=form.username %}
+                                        <label>Email</label>
+                                        {% with field=form.email %}
                                             {{ field }}
                                         {% endwith %}
                                     </div>

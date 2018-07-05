@@ -1,0 +1,26 @@
+{% extends 'base2.html' %}
+{% load i18n static %}
+
+{% block title %}Remove User - {{ block.super }}{% endblock %}
+
+{% block content %}
+<!-- Main wrapper  -->
+<div id="main-wrapper">
+    <div class="unix-login">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <form method="post">
+                            {% csrf_token %}
+                            {% trans "Are you sure you would like to delete " %}<strong>"{{ object.email }}"</strong>?<br><br>
+                            <button type="submit" class="btn btn-success">{% trans "Delete" %}</button>
+                            <a href="{{ request.META.HTTP_REFERER }}">{% trans "No" %}</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

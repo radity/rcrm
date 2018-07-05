@@ -2,3 +2,4 @@ Django==2.0.6
 django-import-export==1.0.1
 https://github.com/darklow/django-suit/tarball/v2
 django-location-field==2.0.3
+Pillow==5.1.0

@@ -15,9 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
+from django.conf import settings
+from django.conf.urls.static import static
+
+from rcrm_account.views import AccountAutocomplete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('rcrm_account.urls')),
+    path('contact/', include('rcrm_contact.urls')),
     path('', include('rcrm_dashboard.urls',)),
-]
+    url(r'^account-autocomplete/$', AccountAutocomplete.as_view(), name='account-autocomplete')
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

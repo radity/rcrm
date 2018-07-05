@@ -1,0 +1,10 @@
+{% extends 'base2.html' %}
+{% load i18n static %}
+
+{% block content %}
+        <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile">
+        <button type="submit">{% trans "Upload" %}</button>
+      </form>
+{% endblock %}

@@ -38,6 +38,8 @@ ALLOWED_HOSTS = env['ALLOWED_HOSTS']
 # Application definition
 
 INSTALLED_APPS = [
+    'dal',
+    'dal_select2',
     'rcrm_account.apps.SuitConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,12 +52,12 @@ INSTALLED_APPS = [
     'rcrm_account',
     'rcrm_contact',
     'rcrm_dashboard',
-    'rcrm_utils',
 
 
     # Third Party Apps
     'import_export',
     'location_field.apps.DefaultConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -81,6 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'rcrm_account.context_processors.context_data',
             ],
         },
     },
@@ -136,3 +139,17 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'frontend', 'static'),)
 STATIC_ROOT = env['STATIC_ROOT']
 
+# Email Settings
+EMAIL_BACKEND = env['EMAIL_BACKEND']
+EMAIL_HOST = env['EMAIL_HOST']
+EMAIL_PORT = env['EMAIL_PORT']
+EMAIL_HOST_USER = env['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = env['EMAIL_HOST_PASSWORD']
+EMAIL_USE_TLS = env['EMAIL_USE_TLS']
+
+# MEDIA
+MEDIA_URL = '/media/'
+MEDIA_ROOT = env['MEDIA_ROOT']
+
+# User
+AUTH_USER_MODEL = 'rcrm_account.User'

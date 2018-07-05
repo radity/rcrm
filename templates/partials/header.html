@@ -7,9 +7,10 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="{% url 'Dashboard:Home' %}">
                 <!-- Logo icon -->
-                <b><img src="{% static 'images/radity-logo-icon.png' %}" alt="homepage" class="dark-logo" /></b>
+
+                <b><img src="https://s.turkcell.com.tr/SiteAssets/Hakkimizda/render/genel/turkcell-logo/turkcell-logo_325x244.png" style="width:auto; height:40px;" class="dark-logo" /></b>
                 <!--End Logo icon -->
-                <span><img src="{% static 'images/radity-logo.png' %}" alt="homepage" class="dark-logo" /></span>
+                <span>{{ account.name }}</span>
             </a>
         </div>
         <!-- End Logo -->
@@ -36,11 +37,9 @@
                     <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ti-user"></i></a>
                     <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                         <ul class="dropdown-user">
-                            <li><a href="#"><i class="ti-user"></i> Profile</a></li>
-                            <!--<li><a href="#"><i class="ti-wallet"></i> Balance</a></li>-->
-                            <!--<li><a href="#"><i class="ti-email"></i> Inbox</a></li>-->
-                            <!--<li><a href="#"><i class="ti-settings"></i> Setting</a></li>-->
-                            <li><a href="{% url 'Accounts:Logout' %}"><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li><a href="{% url 'Accounts:Account' %}"><i class="fa fa-building"></i> {% trans 'Account' %}</a></li>
+                            <li><a href="{% url 'Accounts:User_Profile' %}"><i class="ti-user"></i> {% trans 'Profile' %}</a></li>
+                            <li><a href="{% url 'Accounts:Logout' %}"><i class="fa fa-power-off"></i> {% trans 'Logout' %}</a></li>
                         </ul>
                     </div>
                 </li>

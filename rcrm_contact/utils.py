@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 # Create Your Utils Here
 
 COUNTRIES = (
-    ('GB', _('United Kingdom')),
+    ('CH', _('Switzerland')),
     ('AF', _('Afghanistan')),
     ('AX', _('Aland Islands')),
     ('AL', _('Albania')),
@@ -216,7 +216,6 @@ COUNTRIES = (
     ('SJ', _('Svalbard and Jan Mayen')),
     ('SZ', _('Swaziland')),
     ('SE', _('Sweden')),
-    ('CH', _('Switzerland')),
     ('SY', _('Syrian Arab Republic')),
     ('TW', _('Taiwan, Province of China')),
     ('TJ', _('Tajikistan')),
@@ -235,6 +234,7 @@ COUNTRIES = (
     ('UG', _('Uganda')),
     ('UA', _('Ukraine')),
     ('AE', _('United Arab Emirates')),
+    ('GB', _('United Kingdom')),
     ('US', _('United States')),
     ('UM', _('United States Minor Outlying Islands')),
     ('UY', _('Uruguay')),
