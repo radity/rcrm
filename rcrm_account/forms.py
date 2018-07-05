@@ -2,9 +2,7 @@ from django.forms import Form, ModelForm, CharField, EmailField, PasswordInput, 
 from django.contrib.auth import authenticate
 from django.utils.translation import ugettext_lazy as _
 
-from rcrm_account.models import Account, AccountRequest, User
-
-from dal import autocomplete
+from rcrm_account.models import Account, User
 
 
 # Create your forms here.

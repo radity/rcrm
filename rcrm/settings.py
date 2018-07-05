@@ -38,8 +38,6 @@ ALLOWED_HOSTS = env['ALLOWED_HOSTS']
 # Application definition
 
 INSTALLED_APPS = [
-    'dal',
-    'dal_select2',
     'rcrm_account.apps.SuitConfig',
     'django.contrib.admin',
     'django.contrib.auth',

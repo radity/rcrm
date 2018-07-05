@@ -8,8 +8,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView, DeleteView, UpdateView
 
 
-from dal import autocomplete
-
 from rcrm_account.models import Account, AccountRequest, User
 from rcrm_account.forms import LoginForm, RegisterForm, UserProfileForm, PasswordChangeForm, \
     AccountForm, AccountUserAddForm, AccountRequestForm
@@ -76,7 +74,7 @@ class UserProfileView(UpdateView):
 
 class ChangePasswordView(UpdateView):
     success_url = reverse_lazy('Accounts:User_Profile')
-    
+
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -233,14 +231,3 @@ class AccountRequestDeclineView(AccountControlViewMixin, DeleteView):
 
         messages.success(self.request, _('Declined, thank you.'))
         return super(AccountRequestDeclineView, self).delete(request, *args, **kwargs)
-
-
-class AccountAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        if not self.request.user.is_authenticated():
-            return Account.objects.none()
-        qs = Account.objects.all()
-
-        if self.q:
-            qs = qs.filter(name__icontains=self.q)
-        return qs
