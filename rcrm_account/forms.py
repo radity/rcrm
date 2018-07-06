@@ -83,7 +83,7 @@ class UserAccountForm(ModelForm):
 
 class AccountRequestForm(Form):
     account = CharField(label=_("Account Name"),
-                        widget=TextInput(attrs={'class': 'form-control'}))
+                        widget=TextInput(attrs={'class': 'form-control', 'id': 'autocomplete-input'}))
 
 
 class UserProfileForm(ModelForm):

@@ -16,6 +16,7 @@
     <link href="{% static 'css/lib/owl.theme.default.min.css' %}" rel="stylesheet" />
     <link href="{% static 'css/helper.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/autocomplete.css' %}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -43,8 +44,10 @@
             {% include 'partials/footer.html' %}
     </div>
     <!-- End Wrapper -->
+    <!-- Lodash -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
     <!-- All Jquery -->
-    <script src="{% static 'js/lib/jquery/jquery.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{% static 'js/lib/bootstrap/js/popper.min.js' %}"></script>
     <script src="{% static 'js/lib/bootstrap/js/bootstrap.min.js' %}"></script>
@@ -75,6 +78,7 @@
 
     <script src="{% static 'js/lib/owl-carousel/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/lib/owl-carousel/owl.carousel-init.js' %}"></script>
+
 
     <!-- scripit init-->
 
