@@ -1,7 +1,10 @@
+import json
 from django.conf import settings
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.core.serializers.json import DjangoJSONEncoder
+from django.core.serializers import serialize
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -109,10 +112,13 @@ class AccountView(UpdateView):
             return None
 
     def get_context_data(self, **kwargs):
+        accounts = Account.objects.filter(is_active=True, is_deleted=False).values_list('name')
+        account_list = json.dumps(list(accounts))
         context = super(AccountView, self).get_context_data(**kwargs)
         context['form'] = AccountForm(self.request.POST or None, instance=self.request.user.account)
         context['add_user_for'] = AccountUserAddForm(self.request.POST or None)
         context['account_request_form'] = AccountRequestForm(self.request.POST or None)
+        context['account_list'] = account_list
         return context
 
     def form_valid(self, form):
