@@ -1,7 +1,7 @@
 from django.forms import Form, ModelForm,\
     CharField, EmailField, ImageField,\
     PasswordInput, ValidationError,\
-    TextInput, Textarea
+    TextInput, Textarea, FileInput
 from django.contrib.auth import authenticate
 from django.utils.translation import ugettext_lazy as _
 
@@ -61,7 +61,7 @@ class AccountForm(ModelForm):
                               widget=TextInput(attrs={'class': 'form-control'}))
     description = CharField(label=_("Account Name"), required=False, widget=Textarea(attrs={'class': 'form-control',
                                                                                             'style': "height:150px"}))
-    logo = ImageField(required=False)
+    logo = ImageField(required=False, widget=FileInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = Account
