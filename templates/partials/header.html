@@ -8,9 +8,8 @@
             <a class="navbar-brand" href="{% url 'Dashboard:Home' %}">
                 <!-- Logo icon -->
                 {% if account.logo %}
-                <b><img src="/media/{{ account.logo }}" style="width:auto; height:40px;" class="dark-logo" /></b>
+                <span><img src="/media/{{ account.logo }}" style="width:auto; height:40px;" class="dark-logo" /></span>
                 <!--End Logo icon -->
-                <span></span>
                 {% endif %}
             </a>
         </div>
