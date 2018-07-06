@@ -192,8 +192,8 @@
                 <div class="card-body">
                 <div class="row">
                     <div class="table-responsive">
-                        {% for social in contact.social_profiles %}
                         <table class="table">
+                            {% for social in contact.social_profiles %}
                             <tr>
                                 <th>#</th>
                                 <td scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}

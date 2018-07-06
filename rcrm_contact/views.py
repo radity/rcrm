@@ -1,16 +1,18 @@
 from django.contrib import messages
 from django.db.models import Q
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render, HttpResponseRedirect, reverse
+from django.shortcuts import get_object_or_404, render, reverse
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import CreateView, DeleteView, TemplateView, UpdateView
 from tablib import Dataset
 
+from rcrm_account.utils import UserAccountControlViewMixin
 from rcrm_contact.forms import AddressForm, ContactForm, EmailForm, PhoneForm, SocialProfileForm
 from rcrm_contact.models import Address, Contact, Email, Phone, SocialProfile
 from rcrm_contact.resources import ContactResource
-from rcrm_account.utils import AccountControlViewMixin, AccountControlViewMixinTwo, AccountControlViewMixinThree
+from rcrm_account.utils import AccountControlViewMixin, AccountControlViewMixinTwo,\
+    AccountControlViewMixinThree, AccountControlViewMixinFour
 
 
 # Create your views here.
@@ -18,7 +20,7 @@ from rcrm_account.utils import AccountControlViewMixin, AccountControlViewMixinT
 
 # --------------------------------- Contact ---------------------------------
 
-class ContactListView(TemplateView):
+class ContactListView(UserAccountControlViewMixin, TemplateView):
     """This view is for contact list screen"""
     template_name = 'pages/contact_list.html'
 
@@ -49,7 +51,7 @@ class ContactDetailView(AccountControlViewMixin, TemplateView):
         return context
 
 
-class ContactCreateView(CreateView):
+class ContactCreateView(UserAccountControlViewMixin, CreateView):
     model = Contact
     form_class = ContactForm
     template_name = 'forms/contact_create.html'
@@ -97,7 +99,7 @@ class ContactDeleteView(AccountControlViewMixinTwo, UpdateView):
 # --------------------------------- Address ---------------------------------
 
 
-class AddressCreateView(CreateView):
+class AddressCreateView(AccountControlViewMixinFour, CreateView):
     model = Address
     form_class = AddressForm
     template_name = 'forms/address_create.html'
@@ -152,7 +154,7 @@ class AddressDeleteView(AccountControlViewMixinThree, DeleteView):
 # --------------------------------- Email ---------------------------------
 
 
-class EmailCreateView(CreateView):
+class EmailCreateView(AccountControlViewMixinFour, CreateView):
     model = Email
     form_class = EmailForm
     template_name = 'forms/email_create.html'
@@ -208,7 +210,7 @@ class EmailDeleteView(AccountControlViewMixinThree, DeleteView):
 # --------------------------------- Phone ---------------------------------
 
 
-class PhoneCreateView(CreateView):
+class PhoneCreateView(AccountControlViewMixinFour, CreateView):
     model = Phone
     form_class = PhoneForm
     template_name = 'forms/phone_create.html'
@@ -263,7 +265,7 @@ class PhoneDeleteView(AccountControlViewMixinThree, DeleteView):
 # --------------------------------- Phone ---------------------------------
 
 
-class SocialProfileCreateView(CreateView):
+class SocialProfileCreateView(AccountControlViewMixinFour, CreateView):
     model = SocialProfile
     form_class = SocialProfileForm
     template_name = 'forms/social_create.html'

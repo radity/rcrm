@@ -1,4 +1,9 @@
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
+
+from rcrm_contact.models import Contact
+
 
 # Create your views here.
 
@@ -25,3 +30,20 @@ class AccountControlViewMixinThree(object):
         if not obj.contact.account == self.request.user.account:
             raise Http404
         return obj
+
+
+class AccountControlViewMixinFour(object):
+    def dispatch(self, request, *args, **kwargs):
+        id = self.kwargs['pk']
+        contact = get_object_or_404(Contact, id=id)
+        if not contact.account == self.request.user.account:
+            raise Http404
+        return super().dispatch(request, *args, **kwargs)
+
+
+class UserAccountControlViewMixin(object):
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.account:
+            return HttpResponseRedirect(reverse_lazy('Accounts:Account'))
+        return super().dispatch(request, *args, **kwargs)
+

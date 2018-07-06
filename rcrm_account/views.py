@@ -7,7 +7,6 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView, DeleteView, UpdateView
 
-
 from rcrm_account.models import Account, AccountRequest, User
 from rcrm_account.forms import LoginForm, RegisterForm, UserProfileForm, PasswordChangeForm, \
     AccountForm, AccountUserAddForm, AccountRequestForm
@@ -35,7 +34,7 @@ class LoginView(FormView):
 class RegisterView(FormView):
     form_class = RegisterForm
     template_name = 'forms/user_registration.html'
-    success_url = reverse_lazy('Dashboard:Home')
+    success_url = reverse_lazy('Accounts:Account')
 
     def form_valid(self, form):
         if form.is_valid():
@@ -47,6 +46,7 @@ class RegisterView(FormView):
             # User Login After Registration
             user = authenticate(username=user.email, password=password)
             login(self.request, user)
+            messages.success(self.request, _('You need to join to an account or create an account to use RCRM!'))
         return super(RegisterView, self).form_valid(form)
 
 
@@ -74,7 +74,6 @@ class UserProfileView(UpdateView):
 
 class ChangePasswordView(UpdateView):
     success_url = reverse_lazy('Accounts:User_Profile')
-
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
