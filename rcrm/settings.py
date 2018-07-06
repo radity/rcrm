@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 
 
     # Third Party Apps
+    'django_cleanup',
     'import_export',
     'location_field.apps.DefaultConfig',
 
