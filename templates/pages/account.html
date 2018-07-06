@@ -80,7 +80,7 @@
 
 <div class="card card-outline-primary">
     <div class="card-body">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-body">
                 <h3 class="card-title m-t-15">{% if request.user.account %}Account Informations{% else %}or Create a New

@@ -115,7 +115,7 @@ class AccountView(UpdateView):
         accounts = Account.objects.filter(is_active=True, is_deleted=False).values_list('name')
         account_list = json.dumps(list(accounts))
         context = super(AccountView, self).get_context_data(**kwargs)
-        context['form'] = AccountForm(self.request.POST or None, instance=self.request.user.account)
+        context['form'] = AccountForm(self.request.FILES or None, instance=self.request.user.account)
         context['add_user_for'] = AccountUserAddForm(self.request.POST or None)
         context['account_request_form'] = AccountRequestForm(self.request.POST or None)
         context['account_list'] = account_list
