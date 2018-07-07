@@ -1,0 +1,11 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+  backend:
+    build: .
+    entrypoint: /code/entrypoint.sh
+    depends_on:
+      - db
