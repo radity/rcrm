@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Apps
+    'rcrm',
     'rcrm_account',
     'rcrm_contact',
     'rcrm_dashboard',
