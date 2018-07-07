@@ -77,6 +77,14 @@ class Contact(Model):
 
     get_full_name.short_description = "Full Name"
 
+    def save(self, **kwargs):
+        self.account = self.account or self.contact_account()
+        super(Contact, self).save(**kwargs)
+
+    def contact_account(self):
+        account = self.request.user.account
+        return account
+
 
 class Address(Model):
     contact = ForeignKey(Contact, on_delete=CASCADE, related_name='Contact_Address')

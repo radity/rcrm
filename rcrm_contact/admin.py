@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from import_export.admin import ImportExportModelAdmin
 
+from rcrm_contact.resources import ContactResource
 from rcrm_contact.models import Address, Contact, Email, SocialProfile, Phone
 
 # Register your models here.

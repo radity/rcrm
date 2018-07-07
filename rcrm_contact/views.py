@@ -1,18 +1,19 @@
 from django.contrib import messages
 from django.db.models import Q
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, reverse
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import CreateView, DeleteView, TemplateView, UpdateView
-from tablib import Dataset
 
 from rcrm_account.utils import UserAccountControlViewMixin
 from rcrm_contact.forms import AddressForm, ContactForm, EmailForm, PhoneForm, SocialProfileForm
 from rcrm_contact.models import Address, Contact, Email, Phone, SocialProfile
-from rcrm_contact.resources import ContactResource
+from rcrm_contact.resources import ContactResource, ContactImportResource
 from rcrm_account.utils import AccountControlViewMixin, AccountControlViewMixinTwo,\
     AccountControlViewMixinThree, AccountControlViewMixinFour
+
+from tablib import Dataset
 
 
 # Create your views here.
@@ -320,19 +321,26 @@ class SocialProfileDeleteView(AccountControlViewMixinThree, DeleteView):
 
 # --------------------------------- Import Export ---------------------------------
 
+from openpyxl import Workbook
+
 
 def contact_import(request):
     if request.method == 'POST':
-        service_resource = ContactResource()
+        person_resource = ContactImportResource()
         dataset = Dataset()
-        new_services = request.FILES('myfile',)
+        new_persons = request.FILES['myfile']
+        account_id = request.user.account.id
+        imported_data = dataset.load(new_persons.read())
 
-        imported_data = dataset.load(new_services.read())
-        result = service_resource.import_data(dataset, dry_run=True)
+        result = person_resource.import_data(dataset, dry_run=True)
 
         if not result.has_errors():
-            service_resource.import_data(dataset, dry_run=False)
-
+            person_resource.import_data(dataset, dry_run=False)
+            messages.success(request, _('Uploaded successfully, thank you.'))
+            return HttpResponseRedirect(reverse_lazy('Contacts:Contact'))
+        else:
+            messages.error(request, _('Could not be uploaded!'))
+            return HttpResponseRedirect(reverse_lazy('Contacts:Contact'))
     return render(request, 'import.html')
 
 
@@ -340,6 +348,6 @@ def contact_export(request):
     contact_resource = ContactResource()
     queryset = Contact.objects.filter(is_deleted=False, is_active=True, account=request.user.account)
     dataset = contact_resource.export(queryset)
-    response = HttpResponse(dataset.csv, content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="contacts.csv"'
+    response = HttpResponse(dataset.xls, content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="contacts.xls"'
     return response

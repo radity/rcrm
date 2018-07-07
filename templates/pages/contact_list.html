@@ -25,7 +25,6 @@
         <div class="row">
             <div class="col-5">
                 <form method="get" class="col-10" style="float:left;">
-                    {% csrf_token %}
                     <div class="form-group">
                         <div class="input-group input-group-default">
                             <input type="text" value="{{ request.GET.q }}" placeholder="Search > Bu kismin fe'sini duzenle" name="q" class="form-control">

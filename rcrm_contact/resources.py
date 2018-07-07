@@ -1,6 +1,5 @@
 from import_export.fields import Field
 from import_export.resources import ModelResource
-from import_export.widgets import ForeignKeyWidget
 
 from rcrm_contact.models import Address, Contact, Email, Phone, SocialProfile
 
@@ -71,3 +70,10 @@ class ContactResource(ModelResource):
         linkedin = SocialProfile.objects.filter(contact=obj).values_list('linkedin', flat=True)
         linkedin = ' - '.join(linkedin)
         return linkedin
+
+
+class ContactImportResource(ModelResource):
+
+    class Meta:
+        model = Contact
+        exclude = ()

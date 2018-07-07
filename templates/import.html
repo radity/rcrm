@@ -1,10 +1,38 @@
-{% extends 'base2.html' %}
+{% extends 'base.html' %}
 {% load i18n static %}
 
+{% block breadcrumb %}
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">{% trans 'Contact Import' %}</h3></div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
+            <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contact' %}</a></li>
+            <li class="breadcrumb-item active">{% trans 'Import' %}</li>
+        </ol>
+    </div>
+</div>
+
+{% endblock %}
+
 {% block content %}
-        <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="myfile">
-        <button type="submit">{% trans "Upload" %}</button>
-      </form>
+<div class="card card-outline-primary">
+    <div class="card-body">
+        <div class="row p-t-20">
+            <div class="col-md-6">
+                <form class="form-control" style="height:50px;" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input style="padding-top:0.6em;" type="file" name="myfile">
+                    <div class="pull-right">
+                        <button class="btn btn-success" type="submit">{% trans "Upload" %}</button>
+                        <a href="{% url 'Contacts:Contact' %}"><button class="btn btn-inverse" type="button">{% trans "Back" %}</button></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
