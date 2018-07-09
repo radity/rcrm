@@ -37,8 +37,12 @@ class ContactResource(ModelResource):
         return phones
 
     def dehydrate_addresses(self, obj):
-        addresses = Address.objects.filter(contact=obj).values_list('address', flat=True)
-        addresses = ' - '.join(addresses)
+        addresses = Address.objects.filter(contact=obj)
+        for adres in addresses:
+            addresses = []
+            full_address = adres.address + adres.city
+            addresses.append(full_address)
+            addresses = str(addresses)
         return addresses
 
     def dehydrate_instagram(self, obj):
@@ -70,7 +74,6 @@ class ContactResource(ModelResource):
         linkedin = SocialProfile.objects.filter(contact=obj).values_list('linkedin', flat=True)
         linkedin = ' - '.join(linkedin)
         return linkedin
-
 
 class ContactImportResource(ModelResource):
 
