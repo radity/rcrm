@@ -1,7 +1,7 @@
 {% extends 'base2.html' %}
 {% load i18n static %}
 
-{% block title %}Login - {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Login' %} - {{ block.super }}{% endblock %}
 
 {% block content %}
     <div id="main-wrapper">
@@ -31,9 +31,9 @@
         										<a href="#">Forgotten Password?</a>
         									</label>
                                     </div>-->
-                                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Login</button>
+                                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">{% trans 'Login' %}</button>
                                     <div class="register-link m-t-15 text-center">
-                                        <p>Don't have account ? <a href="{% url 'Accounts:Register' %}"> Register</a></p>
+                                        <p>{% trans 'Don't have account ? %}<a href="{% url 'Accounts:Register' %}"> {% trans 'Register' %}</a></p>
                                     </div>
                                 </form>
                             </div>

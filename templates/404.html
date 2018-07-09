@@ -8,8 +8,8 @@
     <div class="error-box">
         <div class="error-body text-center">
             <h1>404</h1>
-            <h3 class="text-uppercase">Page not found </h3>
-            <a class="btn btn-info btn-rounded waves-effect waves-light m-b-40" href="{% url 'Dashboard:Home' %}">Back to home</a> </div>
+            <h3 class="text-uppercase">{% trans 'Page not found' %} </h3>
+            <a class="btn btn-info btn-rounded waves-effect waves-light m-b-40" href="{% url 'Dashboard:Home' %}">{% trans 'Back to home' %}</a> </div>
         <footer class="footer text-center">&copy; 2018 Radity.</footer>
     </div>
 </div>

@@ -1,7 +1,7 @@
 {% extends 'base2.html' %}
 {% load i18n static %}
 
-{% block title %}Remove User - {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Remove User' %} - {{ block.super }}{% endblock %}
 
 {% block content %}
 <!-- Main wrapper  -->
@@ -23,4 +23,4 @@
         </div>
     </div>
 </div>
-    {% endblock %}
+{% endblock %}

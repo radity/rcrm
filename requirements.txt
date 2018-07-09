@@ -5,4 +5,3 @@ django-location-field==2.0.3
 Pillow==5.1.0
 django-cleanup==2.1.0
 psycopg2-binary==2.7.5
-django-parler==1.9.2
