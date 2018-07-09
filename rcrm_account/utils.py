@@ -55,7 +55,10 @@ class LocaleMiddleware(object):
         self.get_response = get_response
 
     def __call__(self, request):
-        language_code = request.user.language
+        if request.user.is_authenticated:
+            language_code = request.user.language
+        else:
+            language_code = 'en'
         activate(language_code)
         response = self.get_response(request)
         deactivate()
