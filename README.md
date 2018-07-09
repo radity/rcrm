@@ -18,9 +18,11 @@ docker-compose up -d --build
 [To get/install Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/#step-2-install-docker-toolbox)
 
 ```
-docker run rcrm --build
+docker-compose up -d --build
 ```
 
 # We have a default admin user.
-email = admin@localhost<br>
+email = admin@localhost
+
+
 password = secret
