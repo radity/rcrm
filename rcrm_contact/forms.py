@@ -8,6 +8,9 @@ from rcrm_contact.models import Address, Contact, Email, Phone, SocialProfile
 
 
 class ContactForm(ModelForm):
+    """
+    This form allows to create/update a contact person.
+    """
     first_name = CharField(label=_("First Name"), widget=TextInput(attrs={'class': 'form-control'}))
     last_name = CharField(label=_("Last Name"), widget=TextInput(attrs={'class': 'form-control'}))
     gender = CharField(label=_("Gender"), widget=Select(choices=GENDER, attrs={'class': 'form-control custom-select'}))
@@ -30,6 +33,9 @@ class ContactForm(ModelForm):
 
 
 class AddressForm(ModelForm):
+    """
+    With this form an address can be created ot updated.
+    """
     address = CharField(label=_("Address"), widget=TextInput(attrs={'class': 'form-control'}))
     city = CharField(label=_("City"), widget=TextInput(attrs={'class': 'form-control'}))
     state = CharField(label=_("State"), widget=TextInput(attrs={'class': 'form-control'}))
@@ -48,6 +54,9 @@ class AddressForm(ModelForm):
 
 
 class EmailForm(ModelForm):
+    """
+    With this form an email can be created ot updated.
+    """
     email = EmailField(label=_("Email"), widget=TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
@@ -58,6 +67,9 @@ class EmailForm(ModelForm):
 
 
 class PhoneForm(ModelForm):
+    """
+    With this form a phone number can be created ot updated.
+    """
     phone = CharField(label=_("Phone"), widget=TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
@@ -68,6 +80,9 @@ class PhoneForm(ModelForm):
 
 
 class SocialProfileForm(ModelForm):
+    """
+    With this form a social profile can be created ot updated.
+    """
     skype = CharField(label=_("Skype"), required=False, widget=TextInput(attrs={'class': 'form-control'}))
     twitter = CharField(label=_("Twitter"), required=False, widget=TextInput(attrs={'class': 'form-control'}))
     instagram = CharField(label=_("Instagram"), required=False, widget=TextInput(attrs={'class': 'form-control'}))

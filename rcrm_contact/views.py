@@ -23,7 +23,9 @@ from tablib import Dataset
 # --------------------------------- Contact ---------------------------------
 
 class ContactListView(UserAccountControlViewMixin, TemplateView):
-    """This view is for contact list screen"""
+    """
+    Contact persons are listed with this view.
+    """
     template_name = 'pages/contact_list.html'
 
     def get_context_data(self, **kwargs):
@@ -43,7 +45,9 @@ class ContactListView(UserAccountControlViewMixin, TemplateView):
 
 
 class ContactDetailView(AccountControlViewMixin, TemplateView):
-    """This view is for contact detail screen"""
+    """
+    Contact detail information can be seen with this view.
+    """
     template_name = 'pages/contact_detail.html'
 
     def get_context_data(self, **kwargs):
@@ -54,6 +58,9 @@ class ContactDetailView(AccountControlViewMixin, TemplateView):
 
 
 class ContactCreateView(UserAccountControlViewMixin, CreateView):
+    """
+    A contact can be created using this view.
+    """
     model = Contact
     form_class = ContactForm
     template_name = 'forms/contact_create.html'
@@ -68,6 +75,9 @@ class ContactCreateView(UserAccountControlViewMixin, CreateView):
 
 
 class ContactEditView(AccountControlViewMixinTwo, UpdateView):
+    """
+    A contact can be edited using this view.
+    """
     model = Contact
     form_class = ContactForm
     template_name = 'forms/contact_edit.html'
@@ -82,6 +92,9 @@ class ContactEditView(AccountControlViewMixinTwo, UpdateView):
 
 
 class ContactDeleteView(AccountControlViewMixinTwo, UpdateView):
+    """
+    A contact can be deleted using this view.
+    """
     model = Contact
     fields = []
     template_name = 'forms/contact_delete.html'
@@ -102,6 +115,9 @@ class ContactDeleteView(AccountControlViewMixinTwo, UpdateView):
 
 
 class AddressCreateView(AccountControlViewMixinFour, CreateView):
+    """
+    An address can be created using this view.
+    """
     model = Address
     form_class = AddressForm
     template_name = 'forms/address_create.html'
@@ -123,6 +139,9 @@ class AddressCreateView(AccountControlViewMixinFour, CreateView):
 
 
 class AddressEditView(AccountControlViewMixinThree, UpdateView):
+    """
+    An address can be edited using this view.
+    """
     model = Address
     form_class = AddressForm
     template_name = 'forms/address_edit.html'
@@ -140,6 +159,9 @@ class AddressEditView(AccountControlViewMixinThree, UpdateView):
 
 
 class AddressDeleteView(AccountControlViewMixinThree, DeleteView):
+    """
+    An address can be deleted using this view.
+    """
     model = Address
     template_name = 'forms/address_delete.html'
 
@@ -157,6 +179,9 @@ class AddressDeleteView(AccountControlViewMixinThree, DeleteView):
 
 
 class EmailCreateView(AccountControlViewMixinFour, CreateView):
+    """
+    An email can be created using this view.
+    """
     model = Email
     form_class = EmailForm
     template_name = 'forms/email_create.html'
@@ -178,6 +203,9 @@ class EmailCreateView(AccountControlViewMixinFour, CreateView):
 
 
 class EmailEditView(AccountControlViewMixinThree, UpdateView):
+    """
+    An email can be edited using this view.
+    """
     model = Email
     form_class = EmailForm
     template_name = 'forms/email_edit.html'
@@ -195,6 +223,9 @@ class EmailEditView(AccountControlViewMixinThree, UpdateView):
 
 
 class EmailDeleteView(AccountControlViewMixinThree, DeleteView):
+    """
+    An email can be deleted using this view.
+    """
     model = Email
     template_name = 'forms/email_delete.html'
 
@@ -213,6 +244,9 @@ class EmailDeleteView(AccountControlViewMixinThree, DeleteView):
 
 
 class PhoneCreateView(AccountControlViewMixinFour, CreateView):
+    """
+    A phone number can be created using this view.
+    """
     model = Phone
     form_class = PhoneForm
     template_name = 'forms/phone_create.html'
@@ -234,6 +268,9 @@ class PhoneCreateView(AccountControlViewMixinFour, CreateView):
 
 
 class PhoneEditView(AccountControlViewMixinThree, UpdateView):
+    """
+    A phone number can be edited using this view.
+    """
     model = Phone
     form_class = PhoneForm
     template_name = 'forms/phone_edit.html'
@@ -251,6 +288,9 @@ class PhoneEditView(AccountControlViewMixinThree, UpdateView):
 
 
 class PhoneDeleteView(AccountControlViewMixinThree, DeleteView):
+    """
+    A phone number can be deleted using this view.
+    """
     model = Phone
     template_name = 'forms/phone_delete.html'
 
@@ -268,6 +308,9 @@ class PhoneDeleteView(AccountControlViewMixinThree, DeleteView):
 
 
 class SocialProfileCreateView(AccountControlViewMixinFour, CreateView):
+    """
+    A social profile can be created using this view.
+    """
     model = SocialProfile
     form_class = SocialProfileForm
     template_name = 'forms/social_create.html'
@@ -289,6 +332,9 @@ class SocialProfileCreateView(AccountControlViewMixinFour, CreateView):
 
 
 class SocialProfileEditView(AccountControlViewMixinThree, UpdateView):
+    """
+    A social profile can be edited using this view.
+    """
     model = SocialProfile
     form_class = SocialProfileForm
     template_name = 'forms/social_edit.html'
@@ -306,6 +352,9 @@ class SocialProfileEditView(AccountControlViewMixinThree, UpdateView):
 
 
 class SocialProfileDeleteView(AccountControlViewMixinThree, DeleteView):
+    """
+    A social profile can be deleted using this view.
+    """
     model = SocialProfile
     template_name = 'forms/social_delete.html'
 

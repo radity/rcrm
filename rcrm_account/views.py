@@ -20,6 +20,9 @@ from rcrm_account.utils import AccountControlViewMixin
 
 
 class LoginView(FormView):
+    """
+    The view is for user login.
+    """
     form_class = LoginForm
     template_name = 'forms/user_login.html'
     success_url = reverse_lazy('Dashboard:Home')
@@ -34,6 +37,9 @@ class LoginView(FormView):
 
 
 class RegisterView(FormView):
+    """
+    The view is for user registration.
+    """
     form_class = RegisterForm
     template_name = 'forms/user_registration.html'
     success_url = reverse_lazy('Accounts:Account')
@@ -56,6 +62,9 @@ class RegisterView(FormView):
 
 
 class UserProfileView(UpdateView):
+    """
+    A view that allows to a user who can update own information.
+    """
     form_class = UserProfileForm
     template_name = 'pages/user_profile.html'
     success_url = reverse_lazy('Accounts:User_Profile')
@@ -75,6 +84,9 @@ class UserProfileView(UpdateView):
 
 
 class ChangePasswordView(UpdateView):
+    """
+    A view that allows to a user who can change own password by entering their old password.
+    """
     success_url = reverse_lazy('Accounts:User_Profile')
 
     def get_form_kwargs(self):
@@ -99,7 +111,9 @@ class ChangePasswordView(UpdateView):
 
 
 class AccountView(UpdateView):
-    """This view is for account screen"""
+    """
+    Every account actions can be made with this view.
+    """
     template_name = 'pages/account.html'
     success_url = reverse_lazy('Accounts:Account')
     form_class = AccountForm
@@ -134,6 +148,9 @@ class AccountView(UpdateView):
 
 
 class AccountUserCreateView(FormView):
+    """
+    With this view a user can be added to the account.
+    """
     form_class = AccountUserAddForm
     success_url = reverse_lazy('Accounts:Account')
 
@@ -153,6 +170,9 @@ class AccountUserCreateView(FormView):
 
 
 class UserAccountDeleteView(AccountControlViewMixin, UpdateView):
+    """
+    With this view a user can be deleted from an account.
+    """
     model = User
     fields = []
     template_name = 'forms/user_account_delete.html'
@@ -170,6 +190,9 @@ class UserAccountDeleteView(AccountControlViewMixin, UpdateView):
 
 
 class AccountRequestCreateView(FormView):
+    """
+    With this view a user can be applied to be a user of an account to the account.
+    """
     form_class = AccountRequestForm
     success_url = reverse_lazy('Accounts:Account')
 
@@ -205,6 +228,9 @@ class AccountRequestCreateView(FormView):
 
 
 class AccountRequestAcceptView(AccountControlViewMixin, DeleteView):
+    """
+    With this view users of an account can accept the user who has applied before.
+    """
     model = AccountRequest
     template_name = 'forms/user_request_accept.html'
     success_url = reverse_lazy('Accounts:Account')
@@ -231,6 +257,9 @@ class AccountRequestAcceptView(AccountControlViewMixin, DeleteView):
 
 
 class AccountRequestDeclineView(AccountControlViewMixin, DeleteView):
+    """
+    With this view users of an account can decline the user who has applied before.
+    """
     model = AccountRequest
     template_name = 'forms/user_request_decline.html'
     success_url = reverse_lazy('Accounts:Account')

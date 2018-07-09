@@ -14,6 +14,9 @@ from rcrm_account.models import Account, User
 
 
 class LoginForm(Form):
+    """
+    The form is for user login.
+    """
     username = CharField(label=_("Username"), widget=TextInput(attrs={'class': "form-control"}))
     password = CharField(label=_("Password"), widget=PasswordInput(attrs={'class': "form-control"}))
 
@@ -28,6 +31,9 @@ class LoginForm(Form):
 
 
 class RegisterForm(ModelForm):
+    """
+    The form is for user registration.
+    """
     email = CharField(label=_("Email"), widget=TextInput(attrs={'class': "form-control"}))
     password = CharField(label=_("Password"), widget=PasswordInput(attrs={'class': "form-control"}))
     password2 = CharField(label=_("Password Confirmation"),
@@ -57,6 +63,9 @@ class RegisterForm(ModelForm):
 
 
 class AccountForm(ModelForm):
+    """
+    A form that creates or updates an account.
+    """
     name = CharField(label=_("Account Name"), widget=TextInput(attrs={'class': 'form-control'}))
     company_email = EmailField(label=_("Account Email"), widget=TextInput(attrs={'class': 'form-control'}))
     company_phone = CharField(label=_("Account Phone Number"), required=False,
@@ -77,22 +86,34 @@ class AccountForm(ModelForm):
 
 
 class AccountUserAddForm(Form):
+    """
+    The form is for adding a new user
+    """
     email = EmailField(label=_("Email Address"),
                        widget=TextInput(attrs={'class': 'form-control', 'placeholder': _("example@email.com")}))
 
 
 class UserAccountForm(ModelForm):
+    """
+    A form that lets a user edit own profile
+    """
     class Meta:
         model = User
         fields = ()
 
 
 class AccountRequestForm(Form):
+    """
+    A form that lets a user to request to an account
+    """
     account = CharField(label=_("Account Name"),
                         widget=TextInput(attrs={'class': 'form-control', 'id': 'autocomplete-input'}))
 
 
 class UserProfileForm(ModelForm):
+    """
+    A form that lets a user edit own profile
+    """
     email = EmailField(label=_("Email"), widget=TextInput(attrs={'class': 'form-control'}))
     first_name = CharField(label=_("First Name"), required=False, widget=TextInput(attrs={'class': 'form-control'}))
     last_name = CharField(label=_("Last Name"), required=False, widget=TextInput(attrs={'class': 'form-control'}))
