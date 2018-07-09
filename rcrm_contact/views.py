@@ -13,6 +13,7 @@ from rcrm_contact.resources import ContactResource, ContactImportResource
 from rcrm_account.utils import AccountControlViewMixin, AccountControlViewMixinTwo,\
     AccountControlViewMixinThree, AccountControlViewMixinFour
 
+from openpyxl import Workbook
 from tablib import Dataset
 
 
@@ -321,16 +322,18 @@ class SocialProfileDeleteView(AccountControlViewMixinThree, DeleteView):
 
 # --------------------------------- Import Export ---------------------------------
 
-from openpyxl import Workbook
-
 
 def contact_import(request):
     if request.method == 'POST':
         person_resource = ContactImportResource()
         dataset = Dataset()
-        new_persons = request.FILES['myfile']
+        new_contacts = request.FILES['myfile']
         account_id = request.user.account.id
-        imported_data = dataset.load(new_persons.read())
+        imported_data = dataset.load(new_contacts.read())
+
+        wb = Workbook(imported_data)
+        print(wb)
+
 
         result = person_resource.import_data(dataset, dry_run=True)
 

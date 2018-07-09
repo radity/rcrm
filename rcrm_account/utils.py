@@ -1,5 +1,6 @@
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.utils.translation import activate, deactivate
 from django.urls import reverse_lazy
 
 from rcrm_contact.models import Contact
@@ -47,3 +48,15 @@ class UserAccountControlViewMixin(object):
             return HttpResponseRedirect(reverse_lazy('Accounts:Account'))
         return super().dispatch(request, *args, **kwargs)
 
+
+class LocaleMiddleware(object):
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        language_code = request.user.language
+        activate(language_code)
+        response = self.get_response(request)
+        deactivate()
+        return response

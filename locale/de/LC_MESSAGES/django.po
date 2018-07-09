@@ -1622,7 +1622,7 @@ msgstr ""
 
 #: templates/pages/user_profile.html:64
 msgid "Change Your Password"
-msgstr ""
+msgstr "Ändern Sie Ihr Passwort"
 
 #: templates/pages/user_profile.html:70
 msgid "Old Password:"
@@ -1638,4 +1638,4 @@ msgstr ""
 
 #: templates/partials/header.html:42
 msgid "Logout"
-msgstr ""
+msgstr "Ausloggen"

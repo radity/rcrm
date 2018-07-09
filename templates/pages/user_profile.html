@@ -31,19 +31,25 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {% with field=form.email %}
-                            <label class="control-label">{% trans "Email:" %}</label>
+                            <label class="control-label">{% trans "Email" %}:</label>
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
                             {% with field=form.first_name %}
-                            <label class="control-label">{% trans "First Name:" %}</label>
+                            <label class="control-label">{% trans "First Name" %}:</label>
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
                             {% with field=form.last_name %}
-                            <label class="control-label">{% trans "Last Name:" %}</label>
+                            <label class="control-label">{% trans "Last Name" %}:</label>
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            {% with field=form.language %}
+                            <label class="control-label">{% trans "Language" %}:</label>
                             {{ field }}
                             {% endwith %}
                         </div>
@@ -67,19 +73,19 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {% with field=password_form.old_password %}
-                            <label class="control-label">{% trans "Old Password:" %}</label>
+                            <label class="control-label">{% trans "Old Password" %}:</label>
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
                             {% with field=password_form.new_password1 %}
-                            <label class="control-label">{% trans "Password" %}</label>
+                            <label class="control-label">{% trans "Password" %}:</label>
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
                             {% with field=password_form.new_password2 %}
-                            <label class="control-label">{% trans "Password Confirmation" %}</label>
+                            <label class="control-label">{% trans "Password Confirmation" %}:</label>
                             {{ field }}
                             {% endwith %}
                         </div>

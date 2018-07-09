@@ -1,8 +1,10 @@
+from django.conf import settings
+from django.contrib.auth import authenticate
 from django.forms import Form, ModelForm,\
     CharField, EmailField, ImageField,\
     PasswordInput, ValidationError,\
-    TextInput, Textarea, FileInput
-from django.contrib.auth import authenticate
+    TextInput, Textarea, FileInput,\
+    Select
 from django.utils.translation import ugettext_lazy as _
 
 from rcrm_account.models import Account, User
@@ -94,13 +96,16 @@ class UserProfileForm(ModelForm):
     email = EmailField(label=_("Email"), widget=TextInput(attrs={'class': 'form-control'}))
     first_name = CharField(label=_("First Name"), required=False, widget=TextInput(attrs={'class': 'form-control'}))
     last_name = CharField(label=_("Last Name"), required=False, widget=TextInput(attrs={'class': 'form-control'}))
+    language = CharField(label=_("Country"),
+                        widget=Select(choices=settings.LANGUAGES, attrs={'class': 'form-control custom-select'}))
 
     class Meta:
         model = User
         fields = (
             'email',
             'first_name',
-            'last_name'
+            'last_name',
+            'language'
         )
 
 

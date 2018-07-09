@@ -6,6 +6,6 @@ services:
       - 5432:5432
   backend:
     build: .
-    entrypoint: /code/entrypoint.sh
+    # entrypoint: /code/entrypoint.sh
     depends_on:
       - db

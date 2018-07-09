@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.db.models import Model, CASCADE, PROTECT, \
@@ -43,6 +44,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = CharField(_('First name'), max_length=30, blank=True)
     last_name = CharField(_('Last name'), max_length=30, blank=True)
     account = ForeignKey(Account, on_delete=PROTECT, null=True, blank=True)
+    language = CharField(max_length=2, choices=settings.LANGUAGES, default='en')
 
     # Status
     is_active = BooleanField(_('Is Active?'), default=True)

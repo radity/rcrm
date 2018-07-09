@@ -18,7 +18,7 @@ from django.utils.translation import gettext_lazy as _
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-env_path = os.path.join(BASE_DIR, '..', '.env.json')
+env_path = os.path.join(BASE_DIR, '..', '.rcrm_env.json')
 if not os.path.exists(env_path):
     env_path = os.path.join(BASE_DIR, 'conf', 'env.json')
 with open(env_path, 'r') as env_file:
@@ -59,17 +59,20 @@ INSTALLED_APPS = [
     'django_cleanup',
     'import_export',
     'location_field.apps.DefaultConfig',
+    'parler',
 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rcrm_account.utils.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'rcrm.urls'
@@ -118,17 +121,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SITE_ID = 1
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en'
-
-LANGUAGES = [
-    ('en', _("English")),
-    ('de', _("German")),
-    ('tr', _("Turkish"))
-]
 
 TIME_ZONE = 'UTC'
 
@@ -137,6 +135,27 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LANGUAGE_CODE = 'en'
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
+LANGUAGES = [
+    ('en', "English"),
+    ('de', "Deutsch"),
+    ('tr', "Türkçe")
+]
+
+PARLER_DEFAULT_LANGUAGE_CODE = 'en'
+PARLER_LANGUAGES = {
+    SITE_ID: (
+        {'code': 'en'},
+        {'code': 'de'},
+        {'code': 'tr'},
+    ),
+    'default': {
+        'fallback': 'en',
+        'hide_untranslated': False,
+    }
+}
 
 
 # Static files (CSS, JavaScript, Images)

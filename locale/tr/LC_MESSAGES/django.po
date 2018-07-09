@@ -20,112 +20,112 @@ msgstr ""
 
 #: rcrm/settings.py:128
 msgid "English"
-msgstr ""
+msgstr "İngilizce"
 
 #: rcrm/settings.py:129
 msgid "German"
-msgstr ""
+msgstr "Almanca"
 
 #: rcrm/settings.py:130
 msgid "Turkish"
-msgstr ""
+msgstr "Türkçe"
 
 #: rcrm_account/admin.py:27 rcrm_account/admin.py:54 rcrm_contact/admin.py:25
 msgid "Status"
-msgstr ""
+msgstr "Durum"
 
 #: rcrm_account/admin.py:30 rcrm_account/admin.py:57 rcrm_account/admin.py:76
 #: rcrm_contact/admin.py:28 rcrm_contact/admin.py:46 rcrm_contact/admin.py:64
 #: rcrm_contact/admin.py:82 rcrm_contact/admin.py:100
 msgid "Date & Time"
-msgstr ""
+msgstr "Tarih & Zaman"
 
 #: rcrm_account/forms.py:15
 msgid "Username"
-msgstr ""
+msgstr "Kullanıcı Adı"
 
 #: rcrm_account/forms.py:16 rcrm_account/forms.py:30
 #: templates/pages/user_profile.html:76
 msgid "Password"
-msgstr ""
+msgstr "Parola"
 
 #: rcrm_account/forms.py:24
 msgid "Wrong email or password!"
-msgstr ""
+msgstr "Yanlış email veya parola"
 
 #: rcrm_account/forms.py:29 rcrm_account/forms.py:94 rcrm_contact/forms.py:51
 #: templates/pages/account.html:143 templates/pages/account.html:196
 #: templates/pages/contact_detail.html:112
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: rcrm_account/forms.py:31 templates/pages/user_profile.html:82
 msgid "Password Confirmation"
-msgstr ""
+msgstr "Parola Doğrulama"
 
 #: rcrm_account/forms.py:46
 msgid "Password can not be confirmed!"
-msgstr ""
+msgstr "Parola Doğrulanamadı"
 
 #: rcrm_account/forms.py:53
 msgid "This email already exists!"
-msgstr ""
+msgstr "Bu email zaten mevcut"
 
 #: rcrm_account/forms.py:58 rcrm_account/forms.py:62 rcrm_account/forms.py:89
 #: rcrm_account/models.py:17
 msgid "Account Name"
-msgstr ""
+msgstr "Hesap İsmi"
 
 #: rcrm_account/forms.py:59
 msgid "Account Email"
-msgstr ""
+msgstr "Hesap Email"
 
 #: rcrm_account/forms.py:60
 msgid "Account Phone Number"
-msgstr ""
+msgstr "Hesap Telefon Numarası"
 
 #: rcrm_account/forms.py:78 templates/forms/email_create.html:34
 #: templates/forms/email_edit.html:34
 msgid "Email Address"
-msgstr ""
+msgstr "Email Adresi"
 
 #: rcrm_account/forms.py:79
 msgid "example@email.com"
-msgstr ""
+msgstr "example@email.com"
 
 #: rcrm_account/forms.py:95 rcrm_contact/forms.py:11
 #: templates/forms/contact_create.html:34 templates/forms/contact_edit.html:34
 msgid "First Name"
-msgstr ""
+msgstr "Ad"
 
 #: rcrm_account/forms.py:96 rcrm_contact/forms.py:12
 #: templates/forms/contact_create.html:40 templates/forms/contact_edit.html:40
 msgid "Last Name"
-msgstr ""
+msgstr "Soyad"
 
 #: rcrm_account/forms.py:113
 msgid "The two password fields didn't match."
-msgstr ""
+msgstr "Parolalar Eşleşmedi."
 
 #: rcrm_account/forms.py:116
 msgid "New password"
-msgstr ""
+msgstr "Yeni Parola"
 
 #: rcrm_account/forms.py:121
 msgid "New password confirmation"
-msgstr ""
+msgstr "Yeni Parola Doğrulama"
 
 #: rcrm_account/forms.py:155
 msgid "Your old password was entered incorrectly. Please enter it again."
-msgstr ""
+msgstr "Eski parola yanlış. Lütfen tekrar giriniz."
 
 #: rcrm_account/forms.py:158
 msgid "Old password"
-msgstr ""
+msgstr "Eski Parola"
 
 #: rcrm_account/managers.py:10
 msgid "The given email must be set"
-msgstr ""
+msgstr "Email gerekli"
 
 #: rcrm_account/managers.py:25
 msgid "Superuser must have is_superuser=True."
@@ -133,17 +133,17 @@ msgstr ""
 
 #: rcrm_account/models.py:18
 msgid "Company's Email"
-msgstr ""
+msgstr "Şirket Email'i"
 
 #: rcrm_account/models.py:19
 msgid "Company's Phone Number"
-msgstr ""
+msgstr "Şirket Telefon Numarası"
 
 #: rcrm_account/models.py:20 rcrm_contact/forms.py:17
 #: rcrm_contact/models.py:24 templates/forms/contact_create.html:64
 #: templates/forms/contact_edit.html:64
 msgid "Short Description"
-msgstr ""
+msgstr "Kısa Açıklama"
 
 #: rcrm_account/models.py:21
 msgid "Company's Logo"
@@ -1572,7 +1572,7 @@ msgstr ""
 
 #: templates/pages/account.html:208
 msgid " Accept"
-msgstr ""
+msgstr " Kabul Et"
 
 #: templates/pages/contact_detail.html:29
 msgid "Edit"
@@ -1606,7 +1606,7 @@ msgstr ""
 
 #: templates/pages/user_profile.html:28
 msgid "Edit Your Profile"
-msgstr ""
+msgstr "Profilini Güncelle"
 
 #: templates/pages/user_profile.html:34
 msgid "Email:"
@@ -1630,12 +1630,12 @@ msgstr ""
 
 #: templates/partials/header.html:40
 msgid "Account"
-msgstr ""
+msgstr "Hesap"
 
 #: templates/partials/header.html:41
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: templates/partials/header.html:42
 msgid "Logout"
-msgstr ""
+msgstr "Çıkış Yap"
