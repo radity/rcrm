@@ -4,9 +4,7 @@ Installation (for Development)
 ------------------------------
 We use Docker.
 
-
 [Download Docker](https://www.docker.com/community-edition)
-
 
 To run the project:
 ```
@@ -23,6 +21,5 @@ docker-compose up -d --build
 
 # We have a default admin user.
 email = admin@localhost
-
 
 password = secret
