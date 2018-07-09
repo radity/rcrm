@@ -2,8 +2,12 @@
 
 Installation (for Development)
 ------------------------------
-We use Docker.<br>
-[Download Docker](https://www.docker.com/community-edition)<br>
+We use Docker.
+
+
+[Download Docker](https://www.docker.com/community-edition)
+
+
 To run the project:
 ```
 docker-compose up -d --build
