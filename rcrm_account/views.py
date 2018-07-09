@@ -3,8 +3,7 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib import messages
 from django.core.mail import send_mail
-from django.core.serializers.json import DjangoJSONEncoder
-from django.core.serializers import serialize
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -213,17 +212,21 @@ class AccountRequestAcceptView(AccountControlViewMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         id = self.kwargs['pk']
         account_request = get_object_or_404(AccountRequest, id=id)
-        User.objects.filter(id=account_request.user.id).update(account=account_request.account)
         usr = get_object_or_404(User, id=account_request.user.id)
-        messages.success(self.request, _('Accepted successfully, thank you.'))
+        if usr.account:
+            messages.error(self.request, _('The user has an account!'))
+            return HttpResponseRedirect(reverse_lazy('Accounts:Account'))
+        else:
+            User.objects.filter(id=account_request.user.id).update(account=account_request.account)
+            messages.success(self.request, _('Accepted successfully, thank you.'))
 
-        # Send Email
-        from_email = settings.EMAIL_HOST_USER
-        subject = _('Your Request Has Been Accepted')
-        message = _('Your RCRM account request has been accepted. To reach the account: http://127.0.0.1:8000/accounts/')
-        recipient_list = [usr.email]
-        send_mail(subject=subject, message=message, from_email=from_email, recipient_list=recipient_list,
-                  fail_silently=False, html_message=message)
+            # Send Email
+            from_email = settings.EMAIL_HOST_USER
+            subject = _('Your Request Has Been Accepted')
+            message = _('Your RCRM account request has been accepted. To reach the account: http://127.0.0.1:8000/accounts/')
+            recipient_list = [usr.email]
+            send_mail(subject=subject, message=message, from_email=from_email, recipient_list=recipient_list,
+                      fail_silently=False, html_message=message)
         return super(AccountRequestAcceptView, self).delete(request, *args, **kwargs)
 
 
