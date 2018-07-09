@@ -1594,7 +1594,7 @@ msgstr ""
 #: templates/pages/contact_detail.html:181
 #: templates/pages/contact_detail.html:237
 msgid "Add New"
-msgstr ""
+msgstr "Yeni Ekle"
 
 #: templates/pages/contact_list.html:46
 msgid "Export"
@@ -1626,7 +1626,7 @@ msgstr ""
 
 #: templates/pages/user_profile.html:70
 msgid "Old Password:"
-msgstr ""
+msgstr "Şimdiki Parola:"
 
 #: templates/partials/header.html:40
 msgid "Account"

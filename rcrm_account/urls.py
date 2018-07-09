@@ -6,8 +6,6 @@ from rcrm_account.views import AccountView, AccountUserCreateView, AccountReques
     LoginView, RegisterView, UserProfileView, ChangePasswordView, \
     UserAccountDeleteView, AccountRequestAcceptView, AccountRequestDeclineView
 
-from django.contrib.auth.views import PasswordChangeView
-
 app_name = 'Accounts'
 
 

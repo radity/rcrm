@@ -87,18 +87,13 @@ class ChangePasswordView(UpdateView):
     """
     A view that allows to a user who can change own password by entering their old password.
     """
+    form_class = PasswordChangeForm
     success_url = reverse_lazy('Accounts:User_Profile')
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['user'] = self.request.user
         return kwargs
-
-    def get_object(self, queryset=None):
-        return get_object_or_404(User, id=self.request.user.id)
-
-    def get_form_class(self):
-        return PasswordChangeForm(data=self.request.POST, user=self.request.user)
 
     def form_valid(self, form):
         form.save()

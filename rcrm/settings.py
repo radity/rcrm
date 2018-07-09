@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'django_cleanup',
     'import_export',
     'location_field.apps.DefaultConfig',
-    'parler',
 
 ]
 
@@ -121,12 +120,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-SITE_ID = 1
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
+SITE_ID = 1
 
 TIME_ZONE = 'UTC'
 
@@ -143,19 +140,6 @@ LANGUAGES = [
     ('de', "Deutsch"),
     ('tr', "Türkçe")
 ]
-
-PARLER_DEFAULT_LANGUAGE_CODE = 'en'
-PARLER_LANGUAGES = {
-    SITE_ID: (
-        {'code': 'en'},
-        {'code': 'de'},
-        {'code': 'tr'},
-    ),
-    'default': {
-        'fallback': 'en',
-        'hide_untranslated': False,
-    }
-}
 
 
 # Static files (CSS, JavaScript, Images)
