@@ -28,52 +28,52 @@ class ContactResource(ModelResource):
 
     def dehydrate_emails(self, obj):
         emails = Email.objects.filter(contact=obj).values_list('email', flat=True)
-        emails = ' - '.join(emails)
+        emails = ' & '.join(emails)
         return emails
 
     def dehydrate_phones(self, obj):
         phones = Phone.objects.filter(contact=obj).values_list('phone', flat=True)
-        phones = ' - '.join(phones)
+        phones = ' & '.join(phones)
         return phones
 
     def dehydrate_addresses(self, obj):
         addresses = Address.objects.filter(contact=obj)
-        for adres in addresses:
-            addresses = []
-            full_address = adres.address + adres.city
-            addresses.append(full_address)
-            addresses = str(addresses)
-        return addresses
+        address_list = []
+        for address in addresses:
+            full_address = address.address + ' - ' + address.city + ' - ' + address.state + ' - ' + address.postcode + ' - ' + address.get_country_display() + ' & '
+            address_list.append(full_address)
+        return address_list
 
     def dehydrate_instagram(self, obj):
         instagram = SocialProfile.objects.filter(contact=obj).values_list('instagram', flat=True)
-        instagram = ' - '.join(instagram)
+        instagram = ' & '.join(instagram)
         return instagram
 
     def dehydrate_twitter(self, obj):
         twitter = SocialProfile.objects.filter(contact=obj).values_list('twitter', flat=True)
-        twitter = ' - '.join(twitter)
+        twitter = ' & '.join(twitter)
         return twitter
 
     def dehydrate_facebook(self, obj):
         facebook = SocialProfile.objects.filter(contact=obj).values_list('facebook', flat=True)
-        facebook = ' - '.join(facebook)
+        facebook = ' & '.join(facebook)
         return facebook
 
     def dehydrate_skype(self, obj):
         skype = SocialProfile.objects.filter(contact=obj).values_list('skype', flat=True)
-        skype = ' - '.join(skype)
+        skype = ' & '.join(skype)
         return skype
 
     def dehydrate_website(self, obj):
         website = SocialProfile.objects.filter(contact=obj).values_list('website', flat=True)
-        website = ' - '.join(website)
+        website = ' & '.join(website)
         return website
 
     def dehydrate_linkedin(self, obj):
         linkedin = SocialProfile.objects.filter(contact=obj).values_list('linkedin', flat=True)
-        linkedin = ' - '.join(linkedin)
+        linkedin = ' & '.join(linkedin)
         return linkedin
+
 
 class ContactImportResource(ModelResource):
 
