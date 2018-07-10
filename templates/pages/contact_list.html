@@ -94,8 +94,7 @@
                         <td><a href="{{ contact.get_absolute_url }}">{{ contact }}</a></td>
                         <td>{% with contact.emails|first as email %}{{ email.email }}{% endwith %}</td>
                         <td>{% with contact.phones|first as phone %}{{ phone.phone }}{% endwith %}</td>
-                        <td>{% with contact.addresses|first as address %}{{ address.address }}, {{ address.state }}, {{
-                            address.city }}, {{ address.get_country_display }} {% endwith %}
+                        <td>{% with contact.addresses|first as address %}{{ address.address }}, {{ address.state }}, {{ address.city }}, {{ address.get_country_display }} {% endwith %}
                         </td>
                     </tr>
                     {% endfor %}
