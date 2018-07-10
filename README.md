@@ -1,4 +1,10 @@
 # RCRM
+RCRM (Radity CRM) is a modern, easy to use CRM system based on Python and Django.
+
+We intend to keep RCRM simple yet effective and extendable meeting the demands of SMEs and Startups. RCRM will come with modules for different domains such as fintech, blockchain, asset management, sales, marketing and hr. RCRM can be used standalone or can be used to accelarate product development for tailored software solutions.
+
+A detailed Roadmap will follow soon.
+
 
 Installation (for Development)
 ------------------------------
