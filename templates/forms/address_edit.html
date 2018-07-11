@@ -13,7 +13,7 @@
             <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
             <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contact' %}</a></li>
             <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contacts' %}</a></li>
-            <li class="breadcrumb-item active">{{ object }}</li>
+            <li class="breadcrumb-item active">{% trans 'Edit' %}&nbsp;{{ object.email }}</li>
         </ol>
     </div>
 </div>
