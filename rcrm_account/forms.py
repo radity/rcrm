@@ -130,7 +130,7 @@ class UserProfileForm(ModelForm):
         )
 
 
-class SetPasswordForm(Form):
+class SetPasswordForm(ModelForm):
     """
     A form that lets a user change set their password without entering the old
     password
@@ -149,9 +149,9 @@ class SetPasswordForm(Form):
         widget=PasswordInput(attrs={'class': 'form-control'}),
     )
 
-    def __init__(self, user, *args, **kwargs):
-        self.user = user
-        super().__init__(*args, **kwargs)
+    class Meta:
+        model = User
+        fields = ()
 
     def clean_new_password2(self):
         password1 = self.cleaned_data.get('new_password1')
@@ -166,10 +166,10 @@ class SetPasswordForm(Form):
 
     def save(self, commit=True):
         password = self.cleaned_data["new_password1"]
-        self.user.set_password(password)
+        self.instance.set_password(password)
         if commit:
-            self.user.save()
-        return self.user
+            self.instance.save()
+        return self.instance
 
 
 class PasswordChangeForm(SetPasswordForm):
@@ -193,7 +193,7 @@ class PasswordChangeForm(SetPasswordForm):
         Validate that the old_password field is correct.
         """
         old_password = self.cleaned_data["old_password"]
-        if not self.user.check_password(old_password):
+        if not self.instance.check_password(old_password):
             raise ValidationError(
                 self.error_messages['password_incorrect'],
                 code='password_incorrect',

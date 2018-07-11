@@ -76,7 +76,13 @@ class ContactResource(ModelResource):
 
 
 class ContactImportResource(ModelResource):
+    account = Field()
 
     class Meta:
         model = Contact
-        exclude = ()
+        exclude = (
+            'id',
+        )
+
+    def dehydrate_account(self, obj):
+        return self.request.user.account

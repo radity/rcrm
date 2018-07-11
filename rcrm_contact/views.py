@@ -378,8 +378,8 @@ def contact_import(request):
         dataset = Dataset()
         new_contacts = request.FILES['myfile']
         account_id = request.user.account.id
+        # imported_data = dataset.load(new_contacts.read())
 
-        imported_data = dataset.load(new_contacts.read())
         result = contact_resource.import_data(dataset, dry_run=True)
 
         if not result.has_errors():
@@ -389,7 +389,7 @@ def contact_import(request):
         else:
             messages.error(request, _('Could not be uploaded!'))
             return HttpResponseRedirect(reverse_lazy('Contacts:Contact'))
-    return render(request, 'import.html')
+    return render(request, 'forms/import_contact.html')
 
 
 def contact_export(request):

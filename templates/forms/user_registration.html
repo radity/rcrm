@@ -16,19 +16,19 @@
                                 <form method="post">
                                     {% csrf_token %}
                                     <div class="form-group">
-                                        <label>{% trans 'Email' %}</label>
+                                        <label>{% trans 'Email' %}:</label>
                                         {% with field=form.email %}
                                             {{ field }}
                                         {% endwith %}
                                     </div>
                                     <div class="form-group">
-                                        <label>{% trans 'Password' %}</label>
+                                        <label>{% trans 'Password' %}:</label>
                                         {% with field=form.password %}
                                             {{ field }}
                                         {% endwith %}
                                     </div>
                                     <div class="form-group">
-                                        <label>{% trans 'Password Comfirmation' %}</label>
+                                        <label>{% trans 'Password Comfirmation' %}:</label>
                                         {% with field=form.password2 %}
                                             {{ field }}
                                         {% endwith %}

@@ -79,7 +79,7 @@ class UserProfileView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(UserProfileView, self).get_context_data(**kwargs)
-        context['password_form'] = PasswordChangeForm(data=self.request.POST, user=self.request.user)
+        context['password_form'] = PasswordChangeForm(data=self.request.POST)
         return context
 
 
@@ -90,14 +90,14 @@ class ChangePasswordView(UpdateView):
     form_class = PasswordChangeForm
     success_url = reverse_lazy('Accounts:User_Profile')
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['user'] = self.request.user
-        return kwargs
+    def get_object(self, queryset=None):
+        return self.request.user
 
     def form_valid(self, form):
         form.save()
-        update_session_auth_hash(self.request, form.user)
+        update_session_auth_hash(self.request, form.instance)
+        user = authenticate(email=self.request.user.email, password=self.request.user.password)
+        login(self.request, user)
         messages.success(self.request, _('Saved successfully, thank you.'))
         return super(ChangePasswordView, self).form_valid(form=form)
 
