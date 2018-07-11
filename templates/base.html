@@ -26,22 +26,26 @@
 </head>
 <body class="fix-header fix-sidebar">
     <div id="main-wrapper">
-            {% include 'partials/header.html' %}
+        {% include 'partials/header.html' %}
+        {% if request.user.account %}
             {% include 'partials/sidebar.html' %}
             <div class="page-wrapper">
-                {% block breadcrumb %}
+        {% else %}
+            <div class="page-wrapper"  style="margin-left: 0 !important">
+        {% endif %}
+            {% block breadcrumb %}
+
+            {% endblock %}
+            <div class="container-fluid">
+                {% include 'partials/messages.html' %}
+                {% block content %}
+
+
 
                 {% endblock %}
-                <div class="container-fluid">
-                    {% include 'partials/messages.html' %}
-                    {% block content %}
-
-
-
-                    {% endblock %}
-                </div>
             </div>
-            {% include 'partials/footer.html' %}
+        </div>
+        {% include 'partials/footer.html' %}
     </div>
     <!-- End Wrapper -->
     <!-- Lodash -->
