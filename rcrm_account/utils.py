@@ -58,7 +58,10 @@ class LocaleMiddleware(object):
         if request.user.is_authenticated:
             language_code = request.user.language
         else:
-            language_code = 'en'
+            if request.META.get('HTTP_ACCEPT_LANGUAGE'):
+                language_code = request.META.get('HTTP_ACCEPT_LANGUAGE').split(',')[0]
+            else:
+                language_code = 'en'
         activate(language_code)
         response = self.get_response(request)
         deactivate()
