@@ -374,20 +374,16 @@ class SocialProfileDeleteView(AccountControlViewMixinThree, DeleteView):
 
 def contact_import(request):
     if request.method == 'POST':
-        person_resource = ContactImportResource()
+        contact_resource = ContactImportResource()
         dataset = Dataset()
         new_contacts = request.FILES['myfile']
         account_id = request.user.account.id
+
         imported_data = dataset.load(new_contacts.read())
-
-        wb = Workbook(imported_data)
-        print(wb)
-
-
-        result = person_resource.import_data(dataset, dry_run=True)
+        result = contact_resource.import_data(dataset, dry_run=True)
 
         if not result.has_errors():
-            person_resource.import_data(dataset, dry_run=False)
+            contact_resource.import_data(dataset, dry_run=False)
             messages.success(request, _('Uploaded successfully, thank you.'))
             return HttpResponseRedirect(reverse_lazy('Contacts:Contact'))
         else:

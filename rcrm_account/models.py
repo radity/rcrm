@@ -4,7 +4,7 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.db.models import Model, CASCADE, PROTECT, \
     BooleanField, CharField, DateTimeField,\
     EmailField, ForeignKey, ImageField,\
-    TextField
+    TextField, AutoField
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
@@ -94,3 +94,4 @@ class AccountRequest(Model):
 
     def get_delete_url(self):
         return reverse('Accounts:Request_Decline', kwargs={'pk': self.id})
+

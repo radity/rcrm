@@ -147,35 +147,35 @@ msgstr "Kısa Açıklama"
 
 #: rcrm_account/models.py:21
 msgid "Company's Logo"
-msgstr ""
+msgstr "Şirket Logosu"
 
 #: rcrm_account/models.py:24 rcrm_account/models.py:48
 #: rcrm_contact/models.py:27
 msgid "Is Active?"
-msgstr ""
+msgstr "Aktif mi?"
 
 #: rcrm_account/models.py:25 rcrm_account/models.py:76
 #: rcrm_contact/models.py:28
 msgid "Is Deleted?"
-msgstr ""
+msgstr "Silindi mi?"
 
 #: rcrm_account/models.py:28 rcrm_account/models.py:52
 #: rcrm_account/models.py:79 rcrm_contact/models.py:31
 #: rcrm_contact/models.py:100 rcrm_contact/models.py:133
 #: rcrm_contact/models.py:156 rcrm_contact/models.py:175
 msgid "Added"
-msgstr ""
+msgstr "Eklendi"
 
 #: rcrm_account/models.py:29 rcrm_account/models.py:53
 #: rcrm_account/models.py:80 rcrm_contact/models.py:32
 #: rcrm_contact/models.py:101 rcrm_contact/models.py:134
 #: rcrm_contact/models.py:157 rcrm_contact/models.py:176
 msgid "Last Modified"
-msgstr ""
+msgstr "Son Güncelleme"
 
 #: rcrm_account/models.py:42
 msgid "Email address"
-msgstr ""
+msgstr "Email Adresi"
 
 #: rcrm_account/models.py:43
 msgid "First name"
@@ -183,11 +183,11 @@ msgstr ""
 
 #: rcrm_account/models.py:44
 msgid "Last name"
-msgstr ""
+msgstr "Soyad"
 
 #: rcrm_account/models.py:49
 msgid "Is Staff?"
-msgstr ""
+msgstr "Görevli mi?"
 
 #: rcrm_account/models.py:60
 msgid "User"
@@ -241,7 +241,7 @@ msgstr "RCRM Hesabınıza Bir Erişim Talebi Var!"
 
 #: rcrm_account/views.py:200
 msgid "You have already requested to "
-msgstr ""
+msgstr "Daha önce talep gönderildi: "
 
 #: rcrm_account/views.py:203
 msgid "The account could not found!"
@@ -373,19 +373,19 @@ msgstr ""
 
 #: rcrm_contact/models.py:146
 msgid "Social Profile"
-msgstr ""
+msgstr "Sosyal Profil"
 
 #: rcrm_contact/models.py:147
 msgid "Social Profiles"
-msgstr ""
+msgstr "Sosyal Profiller"
 
 #: rcrm_contact/models.py:152
 msgid "Phone Title"
-msgstr ""
+msgstr "Telefon Numarası Başlığı"
 
 #: rcrm_contact/models.py:171
 msgid "Email Title"
-msgstr ""
+msgstr "Email Başlığı"
 
 #: rcrm_contact/utils.py:6
 msgid "Switzerland"
@@ -1502,7 +1502,7 @@ msgstr "Sosyal Profil Ekle"
 
 #: templates/forms/user_request_accept.html:16
 msgid "Are you sure you would like to accept "
-msgstr ""
+msgstr "Kabul etmek istediğinize emin misiniz? :"
 
 #: templates/forms/user_request_accept.html:17
 msgid "Accept"
@@ -1510,19 +1510,19 @@ msgstr "Kabul Et"
 
 #: templates/forms/user_request_decline.html:16
 msgid "Are you sure you would like to decline "
-msgstr ""
+msgstr "Reddetmek istediğinize emin misiniz? :"
 
 #: templates/forms/user_request_decline.html:17
 msgid "Decline"
-msgstr ""
+msgstr "Reddet"
 
 #: templates/import.html:8
 msgid "Contact Import"
-msgstr ""
+msgstr "Kontakları İçeri Aktar"
 
 #: templates/import.html:13 templates/pages/contact_list.html:43
 msgid "Import"
-msgstr ""
+msgstr "İçeri Aktar"
 
 #: templates/import.html:29
 msgid "Upload"
@@ -1568,7 +1568,7 @@ msgstr ""
 
 #: templates/pages/account.html:197
 msgid "Accept / Decline"
-msgstr ""
+msgstr "Kabul Et / Reddet"
 
 #: templates/pages/account.html:208
 msgid " Accept"
@@ -1587,7 +1587,7 @@ msgstr "Numara"
 #: templates/pages/contact_detail.html:154
 #: templates/pages/contact_detail.html:227
 msgid "Edit / Delete"
-msgstr ""
+msgstr "Düzenle / Sil"
 
 #: templates/pages/contact_detail.html:96
 #: templates/pages/contact_detail.html:132
@@ -1598,11 +1598,11 @@ msgstr "Yeni Ekle"
 
 #: templates/pages/contact_list.html:46
 msgid "Export"
-msgstr ""
+msgstr "Dışa Aktar"
 
 #: templates/pages/contact_list.html:49
 msgid "New Contact"
-msgstr ""
+msgstr "Yeni Kontak"
 
 #: templates/pages/user_profile.html:28
 msgid "Edit Your Profile"
@@ -1622,7 +1622,7 @@ msgstr "Soyad"
 
 #: templates/pages/user_profile.html:64
 msgid "Change Your Password"
-msgstr ""
+msgstr "Parolanı Değiştir"
 
 #: templates/pages/user_profile.html:70
 msgid "Old Password:"
