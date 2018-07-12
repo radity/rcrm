@@ -18,11 +18,11 @@ class CRMAccount(Model):
     """
     This model is crm account that is controlled by many users.
     """
-    name = CharField(_('Account Name'), max_length=64)
-    company_email = EmailField(_('Company\'s Email'), max_length=2014)
-    company_phone = CharField(_('Company\'s Phone Number'), max_length=128, null=True, blank=True)
-    description = TextField(_('Short Description'), max_length=256, null=True, blank=True)
-    logo = ImageField(_('Company\'s Logo'), upload_to='logo/', null=True, blank=True)
+    name = CharField(_('Name'), max_length=64)
+    email = EmailField(_('Email'), max_length=2014)
+    phone = CharField(_('Phone Number'), max_length=128, null=True, blank=True)
+    description = TextField(_('Description'), max_length=256, null=True, blank=True)
+    logo = ImageField(_('Logo'), upload_to='logo/', null=True, blank=True)
 
     # Status
     is_active = BooleanField(_('Is Active?'), default=True)

@@ -13,7 +13,7 @@ from import_export.admin import ImportExportModelAdmin
 
 @register(CRMAccount)
 class AdminAccount(ImportExportModelAdmin):
-    list_display = ('name', 'company_email', 'company_phone', 'is_active', 'is_deleted')
+    list_display = ('name', 'email', 'phone', 'is_active', 'is_deleted')
     list_filter = ('is_active', 'is_deleted')
     readonly_fields = ('created_at', 'modified_at')
     search_fields = ('name', 'phone', 'email')
@@ -22,7 +22,7 @@ class AdminAccount(ImportExportModelAdmin):
     list_per_page = 50
     fieldsets = (
         (None, {
-            'fields': ('name', 'company_phone', 'company_email', 'description', 'logo')
+            'fields': ('name', 'phone', 'email', 'description', 'logo')
         }),
         (_("Status"), {
             'fields': ('is_active', 'is_deleted')
