@@ -7,11 +7,11 @@
 
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-primary">{% trans 'Account' %}</h3></div>
+        <h3 class="text-primary">{% trans 'RCRM Account' %}</h3></div>
     <div class="col-md-7 align-self-center">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">{% trans 'Home' %}</a></li>
-            <li class="breadcrumb-item active">{% trans 'Account' %}</li>
+            <li class="breadcrumb-item active">{% trans 'RCRM Account' %}</li>
         </ol>
     </div>
 </div>
@@ -27,7 +27,7 @@
             <div class="col-md-6">
                 <form method="post" action="{% url 'Accounts:Account_Request' %}">
                 {% csrf_token %}
-                    <h3 class="card-title m-t-15">{% trans 'Join to a Company Account' %}</h3>
+                    <h3 class="card-title m-t-15">{% trans 'Join to a RCRM Account' %}</h3>
                     <div class="form-group">
                         {% with field=account_request_form.account %}
                         {{ field }}
@@ -85,40 +85,40 @@
             <div class="form-body">
                 <h3 class="card-title m-t-15">
                     {% if request.user.account %}
-                        {% trans 'Account Informations' %}
+                        {% trans 'RCRM Account Informations' %}
                     {% else %}
-                        {% trans 'or Create a New Company Account' %}
+                        {% trans 'or Create a New RCRM Account' %}
                     {% endif %}</h3>
                 <hr>
                 <div class="row p-t-20">
                     <div class="col-md-6">
                         <div class="form-group">
                             {% with field=form.name %}
-                            <label class="control-label">{% trans "Account Name" %}:</label>
+                            <label class="control-label">{% trans "RCRM Account Name" %}:</label>
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
                             {% with field=form.company_email %}
-                            <label class="control-label">{% trans "Account Email" %}:</label>
+                            <label class="control-label">{% trans "RCRM Account Email" %}:</label>
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
                             {% with field=form.company_phone %}
-                            <label class="control-label">{% trans "Account Phone Number" %}:</label>
+                            <label class="control-label">{% trans "RCRM Account Phone Number" %}:</label>
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
                             {% with field=form.description %}
-                            <label class="control-label">{% trans "Description" %}:</label>
+                            <label class="control-label">{% trans "RCRM Account Description" %}:</label>
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
                             {% with field=form.logo %}
-                            <label class="control-label">{% trans "Logo" %}:</label>
+                            <label class="control-label">{% trans "RCRM Account Logo" %}:</label>
                             {{ field }}
                             {% endwith %}
                         </div>
@@ -189,7 +189,7 @@
 {% if account.requests %}
 <div class="card card-outline-primary">
     <div class="card-body">
-        <h3 class="card-title m-t-15">{% trans 'Account Requests' %}</h3>
+        <h3 class="card-title m-t-15">{% trans 'RCRM Account Requests' %}</h3>
         <div class="col-md-6">
             <div class="card-body">
                 <div class="table-responsive">
