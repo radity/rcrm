@@ -17,7 +17,6 @@ class AdminAccount(ImportExportModelAdmin):
     list_filter = ('is_active', 'is_deleted')
     readonly_fields = ('created_at', 'modified_at')
     search_fields = ('name', 'phone', 'email')
-    ordering = ('name',)
     paginator = Paginator
     list_per_page = 50
     fieldsets = (
@@ -66,7 +65,6 @@ class AdminAccount(ImportExportModelAdmin):
     list_filter = ('is_deleted',)
     readonly_fields = ('created_at', 'modified_at')
     search_fields = ('account__name', 'user__email')
-    ordering = ('account',)
     paginator = Paginator
     list_per_page = 50
     fieldsets = (

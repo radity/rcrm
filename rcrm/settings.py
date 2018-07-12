@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'rcrm_account',
     'rcrm_contact',
     'rcrm_dashboard',
-
+    'rcrm_job',
 
     # Third Party Apps
     'django_cleanup',

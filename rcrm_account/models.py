@@ -69,7 +69,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
 
     class Meta:
-        ordering = ('email',)
         verbose_name = _('User')
         verbose_name_plural = _('Users')
 
@@ -96,7 +95,7 @@ class CRMAccountRequest(Model):
     modified_at = DateTimeField(_('Last Modified'), auto_now=True)
 
     class Meta:
-        ordering = ('account__name', 'user__email')
+        ordering = ('account__name', 'user__first_name')
         verbose_name = _('CRM Account Request')
 
     def __str__(self):

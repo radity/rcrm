@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('rcrm_account.urls')),
     path('contact/', include('rcrm_contact.urls')),
+    path('job/', include('rcrm_contact.urls')),
     path('', include('rcrm_dashboard.urls',)),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
