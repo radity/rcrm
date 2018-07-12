@@ -4,7 +4,7 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.db.models import Model, CASCADE, PROTECT, \
     BooleanField, CharField, DateTimeField,\
     EmailField, ForeignKey, ImageField,\
-    TextField, AutoField
+    TextField
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
@@ -14,7 +14,10 @@ from rcrm_account.managers import UserManager
 # Create your models here.
 
 
-class Account(Model):
+class CRMAccount(Model):
+    """
+    This model is crm account that is controlled by many users.
+    """
     name = CharField(_('Account Name'), max_length=64)
     company_email = EmailField(_('Company\'s Email'), max_length=2014)
     company_phone = CharField(_('Company\'s Phone Number'), max_length=128, null=True, blank=True)
@@ -29,6 +32,10 @@ class Account(Model):
     created_at = DateTimeField(_('Added'), auto_now_add=True)
     modified_at = DateTimeField(_('Last Modified'), auto_now=True)
 
+    class Meta:
+        ordering = ('name',)
+        verbose_name = _('CRM Account')
+
     def __str__(self):
         return self.name
 
@@ -36,14 +43,17 @@ class Account(Model):
         return User.objects.filter(account=self)
 
     def requests(self):
-        return AccountRequest.objects.filter(account=self, is_deleted=False)
+        return CRMAccountRequest.objects.filter(account=self, is_deleted=False)
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    """
+    Auth user model.
+    """
     email = EmailField(_('Email address'), unique=True)
     first_name = CharField(_('First name'), max_length=30, blank=True)
     last_name = CharField(_('Last name'), max_length=30, blank=True)
-    account = ForeignKey(Account, on_delete=PROTECT, null=True, blank=True)
+    account = ForeignKey(CRMAccount, on_delete=PROTECT, null=True, blank=True)
     language = CharField(max_length=2, choices=settings.LANGUAGES, default='en')
 
     # Status
@@ -59,6 +69,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
 
     class Meta:
+        ordering = ('email',)
         verbose_name = _('User')
         verbose_name_plural = _('Users')
 
@@ -70,8 +81,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         return reverse('Accounts:User_Delete', kwargs={'pk': self.id})
 
 
-class AccountRequest(Model):
-    account = ForeignKey(Account, on_delete=CASCADE)
+class CRMAccountRequest(Model):
+    """
+    With this model users can be added to CRM Accounts.
+    """
+    account = ForeignKey(CRMAccount, on_delete=CASCADE)
     user = ForeignKey(User, on_delete=CASCADE)
 
     # Status
@@ -82,8 +96,8 @@ class AccountRequest(Model):
     modified_at = DateTimeField(_('Last Modified'), auto_now=True)
 
     class Meta:
-        verbose_name = _('Account Request')
-        verbose_name_plural = _('Account Requests')
+        ordering = ('account__name', 'user__email')
+        verbose_name = _('CRM Account Request')
 
     def __str__(self):
         str = '%s %s' % (self.account.name, self.user.email)

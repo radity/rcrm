@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.core.paginator import Paginator
 from django.utils.translation import ugettext_lazy as _
 
-from rcrm_account.models import Account, AccountRequest, User
+from rcrm_account.models import CRMAccount, CRMAccountRequest, User
 
 from import_export.admin import ImportExportModelAdmin
 
@@ -11,7 +11,7 @@ from import_export.admin import ImportExportModelAdmin
 # Register your models here.
 
 
-@register(Account)
+@register(CRMAccount)
 class AdminAccount(ImportExportModelAdmin):
     list_display = ('name', 'company_email', 'company_phone', 'is_active', 'is_deleted')
     list_filter = ('is_active', 'is_deleted')
@@ -60,7 +60,7 @@ class AdminUser(UserAdmin, ImportExportModelAdmin):
     )
 
 
-@register(AccountRequest)
+@register(CRMAccountRequest)
 class AdminAccount(ImportExportModelAdmin):
     list_display = ('account', 'user', 'is_deleted')
     list_filter = ('is_deleted',)

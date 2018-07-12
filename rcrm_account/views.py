@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView, DeleteView, UpdateView
 
-from rcrm_account.models import Account, AccountRequest, User
+from rcrm_account.models import CRMAccount, CRMAccountRequest, User
 from rcrm_account.forms import LoginForm, RegisterForm, UserProfileForm, PasswordChangeForm, \
     AccountForm, AccountUserAddForm, AccountRequestForm
 from rcrm_account.utils import AccountControlViewMixin
@@ -115,12 +115,12 @@ class AccountView(UpdateView):
 
     def get_object(self):
         if self.request.user.account:
-            return get_object_or_404(Account, id=self.request.user.account.id)
+            return get_object_or_404(CRMAccount, id=self.request.user.account.id)
         else:
             return None
 
     def get_context_data(self, **kwargs):
-        accounts = Account.objects.filter(is_active=True, is_deleted=False).values_list('name')
+        accounts = CRMAccount.objects.filter(is_active=True, is_deleted=False).values_list('name')
         account_list = json.dumps(list(accounts))
         context = super(AccountView, self).get_context_data(**kwargs)
         context['form'] = AccountForm(self.request.FILES or None, instance=self.request.user.account)
@@ -193,12 +193,12 @@ class AccountRequestCreateView(FormView):
 
     def form_valid(self, form):
         account_name = form.cleaned_data.get('account')
-        account = Account.objects.filter(name=account_name).first()
+        account = CRMAccount.objects.filter(name=account_name).first()
         account_users = User.objects.filter(account=account)
         user = self.request.user
-        already_requested = AccountRequest.objects.filter(account=account, user=user).first()
+        already_requested = CRMAccountRequest.objects.filter(account=account, user=user).first()
         if account and not already_requested:
-            AccountRequest.objects.create(account=account, user=user)
+            CRMAccountRequest.objects.create(account=account, user=user)
             messages.success(self.request, _('Your request has been sent successfully, thank you.'))
 
             # Send Email
@@ -226,13 +226,13 @@ class AccountRequestAcceptView(AccountControlViewMixin, DeleteView):
     """
     With this view users of an account can accept the user who has applied before.
     """
-    model = AccountRequest
+    model = CRMAccountRequest
     template_name = 'forms/user_request_accept.html'
     success_url = reverse_lazy('Accounts:Account')
 
     def delete(self, request, *args, **kwargs):
         id = self.kwargs['pk']
-        account_request = get_object_or_404(AccountRequest, id=id)
+        account_request = get_object_or_404(CRMAccountRequest, id=id)
         usr = get_object_or_404(User, id=account_request.user.id)
         if usr.account:
             messages.error(self.request, _('The user has an account!'))
@@ -255,7 +255,7 @@ class AccountRequestDeclineView(AccountControlViewMixin, DeleteView):
     """
     With this view users of an account can decline the user who has applied before.
     """
-    model = AccountRequest
+    model = CRMAccountRequest
     template_name = 'forms/user_request_decline.html'
     success_url = reverse_lazy('Accounts:Account')
 

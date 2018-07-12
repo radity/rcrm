@@ -7,7 +7,7 @@ from django.forms import Form, ModelForm,\
     Select
 from django.utils.translation import ugettext_lazy as _
 
-from rcrm_account.models import Account, User
+from rcrm_account.models import CRMAccount, User
 
 
 # Create your forms here.
@@ -75,7 +75,7 @@ class AccountForm(ModelForm):
     logo = ImageField(required=False, widget=FileInput(attrs={'class': 'form-control', 'style': 'padding: .50rem .75rem;'}))
 
     class Meta:
-        model = Account
+        model = CRMAccount
         fields = (
             'name',
             'company_email',

@@ -5,7 +5,7 @@ from django.db.models import Model, CASCADE, \
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from rcrm_account.models import Account
+from rcrm_account.models import CRMAccount
 from rcrm_contact.utils import COUNTRIES, GENDER
 
 from location_field.models.plain import PlainLocationField
@@ -15,7 +15,10 @@ from location_field.models.plain import PlainLocationField
 
 
 class Contact(Model):
-    account = ForeignKey(Account, on_delete=CASCADE)
+    """
+    This model is like a person who is imagined as a customer.
+    """
+    account = ForeignKey(CRMAccount, on_delete=CASCADE)
     first_name = CharField(max_length=32)
     last_name = CharField(max_length=32)
     gender = CharField(max_length=1, choices=GENDER)
@@ -87,6 +90,9 @@ class Contact(Model):
 
 
 class Address(Model):
+    """
+    Contact's Address
+    """
     contact = ForeignKey(Contact, on_delete=CASCADE, related_name='Contact_Address')
     title = CharField(_('Address Title'), max_length=64, help_text="Radity Headquarter Zurich")
     address = CharField(_("Address"), max_length=255, blank=True, null=True)
@@ -120,6 +126,9 @@ class Address(Model):
 
 
 class SocialProfile(Model):
+    """
+    Contact's Social Profile
+    """
     contact = ForeignKey(Contact, on_delete=CASCADE, related_name='Contact_Social_Profile')
     title = CharField(_('Social Profile Title'), max_length=64, help_text="Ex: Mr. Ozgur Aksakal's Social Profile")
     website = URLField(_('Website'), max_length=128, null=True, blank=True)
@@ -148,6 +157,9 @@ class SocialProfile(Model):
 
 
 class Phone(Model):
+    """
+    Contact's Phone.
+    """
     contact = ForeignKey(Contact, on_delete=CASCADE, related_name='Contact_Phone')
     title = CharField(_('Phone Title'), max_length=32, help_text="Ex: Mr. Ozgur Aksakal's Phone Number")
     phone = CharField(max_length=16)
@@ -167,6 +179,9 @@ class Phone(Model):
 
 
 class Email(Model):
+    """
+    Contact's Email
+    """
     contact = ForeignKey(Contact, on_delete=CASCADE, related_name='Contact_Email')
     title = CharField(_('Email Title'), max_length=32, help_text="Ex: Mr. Ozgur Aksakal's Email Address")
     email = EmailField(max_length=64)
