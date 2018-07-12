@@ -72,7 +72,7 @@ class AccountForm(ModelForm):
                               widget=TextInput(attrs={'class': 'form-control'}))
     description = CharField(label=_("Account Name"), required=False, widget=Textarea(attrs={'class': 'form-control',
                                                                                             'style': "height:150px"}))
-    logo = ImageField(required=False, widget=FileInput(attrs={'class': 'form-control'}))
+    logo = ImageField(required=False, widget=FileInput(attrs={'class': 'form-control', 'style': 'padding: .45rem .75rem;'}))
 
     class Meta:
         model = Account
