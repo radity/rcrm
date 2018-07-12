@@ -6,6 +6,7 @@ from rcrm_contact.views import ContactCreateView, ContactDeleteView, ContactDeta
     EmailCreateView, EmailEditView, EmailDeleteView, \
     PhoneCreateView, PhoneEditView, PhoneDeleteView, \
     SocialProfileCreateView, SocialProfileEditView, SocialProfileDeleteView, \
+    DynamicCreateView, DynamicEditView, \
     contact_import, contact_export
 
 app_name = 'Contacts'
@@ -36,4 +37,7 @@ urlpatterns = [
     path('<int:pk>/social/add/', login_required(SocialProfileCreateView.as_view()), name='Social_Create'),
     path('social/<int:pk>/', login_required(SocialProfileEditView.as_view()), name='Social_Edit'),
     path('social/<int:pk>/delete/', login_required(SocialProfileDeleteView.as_view()), name='Social_Delete'),
+    # DynamicTab
+    path('<int:pk>/dynamic/add/', login_required(DynamicCreateView.as_view()), name='Dynamic_Create'),
+    path('dynamic/<int:pk>/', login_required(DynamicEditView.as_view()), name='Dynamic_Edit'),
 ]

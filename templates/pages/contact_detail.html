@@ -63,6 +63,10 @@
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#emails" role="tab">{% trans 'Emails' %}</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#addresses" role="tab">{% trans 'Addresses' %}</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#social" role="tab">{% trans 'Social Profiles' %}</a></li>
+            {% for dynamic in dynamic_list %}
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#{{ dynamic.name }}" role="tab">{{ dynamic.name }}</a></li>
+            {% endfor %}
+            <li class="nav-item"><a class="nav-link" href="{{ contact.get_add_dynamic_url }}">{% trans '+ Add New Tab' %}</a></li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
@@ -242,6 +246,64 @@
                 </div>
             </div>
         </div>
+            <!--fifth tab-->
+            {% for dynamic in dynamic_list %}
+            <div class="tab-pane" id="{{ dynamic.name }}" role="tabpanel">
+                <div class="card-body">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table">
+                            {{ dynamic.name }}
+                            {% for social in contact.social_profiles %}
+                            <tr>
+                                <th>#</th>
+                                <td scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Skype' %}</th>
+                                <td>{{ social.skype }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Twitter' %}</th>
+                                <td>{{ social.twitter }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Instagram' %}</th>
+                                <td>{{ social.instagram }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Website' %}</th>
+                                <td>{{ social.website }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Linkedin' %}</th>
+                                <td>{{ social.linkedin }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Facebook' %}</th>
+                                <td>{{ social.facebook }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Edit / Delete' %}</th>
+                                <td>
+                                    <a href="{{ social.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                                    <a href="{{ social.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <a href="{{ contact.get_add_social_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans 'Add New' %}</button></a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+            {% endfor %}
         </div>
     </div>
 </div>
