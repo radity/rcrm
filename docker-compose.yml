@@ -7,5 +7,4 @@ services:
   backend:
     build: .
     entrypoint: /code/entrypoint.sh
-    depends_on:
-      - db
+
