@@ -66,7 +66,7 @@
             {% for dynamic in dynamic_list %}
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#{{ dynamic.name }}" role="tab">{{ dynamic.name }}</a></li>
             {% endfor %}
-            <li class="nav-item"><a class="nav-link" href="{{ contact.get_add_dynamic_url }}">{% trans '+ Add New Tab' %}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ contact.get_create_dynamic_url }}">{% trans '+ Add New Tab' %}</a></li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
@@ -97,7 +97,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <a href="{{ contact.get_add_phone_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans 'Add New' %}</button></a>
+                                    <a href="{{ contact.get_add_phone_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
                                 </td>
                             </tr>
                             </tbody>
@@ -133,7 +133,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <a href="{{ contact.get_add_email_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans 'Add New' %}</button></a>
+                                    <a href="{{ contact.get_add_email_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
                                 </td>
                             </tr>
                             </tbody>
@@ -182,7 +182,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <a href="{{ contact.get_add_address_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans 'Add New' %}</button></a>
+                                    <a href="{{ contact.get_add_address_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
                                 </td>
                             </tr>
                             </tbody>
@@ -238,7 +238,7 @@
                             <tr>
                                 <th></th>
                                 <td>
-                                    <a href="{{ contact.get_add_social_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans 'Add New' %}</button></a>
+                                    <a href="{{ contact.get_add_social_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
                                 </td>
                             </tr>
                         </table>
@@ -253,51 +253,205 @@
                 <div class="row">
                     <div class="table-responsive">
                         <table class="table">
-                            {{ dynamic.name }}
-                            {% for social in contact.social_profiles %}
-                            <tr>
-                                <th>#</th>
-                                <td scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>{% trans 'Skype' %}</th>
-                                <td>{{ social.skype }}</td>
-                            </tr>
-                            <tr>
-                                <th>{% trans 'Twitter' %}</th>
-                                <td>{{ social.twitter }}</td>
-                            </tr>
-                            <tr>
-                                <th>{% trans 'Instagram' %}</th>
-                                <td>{{ social.instagram }}</td>
-                            </tr>
-                            <tr>
-                                <th>{% trans 'Website' %}</th>
-                                <td>{{ social.website }}</td>
-                            </tr>
-                            <tr>
-                                <th>{% trans 'Linkedin' %}</th>
-                                <td>{{ social.linkedin }}</td>
-                            </tr>
-                            <tr>
-                                <th>{% trans 'Facebook' %}</th>
-                                <td>{{ social.facebook }}</td>
-                            </tr>
-                            <tr>
-                                <th>{% trans 'Edit / Delete' %}</th>
-                                <td>
-                                    <a href="{{ social.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
-                                    <a href="{{ social.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                            <tr>
-                                <th></th>
-                                <td>
-                                    <a href="{{ contact.get_add_social_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans 'Add New' %}</button></a>
-                                </td>
-                            </tr>
+                            <thead>
+                            <h4 style="padding: 10px 0 0 5px;">{{ dynamic.name }}</h4>
+                            </thead>
+                            <tbody>
+                            {% if dynamic.charfield.all.count == 0 and dynamic.text_box.all.count == 0 and dynamic.image.all.count == 0 and dynamic.file.all.count == 0 and dynamic.time.all.count == 0 and dynamic.date.all.count == 0 and dynamic.date_time.all.count == 0 and dynamic.url.all.count == 0 and dynamic.yes_no.all.count == 0 %}
+                                                <div class="row">
+                    <div class="col-md-3">
+                        <a href="{{ dynamic.get_add_charfield_url }}">
+                            <div class="card bg-primary p-20">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-plus f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h3 class="color-white">{% trans 'Add Text' %}</h3>
+                                    <p class="m-b-0" style="color:white">{% trans 'Single line text input' %}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3">
+                        <a href="{{ dynamic.get_add_textbox_url }}">
+                            <div class="card bg-pink p-20">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-plus f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h3 class="color-white">{% trans 'Add Text Box' %}</h3>
+                                    <p class="m-b-0" style="color:white">{% trans 'Multi lines text box' %}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3">
+                        <a href="{{ dynamic.get_add_image_url }}">
+                            <div class="card bg-success p-20">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-plus f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h3 class="color-white">{% trans 'Add Image' %}</h3>
+                                    <p class="m-b-0" style="color:white">{% trans 'Image Field' %}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3">
+                        <a href="{{ dynamic.get_add_file_url }}">
+                            <div class="card bg-danger p-20">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-plus f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h3 class="color-white">{% trans 'Add File' %}</h3>
+                                    <p class="m-b-0" style="color:white">{% trans 'File Field' %}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3">
+                        <a href="{{ dynamic.get_add_date_url }}">
+                            <div class="card bg-dark p-20">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-plus f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h3 class="color-white">{% trans 'Add Date' %}</h3>
+                                    <p class="m-b-0" style="color:white">{% trans 'Date Field' %}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3">
+                        <a href="{{ dynamic.get_add_time_url }}">
+                            <div class="card bg-info p-20">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-plus f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h3 class="color-white">{% trans 'Add Time' %}</h3>
+                                    <p class="m-b-0" style="color:white">{% trans 'Time Field' %}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3">
+                        <a href="{{ dynamic.get_add_date_time_url }}">
+                            <div class="card bg-warning p-20">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="ti-plus f-s-40"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h3 class="color-white">{% trans 'Add Date Time' %}</h3>
+                                    <p class="m-b-0" style="color:white">{% trans 'Date Time Field' %}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                                                </div>
+                            {% else %}
+
+                                    {% for obj in dynamic.charfield.all %}
+                                <tr>
+
+                                    <th>{{ obj.name }}</th>
+                                    <td>{{ obj.charfield }}</td>
+                                </tr>
+                                    {% endfor %}
+                                    {% for obj in dynamic.text_box.all %}
+                                <tr>
+
+                                    <th>{{ obj.name }}</th>
+                                    <td>{{ obj.textbox }}</td>
+                                </tr>
+                                    {% endfor %}
+                                    {% for obj in dynamic.image.all %}
+                                <tr>
+
+                                    <th>{{ obj.name }}</th>
+                                    <td>{{ obj.image }}</td>
+                                </tr>
+                                    {% endfor %}
+                                    {% for obj in dynamic.file.all %}
+                                <tr>
+
+                                    <th>{{ obj.name }}</th>
+                                    <td>{{ obj.file }}</td>
+                                </tr>
+                                    {% endfor %}
+                                    {% for obj in dynamic.date.all %}
+                                <tr>
+
+                                    <th>{{ obj.name }}</th>
+                                    <td>{{ obj.date }}</td>
+                                </tr>
+                                    {% endfor %}
+                                    {% for obj in dynamic.time.all %}
+                                <tr>
+
+                                    <th>{{ obj.name }}</th>
+                                    <td>{{ obj.date }}</td>
+                                </tr>
+                                    {% endfor %}
+                                    {% for obj in dynamic.date_time.all %}
+                                <tr>
+
+                                    <th>{{ obj.name }}</th>
+                                    <td>{{ obj.date }}</td>
+                                </tr>
+                                    {% endfor %}
+                                    {% for obj in dynamic.url.all %}
+                                <tr>
+
+                                    <th>{{ obj.name }}</th>
+                                    <td>{{ obj.url }}</td>
+                                </tr>
+                                    {% endfor %}
+                                    {% for obj in dynamic.url.all %}
+                                <tr>
+
+                                    <th>{{ obj.name }}</th>
+                                    <td>{{ obj.date }}</td>
+                                </tr>
+                                    {% endfor %}
+                                    {% for obj in dynamic.yes_no.all %}
+                                <tr>
+
+                                    <th>{{ obj.name }}</th>
+                                    <td>{{ obj.boolean }}</td>
+                                </tr>
+                                    {% endfor %}
+                                <tr>
+                                    <th></th>
+                                    <td>
+                                        {% if dynamic.charfield.all.count > 0 %}
+                                            <a href="{{ dynamic.get_add_charfield_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                        {% elif dynamic.text_box.all.count > 0 %}
+                                        <a href="{{ dynamic.get_add_textbox_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                        {% elif dynamic.image.all.count > 0 %}
+                                        <a href="{{ dynamic.get_add_image_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                        {% elif dynamic.file.all.count > 0 %}
+                                        <a href="{{ dynamic.get_add_file_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                        {% elif dynamic.date.all.count > 0 %}
+                                        <a href="{{ dynamic.get_add_date_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                        {% elif dynamic.time.all.count > 0 %}
+                                        <a href="{{ dynamic.get_add_time_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                        {% elif dynamic.date_time.all.count > 0 %}
+                                        <a href="{{ dynamic.get_add_date_time_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            </tbody>
                         </table>
                     </div>
                 </div>

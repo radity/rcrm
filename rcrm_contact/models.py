@@ -77,6 +77,9 @@ class Contact(Model):
     def get_add_dynamic_url(self):
         return reverse('Contacts:Dynamic_Create', kwargs={'pk': self.id})
 
+    def get_create_dynamic_url(self):
+        return reverse('Dynamic:Dynamic_Create', kwargs={'pk': self.id})
+
     def get_full_name(self):
         full_name = '%s %s' % (self.first_name, self.last_name)
         return full_name.strip()
@@ -201,31 +204,3 @@ class Email(Model):
 
     def get_delete_url(self):
         return reverse('Contacts:Email_Delete', kwargs={'pk': self.id})
-
-
-class Dynamic(Model):
-    contact = ForeignKey(Contact, on_delete=CASCADE)
-    name = CharField(max_length=128)
-
-    on_off_charfield = BooleanField(_('Text Input'), default=False)
-    charfied_name = CharField(max_length=256, null=True, blank=True)
-    charfied = CharField(max_length=256, null=True, blank=True)
-
-    on_off_textbox = BooleanField(_('Text Box'), default=False)
-    textbox_name = CharField(max_length=256, null=True, blank=True)
-    textbox = TextField(null=True, blank=True)
-
-    on_off_image = BooleanField(_('Image'), default=False)
-    image_name = CharField(max_length=256, null=True, blank=True)
-    image = ImageField(_('Image'), upload_to='contact_dynamic/', null=True, blank=True)
-
-    on_off_file = BooleanField(_('File'), default=False)
-    file_name = CharField(max_length=256, null=True, blank=True)
-    file = FileField(_('Image'), upload_to='contact_dynamic/', null=True, blank=True)
-
-    on_off_date_time = BooleanField(_('Date & Time'), default=False)
-    date_time_name = CharField(max_length=256, null=True, blank=True)
-    date_time = DateTimeField(_('Date & Time'), null=True, blank=True)
-
-    def get_update_url(self):
-        return reverse('Contacts:Dynamic_Edit', kwargs={'pk': self.id})

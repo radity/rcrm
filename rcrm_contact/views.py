@@ -7,11 +7,12 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import CreateView, DeleteView, TemplateView, UpdateView
 
 from rcrm_account.utils import UserAccountControlViewMixin
-from rcrm_contact.forms import AddressForm, ContactForm, EmailForm, PhoneForm, SocialProfileForm, DynamicForm
-from rcrm_contact.models import Address, Contact, Email, Phone, SocialProfile, Dynamic
-from rcrm_contact.resources import ContactResource, ContactImportResource
 from rcrm_account.utils import AccountControlViewMixin, AccountControlViewMixinTwo,\
     AccountControlViewMixinThree, AccountControlViewMixinFour
+from rcrm_contact.forms import AddressForm, ContactForm, EmailForm, PhoneForm, SocialProfileForm
+from rcrm_contact.models import Address, Contact, Email, Phone, SocialProfile
+from rcrm_contact.resources import ContactResource, ContactImportResource
+from rcrm_dynamic.models import Dynamic
 
 from openpyxl import Workbook
 from tablib import Dataset
@@ -369,43 +370,6 @@ class SocialProfileDeleteView(AccountControlViewMixinThree, DeleteView):
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, _('Deleted successfully, thank you.'))
         return super(SocialProfileDeleteView, self).delete(request, *args, **kwargs)
-
-
-# ----------------------------------- Dynamic -------------------------------------
-
-class DynamicCreateView(CreateView):
-    model = Dynamic
-    form_class = DynamicForm
-    template_name = 'forms/dynamic_contact_create.html'
-
-    def get_success_url(self):
-        id = self.kwargs['pk']
-        dynamic = get_object_or_404(Dynamic, id=id)
-        return reverse('Contacts:Dynamic_Edit', args=[dynamic.id])
-
-    def form_valid(self, form):
-        id = self.kwargs.get('pk')
-        contact = get_object_or_404(Contact, id=id)
-        form_d = form.save(commit=False)
-        form_d.contact = contact
-        form_d.save()
-        return super(DynamicCreateView, self).form_valid(form)
-
-
-class DynamicEditView(UpdateView):
-    model = Dynamic
-    form_class = DynamicForm
-    template_name = 'forms/dynamic_contact_edit.html'
-
-    def get_success_url(self):
-        id = self.kwargs['pk']
-        dynamic = get_object_or_404(Dynamic, id=id)
-        return reverse('Contacts:Contact_Detail', args=[dynamic.contact.id])
-
-    def form_valid(self, form):
-        form.save()
-        messages.success(self.request, _('Created successfully, thank you.'))
-        return super(DynamicEditView, self).form_valid(form)
 
 
 # --------------------------------- Import Export ---------------------------------

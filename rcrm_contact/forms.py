@@ -2,7 +2,7 @@ from django.forms import ModelForm, CharField, DateField, DateInput, EmailField,
 from django.utils.translation import ugettext_lazy as _
 
 from rcrm_contact.utils import COUNTRIES, GENDER
-from rcrm_contact.models import Address, Contact, Email, Phone, SocialProfile, Dynamic
+from rcrm_contact.models import Address, Contact, Email, Phone, SocialProfile
 
 # Create Your Forms Here
 
@@ -100,30 +100,5 @@ class SocialProfileForm(ModelForm):
             'linkedin',
             'facebook'
         )
-
-
-class DynamicForm(ModelForm):
-    class Meta:
-        model = Dynamic
-        fields = (
-            'name',
-            'on_off_charfield',
-            'charfied',
-            'charfied_name',
-            'on_off_textbox',
-            'textbox',
-            'textbox_name',
-            'on_off_image',
-            'image',
-            'image_name',
-            'on_off_file',
-            'file',
-            'file_name',
-            'on_off_date_time',
-            'date_time',
-            'date_time_name'
-        )
-
-
 
 

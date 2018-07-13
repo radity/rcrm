@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('rcrm_account.urls')),
     path('contact/', include('rcrm_contact.urls')),
+    path('dynamic/', include('rcrm_dynamic.urls')),
     path('employee/', include('rcrm_employee.urls')),
     path('job/', include('rcrm_job.urls')),
     path('', include('rcrm_dashboard.urls',)),

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'rcrm_account',
     'rcrm_contact',
     'rcrm_dashboard',
+    'rcrm_dynamic',
     'rcrm_employee',
     'rcrm_job',
 
