@@ -116,7 +116,7 @@ class AddressCreateView(AccountControlViewMixinFive, CreateView):
     """
     model = Address
     form_class = AddressForm
-    template_name = 'employee/forms/employee_create.html'
+    template_name = 'employee/forms/address_create.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
