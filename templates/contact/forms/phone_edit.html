@@ -12,7 +12,6 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
             <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contact' %}</a></li>
-            <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contacts' %}</a></li>
             <li class="breadcrumb-item active">{% trans 'Edit' %}&nbsp;{{ object }}</li>
         </ol>
     </div>
@@ -26,13 +25,13 @@
         <form method="post">
             {% csrf_token %}
             <div class="form-body">
-                <h3 class="card-title m-t-15">{% trans 'Edit' %}&nbsp;{{ object.email }}</h3>
+                <h3 class="card-title m-t-15">{% trans 'Edit' %}&nbsp;{{ object.phone }}</h3>
                 <hr>
                 <div class="row p-t-20">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>{% trans 'Email Address' %}:</label>
-                            {% with field=form.email %}
+                            <label>{% trans 'Phone Number' %}:</label>
+                            {% with field=form.phone %}
                             {{ field }}
                             {% endwith %}
                         </div>

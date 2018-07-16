@@ -27,7 +27,7 @@ class ContactListView(UserAccountControlViewMixin, TemplateView):
     """
     Contact persons are listed with this view.
     """
-    template_name = 'pages/contact_list.html'
+    template_name = 'contact/pages/contact_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(ContactListView, self).get_context_data(**kwargs)
@@ -49,7 +49,7 @@ class ContactDetailView(AccountControlViewMixin, TemplateView):
     """
     Contact detail information can be seen with this view.
     """
-    template_name = 'pages/contact_detail.html'
+    template_name = 'contact/pages/contact_detail.html'
 
     def get_context_data(self, **kwargs):
         id = self.kwargs.get('pk')
@@ -66,7 +66,7 @@ class ContactCreateView(UserAccountControlViewMixin, CreateView):
     """
     model = Contact
     form_class = ContactForm
-    template_name = 'forms/contact_create.html'
+    template_name = 'contact/forms/contact_create.html'
     success_url = reverse_lazy('Contacts:Contact')
 
     def form_valid(self, form):
@@ -83,7 +83,7 @@ class ContactEditView(AccountControlViewMixinTwo, UpdateView):
     """
     model = Contact
     form_class = ContactForm
-    template_name = 'forms/contact_edit.html'
+    template_name = 'contact/forms/contact_edit.html'
 
     def get_success_url(self):
         return reverse_lazy('Contacts:Contact')
@@ -100,7 +100,7 @@ class ContactDeleteView(AccountControlViewMixinTwo, UpdateView):
     """
     model = Contact
     fields = []
-    template_name = 'forms/contact_delete.html'
+    template_name = 'contact/forms/contact_delete.html'
 
     def get_success_url(self):
         return reverse_lazy('Contacts:Contact')
@@ -123,7 +123,7 @@ class AddressCreateView(AccountControlViewMixinFour, CreateView):
     """
     model = Address
     form_class = AddressForm
-    template_name = 'forms/address_create.html'
+    template_name = 'contact/forms/address_create.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -147,7 +147,7 @@ class AddressEditView(AccountControlViewMixinThree, UpdateView):
     """
     model = Address
     form_class = AddressForm
-    template_name = 'forms/address_edit.html'
+    template_name = 'contact/forms/address_edit.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -166,7 +166,7 @@ class AddressDeleteView(AccountControlViewMixinThree, DeleteView):
     An address can be deleted using this view.
     """
     model = Address
-    template_name = 'forms/address_delete.html'
+    template_name = 'contact/forms/address_delete.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -187,7 +187,7 @@ class EmailCreateView(AccountControlViewMixinFour, CreateView):
     """
     model = Email
     form_class = EmailForm
-    template_name = 'forms/email_create.html'
+    template_name = 'contact/forms/email_create.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -211,7 +211,7 @@ class EmailEditView(AccountControlViewMixinThree, UpdateView):
     """
     model = Email
     form_class = EmailForm
-    template_name = 'forms/email_edit.html'
+    template_name = 'contact/forms/email_edit.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -230,7 +230,7 @@ class EmailDeleteView(AccountControlViewMixinThree, DeleteView):
     An email can be deleted using this view.
     """
     model = Email
-    template_name = 'forms/email_delete.html'
+    template_name = 'contact/forms/email_delete.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -252,7 +252,7 @@ class PhoneCreateView(AccountControlViewMixinFour, CreateView):
     """
     model = Phone
     form_class = PhoneForm
-    template_name = 'forms/phone_create.html'
+    template_name = 'contact/forms/phone_create.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -276,7 +276,7 @@ class PhoneEditView(AccountControlViewMixinThree, UpdateView):
     """
     model = Phone
     form_class = PhoneForm
-    template_name = 'forms/phone_edit.html'
+    template_name = 'contact/forms/phone_edit.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -295,7 +295,7 @@ class PhoneDeleteView(AccountControlViewMixinThree, DeleteView):
     A phone number can be deleted using this view.
     """
     model = Phone
-    template_name = 'forms/phone_delete.html'
+    template_name = 'contact/forms/phone_delete.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -316,7 +316,7 @@ class SocialProfileCreateView(AccountControlViewMixinFour, CreateView):
     """
     model = SocialProfile
     form_class = SocialProfileForm
-    template_name = 'forms/social_create.html'
+    template_name = 'contact/forms/social_create.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -340,7 +340,7 @@ class SocialProfileEditView(AccountControlViewMixinThree, UpdateView):
     """
     model = SocialProfile
     form_class = SocialProfileForm
-    template_name = 'forms/social_edit.html'
+    template_name = 'contact/forms/social_edit.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -359,7 +359,7 @@ class SocialProfileDeleteView(AccountControlViewMixinThree, DeleteView):
     A social profile can be deleted using this view.
     """
     model = SocialProfile
-    template_name = 'forms/social_delete.html'
+    template_name = 'contact/forms/social_delete.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -392,7 +392,7 @@ def contact_import(request):
         else:
             messages.error(request, _('Could not be uploaded!'))
             return HttpResponseRedirect(reverse_lazy('Contacts:Contact'))
-    return render(request, 'forms/import_contact.html')
+    return render(request, 'contact/forms/import_contact.html')
 
 
 def contact_export(request):

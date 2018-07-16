@@ -1,19 +1,18 @@
 {% extends 'base.html' %}
 {% load i18n static %}
 
-{% block title %}Add Contact - {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Edit' %}&nbsp;{{ object }} - {{ block.super }}{% endblock %}
 
 {% block breadcrumb %}
 
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-primary">{% trans 'Contacts' %}</h3></div>
+        <h3 class="text-primary">{% trans 'Employees' %}</h3></div>
     <div class="col-md-7 align-self-center">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
-            <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contact' %}</a></li>
-            <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contacts' %}</a></li>
-            <li class="breadcrumb-item active">{% trans 'Add Address' %}</li>
+            <li class="breadcrumb-item active"><a href="{% url 'Employees:Employee' %}">{% trans 'Employee' %}</a></li>
+            <li class="breadcrumb-item active">{% trans 'Edit' %}&nbsp;{{ object }}</li>
         </ol>
     </div>
 </div>
@@ -26,7 +25,7 @@
         <form method="post">
             {% csrf_token %}
             <div class="form-body">
-                <h3 class="card-title m-t-15">{% trans 'Add Address' %}</h3>
+                <h3 class="card-title m-t-15">{% trans 'Edit' %} {{ object }}</h3>
                 <hr>
                 <div class="row p-t-20">
                     <div class="col-md-6">

@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}Employees - {{ block.super }}{% endblock %}
+
+{% block breadcrumb %}
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">{% trans 'Employees' %}</h3></div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
+            <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Employee' %}</a></li>
+        </ol>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="row" style="height:43px;">
+            <div class="col-4">
+                <form method="get">
+                    <div class="form-group">
+                        <div class="input-group input-group-default">
+                                <input type="text" value="{{ request.GET.q }}" placeholder="Search" name="q" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="ti-search"></i>
+                                    </button>
+                                </span>
+
+                            {% if all_employees.count > employees.count %}
+                            <div style="padding-left:5px;">
+                                <a href="{% url 'Employees:Employee' %}"><span class="input-group-btn">
+                                    <button type="button" class="btn btn-inverse">
+                                        <i class="fa fa-close"></i>
+                                    </button>
+                                </span>
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-3"></div>
+            <div class="col-5">
+                <div class="pull-right">
+                    <a href="#">
+                        <button type="button" class="btn btn-inverse"><i class="fa fa-upload"></i> {% trans 'Import' %}
+                        </button>
+                    </a>
+                    <a href="{% url 'Employees:Employee_Export' %}">
+                        <button type="button" class="btn btn-inverse"><i class="fa fa-download"></i> {% trans 'Export' %}
+                        </button>
+                    </a>
+                    <a href="{% url 'Employees:Employee_Create' %}">
+                        <button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'New Employee' %}
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-title">
+            <h4>{% trans 'Employee' %}</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>{% trans 'Name' %}</th>
+                        <th>{% trans 'Email' %}</th>
+                        <th>{% trans 'Phone Number' %}</th>
+                        <th>{% trans 'Address' %}</th>
+                        <th>{% trans 'Emergency Contact' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for employee in employees %}
+                    <tr>
+                        <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}</th>
+                        <td><a href="{{ employee.get_absolute_url }}">{{ employee }}</a></td>
+                        <td>{% with employee.emails|first as email %}{{ email.email }}{% endwith %}</td>
+                        <td>{% with employee.phones|first as phone %}{{ phone.phone }}{% endwith %}</td>
+                        <td>{% with employee.addresses|first as address %}{{ address.address }}, {{ address.state }}, {{ address.city }}, {{ address.get_country_display }} {% endwith %}
+                        </td>
+                        <td>{{ employee.emergency_contact }} - {{ employee.emergency_phone_number }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

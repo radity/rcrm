@@ -2,6 +2,7 @@ from django.db.models import Model, CASCADE, \
     BooleanField, CharField, DateField, \
     EmailField, DateTimeField, ForeignKey, \
     TextField, URLField
+from django.shortcuts import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from rcrm_account.models import CRMAccount
@@ -67,6 +68,30 @@ class Employee(Model):
         account = self.request.user.account
         return account
 
+    def get_absolute_url(self):
+        return reverse('Employees:Employee_Detail', kwargs={'pk': self.id})
+
+    def get_edit_url(self):
+        return reverse('Employees:Employee_Edit', kwargs={'pk': self.id})
+
+    def get_delete_url(self):
+        return reverse('Employees:Employee_Delete', kwargs={'pk': self.id})
+
+    def get_add_phone_url(self):
+        return reverse('Employees:Phone_Create', kwargs={'pk': self.id})
+
+    def get_add_email_url(self):
+        return reverse('Employees:Email_Create', kwargs={'pk': self.id})
+
+    def get_add_address_url(self):
+        return reverse('Employees:Address_Create', kwargs={'pk': self.id})
+
+    def get_add_social_url(self):
+        return reverse('Employees:Social_Create', kwargs={'pk': self.id})
+
+    def get_add_dynamic_url(self):
+        return reverse('Employees:Dynamic_Create', kwargs={'pk': self.id})
+
 
 class Address(Model):
     """
@@ -96,6 +121,12 @@ class Address(Model):
         full_address = '%s, %s, %s, %s, %s' % (self.address, self.state, self.city, self.postcode, self.country)
         return full_address
 
+    def get_edit_url(self):
+        return reverse('Employees:Address_Edit', kwargs={'pk': self.id})
+
+    def get_delete_url(self):
+        return reverse('Employees:Address_Delete', kwargs={'pk': self.id})
+
 
 class SocialProfile(Model):
     """
@@ -121,6 +152,12 @@ class SocialProfile(Model):
     def __str__(self):
         return '%s %s%s' % (self.employee.first_name, self.employee.last_name, _("'s Social Profile"))
 
+    def get_edit_url(self):
+        return reverse('Employees:Social_Edit', kwargs={'pk': self.id})
+
+    def get_delete_url(self):
+        return reverse('Employees:Social_Delete', kwargs={'pk': self.id})
+
 
 class Phone(Model):
     """
@@ -136,6 +173,12 @@ class Phone(Model):
     def __str__(self):
         return '%s %s%s' % (self.employee.first_name, self.employee.last_name, _("'s Phone"))
 
+    def get_edit_url(self):
+        return reverse('Employees:Phone_Edit', kwargs={'pk': self.id})
+
+    def get_delete_url(self):
+        return reverse('Employees:Phone_Delete', kwargs={'pk': self.id})
+
 
 class Email(Model):
     """
@@ -150,3 +193,9 @@ class Email(Model):
 
     def __str__(self):
         return '%s %s%s' % (self.employee.first_name, self.employee.last_name, _("'s Email"))
+
+    def get_edit_url(self):
+        return reverse('Employees:Email_Edit', kwargs={'pk': self.id})
+
+    def get_delete_url(self):
+        return reverse('Employees:Email_Delete', kwargs={'pk': self.id})

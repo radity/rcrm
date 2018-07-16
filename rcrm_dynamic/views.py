@@ -17,7 +17,7 @@ from rcrm_dynamic.forms import DynamicForm, CharfieldForm, TextboxForm, ImageFor
 class DynamicCreateView(CreateView):
     model = Dynamic
     form_class = DynamicForm
-    template_name = 'forms/dynamic/dynamic_contact_create.html'
+    template_name = 'dynamic/forms/dynamic_contact_create.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -39,7 +39,7 @@ class DynamicCreateView(CreateView):
 class CharfieldCreateView(CreateView):
     model = CharfieldModel
     form_class = CharfieldForm
-    template_name = 'forms/dynamic/dynamic_charfield_create.html'
+    template_name = 'dynamic/forms/dynamic_charfield_create.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -61,7 +61,7 @@ class CharfieldCreateView(CreateView):
 class TextBoxCreateView(CreateView):
     model = TextboxModel
     form_class = TextboxForm
-    template_name = 'forms/dynamic/dynamic_textbox_create.html'
+    template_name = 'dynamic/forms/dynamic_textbox_create.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -83,7 +83,7 @@ class TextBoxCreateView(CreateView):
 class ImageCreateView(CreateView):
     model = ImageModel
     form_class = ImageForm
-    template_name = 'forms/dynamic/dynamic_image_create.html'
+    template_name = 'dynamic/forms/dynamic_image_create.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -105,7 +105,7 @@ class ImageCreateView(CreateView):
 class FileCreateView(CreateView):
     model = FileModel
     form_class = FileForm
-    template_name = 'forms/dynamic/dynamic_file_create.html'
+    template_name = 'dynamic/forms/dynamic_file_create.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -127,7 +127,7 @@ class FileCreateView(CreateView):
 class DateCreateView(CreateView):
     model = DateModel
     form_class = DateForm
-    template_name = 'forms/dynamic/dynamic_date_create.html'
+    template_name = 'dynamic/forms/dynamic_date_create.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -149,7 +149,7 @@ class DateCreateView(CreateView):
 class TimeCreateView(CreateView):
     model = TimeModel
     form_class = TimeForm
-    template_name = 'forms/dynamic/dynamic_time_create.html'
+    template_name = 'dynamic/forms/dynamic_time_create.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']
@@ -171,7 +171,7 @@ class TimeCreateView(CreateView):
 class DateTimeCreateView(CreateView):
     model = DateTimeModel
     form_class = DateTimeForm
-    template_name = 'forms/dynamic/dynamic_date_time_create.html'
+    template_name = 'dynamic/forms/dynamic_date_time_create.html'
 
     def get_success_url(self):
         id = self.kwargs['pk']

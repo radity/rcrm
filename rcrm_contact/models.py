@@ -112,6 +112,10 @@ class Address(Model):
     created_at = DateTimeField(_('Added'), auto_now_add=True)
     modified_at = DateTimeField(_('Last Modified'), auto_now=True)
 
+    class Meta:
+        verbose_name = _('Address')
+        verbose_name_plural = _('Addresses')
+
     def __str__(self):
         return self.title
 
@@ -125,10 +129,6 @@ class Address(Model):
 
     def get_delete_url(self):
         return reverse('Contacts:Address_Delete', kwargs={'pk': self.id})
-
-    class Meta:
-        verbose_name = _('Address')
-        verbose_name_plural = _('Addresses')
 
 
 class SocialProfile(Model):
@@ -148,6 +148,10 @@ class SocialProfile(Model):
     created_at = DateTimeField(_('Added'), auto_now_add=True)
     modified_at = DateTimeField(_('Last Modified'), auto_now=True)
 
+    class Meta:
+        verbose_name = _('Social Profile')
+        verbose_name_plural = _('Social Profiles')
+
     def __str__(self):
         return self.title
 
@@ -156,10 +160,6 @@ class SocialProfile(Model):
 
     def get_delete_url(self):
         return reverse('Contacts:Social_Delete', kwargs={'pk': self.id})
-
-    class Meta:
-        verbose_name = _('Social Profile')
-        verbose_name_plural = _('Social Profiles')
 
 
 class Phone(Model):

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n static %}
 
-{% block title %}{% trans 'Add Contact' %} - {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Edit' %} {{ object }} - {{ block.super }}{% endblock %}
 
 {% block breadcrumb %}
 
@@ -12,8 +12,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
             <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contact' %}</a></li>
-            <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contacts' %}</a></li>
-            <li class="breadcrumb-item active">{% trans 'Edit' %}&nbsp;{{ object.email }}</li>
+            <li class="breadcrumb-item active">{% trans 'Edit' %}&nbsp;{{ object }}</li>
         </ol>
     </div>
 </div>
@@ -26,37 +25,43 @@
         <form method="post">
             {% csrf_token %}
             <div class="form-body">
-                <h3 class="card-title m-t-15">{% trans 'Edit' %} {{ object }}</h3>
+                <h3 class="card-title m-t-15">{% trans 'Edit' %}&nbsp;{{ object }}</h3>
                 <hr>
                 <div class="row p-t-20">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>{% trans 'Address' %}:</label>
-                            {% with field=form.address %}
+                            <label>{% trans 'First Name' %}:</label>
+                            {% with field=form.first_name %}
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
-                            <label>{% trans 'City' %}:</label>
-                            {% with field=form.city %}
+                            <label>{% trans 'Last Name' %}:</label>
+                            {% with field=form.last_name %}
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
-                            <label>{% trans 'State' %}:</label>
-                            {% with field=form.state %}
+                            <label>{% trans 'Gender' %}:</label>
+                            {% with field=form.gender %}
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
-                            <label>{% trans 'Postcode' %}:</label>
-                            {% with field=form.postcode %}
+                            <label>{% trans 'Position/Title' %}:</label>
+                            {% with field=form.title %}
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
-                            <label>{% trans 'Country' %}:</label>
-                            {% with field=form.country %}
+                            <label>{% trans 'Date of Birth' %}:</label>
+                            {% with field=form.date_of_birth %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Short Description' %}:</label>
+                            {% with field=form.description %}
                             {{ field }}
                             {% endwith %}
                         </div>

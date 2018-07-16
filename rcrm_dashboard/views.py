@@ -7,4 +7,4 @@ from rcrm_account.utils import UserAccountControlViewMixin
 
 class HomeView(UserAccountControlViewMixin, TemplateView):
     """This view is for dashboard screen"""
-    template_name = 'pages/home.html'
+    template_name = 'dashboard/pages/home.html'

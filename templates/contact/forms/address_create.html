@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n static %}
 
-{% block title %}{% trans 'Add Contact' %} - {{ block.super }}{% endblock %}
+{% block title %}{% trans 'Add an Address' %} - {{ block.super }}{% endblock %}
 
 {% block breadcrumb %}
 
@@ -12,8 +12,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
             <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contact' %}</a></li>
-            <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contacts' %}</a></li>
-            <li class="breadcrumb-item active">{% trans 'Add Social Profile' %}</li>
+            <li class="breadcrumb-item active">{% trans 'Add Address' %}</li>
         </ol>
     </div>
 </div>
@@ -26,43 +25,37 @@
         <form method="post">
             {% csrf_token %}
             <div class="form-body">
-                <h3 class="card-title m-t-15">{% trans 'Add Social Profile' %}</h3>
+                <h3 class="card-title m-t-15">{% trans 'Add Address' %}</h3>
                 <hr>
                 <div class="row p-t-20">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>{% trans 'Skype' %}:</label>
-                            {% with field=form.skype %}
+                            <label>{% trans 'Address' %}:</label>
+                            {% with field=form.address %}
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
-                            <label>{% trans 'Twitter' %}:</label>
-                            {% with field=form.twitter %}
+                            <label>{% trans 'City' %}:</label>
+                            {% with field=form.city %}
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
-                            <label>{% trans 'Instagram' %}:</label>
-                            {% with field=form.instagram %}
+                            <label>{% trans 'State' %}:</label>
+                            {% with field=form.state %}
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
-                            <label>{% trans 'Website' %}:</label>
-                            {% with field=form.website %}
+                            <label>{% trans 'Postcode' %}:</label>
+                            {% with field=form.postcode %}
                             {{ field }}
                             {% endwith %}
                         </div>
                         <div class="form-group">
-                            <label>{% trans 'Linkedin' %}:</label>
-                            {% with field=form.linkedin %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'Facebook' %}:</label>
-                            {% with field=form.facebook %}
+                            <label>{% trans 'Country' %}:</label>
+                            {% with field=form.country %}
                             {{ field }}
                             {% endwith %}
                         </div>

@@ -24,7 +24,7 @@ class LoginView(FormView):
     The view is for user login.
     """
     form_class = LoginForm
-    template_name = 'forms/user_login.html'
+    template_name = 'account/forms/user_login.html'
     success_url = reverse_lazy('Dashboard:Home')
 
     def form_valid(self, form):
@@ -41,7 +41,7 @@ class RegisterView(FormView):
     The view is for user registration.
     """
     form_class = RegisterForm
-    template_name = 'forms/user_registration.html'
+    template_name = 'account/forms/user_registration.html'
     success_url = reverse_lazy('Accounts:Account')
 
     def form_valid(self, form):
@@ -66,7 +66,7 @@ class UserProfileView(UpdateView):
     A view that allows to a user who can update own information.
     """
     form_class = UserProfileForm
-    template_name = 'pages/user_profile.html'
+    template_name = 'account/pages/user_profile.html'
     success_url = reverse_lazy('Accounts:User_Profile')
 
     def get_object(self, queryset=None):
@@ -109,7 +109,7 @@ class AccountView(UpdateView):
     """
     Every account actions can be made with this view.
     """
-    template_name = 'pages/account.html'
+    template_name = 'account/pages/account.html'
     success_url = reverse_lazy('Accounts:Account')
     form_class = AccountForm
 
@@ -170,7 +170,7 @@ class UserAccountDeleteView(AccountControlViewMixin, UpdateView):
     """
     model = User
     fields = []
-    template_name = 'forms/user_account_delete.html'
+    template_name = 'account/forms/user_account_delete.html'
     success_url = reverse_lazy('Accounts:Account')
 
     def form_valid(self, form):
@@ -227,7 +227,7 @@ class AccountRequestAcceptView(AccountControlViewMixin, DeleteView):
     With this view users of an account can accept the user who has applied before.
     """
     model = CRMAccountRequest
-    template_name = 'forms/user_request_accept.html'
+    template_name = 'account/forms/user_request_accept.html'
     success_url = reverse_lazy('Accounts:Account')
 
     def delete(self, request, *args, **kwargs):
@@ -256,7 +256,7 @@ class AccountRequestDeclineView(AccountControlViewMixin, DeleteView):
     With this view users of an account can decline the user who has applied before.
     """
     model = CRMAccountRequest
-    template_name = 'forms/user_request_decline.html'
+    template_name = 'account/forms/user_request_decline.html'
     success_url = reverse_lazy('Accounts:Account')
 
     def delete(self, request, *args, **kwargs):

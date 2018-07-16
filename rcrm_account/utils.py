@@ -4,6 +4,7 @@ from django.utils.translation import activate, deactivate
 from django.urls import reverse_lazy
 
 from rcrm_contact.models import Contact
+from rcrm_employee.models import Employee
 
 
 # Create your views here.
@@ -40,6 +41,23 @@ class AccountControlViewMixinFour(object):
         if not contact.account == self.request.user.account:
             raise Http404
         return super().dispatch(request, *args, **kwargs)
+
+
+class AccountControlViewMixinFive(object):
+    def dispatch(self, request, *args, **kwargs):
+        id = self.kwargs['pk']
+        employee = get_object_or_404(Employee, id=id)
+        if not employee.account == self.request.user.account:
+            raise Http404
+        return super().dispatch(request, *args, **kwargs)
+
+
+class AccountControlViewMixinSix(object):
+    def get_object(self, queryset=None):
+        obj = super(AccountControlViewMixinSix, self).get_object()
+        if not obj.employee.account == self.request.user.account:
+            raise Http404
+        return obj
 
 
 class UserAccountControlViewMixin(object):
