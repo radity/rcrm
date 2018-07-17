@@ -6,13 +6,25 @@ from django.forms import ModelForm,\
     TimeInput, DateTimeField, DateTimeInput
 from django.utils.translation import ugettext_lazy as _
 
-from rcrm_dynamic.models import Dynamic,\
+from rcrm_dynamic.models import DynamicTab, Dynamic,\
     CharfieldModel, TextboxModel, ImageModel,\
     FileModel, DateModel, DateTimeModel,\
     TimeModel, URLModel, BooleanModel
 
 
 # Create Your Forms Here
+
+class DynamicTabForm(ModelForm):
+    name = CharField(widget=TextInput(attrs={'class': 'form-control'}))
+    description = CharField(widget=Textarea(attrs={'class': 'form-control','style': "height:150px"}))
+
+    class Meta:
+        model = DynamicTab
+        fields = (
+            'name',
+            'description'
+        )
+
 
 class DynamicForm(ModelForm):
     name = CharField(widget=TextInput(attrs={'class': 'form-control'}))

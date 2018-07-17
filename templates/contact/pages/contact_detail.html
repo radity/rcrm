@@ -63,10 +63,10 @@
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#emails" role="tab">{% trans 'Emails' %}</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#addresses" role="tab">{% trans 'Addresses' %}</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#social" role="tab">{% trans 'Social Profiles' %}</a></li>
-            {% for dynamic in dynamic_list %}
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#{{ dynamic.name }}" role="tab">{{ dynamic.name }}</a></li>
+            {% for dynamic_tab in dynamic_tabs %}
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#{{ dynamic_tab.name }}" role="tab">{{ dynamic_tab.name }}</a></li>
             {% endfor %}
-            <li class="nav-item"><a class="nav-link" href="{{ contact.get_create_dynamic_url }}">{% trans '+ Add New Tab' %}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ contact.get_create_dynamic_tab_url }}">{% trans '+ Add New Tab' %}</a></li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
@@ -246,123 +246,121 @@
                 </div>
             </div>
         </div>
-            <!--fifth tab-->
-            {% for dynamic in dynamic_list %}
-            <div class="tab-pane" id="{{ dynamic.name }}" role="tabpanel">
+            <!--dynamic tab(s)-->
+            {% for dynamic_tab in dynamic_tabs %}
+            <div class="tab-pane" id="{{ dynamic_tab.name }}" role="tabpanel">
                 <div class="card-body">
                 <div class="row">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                            <h4 style="padding: 10px 0 0 5px;">{{ dynamic.name }}</h4>
+                            <h4 style="padding: 10px 0 0 5px;">{{ dynamic_tab.name }}</h4>
                             </thead>
                             <tbody>
-                            {% if dynamic.charfield.all.count == 0 and dynamic.text_box.all.count == 0 and dynamic.image.all.count == 0 and dynamic.file.all.count == 0 and dynamic.time.all.count == 0 and dynamic.date.all.count == 0 and dynamic.date_time.all.count == 0 and dynamic.url.all.count == 0 and dynamic.yes_no.all.count == 0 %}
-                                                <div class="row">
-                    <div class="col-md-3">
-                        <a href="{{ dynamic.get_add_charfield_url }}">
-                            <div class="card bg-primary p-20">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-plus f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h3 class="color-white">{% trans 'Add Text' %}</h3>
-                                    <p class="m-b-0" style="color:white">{% trans 'Single line text input' %}</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3">
-                        <a href="{{ dynamic.get_add_textbox_url }}">
-                            <div class="card bg-pink p-20">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-plus f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h3 class="color-white">{% trans 'Add Text Box' %}</h3>
-                                    <p class="m-b-0" style="color:white">{% trans 'Multi lines text box' %}</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3">
-                        <a href="{{ dynamic.get_add_image_url }}">
-                            <div class="card bg-success p-20">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-plus f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h3 class="color-white">{% trans 'Add Image' %}</h3>
-                                    <p class="m-b-0" style="color:white">{% trans 'Image Field' %}</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3">
-                        <a href="{{ dynamic.get_add_file_url }}">
-                            <div class="card bg-danger p-20">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-plus f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h3 class="color-white">{% trans 'Add File' %}</h3>
-                                    <p class="m-b-0" style="color:white">{% trans 'File Field' %}</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3">
-                        <a href="{{ dynamic.get_add_date_url }}">
-                            <div class="card bg-dark p-20">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-plus f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h3 class="color-white">{% trans 'Add Date' %}</h3>
-                                    <p class="m-b-0" style="color:white">{% trans 'Date Field' %}</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3">
-                        <a href="{{ dynamic.get_add_time_url }}">
-                            <div class="card bg-info p-20">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-plus f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h3 class="color-white">{% trans 'Add Time' %}</h3>
-                                    <p class="m-b-0" style="color:white">{% trans 'Time Field' %}</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-3">
-                        <a href="{{ dynamic.get_add_date_time_url }}">
-                            <div class="card bg-warning p-20">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-plus f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h3 class="color-white">{% trans 'Add Date Time' %}</h3>
-                                    <p class="m-b-0" style="color:white">{% trans 'Date Time Field' %}</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
+                            {% for dynamic in dynamic_tab.dynamics %}
+                            {% if not dynamic.contact == contact %}
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <a href="{{ dynamic.get_add_charfield_url }}">
+                                            <div class="card bg-primary p-20">
+                                                <div class="media-left meida media-middle">
+                                                    <span><i class="ti-plus f-s-40"></i></span>
                                                 </div>
-                            {% else %}
+                                                <div class="media-body media-text-right">
+                                                    <h3 class="color-white">{% trans 'Add Text' %}</h3>
+                                                    <p class="m-b-0" style="color:white">{% trans 'Single line text input' %}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
 
+                                    <div class="col-md-3">
+                                        <a href="{{ dynamic.get_add_textbox_url }}">
+                                            <div class="card bg-pink p-20">
+                                                <div class="media-left meida media-middle">
+                                                    <span><i class="ti-plus f-s-40"></i></span>
+                                                </div>
+                                                <div class="media-body media-text-right">
+                                                    <h3 class="color-white">{% trans 'Add Text Box' %}</h3>
+                                                    <p class="m-b-0" style="color:white">{% trans 'Multi lines text box' %}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <a href="{{ dynamic.get_add_image_url }}">
+                                            <div class="card bg-success p-20">
+                                                <div class="media-left meida media-middle">
+                                                    <span><i class="ti-plus f-s-40"></i></span>
+                                                </div>
+                                                <div class="media-body media-text-right">
+                                                    <h3 class="color-white">{% trans 'Add Image' %}</h3>
+                                                    <p class="m-b-0" style="color:white">{% trans 'Image Field' %}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <a href="{{ dynamic.get_add_file_url }}">
+                                            <div class="card bg-danger p-20">
+                                                <div class="media-left meida media-middle">
+                                                    <span><i class="ti-plus f-s-40"></i></span>
+                                                </div>
+                                                <div class="media-body media-text-right">
+                                                    <h3 class="color-white">{% trans 'Add File' %}</h3>
+                                                    <p class="m-b-0" style="color:white">{% trans 'File Field' %}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <a href="{{ dynamic.get_add_date_url }}">
+                                            <div class="card bg-dark p-20">
+                                                <div class="media-left meida media-middle">
+                                                    <span><i class="ti-plus f-s-40"></i></span>
+                                                </div>
+                                                <div class="media-body media-text-right">
+                                                    <h3 class="color-white">{% trans 'Add Date' %}</h3>
+                                                    <p class="m-b-0" style="color:white">{% trans 'Date Field' %}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <a href="{{ dynamic.get_add_time_url }}">
+                                            <div class="card bg-info p-20">
+                                                <div class="media-left meida media-middle">
+                                                    <span><i class="ti-plus f-s-40"></i></span>
+                                                </div>
+                                                <div class="media-body media-text-right">
+                                                    <h3 class="color-white">{% trans 'Add Time' %}</h3>
+                                                    <p class="m-b-0" style="color:white">{% trans 'Time Field' %}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <a href="{{ dynamic.get_add_date_time_url }}">
+                                            <div class="card bg-warning p-20">
+                                                <div class="media-left meida media-middle">
+                                                    <span><i class="ti-plus f-s-40"></i></span>
+                                                </div>
+                                                <div class="media-body media-text-right">
+                                                    <h3 class="color-white">{% trans 'Add Date Time' %}</h3>
+                                                    <p class="m-b-0" style="color:white">{% trans 'Date Time Field' %}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                    </div>
+                            {% else %}
                                     {% for obj in dynamic.charfield.all %}
                                 <tr>
-
                                     <th>{{ obj.name }}</th>
                                     <td>{{ obj.charfield }}</td>
                                 </tr>
@@ -436,27 +434,29 @@
                                         {% if dynamic.charfield.all.count > 0 %}
                                             <a href="{{ dynamic.get_add_charfield_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
                                         {% elif dynamic.text_box.all.count > 0 %}
-                                        <a href="{{ dynamic.get_add_textbox_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                            <a href="{{ dynamic.get_add_textbox_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
                                         {% elif dynamic.image.all.count > 0 %}
-                                        <a href="{{ dynamic.get_add_image_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                            <a href="{{ dynamic.get_add_image_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
                                         {% elif dynamic.file.all.count > 0 %}
-                                        <a href="{{ dynamic.get_add_file_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                            <a href="{{ dynamic.get_add_file_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
                                         {% elif dynamic.date.all.count > 0 %}
-                                        <a href="{{ dynamic.get_add_date_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                            <a href="{{ dynamic.get_add_date_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
                                         {% elif dynamic.time.all.count > 0 %}
-                                        <a href="{{ dynamic.get_add_time_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                            <a href="{{ dynamic.get_add_time_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
                                         {% elif dynamic.date_time.all.count > 0 %}
-                                        <a href="{{ dynamic.get_add_date_time_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                            <a href="{{ dynamic.get_add_date_time_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
                                         {% endif %}
                                     </td>
                                 </tr>
                             {% endif %}
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+
             {% endfor %}
         </div>
     </div>

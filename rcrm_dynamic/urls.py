@@ -1,7 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.urls import path
 
-from rcrm_dynamic.views import DynamicCreateView, CharfieldCreateView, TextBoxCreateView,\
+from rcrm_dynamic.views import DynamicTabCreateView, DynamicCreateView,\
+    CharfieldCreateView, TextBoxCreateView,\
     ImageCreateView, FileCreateView, DateCreateView,\
     TimeCreateView, DateTimeCreateView
 
@@ -9,6 +10,9 @@ app_name = 'Dynamic'
 
 
 urlpatterns = [
+    # Dynamic Tab
+    path('<int:pk>/dynamic/tab/add/', login_required(DynamicTabCreateView.as_view()), name='Dynamic_Tab_Create'),
+
     # Dynamic
     path('<int:pk>/dynamic/add/', login_required(DynamicCreateView.as_view()), name='Dynamic_Create'),
 

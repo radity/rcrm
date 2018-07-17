@@ -7,6 +7,7 @@ from django.shortcuts import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from rcrm_contact.models import Contact
+from rcrm_account.models import CRMAccount
 
 # Create your models here.
 
@@ -132,10 +133,32 @@ class BooleanModel(Model):
 
 # ------------------------------ Dynamic Model ------------------------------
 
+class DynamicTab(Model):
+    name = CharField(max_length=32)
+    description = TextField(max_length=128, null=True, blank=True)
+    account = ForeignKey(CRMAccount, on_delete=CASCADE)
+
+    # Status
+    is_active = BooleanField(_('Is Active?'), default=True)
+    is_deleted = BooleanField(_('Is Deleted?'), default=False)
+
+    # Date & Time
+    created_at = DateTimeField(_('Added'), auto_now_add=True)
+    modified_at = DateTimeField(_('Last Modified'), auto_now=True)
+
+    class Meta:
+        verbose_name = _('*Dynamic Tab')
+
+    def __str__(self):
+        return self.name
+
+    def dynamics(self):
+        return Dynamic.objects.filter(tab=self)
+
 
 class Dynamic(Model):
-    name = CharField(max_length=32)
-    contact = ForeignKey(Contact, on_delete=CASCADE, related_name='dynamic_app_contact')
+    tab = ForeignKey(DynamicTab, on_delete=CASCADE)
+    contact = ForeignKey(Contact, on_delete=CASCADE)
 
     # Dynamic Fields
     charfield = ManyToManyField(CharfieldModel, blank=True)
@@ -157,8 +180,11 @@ class Dynamic(Model):
     modified_at = DateTimeField(_('Last Modified'), auto_now=True)
 
     class Meta:
-        ordering = ('name',)
         verbose_name = _('*Dynamic')
+        unique_together = ('tab', 'contact')
+
+    def __str__(self):
+        return '%s-%s' % (self.tab, self.contact)
 
     def get_add_charfield_url(self):
         return reverse('Dynamic:Dynamic_Charfield_Create', kwargs={'pk': self.id})
@@ -180,21 +206,6 @@ class Dynamic(Model):
 
     def get_add_date_time_url(self):
         return reverse('Dynamic:Dynamic_Date_Time_Create', kwargs={'pk': self.id})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

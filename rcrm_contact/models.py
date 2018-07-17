@@ -77,6 +77,9 @@ class Contact(Model):
     def get_add_dynamic_url(self):
         return reverse('Contacts:Dynamic_Create', kwargs={'pk': self.id})
 
+    def get_create_dynamic_tab_url(self):
+        return reverse('Dynamic:Dynamic_Tab_Create', kwargs={'pk': self.id})
+
     def get_create_dynamic_url(self):
         return reverse('Dynamic:Dynamic_Create', kwargs={'pk': self.id})
 

@@ -12,7 +12,7 @@ from rcrm_account.utils import AccountControlViewMixin, AccountControlViewMixinT
 from rcrm_contact.forms import AddressForm, ContactForm, EmailForm, PhoneForm, SocialProfileForm
 from rcrm_contact.models import Address, Contact, Email, Phone, SocialProfile
 from rcrm_contact.resources import ContactResource, ContactImportResource
-from rcrm_dynamic.models import Dynamic
+from rcrm_dynamic.models import Dynamic, DynamicTab
 
 from openpyxl import Workbook
 from tablib import Dataset
@@ -53,9 +53,10 @@ class ContactDetailView(AccountControlViewMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         id = self.kwargs.get('pk')
-        context = super(ContactDetailView, self).get_context_data(**kwargs)
         contact = get_object_or_404(Contact, is_deleted=False, id=id)
+        context = super(ContactDetailView, self).get_context_data(**kwargs)
         context['contact'] = contact
+        context['dynamic_tabs'] = DynamicTab.objects.filter(account=self.request.user.account)
         context['dynamic_list'] = Dynamic.objects.filter(contact=contact)
         return context
 

@@ -1,6 +1,6 @@
 from django.contrib.admin import register
 
-from rcrm_dynamic.models import Dynamic,\
+from rcrm_dynamic.models import DynamicTab, Dynamic,\
     CharfieldModel, TextboxModel, ImageModel,\
     FileModel, DateModel, DateTimeModel,\
     TimeModel, URLModel, BooleanModel
@@ -8,6 +8,11 @@ from rcrm_dynamic.models import Dynamic,\
 from import_export.admin import ImportExportModelAdmin
 
 # Register your models here.
+
+
+@register(DynamicTab)
+class AdminDynamicTab(ImportExportModelAdmin):
+    pass
 
 
 @register(Dynamic)

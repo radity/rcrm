@@ -2,14 +2,33 @@ from django.shortcuts import render, reverse, get_object_or_404
 from django.views.generic import CreateView
 
 from rcrm_contact.models import Contact
-from rcrm_dynamic.models import Dynamic,\
+from rcrm_dynamic.models import DynamicTab, Dynamic,\
     CharfieldModel, TextboxModel, ImageModel,\
     FileModel, DateModel, DateTimeModel,\
     TimeModel, URLModel, BooleanModel
 
-from rcrm_dynamic.forms import DynamicForm, CharfieldForm, TextboxForm, ImageForm, FileForm, DateForm, TimeForm, DateTimeForm
+from rcrm_dynamic.forms import DynamicTabForm, DynamicForm, CharfieldForm, TextboxForm, ImageForm, FileForm, DateForm, TimeForm, DateTimeForm
 
 # Create your views here.
+
+# ---------------------------- Dynamic Tab View ----------------------------
+
+class DynamicTabCreateView(CreateView):
+    model = DynamicTab
+    form_class = DynamicTabForm
+    template_name = 'dynamic/forms/dynamic_tab_create.html'
+
+    def get_success_url(self):
+        id = self.kwargs['pk']
+        contact = get_object_or_404(Contact, id=id)
+        return reverse('Contacts:Contact_Detail', args=[contact.id])
+
+    def form_valid(self, form):
+        form_d = form.save(commit=False)
+        form_d.account = self.request.user.account
+        form_d.save()
+        return super(DynamicTabCreateView, self).form_valid(form)
+
 
 # ------------------------------ Dynamic View ------------------------------
 
