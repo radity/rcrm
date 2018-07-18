@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans 'Edit' %} {{ object }} - {{ block.super }}{% endblock %}
+
+{% block breadcrumb %}
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">{% trans 'Jobs' %}</h3></div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
+            <li class="breadcrumb-item active"><a href="{% url 'Employees:Employee' %}">{% trans 'Job' %}</a></li>
+            <li class="breadcrumb-item active">{% trans 'Edit' %}&nbsp;{{ object }}</li>
+        </ol>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<div class="card card-outline-primary">
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.media }}
+            <div class="form-body">
+                <h3 class="card-title m-t-15">{% trans 'Edit' %}&nbsp;{{ object }}</h3>
+                <hr>
+                <div class="row p-t-20">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{% trans 'Title' %}:</label>
+                            {% with field=form.title %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Short Description' %}:</label>
+                            {% with field=form.short_description %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Description' %}:</label>
+                            {% with field=form.description %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Type of Employment' %}:</label>
+                            {% with field=form.type_of_employment %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <br><h4 class="card-title m-t-15">{% trans 'Skills' %}</h4><hr>
+                        <div class="form-group">
+                            <label>{% trans 'Talent' %}:</label>
+                            {% with field=form.talent %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Experience' %}:</label>
+                            {% with field=form.experience %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Education Level' %}:</label>
+                            {% with field=form.education_level %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Language' %}:</label>
+                            {% with field=form.language %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <br><h4 class="card-title m-t-15">{% trans 'Location' %}</h4><hr>
+                        <div class="form-group">
+                            <label>{% trans 'Office' %}:</label>
+                            {% with field=form.office %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'City' %}:</label>
+                            {% with field=form.city %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Country' %}:</label>
+                            {% with field=form.country %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <br><h4 class="card-title m-t-15">{% trans 'Extra' %}</h4><hr>
+                        <div class="form-group">
+                            <label>{% trans 'Detail URL' %}:</label>
+                            {% with field=form.url %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'image' %}:</label>
+                            {% with field=form.image %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans 'Save' %}</button>
+                            <a href="{{ request.META.HTTP_REFERER }}">
+                                <button type="button" class="btn btn-inverse">{% trans 'Cancel' %}</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

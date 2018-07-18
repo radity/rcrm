@@ -20,7 +20,16 @@ class AdminJob(ImportExportModelAdmin):
     list_per_page = 50
     fieldsets = (
         (None, {
-            'fields': ('account', 'title', 'description', 'url', 'office', 'city', 'country')
+            'fields': ('account', 'title', 'short_description', 'description', 'type_of_employment')
+        }),
+        (_("Requirements"), {
+            'fields': ('talent', 'experience', 'education_level', 'language')
+        }),
+        (_("Location"), {
+            'fields': ('office', 'city', 'country')
+        }),
+        (_("Extra"), {
+            'fields': ('url', 'image')
         }),
         (_("Status"), {
             'fields': ('is_active', 'is_deleted')

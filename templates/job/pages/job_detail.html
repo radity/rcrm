@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{{ job }} - {{ block.super }}{% endblock %}
+
+{% block breadcrumb %}
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">{% trans 'Job' %}</h3></div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
+            <li class="breadcrumb-item active"><a href="{% url 'Jobs:Job' %}">{% trans 'Job' %}</a></li>
+            <li class="breadcrumb-item active">{{ job }}</li>
+        </ol>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="col-lg-12 align-self-center">
+    <div class="card">
+        <div class="card-body">
+            <div class="pull-left">
+                <a href="#">
+                    <button type="button" class="btn btn-inverse"><i class="fa fa-share"></i> {% trans 'Share on Linkedin' %}</button>
+                </a>
+            </div>
+            <div class="pull-right">
+                <a href="{{ job.get_edit_url }}">
+                    <button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans 'Edit' %}</button>
+                </a>
+                <a href="{{ job.get_delete_url }}">
+                    <button type="button" class="btn btn-danger"><i class="fa fa-close"></i> {% trans 'Delete' %}</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12 align-self-center">
+    <div class="card bg-primary">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-11">
+                    <div class="weather-widget">
+                        <div id="weather-one" class="weather-one">
+                            <h1 style="color:white;">{{ job.title }} {% trans 'at' %} {{ account }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-8">
+                    <p style="color:white;">{{ job.short_description }}</p>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-two">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-7">
+                        <h1>{% trans 'Job Description' %}</h1>
+                        <p>{{ job.description | safe }}</p>
+
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3">
+                        <p>{{ job.get_type_of_employment_display }}</p>
+                        <h5>{% trans 'Location' %}</h5><hr>
+                        <p>{% trans 'Office' %}: {{ job.office }}</p>
+                        <p>{% trans 'City' %}: {{ job.city }}</p>
+                        <p>{% trans 'Country' %}: {{ job.get_country_display }}</p>
+
+                        <h5>{% trans 'Requirements' %}</h5><hr>
+                        <p>{% trans 'Languages' %}: {{ job.language }}</p>
+                        <p>{% trans 'Talents' %}: {{ job.talent }}</p>
+                        <p>{% trans 'Experience' %}: {{ job.experience }}</p>
+                        <p>{% trans 'Education Level' %}: {{ job.education_level }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'rcrm_job',
 
     # Third Party Apps
+    'ckeditor',
     'django_cleanup',
     'import_export',
     'location_field.apps.DefaultConfig',
@@ -166,3 +167,11 @@ MEDIA_ROOT = env['MEDIA_ROOT']
 
 # User
 AUTH_USER_MODEL = 'rcrm_account.User'
+
+# CKEDITOR
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': '100%',
+    },
+}
