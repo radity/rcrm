@@ -83,6 +83,9 @@ class Contact(Model):
     def get_create_dynamic_url(self):
         return reverse('Dynamic:Dynamic_Create', kwargs={'pk': self.id})
 
+    def get_client_contact_delete_url(self):
+        return reverse('Clients:Contact_Delete', kwargs={'contact_id': self.id})
+
     def get_full_name(self):
         full_name = '%s %s' % (self.first_name, self.last_name)
         return full_name.strip()

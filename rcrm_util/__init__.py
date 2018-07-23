@@ -1,0 +1,1 @@
+default_app_config = 'rcrm_util.apps.RcrmUtilConfig'

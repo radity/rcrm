@@ -17,7 +17,7 @@ urlpatterns = [
     path('<int:pk>/', login_required(EmployeeDetailView.as_view()), name='Employee_Detail'),
     path('<int:pk>/edit/', login_required(EmployeeEditView.as_view()), name='Employee_Edit'),
     path('<int:pk>/delete/', login_required(EmployeeDeleteView.as_view()), name='Employee_Delete'),
-    # Contact Import-Export
+    # Import-Export
     path('export/', login_required(employee_export), name='Employee_Export'),
     # Address
     path('<int:pk>/address/add/', login_required(AddressCreateView.as_view()), name='Address_Create'),

@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{{ client }} - {{ block.super }}{% endblock %}
+
+{% block breadcrumb %}
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">{% trans 'Client' %}</h3></div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
+            <li class="breadcrumb-item active"><a href="{% url 'Clients:Client' %}">{% trans 'Client' %}</a></li>
+            <li class="breadcrumb-item active">{{ client }}</li>
+        </ol>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="col-lg-12 align-self-center">
+    <div class="card">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="pull-right">
+                    <a href="{{ client.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans 'Edit' %}</button></a>
+                    <a href="{{ client.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i> {% trans 'Delete' %}</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <div class="card">
+            <div class="card-two">
+                <h3>{{ client }}</h3>
+                <div class="desc">
+                    {{ client.description }}
+                </div>
+            </div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs profile-tab" role="tablist">
+            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#contacts" role="tab">{% trans 'Contact Persons' %}</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#phones" role="tab">{% trans 'Phones' %}</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#emails" role="tab">{% trans 'Emails' %}</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#addresses" role="tab">{% trans 'Addresses' %}</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#social" role="tab">{% trans 'Social Profiles' %}</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!--first tab-->
+            <div class="tab-pane active" id="contacts" role="tabpanel">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{% trans 'Name' %}</th>
+                                <th>{% trans 'Phone' %}</th>
+                                <th>{% trans 'Email' %}</th>
+                                <th>{% trans 'Remove' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for contact in client.contact.all %}
+                            <tr>
+                                <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                                </th>
+                                <td><a href="{{ contact.get_absolute_url }}">{{ contact.first_name }} {{ contact.last_name }}</a></td>
+                                <td>{% with contact.phones|first as phone %}{{ phone.phone }}{% endwith %}</td>
+                                <td>{% with contact.emails|first as email %}{{ email.email }}{% endwith %}</td>
+                                <td>
+                                    <a href="/client/{{ client.id }}/contact/{{ contact.id }}/delete/"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="{{ client.get_add_contact_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+</div>
+            <!--second tab-->
+            <div class="tab-pane" id="phones" role="tabpanel">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{% trans 'Number' %}</th>
+                                <th>{% trans 'Edit / Delete' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for phone in client.phone.all %}
+                            <tr>
+                                <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                                </th>
+                                <td>{{ phone.phone }}</td>
+                                <td>
+                                    <a href="/client/{{ client.id }}/phone/{{ phone.id }}/"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                                    <a href="/client/{{ client.id }}/phone/{{ phone.id }}/delete/"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="{{ client.get_add_phone_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--third tab-->
+            <div class="tab-pane" id="emails" role="tabpanel">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{% trans 'Email' %}</th>
+                                <th>{% trans 'Edit / Delete' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for email in client.email.all %}
+                            <tr>
+                                <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                                </th>
+                                <td>{{ email.email }}</td>
+                                <td>
+                                    <a href="/client/{{ client.id }}/email/{{ email.id }}/"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                                    <a href="/client/{{ client.id }}/email/{{ email.id }}/delete/"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="{{ client.get_add_email_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--fourth tab-->
+            <div class="tab-pane" id="addresses" role="tabpanel">
+                <div class="card-body">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{% trans 'Address' %}</th>
+                                <th>{% trans 'State' %}</th>
+                                <th>{% trans 'City' %}</th>
+                                <th>{% trans 'Post Code' %}</th>
+                                <th>{% trans 'Country' %}</th>
+                                <th>{% trans 'Edit / Delete' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for address in client.address.all %}
+                            <tr>
+                                <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                                </th>
+                                <td><a target="_blank" href="https://www.google.com.tr/maps/place/{{ address.get_full_address }}">{{ address.address }}</a></td>
+                                <td>{{ address.state }}</td>
+                                <td>{{ address.city }}</td>
+                                <td>{{ address.postcode }}</td>
+                                <td>{{ address.get_country_display }}</td>
+                                <td>
+                                    <a href="/client/{{ client.id }}/address/{{ address.id }}/"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                                    <a href="/client/{{ client.id }}/address/{{ address.id }}/delete/"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="{{ client.get_add_address_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!--fifth tab-->
+            <div class="tab-pane" id="social" role="tabpanel">
+                <div class="card-body">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table">
+                            {% for social in client.social.all %}
+                            <tr>
+                                <th>#</th>
+                                <td scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Skype' %}</th>
+                                <td>{{ social.skype }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Twitter' %}</th>
+                                <td>{{ social.twitter }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Instagram' %}</th>
+                                <td>{{ social.instagram }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Website' %}</th>
+                                <td>{{ social.website }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Linkedin' %}</th>
+                                <td>{{ social.linkedin }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Facebook' %}</th>
+                                <td>{{ social.facebook }}</td>
+                            </tr>
+                            <tr>
+                                <th>{% trans 'Edit / Delete' %}</th>
+                                <td>
+                                    <a href="/client/{{ client.id }}/social/{{ social.id }}/"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                                    <a href="/client/{{ client.id }}/social/{{ social.id }}/delete/"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <a href="{{ client.get_add_social_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

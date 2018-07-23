@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans 'Add Client' %} - {{ block.super }}{% endblock %}
+
+{% block breadcrumb %}
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">{% trans 'Clients' %}</h3></div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
+            <li class="breadcrumb-item active"><a href="{% url 'Employees:Employee' %}">{% trans 'Client' %}</a></li>
+            <li class="breadcrumb-item active">{% trans 'Add Client' %}</li>
+        </ol>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<div class="card card-outline-primary">
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-body">
+                <h3 class="card-title m-t-15">{% trans 'Add Contact' %}</h3>
+                <hr>
+                <div class="row p-t-20">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{% trans 'Contact' %}:</label>
+                            {% with field=form.contact %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans 'Add' %}</button>
+                            <a href="{{ request.META.HTTP_REFERER }}">
+                                <button type="button" class="btn btn-inverse">{% trans 'Cancel' %}</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card card-outline-primary">
+    <div class="card-body">
+        <form method="post" action="{{ client.get_contact_create_url }}">
+            {% csrf_token %}
+            <div class="form-body">
+                <h3 class="card-title m-t-15">{% trans 'Create & Add Contact' %}</h3>
+                <hr>
+                <div class="row p-t-20">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{% trans 'First Name' %}:</label>
+                            {% with field=form_c.first_name %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Last Name' %}:</label>
+                            {% with field=form_c.last_name %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Gender' %}:</label>
+                            {% with field=form_c.gender %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Position/Title' %}:</label>
+                            {% with field=form_c.title %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Date of Birth' %}:</label>
+                            {% with field=form_c.date_of_birth %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans 'Short Description' %}:</label>
+                            {% with field=form_c.description %}
+                            {{ field }}
+                            {% endwith %}
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans 'Add' %}</button>
+                            <a href="{{ request.META.HTTP_REFERER }}">
+                                <button type="button" class="btn btn-inverse">{% trans 'Cancel' %}</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

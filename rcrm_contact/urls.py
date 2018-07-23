@@ -17,7 +17,7 @@ urlpatterns = [
     path('<int:pk>/', login_required(ContactDetailView.as_view()), name='Contact_Detail'),
     path('<int:pk>/edit/', login_required(ContactEditView.as_view()), name='Contact_Edit'),
     path('<int:pk>/delete/', login_required(ContactDeleteView.as_view()), name='Contact_Delete'),
-    # Contact Import-Export
+    # Import-Export
     path('import/', login_required(contact_import), name='Contact_Import'),
     path('export/', login_required(contact_export), name='Contact_Export'),
     # Address

@@ -51,11 +51,13 @@ INSTALLED_APPS = [
     # Apps
     'rcrm',
     'rcrm_account',
+    'rcrm_client',
     'rcrm_contact',
     'rcrm_dashboard',
     'rcrm_dynamic',
     'rcrm_employee',
     'rcrm_job',
+    'rcrm_util',
 
     # Third Party Apps
     'ckeditor',
