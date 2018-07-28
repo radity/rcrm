@@ -1,8 +1,46 @@
+# Base
 Django==2.0.6
-django-import-export==1.0.1
-https://github.com/darklow/django-suit/tarball/v2
-django-location-field==2.0.3
-Pillow==5.1.0
-django-cleanup==2.1.0
+# pytz==2018.5
+
+# Postgres
 psycopg2-binary==2.7.5
+
+# Django Import Export
+django-import-export==1.0.1
+# diff-match-patch==20121119
+# et-xmlfile==1.0.1
+# jdcal==1.4
+# odfpy==1.3.6
+# openpyxl==2.5.4
+# pyyaml==3.13
+# tablib==0.12.1
+# unicodecsv==0.14.1
+# xlrd==1.1.0
+# xlwt==1.3.0
+
+# Django Suit
+https://github.com/darklow/django-suit/tarball/v2
+
+# Django Location Field
+django-location-field==2.0.3
+# six==1.11.0
+
+# Pillow
+Pillow==5.1.0
+
+# Django Cleanup
+django-cleanup==2.1.0
+
+# Django Ckeditor
 django-ckeditor==5.6.1
+# django-js-asset==1.1.0
+
+# Celery
+celery==4.1.0
+# amqp==2.3.2
+# billiard==3.5.0.4
+kombu==4.1.0
+# vine==1.1.4
+
+# Redis
+redis==2.10.6

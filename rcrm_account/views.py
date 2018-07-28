@@ -2,13 +2,13 @@ import json
 from django.conf import settings
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib import messages
-from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView, DeleteView, UpdateView
 
+from rcrm.tasks import mail_task
 from rcrm_account.models import CRMAccount, CRMAccountRequest, User
 from rcrm_account.forms import LoginForm, RegisterForm, UserProfileForm, PasswordChangeForm, \
     AccountForm, AccountUserAddForm, AccountRequestForm
@@ -202,17 +202,20 @@ class AccountRequestCreateView(FormView):
             messages.success(self.request, _('Your request has been sent successfully, thank you.'))
 
             # Send Email
-            from_email = settings.EMAIL_HOST_USER
             subject = _('There is an Access Request to Your RCRM Account!')
             message = str(user.email) + ' requested to be a user of your account to accept/decline keep going on ' \
                                         'the link below.<br<br>' + 'http://127.0.0.1:8000/accounts/'
-            recipient_list = []
-            for usr in account_users:
-                recipient_list.append(usr.email)
-            print(recipient_list)
-            send_mail(subject=subject, message=message, from_email=from_email, recipient_list=recipient_list,
-                      fail_silently=False, html_message=message)
+            recipient_list = [account_user.email for account_user in account_users]
 
+            context = {
+                'subject': subject,
+                'message': message,
+                'html_message': message,
+                'from_email': settings.EMAIL_HOST_USER,
+                'recipient_list': recipient_list,
+                'fail_silently': False
+            }
+            mail_task.delay(context, 'account-request-create')
         elif account and already_requested:
             messages.error(self.request, _('You have already requested to ' + str(account.name) + '!'))
             pass
@@ -233,8 +236,8 @@ class AccountRequestAcceptView(AccountControlViewMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         id = self.kwargs['pk']
         account_request = get_object_or_404(CRMAccountRequest, id=id)
-        usr = get_object_or_404(User, id=account_request.user.id)
-        if usr.account:
+        user = get_object_or_404(User, id=account_request.user.id)
+        if user.account:
             messages.error(self.request, _('The user has an account!'))
             return HttpResponseRedirect(reverse_lazy('Accounts:Account'))
         else:
@@ -242,12 +245,19 @@ class AccountRequestAcceptView(AccountControlViewMixin, DeleteView):
             messages.success(self.request, _('Accepted successfully, thank you.'))
 
             # Send Email
-            from_email = settings.EMAIL_HOST_USER
             subject = _('Your Request Has Been Accepted')
             message = _('Your RCRM account request has been accepted. To reach the account: http://127.0.0.1:8000/accounts/')
-            recipient_list = [usr.email]
-            send_mail(subject=subject, message=message, from_email=from_email, recipient_list=recipient_list,
-                      fail_silently=False, html_message=message)
+
+            context = {
+                'subject': subject,
+                'message': message,
+                'html_message': message,
+                'from_email': settings.EMAIL_HOST_USER,
+                'recipient_list': [user.email],
+                'fail_silently': False
+            }
+            mail_task.delay(context, 'account-request-accept')
+
         return super(AccountRequestAcceptView, self).delete(request, *args, **kwargs)
 
 
