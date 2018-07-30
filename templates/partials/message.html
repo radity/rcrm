@@ -1,0 +1,25 @@
+{% if type == 'large' %}
+  <ul>
+    <h2>
+      {% if status == 'success' %}
+        <div class="alert alert-info" id="message">
+          {{ message }}
+        </div>
+      {% else %}
+        <div class="alert alert-danger" id="message_error">
+          {{ message }}
+        </div>
+      {% endif %}
+    </h2>
+  </ul>
+{% else %}
+  {% if status == 'success' %}
+      <div class="alert alert-info" id="message">
+        {{ message }}
+      </div>
+    {% else %}
+      <div class="alert alert-danger" id="message_error">
+        {{ message }}
+      </div>
+    {% endif %}
+{% endif %}
