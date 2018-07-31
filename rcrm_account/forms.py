@@ -17,7 +17,7 @@ class LoginForm(Form):
     """
     The form is for user login.
     """
-    email = CharField(label=_("Email"), widget=TextInput())
+    email = EmailField(label=_("Email"), widget=TextInput())
     password = CharField(label=_("Password"), widget=PasswordInput())
 
     def clean(self):
@@ -37,7 +37,7 @@ class RegisterForm(ModelForm):
     """
     The form is for user registration.
     """
-    email = CharField(label=_("Email"), widget=TextInput())
+    email = EmailField(label=_("Email"), widget=TextInput())
     password = CharField(label=_("Password"), widget=PasswordInput())
     confirm_password = CharField(
         label=_("Password Confirmation"), widget=PasswordInput()
