@@ -4,6 +4,22 @@ services:
     environment:
       POSTGRES_USER: rcrm
       POSTGRES_PASSWORD: secret
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+
+  worker:
+    build: .
+    command: celery -A rcrm worker -l info -n rcrm_celery@%h --statedb=./worker.state
+    volumes:
+      - .:/code
+    links:
+      - redis
+    depends_on:
+      - redis
+
   backend:
     command: python manage.py runserver 0:8000
     volumes:

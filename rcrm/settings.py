@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     'django_cleanup',
     'import_export',
     'location_field.apps.DefaultConfig',
-
+    'celery'
 ]
 
 MIDDLEWARE = [
@@ -177,3 +177,7 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
     },
 }
+
+# Celery
+CELERY_BROKER_URL = env['CELERY_BROKER_URL']
+CELERY_RESULT_BACKEND = env['CELERY_RESULT_BACKEND']

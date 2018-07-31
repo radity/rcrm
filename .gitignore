@@ -109,3 +109,6 @@ design/node_modules
 
 #idea
 .idea/
+
+# Celery
+worker.state
