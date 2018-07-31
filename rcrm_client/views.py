@@ -1,6 +1,7 @@
 from django.contrib import messages
+from django.shortcuts import redirect
 from django.db.models import Q
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render, reverse
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -49,11 +50,24 @@ class ClientDetailView(AccountControlViewMixin, TemplateView):
     """
     template_name = 'client/pages/client_detail.html'
 
+    def dispatch(self, request, pk, *args, **kwargs):
+        try:
+            self.client = Client.objects.get(is_deleted=False, id=pk)
+        except Client.DoesNotExist:
+            raise Http404()
+
+        if self.client.account != request.user.account:
+            return redirect('Clients:Client')
+
+        return super(ClientDetailView, self).dispatch(request, pk, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
-        id = self.kwargs.get('pk')
         context = super(ClientDetailView, self).get_context_data(**kwargs)
-        client = get_object_or_404(Client, is_deleted=False, id=id)
-        context['client'] = client
+
+        context.update({
+            'client': self.client
+        })
+
         return context
 
 
