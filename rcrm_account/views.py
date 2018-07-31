@@ -29,9 +29,9 @@ class LoginView(FormView):
 
     def form_valid(self, form):
         if form.is_valid():
-            username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
+            user = authenticate(username=email, password=password)
             login(self.request, user)
         return super(LoginView, self).form_valid(form)
 

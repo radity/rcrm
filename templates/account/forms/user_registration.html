@@ -1,49 +1,63 @@
 {% extends 'base2.html' %}
+
 {% load i18n static %}
+{% load rcrm_extras %}
+
 
 {% block title %}{% trans 'Register' %} - {{ block.super }}{% endblock %}
 
 {% block content %}
-    <!-- Main wrapper  -->
-    <div id="main-wrapper">
-        <div class="unix-login">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-lg-4">
-                        <div class="login-content card">
-                            <div class="login-form">
-                                <h4>Register</h4>
-                                <form method="post">
-                                    {% csrf_token %}
-                                    <div class="form-group">
-                                        <label>{% trans 'Email' %}:</label>
-                                        {% with field=form.email %}
-                                            {{ field }}
-                                        {% endwith %}
-                                    </div>
-                                    <div class="form-group">
-                                        <label>{% trans 'Password' %}:</label>
-                                        {% with field=form.password %}
-                                            {{ field }}
-                                        {% endwith %}
-                                    </div>
-                                    <div class="form-group">
-                                        <label>{% trans 'Password Comfirmation' %}:</label>
-                                        {% with field=form.password2 %}
-                                            {{ field }}
-                                        {% endwith %}
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">{% trans 'Register' %}</button>
-                                    <div class="register-link m-t-15 text-center">
-                                        <p>{% trans 'Already have account ?' %} <a href="{% url 'Accounts:Login' %}"> {% trans 'Login' %}</a></p>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+  <!-- Main wrapper  -->
+  <div id="main-wrapper">
+    <div class="unix-login">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-lg-4">
+            <div class="login-content card">
+              <div class="login-form">
+                <h4>Register</h4>
+                <form method="post">
+                  {% csrf_token %}
+                  {% if form.non_field_errors %}
+                    {% include 'partials/message.html' with message=form.non_field_errors status='error' %}
+                  {% endif %}
+                  {% with field=form.email %}
+                    <div class="form-group">
+                      <label>{{ field.label }}:</label>
+                      {% if field.errors %}
+                        {% include 'partials/message.html' with message=field.errors status='error' %}
+                      {% endif %}
+                      {% add_attrs field class="form-control" %}
                     </div>
-                </div>
+                  {% endwith %}
+                  {% with field=form.password %}
+                    <div class="form-group">
+                      <label>{{ field.label }}:</label>
+                      {% if field.errors %}
+                        {% include 'partials/message.html' with message=field.errors status='error' %}
+                      {% endif %}
+                      {% add_attrs field class="form-control" %}
+                    </div>
+                  {% endwith %}
+                  {% with field=form.confirm_password %}
+                    <div class="form-group">
+                      <label>{{ field.label }}:</label>
+                      {% if field.errors %}
+                        {% include 'partials/message.html' with message=field.errors status='error' %}
+                      {% endif %}
+                      {% add_attrs field class="form-control" %}
+                    </div>
+                  {% endwith %}
+                  <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">{% trans 'Register' %}</button>
+                  <div class="register-link m-t-15 text-center">
+                    <p>{% trans 'Already have account ?' %} <a href="{% url 'Accounts:Login' %}"> {% trans 'Login' %}</a></p>
+                  </div>
+                </form>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-
+  </div>
 {% endblock %}

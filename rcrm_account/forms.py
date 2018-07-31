@@ -17,16 +17,19 @@ class LoginForm(Form):
     """
     The form is for user login.
     """
-    username = CharField(label=_("Username"), widget=TextInput(attrs={'class': "form-control"}))
-    password = CharField(label=_("Password"), widget=PasswordInput(attrs={'class': "form-control"}))
+    email = CharField(label=_("Email"), widget=TextInput())
+    password = CharField(label=_("Password"), widget=PasswordInput())
 
     def clean(self):
-        username = self.cleaned_data.get('username')
+        email = self.cleaned_data.get('email')
         password = self.cleaned_data.get('password')
-        if username and password:
-            user = authenticate(username=username, password=password)
+
+        if email and password:
+            user = authenticate(username=email, password=password)
+
             if not user:
                 raise ValidationError(_('Wrong email or password!'))
+
         return super(LoginForm, self).clean()
 
 
@@ -34,32 +37,33 @@ class RegisterForm(ModelForm):
     """
     The form is for user registration.
     """
-    email = CharField(label=_("Email"), widget=TextInput(attrs={'class': "form-control"}))
-    password = CharField(label=_("Password"), widget=PasswordInput(attrs={'class': "form-control"}))
-    password2 = CharField(label=_("Password Confirmation"),
-                          widget=PasswordInput(attrs={'class': "form-control"}))
+    email = CharField(label=_("Email"), widget=TextInput())
+    password = CharField(label=_("Password"), widget=PasswordInput())
+    confirm_password = CharField(
+        label=_("Password Confirmation"), widget=PasswordInput()
+    )
 
     class Meta:
         model = User
-        fields = [
-            'email',
-            'password',
-            'password2'
-        ]
+        fields = ('email', 'password', 'confirm_password')
 
-    def clean(self, *args, **kwargs):
-        password = self.cleaned_data.get('password1')
-        password2 = self.cleaned_data.get('password2')
-        if password != password2:
-            raise ValidationError(_('Password can not be confirmed!'))
-        return super(RegisterForm, self).clean(*args, **kwargs)
-
-    def clean(self, *args, **kwargs):
+    def clean_email(self):
         email = self.cleaned_data.get('email')
-        email_qs = User.objects.filter(email=email)
-        if email_qs.exists():
+        users = User.objects.filter(email=email)
+
+        if users.exists():
             raise ValidationError(_("This email already exists!"))
-        return super(RegisterForm, self).clean(*args, **kwargs)
+
+        return email
+
+    def clean_confirm_password(self):
+        password = self.cleaned_data.get('password')
+        confirm_password = self.cleaned_data.get('confirm_password')
+
+        if password != confirm_password:
+            raise ValidationError(_('Password can not be confirmed!'))
+
+        return confirm_password
 
 
 class AccountForm(ModelForm):
