@@ -34,3 +34,4 @@ class AdminClient(ImportExportModelAdmin):
             'fields': ('created_at', 'modified_at')
         })
     )
+    filter_horizontal = ('contact', 'phone', 'email', 'address', 'social')
