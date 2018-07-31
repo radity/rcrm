@@ -49,8 +49,7 @@
 <script>
     const resultWrapper = $(".autocomplete-results");
     resultWrapper.hide();
-    let result = "{{ account_list|escapejs }}";
-    result = result.replace(/\[+|\]+|"+/g, '').split(',').map(e => e.trim());
+    let result = {{ account_list|safe }};
 
     $("#autocomplete-input").on("input", function(e) {
     const val = this.value;
