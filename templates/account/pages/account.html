@@ -1,52 +1,219 @@
 {% extends 'base.html' %}
+
 {% load i18n static %}
+{% load rcrm_extras %}
+
 
 {% block title %}{{ block.super }}{% endblock %}
 
 {% block breadcrumb %}
-
-<div class="row page-titles">
+  <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-primary">{% trans 'RCRM Account' %}</h3></div>
+      <h3 class="text-primary">{% trans 'RCRM Account' %}</h3></div>
     <div class="col-md-7 align-self-center">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">{% trans 'Home' %}</a></li>
-            <li class="breadcrumb-item active">{% trans 'RCRM Account' %}</li>
-        </ol>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">{% trans 'Home' %}</a></li>
+        <li class="breadcrumb-item active">{% trans 'RCRM Account' %}</li>
+      </ol>
     </div>
-</div>
-
+  </div>
 {% endblock %}
 
 {% block content %}
 
-{% if not request.user.account %}
-<div class="card card-outline-primary">
-    <div class="card-body">
+  {% if not request.user.account %}
+    <div class="card card-outline-primary">
+      <div class="card-body">
         <div class="row p-t-20">
-            <div class="col-md-6">
-                <form method="post" action="{% url 'Accounts:Account_Request' %}">
-                {% csrf_token %}
-                    <h3 class="card-title m-t-15">{% trans 'Join to a RCRM Account' %}</h3>
-                    <div class="form-group">
-                        {% with field=account_request_form.account %}
-                        {{ field }}
-                        {% endwith %}
-                        <div class="autocomplete-results">
-                        </div>
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-success">{% trans 'Send Request' %}</button>
-                    </div>
-                </form>
-            </div>
+          <div class="col-md-6">
+            <form method="post" action="{% url 'Accounts:Account_Request' %}">
+            {% csrf_token %}
+              <h3 class="card-title m-t-15">{% trans 'Join to a RCRM Account' %}</h3>
+              <div class="form-group">
+                {% with field=account_request_form.account %}
+                {{ field }}
+                {% endwith %}
+                <div class="autocomplete-results">
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-success">{% trans 'Send Request' %}</button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-{% endif %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script>
+  {% endif %}
+
+  <div class="card card-outline-primary">
+    <div class="card-body">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+          {% include 'partials/message.html' with message=form.non_field_errors status='error' %}
+        {% endif %}
+        <div class="form-body">
+          <h3 class="card-title m-t-15">
+            {% if request.user.account %}
+              {% trans 'RCRM Account Informations' %}
+            {% else %}
+              {% trans 'or Create a New RCRM Account' %}
+            {% endif %}
+          </h3>
+          <hr>
+          <div class="row p-t-20">
+            <div class="col-md-6">
+              {% with field=form.name %}
+                <div class="form-group">
+                  <label class="control-label">{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              {% with field=form.email %}
+                <div class="form-group">
+                  <label class="control-label">{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              {% with field=form.phone %}
+                <div class="form-group">
+                  <label class="control-label">{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              {% with field=form.description %}
+                <div class="form-group">
+                  <label class="control-label">{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" style="height: 150px" %}
+                </div>
+              {% endwith %}
+              {% with field=form.logo %}
+                <div class="form-group">
+                  <label class="control-label">{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" style="padding: .50rem .75rem;" %}
+                </div>
+              {% endwith %}
+            </div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans 'Save' %}</button>
+          <a href="{% url 'Accounts:Account' %}"><button type="button" class="btn btn-inverse">{% trans 'Cancel' %}</button></a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {% if request.user.account %}
+    <div class="card card-outline-primary">
+      <div class="card-body">
+        <h3 class="card-title m-t-15">{% trans 'Users' %}</h3>
+        <div class="col-md-6">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>{% trans 'Email' %}</th>
+                  <th>{% trans 'Remove / Add' %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in account.users %}
+                <tr>
+                  <th scope="row">
+                    {% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                  </th>
+                  <td><a href="#">{{ user }}</a></td>
+                  <td>
+                    <a href="{{ user.get_delete_url }}"><button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                  </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <table class="table">
+          <tr>
+            <form method="post" action="{% url 'Accounts:Account_Add_User' %}">
+              {% csrf_token %}
+              <th>+</th>
+              <td>
+                {% with field=add_user_for.email %}
+                {{ field }}
+                {% endwith %}
+              </td>
+              <td>
+                <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i></button>
+              </td>
+            </form>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    {% if account.requests %}
+      <div class="card card-outline-primary">
+        <div class="card-body">
+          <h3 class="card-title m-t-15">{% trans 'RCRM Account Requests' %}</h3>
+          <div class="col-md-6">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>{% trans 'Email' %}</th>
+                    <th>{% trans 'Accept / Decline' %}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for request in account.requests %}
+                  <tr>
+                    <th scope="row">
+                      {% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                    </th>
+                    <td>{{ request.user.email }}</td>
+                    <td>
+                      <a href="{{ request.get_absolute_url }}"><button type="submit" class="btn btn-success"><i class="fa fa-check"></i>{% trans ' Accept' %}</button></a>
+                      <a href="{{ request.get_delete_url }}"><button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script>
     const resultWrapper = $(".autocomplete-results");
     resultWrapper.hide();
     let result = {{ account_list|safe }};
@@ -56,171 +223,25 @@
     resultWrapper.html("");
     let resultCount = 0;
     for (let i = 0; i < result.length; i++) {
-        if (
-        val.length != 0 &&
-        result[i].substr(0, val.length).toUpperCase() === val.toUpperCase()
-        ) {
-        const markup = `
-                    <div id="result${i}" class="autocomplete-result">${
-            result[i]
-        }</div>
-                    `;
-        resultWrapper.append(markup);
-        $("#result" + i + "").on("click", function(e) {
-            $("#autocomplete-input").val(e.target.innerHTML);
-            resultWrapper.hide();
-        });
-        resultCount += 1;
-        }
+      if (
+      val.length != 0 &&
+      result[i].substr(0, val.length).toUpperCase() === val.toUpperCase()
+      ) {
+      const markup = `
+            <div id="result${i}" class="autocomplete-result">${
+        result[i]
+      }</div>
+            `;
+      resultWrapper.append(markup);
+      $("#result" + i + "").on("click", function(e) {
+        $("#autocomplete-input").val(e.target.innerHTML);
+        resultWrapper.hide();
+      });
+      resultCount += 1;
+      }
     }
     resultCount ? resultWrapper.show() : resultWrapper.hide();
     });
-</script>
-
-<div class="card card-outline-primary">
-    <div class="card-body">
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-body">
-                <h3 class="card-title m-t-15">
-                    {% if request.user.account %}
-                        {% trans 'RCRM Account Informations' %}
-                    {% else %}
-                        {% trans 'or Create a New RCRM Account' %}
-                    {% endif %}</h3>
-                <hr>
-                <div class="row p-t-20">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {% with field=form.name %}
-                            <label class="control-label">{% trans "RCRM Account Name" %}:</label>
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            {% with field=form.company_email %}
-                            <label class="control-label">{% trans "RCRM Account Email" %}:</label>
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            {% with field=form.company_phone %}
-                            <label class="control-label">{% trans "RCRM Account Phone Number" %}:</label>
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            {% with field=form.description %}
-                            <label class="control-label">{% trans "RCRM Account Description" %}:</label>
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            {% with field=form.logo %}
-                            <label class="control-label">{% trans "RCRM Account Logo" %}:</label>
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-actions">
-                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans 'Save' %}</button>
-                <a href="{% url 'Accounts:Account' %}"><button type="button" class="btn btn-inverse">{% trans 'Cancel' %}</button></a>
-            </div>
-        </form>
-    </div>
-</div>
-
-{% if request.user.account %}
-<div class="card card-outline-primary">
-    <div class="card-body">
-        <h3 class="card-title m-t-15">{% trans 'Users' %}</h3>
-        <div class="col-md-6">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>{% trans 'Email' %}</th>
-                            <th>{% trans 'Remove / Add' %}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for user in account.users %}
-                        <tr>
-                            <th scope="row">
-                                {% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
-                            </th>
-                            <td><a href="#">{{ user }}</a></td>
-                            <td>
-                                <a href="{{ user.get_delete_url }}"><button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <table class="table">
-            <tr>
-                <form method="post" action="{% url 'Accounts:Account_Add_User' %}">
-                    {% csrf_token %}
-                    <th>+</th>
-                    <td>
-                        {% with field=add_user_for.email %}
-                        {{ field }}
-                        {% endwith %}
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i></button>
-                    </td>
-                </form>
-            </tr>
-        </table>
-    </div>
-</div>
-
-{% if account.requests %}
-<div class="card card-outline-primary">
-    <div class="card-body">
-        <h3 class="card-title m-t-15">{% trans 'RCRM Account Requests' %}</h3>
-        <div class="col-md-6">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>{% trans 'Email' %}</th>
-                            <th>{% trans 'Accept / Decline' %}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for request in account.requests %}
-                        <tr>
-                            <th scope="row">
-                                {% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
-                            </th>
-                            <td>{{ request.user.email }}</td>
-                            <td>
-                                <a href="{{ request.get_absolute_url }}"><button type="submit" class="btn btn-success"><i class="fa fa-check"></i>{% trans ' Accept' %}</button></a>
-                                <a href="{{ request.get_delete_url }}"><button type="submit" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{% endif %}
-{% endif %}
+  </script>
 
 {% endblock %}
