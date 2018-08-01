@@ -70,20 +70,24 @@ class AccountForm(ModelForm):
     """
     A form that creates or updates an account.
     """
-    name = CharField(label=_("Account Name"), widget=TextInput(attrs={'class': 'form-control'}))
-    company_email = EmailField(label=_("Account Email"), widget=TextInput(attrs={'class': 'form-control'}))
-    company_phone = CharField(label=_("Account Phone Number"), required=False,
-                              widget=TextInput(attrs={'class': 'form-control'}))
-    description = CharField(label=_("Account Name"), required=False, widget=Textarea(attrs={'class': 'form-control',
-                                                                                            'style': "height:150px"}))
-    logo = ImageField(required=False, widget=FileInput(attrs={'class': 'form-control', 'style': 'padding: .50rem .75rem;'}))
+    name = CharField(label=_("RCRM Account Name"), widget=TextInput())
+    email = EmailField(label=_("RCRM Account Email"), widget=TextInput())
+    phone = CharField(
+        label=_("RCRM Account Phone Number"), required=False, widget=TextInput()
+    )
+    description = CharField(
+        label=_("RCRM Account Description"), required=False, widget=Textarea()
+    )
+    logo = ImageField(
+        label=_("RCRM Account Logo"), required=False, widget=FileInput()
+    )
 
     class Meta:
         model = CRMAccount
         fields = (
             'name',
-            'company_email',
-            'company_phone',
+            'email',
+            'phone',
             'description',
             'logo'
         )

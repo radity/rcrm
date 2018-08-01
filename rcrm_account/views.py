@@ -123,19 +123,26 @@ class AccountView(UpdateView):
         accounts = CRMAccount.objects.filter(is_active=True, is_deleted=False)
         account_list = [account.name for account in accounts]
         context = super(AccountView, self).get_context_data(**kwargs)
-        context['form'] = AccountForm(self.request.FILES or None, instance=self.request.user.account)
+        context['form'] = AccountForm(self.request.POST or None, instance=self.request.user.account)
         context['add_user_for'] = AccountUserAddForm(self.request.POST or None)
         context['account_request_form'] = AccountRequestForm(self.request.POST or None)
         context['account_list'] = account_list
         return context
 
     def form_valid(self, form):
-        form_account = form.save()
-        user = get_object_or_404(User, id=self.request.user.id)
-        if user.account:
-            pass
-        else:
-            User.objects.filter(id=user.id).update(account=form_account)
+        if form.is_valid():
+            form_account = form.save()
+            logo = self.request.FILES.get('logo', None)
+            if logo:
+                form_account.logo = logo
+                form_account.save()
+
+            user = get_object_or_404(User, id=self.request.user.id)
+            if user.account:
+                pass
+            else:
+                User.objects.filter(id=user.id).update(account=form_account)
+
         return super(AccountView, self).form_valid(form=form)
 
 
