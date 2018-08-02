@@ -67,11 +67,17 @@ class JobCreateView(UserAccountControlViewMixin, CreateView):
     success_url = reverse_lazy('Jobs:Job')
 
     def form_valid(self, form):
-        form_cc = form.save(commit=False)
-        form_cc.account = self.request.user.account
-        form_cc.save()
+        job = form.save(commit=False)
+        job.account = self.request.user.account
+        job.save()
         messages.success(self.request, _('Created successfully, thank you.'))
+
         return super(JobCreateView, self).form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, _('Please correct the errors and try again.'))
+
+        return super(JobCreateView, self).form_invalid(form)
 
 
 class JobEditView(AccountControlViewMixinTwo, UpdateView):
@@ -85,12 +91,19 @@ class JobEditView(AccountControlViewMixinTwo, UpdateView):
     def get_success_url(self):
         id = self.kwargs['pk']
         job = get_object_or_404(Job, id=id)
+
         return reverse('Jobs:Job_Detail', args=[job.id])
 
     def form_valid(self, form):
         form.save()
         messages.success(self.request, _('Saved successfully, thank you.'))
+
         return super(JobEditView, self).form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, _('Please correct the errors and try again.'))
+
+        return super(JobEditView, self).form_invalid(form)
 
 
 class JobDeleteView(AccountControlViewMixinTwo, UpdateView):

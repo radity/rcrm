@@ -1,126 +1,169 @@
 {% extends 'base.html' %}
+
 {% load i18n static %}
+{% load rcrm_extras %}
+
 
 {% block title %}{% trans 'Add Job' %} - {{ block.super }}{% endblock %}
 
 {% block breadcrumb %}
-
-<div class="row page-titles">
+  <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-primary">{% trans 'Jobs' %}</h3></div>
+      <h3 class="text-primary">{% trans 'Jobs' %}</h3></div>
     <div class="col-md-7 align-self-center">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
-            <li class="breadcrumb-item active"><a href="{% url 'Employees:Employee' %}">{% trans 'Job' %}</a></li>
-            <li class="breadcrumb-item active">{% trans 'Add Job' %}</li>
-        </ol>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
+        <li class="breadcrumb-item active"><a href="{% url 'Employees:Employee' %}">{% trans 'Job' %}</a></li>
+        <li class="breadcrumb-item active">{% trans 'Add Job' %}</li>
+      </ol>
     </div>
-</div>
-
+  </div>
 {% endblock %}
 
 {% block content %}
-<div class="card card-outline-primary">
+  <div class="card card-outline-primary">
     <div class="card-body">
-        <form method="post">
-            {% csrf_token %}
-            {{ form.media }}
-            <div class="form-body">
-                <h3 class="card-title m-t-15">{% trans 'Add Job' %}</h3>
-                <hr>
-                <div class="row p-t-20">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>{% trans 'Title' %}:</label>
-                            {% with field=form.title %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'Short Description' %}:</label>
-                            {% with field=form.short_description %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'Description' %}:</label>
-                            {% with field=form.description %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'Type of Employment' %}:</label>
-                            {% with field=form.type_of_employment %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <br><h4 class="card-title m-t-15">{% trans 'Skills' %}</h4><hr>
-                        <div class="form-group">
-                            <label>{% trans 'Talent' %}:</label>
-                            {% with field=form.talent %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'Experience' %}:</label>
-                            {% with field=form.experience %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'Education Level' %}:</label>
-                            {% with field=form.education_level %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'Language' %}:</label>
-                            {% with field=form.language %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <br><h4 class="card-title m-t-15">{% trans 'Location' %}</h4><hr>
-                        <div class="form-group">
-                            <label>{% trans 'Office' %}:</label>
-                            {% with field=form.office %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'City' %}:</label>
-                            {% with field=form.city %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'Country' %}:</label>
-                            {% with field=form.country %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <br><h4 class="card-title m-t-15">{% trans 'Extra' %}</h4><hr>
-                        <div class="form-group">
-                            <label>{% trans 'Detail URL' %}:</label>
-                            {% with field=form.url %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'image' %}:</label>
-                            {% with field=form.image %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans 'Add' %}</button>
-                            <a href="{{ request.META.HTTP_REFERER }}">
-                                <button type="button" class="btn btn-inverse">{% trans 'Cancel' %}</button>
-                            </a>
-                        </div>
-                    </div>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.media }}
+        {% if form.non_field_errors %}
+          {% include 'partials/message.html' with message=form.non_field_errors status='error' %}
+        {% endif %}
+        <div class="form-body">
+          <h3 class="card-title m-t-15">{% trans 'Add Job' %}</h3>
+          <hr>
+          <div class="row p-t-20">
+            <div class="col-md-6">
+              {% with field=form.title %}
+                <div class="form-group">
+                  <label>{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
                 </div>
+              {% endwith %}
+              {% with field=form.short_description %}
+                <div class="form-group">
+                  <label>{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" style="height: 150px;"%}
+                </div>
+              {% endwith %}
+              {% with field=form.description %}
+                <div class="form-group">
+                  <label>{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              {% with field=form.type_of_employment %}
+                <div class="form-group">
+                  <label>{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              <br><h4 class="card-title m-t-15">{% trans 'Skills' %}</h4><hr>
+              {% with field=form.talent %}
+                <div class="form-group">
+                  <label>{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              {% with field=form.experience %}
+                <div class="form-group">
+                  <label>{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              {% with field=form.education_level %}
+                <div class="form-group">
+                  <label>{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              {% with field=form.language %}
+                <div class="form-group">
+                  <label>{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              <br><h4 class="card-title m-t-15">{% trans 'Location' %}</h4><hr>
+              {% with field=form.office %}
+                <div class="form-group">
+                  <label>{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              {% with field=form.city %}
+                <div class="form-group">
+                  <label>{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              {% with field=form.country %}
+                <div class="form-group">
+                  <label>{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              <br><h4 class="card-title m-t-15">{% trans 'Extra' %}</h4><hr>
+              {% with field=form.url %}
+                <div class="form-group">
+                  <label>{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              {% with field=form.image %}
+                <div class="form-group">
+                  <label>{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" style="padding: .50rem .75rem;" %}
+                </div>
+              {% endwith %}
+              <div class="form-actions">
+                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans 'Add' %}</button>
+                <a href="{{ request.META.HTTP_REFERER }}">
+                  <button type="button" class="btn btn-inverse">{% trans 'Cancel' %}</button>
+                </a>
+              </div>
             </div>
-        </form>
+          </div>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
 {% endblock %}
