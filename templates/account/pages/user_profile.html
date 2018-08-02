@@ -1,101 +1,129 @@
 {% extends 'base.html' %}
+
+
 {% load i18n static %}
+{% load rcrm_extras %}
+
 
 {% block title %}{{ block.super }}{% endblock %}
 
 {% block breadcrumb %}
-
-<div class="row page-titles">
+  <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-primary">{% trans 'Profile' %}</h3></div>
+      <h3 class="text-primary">{% trans 'Profile' %}</h3></div>
     <div class="col-md-7 align-self-center">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">{% trans 'Home' %}</a></li>
-            <li class="breadcrumb-item active">{% trans 'Dashboard' %}</li>
-        </ol>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">{% trans 'Home' %}</a></li>
+        <li class="breadcrumb-item active">{% trans 'Dashboard' %}</li>
+      </ol>
     </div>
-</div>
-
+  </div>
 {% endblock %}
 
 {% block content %}
-
-<div class="card card-outline-primary">
+  <div class="card card-outline-primary">
     <div class="card-body">
-        <form method="post">
-            {% csrf_token %}
-            <div class="form-body">
-                <h3 class="card-title m-t-15">{% trans 'Edit Your Profile' %}</h3>
-                <hr>
-                <div class="row p-t-20">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {% with field=form.email %}
-                            <label class="control-label">{% trans "Email" %}:</label>
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            {% with field=form.first_name %}
-                            <label class="control-label">{% trans "First Name" %}:</label>
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            {% with field=form.last_name %}
-                            <label class="control-label">{% trans "Last Name" %}:</label>
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            {% with field=form.language %}
-                            <label class="control-label">{% trans "Language" %}:</label>
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                    </div>
+      <form method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+          {% include 'partials/message.html' with message=form.non_field_errors status='error' %}
+        {% endif %}
+        <div class="form-body">
+          <h3 class="card-title m-t-15">{% trans 'Edit Your Profile' %}</h3>
+          <hr>
+          <div class="row p-t-20">
+            <div class="col-md-6">
+              {% with field=form.email %}
+                <div class="form-group">
+                  <label class="control-label">{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
                 </div>
+              {% endwith %}
+              {% with field=form.first_name %}
+                <div class="form-group">
+                  <label class="control-label">{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              {% with field=form.last_name %}
+                <div class="form-group">
+                  <label class="control-label">{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              {% with field=form.language %}
+                <div class="form-group">
+                  <label class="control-label">{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control custom-select" %}
+                </div>
+              {% endwith %}
             </div>
-            <div class="form-actions">
-                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans 'Save' %}</button>
-            </div>
-        </form>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-success" name="form"><i class="fa fa-check"></i> {% trans 'Save' %}</button>
+        </div>
+      </form>
     </div>
-</div>
-<div class="card card-outline-primary">
+  </div>
+  <div class="card card-outline-primary">
     <div class="card-body">
-        <form method="post" action="{% url 'Accounts:User_Password' %}">
-            {% csrf_token %}
-            <div class="form-body">
-                <h3 class="card-title m-t-15">{% trans 'Change Your Password' %}</h3>
-                <hr>
-                <div class="row p-t-20">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {% with field=password_form.old_password %}
-                            <label class="control-label">{% trans "Old Password" %}:</label>
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            {% with field=password_form.new_password1 %}
-                            <label class="control-label">{% trans "Password" %}:</label>
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            {% with field=password_form.new_password2 %}
-                            <label class="control-label">{% trans "Password Confirmation" %}:</label>
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                    </div>
+      <form method="post">
+        {% csrf_token %}
+        {% if password_form.non_field_errors %}
+          {% include 'partials/message.html' with message=password_form.non_field_errors status='error' %}
+        {% endif %}
+        <div class="form-body">
+          <h3 class="card-title m-t-15">{% trans 'Change Your Password' %}</h3>
+          <hr>
+          <div class="row p-t-20">
+            <div class="col-md-6">
+              {% with field=password_form.old_password %}
+                <div class="form-group">
+                  <label class="control-label">{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
                 </div>
+              {% endwith %}
+              {% with field=password_form.new_password1 %}
+                <div class="form-group">
+                  <label class="control-label">{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
+              {% with field=password_form.new_password2 %}
+                <div class="form-group">
+                  <label class="control-label">{{ field.label }}:</label>
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" %}
+                </div>
+              {% endwith %}
             </div>
-            <div class="form-actions">
-                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans 'Save' %}</button>
-            </div>
-        </form>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-success" name="password-form"><i class="fa fa-check"></i> {% trans 'Save' %}</button>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
 {% endblock %}

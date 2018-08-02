@@ -122,11 +122,18 @@ class UserProfileForm(ModelForm):
     """
     A form that lets a user edit own profile
     """
-    email = EmailField(label=_("Email"), widget=TextInput(attrs={'class': 'form-control'}))
-    first_name = CharField(label=_("First Name"), required=False, widget=TextInput(attrs={'class': 'form-control'}))
-    last_name = CharField(label=_("Last Name"), required=False, widget=TextInput(attrs={'class': 'form-control'}))
-    language = CharField(label=_("Country"),
-                        widget=Select(choices=settings.LANGUAGES, attrs={'class': 'form-control custom-select'}))
+    email = EmailField(
+        label=_("Email"), widget=TextInput()
+    )
+    first_name = CharField(
+        label=_("First Name"), required=False, widget=TextInput()
+    )
+    last_name = CharField(
+        label=_("Last Name"), required=False, widget=TextInput()
+    )
+    language = CharField(
+        label=_("Language"), widget=Select(choices=settings.LANGUAGES)
+    )
 
     class Meta:
         model = User
@@ -136,6 +143,16 @@ class UserProfileForm(ModelForm):
             'last_name',
             'language'
         )
+
+    def save(self, user=None, commit=True):
+        if commit and user:
+            user.email = self.cleaned_data.get('email', '')
+            user.first_name = self.cleaned_data.get('first_name', '')
+            user.last_name = self.cleaned_data.get('last_name', '')
+            user.language = self.cleaned_data.get('language', '')
+            user.save()
+
+        return user
 
 
 class SetPasswordForm(ModelForm):
@@ -147,14 +164,10 @@ class SetPasswordForm(ModelForm):
         'password_mismatch': _("The two password fields didn't match."),
     }
     new_password1 = CharField(
-        label=_("New password"),
-        widget=PasswordInput(attrs={'class': 'form-control'}),
-        strip=False
+        label=_("New password"), widget=PasswordInput(), strip=False
     )
     new_password2 = CharField(
-        label=_("New password confirmation"),
-        strip=False,
-        widget=PasswordInput(attrs={'class': 'form-control'}),
+        label=_("New password confirmation"), widget=PasswordInput(), strip=False
     )
 
     class Meta:
@@ -189,9 +202,7 @@ class PasswordChangeForm(SetPasswordForm):
         'password_incorrect': _("Your old password was entered incorrectly. Please enter it again."),
     })
     old_password = CharField(
-        label=_("Old password"),
-        strip=False,
-        widget=PasswordInput(attrs={'class': 'form-control'}),
+        label=_("Old password"), widget=PasswordInput(), strip=False
     )
 
     field_order = ['old_password', 'new_password1', 'new_password2']
