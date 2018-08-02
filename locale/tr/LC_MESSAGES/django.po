@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-07 21:01+0000\n"
+"POT-Creation-Date: 2018-08-02 13:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,1356 +18,1633 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: rcrm/settings.py:128
-msgid "English"
-msgstr "İngilizce"
-
-#: rcrm/settings.py:129
-msgid "German"
-msgstr "Almanca"
-
-#: rcrm/settings.py:130
-msgid "Turkish"
-msgstr "Türkçe"
-
-#: rcrm_account/admin.py:27 rcrm_account/admin.py:54 rcrm_contact/admin.py:25
+#: rcrm_account/admin.py:26 rcrm_account/admin.py:53 rcrm_client/admin.py:30
+#: rcrm_contact/admin.py:25 rcrm_employee/admin.py:27 rcrm_job/admin.py:34
+#: rcrm_util/admin.py:23
 msgid "Status"
 msgstr "Durum"
 
-#: rcrm_account/admin.py:30 rcrm_account/admin.py:57 rcrm_account/admin.py:76
-#: rcrm_contact/admin.py:28 rcrm_contact/admin.py:46 rcrm_contact/admin.py:64
-#: rcrm_contact/admin.py:82 rcrm_contact/admin.py:100
+#: rcrm_account/admin.py:29 rcrm_account/admin.py:56 rcrm_account/admin.py:74
+#: rcrm_client/admin.py:33 rcrm_contact/admin.py:28 rcrm_contact/admin.py:46
+#: rcrm_contact/admin.py:64 rcrm_contact/admin.py:82 rcrm_contact/admin.py:100
+#: rcrm_employee/admin.py:30 rcrm_employee/admin.py:47
+#: rcrm_employee/admin.py:64 rcrm_employee/admin.py:81
+#: rcrm_employee/admin.py:98 rcrm_job/admin.py:37 rcrm_util/admin.py:26
+#: rcrm_util/admin.py:43 rcrm_util/admin.py:60 rcrm_util/admin.py:77
+#: templates/dynamic/forms/dynamic_contact_edit.html:90
 msgid "Date & Time"
 msgstr "Tarih & Zaman"
 
-#: rcrm_account/forms.py:15
-msgid "Username"
-msgstr "Kullanıcı Adı"
+#: rcrm_account/forms.py:20 rcrm_account/forms.py:40 rcrm_account/forms.py:125
+#: rcrm_account/models.py:22 rcrm_contact/forms.py:60 rcrm_employee/forms.py:64
+#: rcrm_util/forms.py:35 templates/account/pages/account.html:134
+#: templates/account/pages/account.html:187
+#: templates/account/pages/user_profile.html:34
+#: templates/client/pages/client_detail.html:65
+#: templates/client/pages/client_detail.html:140
+#: templates/client/pages/client_list.html:86
+#: templates/contact/pages/contact_detail.html:116
+#: templates/contact/pages/contact_list.html:85
+#: templates/employee/pages/employee_detail.html:116
+#: templates/employee/pages/employee_list.html:85
+msgid "Email"
+msgstr "E-posta"
 
-#: rcrm_account/forms.py:16 rcrm_account/forms.py:30
-#: templates/pages/user_profile.html:76
+#: rcrm_account/forms.py:21 rcrm_account/forms.py:41
+#: templates/account/pages/user_profile.html:82
 msgid "Password"
 msgstr "Parola"
 
-#: rcrm_account/forms.py:24
+#: rcrm_account/forms.py:31
 msgid "Wrong email or password!"
-msgstr "Yanlış email veya parola"
+msgstr "Yanlış e-posta veya parola"
 
-#: rcrm_account/forms.py:29 rcrm_account/forms.py:94 rcrm_contact/forms.py:51
-#: templates/pages/account.html:143 templates/pages/account.html:196
-#: templates/pages/contact_detail.html:112
-msgid "Email"
-msgstr "Email"
-
-#: rcrm_account/forms.py:31 templates/pages/user_profile.html:82
+#: rcrm_account/forms.py:43 templates/account/pages/user_profile.html:88
 msgid "Password Confirmation"
 msgstr "Parola Doğrulama"
 
-#: rcrm_account/forms.py:46
+#: rcrm_account/forms.py:55
+msgid "This email already exists!"
+msgstr "Bu e-posta zaten mevcut"
+
+#: rcrm_account/forms.py:64
 msgid "Password can not be confirmed!"
 msgstr "Parola Doğrulanamadı"
 
-#: rcrm_account/forms.py:53
-msgid "This email already exists!"
-msgstr "Bu email zaten mevcut"
+#: rcrm_account/forms.py:73
+msgid "RCRM Account Name"
+msgstr "RCRM Hesap İsmi"
 
-#: rcrm_account/forms.py:58 rcrm_account/forms.py:62 rcrm_account/forms.py:89
-#: rcrm_account/models.py:17
-msgid "Account Name"
-msgstr "Hesap İsmi"
+#: rcrm_account/forms.py:74
+msgid "RCRM Account Email"
+msgstr "RCRM Hesap E-posta"
 
-#: rcrm_account/forms.py:59
-msgid "Account Email"
-msgstr "Hesap Email"
-
-#: rcrm_account/forms.py:60
-msgid "Account Phone Number"
-msgstr "Hesap Telefon Numarası"
-
-#: rcrm_account/forms.py:78 templates/forms/email_create.html:34
-#: templates/forms/email_edit.html:34
-msgid "Email Address"
-msgstr "Email Adresi"
+#: rcrm_account/forms.py:76
+msgid "RCRM Account Phone Number"
+msgstr "RCRM Hesap Telefon Numarası"
 
 #: rcrm_account/forms.py:79
+msgid "RCRM Account Description"
+msgstr "RCRM Kısa Açıklama"
+
+#: rcrm_account/forms.py:82
+msgid "RCRM Account Logo"
+msgstr "RCRM Hesap Logosu"
+
+#: rcrm_account/forms.py:100 rcrm_util/models.py:76
+#: templates/client/forms/email_create.html:33
+#: templates/client/forms/email_edit.html:33
+#: templates/contact/forms/email_create.html:33
+#: templates/contact/forms/email_edit.html:33
+#: templates/employee/forms/email_create.html:33
+#: templates/employee/forms/email_edit.html:33
+msgid "Email Address"
+msgstr "E-posta Adresi"
+
+#: rcrm_account/forms.py:101
 msgid "example@email.com"
 msgstr "example@email.com"
 
-#: rcrm_account/forms.py:95 rcrm_contact/forms.py:11
-#: templates/forms/contact_create.html:34 templates/forms/contact_edit.html:34
+#: rcrm_account/forms.py:117
+msgid "Account Name"
+msgstr "Hesap İsmi"
+
+#: rcrm_account/forms.py:126 rcrm_client/forms.py:14 rcrm_contact/forms.py:14
+#: rcrm_employee/forms.py:14 templates/account/pages/user_profile.html:40
+#: templates/client/forms/contact_add.html:61
+#: templates/contact/forms/contact_create.html:33
+#: templates/contact/forms/contact_edit.html:33
+#: templates/employee/forms/employee_create.html:33
+#: templates/employee/forms/employee_edit.html:33
 msgid "First Name"
 msgstr "Ad"
 
-#: rcrm_account/forms.py:96 rcrm_contact/forms.py:12
-#: templates/forms/contact_create.html:40 templates/forms/contact_edit.html:40
+#: rcrm_account/forms.py:127 rcrm_contact/forms.py:15 rcrm_employee/forms.py:15
+#: templates/account/pages/user_profile.html:46
+#: templates/client/forms/contact_add.html:67
+#: templates/contact/forms/contact_create.html:39
+#: templates/contact/forms/contact_edit.html:39
+#: templates/employee/forms/employee_create.html:39
+#: templates/employee/forms/employee_edit.html:39
 msgid "Last Name"
 msgstr "Soyad"
 
-#: rcrm_account/forms.py:113
-msgid "The two password fields didn't match."
-msgstr "Parolalar Eşleşmedi."
+#: rcrm_account/forms.py:128 rcrm_contact/forms.py:43 rcrm_employee/forms.py:47
+#: rcrm_util/forms.py:18 rcrm_util/models.py:19
+#: templates/client/forms/address_create.html:57
+#: templates/client/forms/address_edit.html:57
+#: templates/client/pages/client_detail.html:181
+#: templates/contact/forms/address_create.html:57
+#: templates/contact/forms/address_edit.html:57
+#: templates/contact/pages/contact_detail.html:157
+#: templates/employee/forms/address_create.html:57
+#: templates/employee/forms/address_edit.html:57
+#: templates/employee/pages/employee_detail.html:157
+#: templates/job/forms/job_create.html:96 templates/job/forms/job_edit.html:96
+#: templates/job/pages/job_detail.html:83
+msgid "Country"
+msgstr "Ülke"
 
-#: rcrm_account/forms.py:116
+#: rcrm_account/forms.py:147
+msgid "The two password fields didn't match."
+msgstr "İki parola alanı eşleşmedi."
+
+#: rcrm_account/forms.py:150
 msgid "New password"
 msgstr "Yeni Parola"
 
-#: rcrm_account/forms.py:121
+#: rcrm_account/forms.py:155
 msgid "New password confirmation"
 msgstr "Yeni Parola Doğrulama"
 
-#: rcrm_account/forms.py:155
+#: rcrm_account/forms.py:189
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "Eski parola yanlış. Lütfen tekrar giriniz."
 
-#: rcrm_account/forms.py:158
+#: rcrm_account/forms.py:192
 msgid "Old password"
 msgstr "Eski Parola"
 
 #: rcrm_account/managers.py:10
 msgid "The given email must be set"
-msgstr "Email gerekli"
+msgstr "E-posta gerekli"
 
 #: rcrm_account/managers.py:25
 msgid "Superuser must have is_superuser=True."
-msgstr ""
+msgstr "Süper kullanıcı is_superuser = True olmalıdır."
 
-#: rcrm_account/models.py:18
-msgid "Company's Email"
-msgstr "Şirket Email'i"
+#: rcrm_account/models.py:21 templates/client/forms/client_create.html:33
+#: templates/client/forms/client_edit.html:34
+#: templates/client/pages/client_detail.html:63
+#: templates/client/pages/client_list.html:84
+#: templates/contact/pages/contact_list.html:84
+#: templates/employee/pages/employee_list.html:84
+msgid "Name"
+msgstr "Ad"
 
-#: rcrm_account/models.py:19
-msgid "Company's Phone Number"
-msgstr "Şirket Telefon Numarası"
+#: rcrm_account/models.py:23 rcrm_util/models.py:51
+#: templates/client/forms/phone_create.html:33
+#: templates/client/forms/phone_edit.html:33
+#: templates/client/pages/client_list.html:87
+#: templates/contact/forms/phone_create.html:33
+#: templates/contact/forms/phone_edit.html:33
+#: templates/contact/pages/contact_list.html:86
+#: templates/employee/forms/phone_create.html:33
+#: templates/employee/forms/phone_edit.html:33
+#: templates/employee/pages/employee_list.html:86
+msgid "Phone Number"
+msgstr "Telefon Numarası"
 
-#: rcrm_account/models.py:20 rcrm_contact/forms.py:17
-#: rcrm_contact/models.py:24 templates/forms/contact_create.html:64
-#: templates/forms/contact_edit.html:64
-msgid "Short Description"
-msgstr "Kısa Açıklama"
+#: rcrm_account/models.py:24 templates/client/forms/client_create.html:39
+#: templates/client/forms/client_edit.html:40
+#: templates/job/forms/job_create.html:46 templates/job/forms/job_edit.html:46
+msgid "Description"
+msgstr "Açıklama"
 
-#: rcrm_account/models.py:21
-msgid "Company's Logo"
-msgstr "Şirket Logosu"
+#: rcrm_account/models.py:25
+msgid "Logo"
+msgstr "Logo"
 
-#: rcrm_account/models.py:24 rcrm_account/models.py:48
-#: rcrm_contact/models.py:27
+#: rcrm_account/models.py:28 rcrm_account/models.py:60 rcrm_client/models.py:35
+#: rcrm_contact/models.py:30 rcrm_dynamic/models.py:142
+#: rcrm_dynamic/models.py:175 rcrm_employee/models.py:32 rcrm_job/models.py:40
+#: rcrm_util/models.py:22 rcrm_util/models.py:54 rcrm_util/models.py:79
 msgid "Is Active?"
 msgstr "Aktif mi?"
 
-#: rcrm_account/models.py:25 rcrm_account/models.py:76
-#: rcrm_contact/models.py:28
+#: rcrm_account/models.py:29 rcrm_account/models.py:91 rcrm_client/models.py:36
+#: rcrm_contact/models.py:31 rcrm_dynamic/models.py:143
+#: rcrm_dynamic/models.py:176 rcrm_employee/models.py:33 rcrm_job/models.py:41
+#: rcrm_util/models.py:23 rcrm_util/models.py:55 rcrm_util/models.py:80
 msgid "Is Deleted?"
 msgstr "Silindi mi?"
 
-#: rcrm_account/models.py:28 rcrm_account/models.py:52
-#: rcrm_account/models.py:79 rcrm_contact/models.py:31
-#: rcrm_contact/models.py:100 rcrm_contact/models.py:133
-#: rcrm_contact/models.py:156 rcrm_contact/models.py:175
+#: rcrm_account/models.py:32 rcrm_account/models.py:64
+#: rcrm_account/models.py:94 rcrm_client/models.py:39 rcrm_contact/models.py:34
+#: rcrm_contact/models.py:118 rcrm_contact/models.py:154
+#: rcrm_contact/models.py:180 rcrm_contact/models.py:202
+#: rcrm_dynamic/models.py:22 rcrm_dynamic/models.py:35
+#: rcrm_dynamic/models.py:48 rcrm_dynamic/models.py:61
+#: rcrm_dynamic/models.py:74 rcrm_dynamic/models.py:87
+#: rcrm_dynamic/models.py:100 rcrm_dynamic/models.py:113
+#: rcrm_dynamic/models.py:126 rcrm_dynamic/models.py:146
+#: rcrm_dynamic/models.py:179 rcrm_employee/models.py:36
+#: rcrm_employee/models.py:109 rcrm_employee/models.py:145
+#: rcrm_employee/models.py:170 rcrm_employee/models.py:191
+#: rcrm_job/models.py:44 rcrm_util/models.py:26 rcrm_util/models.py:58
+#: rcrm_util/models.py:83 rcrm_util/models.py:109
 msgid "Added"
 msgstr "Eklendi"
 
-#: rcrm_account/models.py:29 rcrm_account/models.py:53
-#: rcrm_account/models.py:80 rcrm_contact/models.py:32
-#: rcrm_contact/models.py:101 rcrm_contact/models.py:134
-#: rcrm_contact/models.py:157 rcrm_contact/models.py:176
+#: rcrm_account/models.py:33 rcrm_account/models.py:65
+#: rcrm_account/models.py:95 rcrm_client/models.py:40 rcrm_contact/models.py:35
+#: rcrm_contact/models.py:119 rcrm_contact/models.py:155
+#: rcrm_contact/models.py:181 rcrm_contact/models.py:203
+#: rcrm_dynamic/models.py:23 rcrm_dynamic/models.py:36
+#: rcrm_dynamic/models.py:49 rcrm_dynamic/models.py:62
+#: rcrm_dynamic/models.py:75 rcrm_dynamic/models.py:88
+#: rcrm_dynamic/models.py:101 rcrm_dynamic/models.py:114
+#: rcrm_dynamic/models.py:127 rcrm_dynamic/models.py:147
+#: rcrm_dynamic/models.py:180 rcrm_employee/models.py:37
+#: rcrm_employee/models.py:110 rcrm_employee/models.py:146
+#: rcrm_employee/models.py:171 rcrm_employee/models.py:192
+#: rcrm_job/models.py:45 rcrm_util/models.py:27 rcrm_util/models.py:59
+#: rcrm_util/models.py:84 rcrm_util/models.py:110
 msgid "Last Modified"
 msgstr "Son Güncelleme"
 
-#: rcrm_account/models.py:42
+#: rcrm_account/models.py:37 templates/partials/header.html:44
+msgid "CRM Account"
+msgstr "CRM Hesap"
+
+#: rcrm_account/models.py:53
 msgid "Email address"
-msgstr "Email Adresi"
+msgstr "E-posta Adresi"
 
-#: rcrm_account/models.py:43
+#: rcrm_account/models.py:54
 msgid "First name"
-msgstr ""
+msgstr "Ad"
 
-#: rcrm_account/models.py:44
+#: rcrm_account/models.py:55
 msgid "Last name"
 msgstr "Soyad"
 
-#: rcrm_account/models.py:49
+#: rcrm_account/models.py:61
 msgid "Is Staff?"
 msgstr "Görevli mi?"
 
-#: rcrm_account/models.py:60
+#: rcrm_account/models.py:72
 msgid "User"
 msgstr "Kullanıcı"
 
-#: rcrm_account/models.py:61
+#: rcrm_account/models.py:73 templates/account/pages/account.html:126
 msgid "Users"
 msgstr "Kullanıcılar"
 
-#: rcrm_account/models.py:83
-msgid "Account Request"
-msgstr "Hesap Talebi"
+#: rcrm_account/models.py:99
+msgid "CRM Account Request"
+msgstr "CRM Hesap Talebi"
 
-#: rcrm_account/models.py:84
-msgid "Account Requests"
-msgstr "Hesap Talepleri"
-
-#: rcrm_account/views.py:52
+#: rcrm_account/views.py:57
 msgid "You need to join to an account or create an account to use RCRM!"
-msgstr "RCRM'i kullanmak için bir hesap oluşturmaya veya başka bir hesaba katılmanız gerekmektedir."
+msgstr ""
+"RCRM'i kullanmak için bir hesap oluşturmanız veya başka bir hesaba katılmanız "
+"gerekmektedir."
 
-#: rcrm_account/views.py:69 rcrm_account/views.py:95 rcrm_contact/views.py:79
-#: rcrm_contact/views.py:137 rcrm_contact/views.py:192
-#: rcrm_contact/views.py:248 rcrm_contact/views.py:303
+#: rcrm_account/views.py:77 rcrm_account/views.py:101 rcrm_client/views.py:106
+#: rcrm_client/views.py:240 rcrm_client/views.py:302 rcrm_client/views.py:364
+#: rcrm_client/views.py:426 rcrm_contact/views.py:94 rcrm_contact/views.py:161
+#: rcrm_contact/views.py:225 rcrm_contact/views.py:290
+#: rcrm_contact/views.py:354 rcrm_employee/views.py:86
+#: rcrm_employee/views.py:153 rcrm_employee/views.py:217
+#: rcrm_employee/views.py:282 rcrm_employee/views.py:346 rcrm_job/views.py:92
 msgid "Saved successfully, thank you."
 msgstr "Başarıyla kaydedildi, teşekkürler"
 
-#: rcrm_account/views.py:147
+#: rcrm_account/views.py:165 rcrm_client/views.py:151 rcrm_client/views.py:178
+#: rcrm_client/views.py:221 rcrm_client/views.py:283 rcrm_client/views.py:345
+#: rcrm_client/views.py:407
 msgid "Added successfully, thank you."
-msgstr "Başarıyla eklendi, teşekkürler"
+msgstr "Başarıyla eklendi, teşekkürler."
 
-#: rcrm_account/views.py:149
+#: rcrm_account/views.py:167
 msgid "The user already has an account!"
 msgstr "Kullanıcı zaten bir hesaba sahip!"
 
-#: rcrm_account/views.py:152
+#: rcrm_account/views.py:170
 msgid "The user could not be found!"
 msgstr "Kullanıcı bulunamadı!"
 
-#: rcrm_account/views.py:166
+#: rcrm_account/views.py:187 rcrm_client/views.py:195
 msgid "Removed successfully, thank you."
-msgstr "Başarıyla silindi, teşekkürler"
+msgstr "Başarıyla silindi, teşekkürler."
 
-#: rcrm_account/views.py:185
+#: rcrm_account/views.py:209
 msgid "Your request has been sent successfully, thank you."
-msgstr "Talebiniz başarıyla gönderildi, teşekkürler"
+msgstr "Talebiniz başarıyla gönderildi, teşekkürler."
 
-#: rcrm_account/views.py:189
+#: rcrm_account/views.py:212
 msgid "There is an Access Request to Your RCRM Account!"
 msgstr "RCRM Hesabınıza Bir Erişim Talebi Var!"
 
-#: rcrm_account/views.py:200
+#: rcrm_account/views.py:227
 msgid "You have already requested to "
-msgstr "Daha önce talep gönderildi: "
+msgstr "Daha önce talep gönderildi "
 
-#: rcrm_account/views.py:203
+#: rcrm_account/views.py:230
 msgid "The account could not found!"
 msgstr "Hesap bulunamadı!"
 
-#: rcrm_account/views.py:218
-msgid "Accepted successfully, thank you."
-msgstr "Başarıyla kabul edildi, teşekkürler"
+#: rcrm_account/views.py:248
+msgid "The user has an account!"
+msgstr "Kullanıcının bir hesabı var!"
 
-#: rcrm_account/views.py:222
+#: rcrm_account/views.py:252
+msgid "Accepted successfully, thank you."
+msgstr "Başarıyla kabul edildi, teşekkürler."
+
+#: rcrm_account/views.py:255
 msgid "Your Request Has Been Accepted"
 msgstr "Talebiniz kabul edildi."
 
-#: rcrm_account/views.py:223
+#: rcrm_account/views.py:256
 msgid ""
 "Your RCRM account request has been accepted. To reach the account: "
 "http://127.0.0.1:8000/accounts/"
 msgstr "RCRM hesap başvurunuz kabul edildi. Hesaba ulaşmak için: "
+"http://127.0.0.1:8000/accounts/"
 
-#: rcrm_account/views.py:237
+#: rcrm_account/views.py:281
 msgid "Declined, thank you."
 msgstr "Reddedildi, teşekkürler"
 
-#: rcrm_contact/forms.py:13 templates/forms/contact_create.html:46
-#: templates/forms/contact_edit.html:46
+#: rcrm_client/admin.py:24 templates/client/pages/client_list.html:85
+msgid "Contact Person"
+msgstr "Kontak Kişi"
+
+#: rcrm_client/admin.py:27 templates/client/forms/address_edit.html:14
+#: templates/client/forms/contact_add.html:33
+#: templates/client/forms/email_edit.html:14
+#: templates/client/forms/phone_edit.html:14
+#: templates/client/forms/social_edit.html:14
+#: templates/contact/forms/address_create.html:14
+#: templates/contact/forms/address_edit.html:14
+#: templates/contact/forms/contact_create.html:14
+#: templates/contact/forms/contact_edit.html:14
+#: templates/contact/forms/email_create.html:14
+#: templates/contact/forms/email_edit.html:14
+#: templates/contact/forms/import_contact.html:12
+#: templates/contact/forms/phone_create.html:14
+#: templates/contact/forms/phone_edit.html:14
+#: templates/contact/forms/social_create.html:14
+#: templates/contact/forms/social_edit.html:14
+#: templates/contact/pages/contact_detail.html:14
+#: templates/contact/pages/contact_list.html:14
+#: templates/dynamic/forms/dynamic_charfield_create.html:10
+#: templates/dynamic/forms/dynamic_charfield_create.html:14
+#: templates/dynamic/forms/dynamic_contact_create.html:10
+#: templates/dynamic/forms/dynamic_contact_create.html:14
+#: templates/dynamic/forms/dynamic_contact_edit.html:10
+#: templates/dynamic/forms/dynamic_contact_edit.html:14
+#: templates/dynamic/forms/dynamic_date_create.html:10
+#: templates/dynamic/forms/dynamic_date_create.html:14
+#: templates/dynamic/forms/dynamic_date_time_create.html:10
+#: templates/dynamic/forms/dynamic_date_time_create.html:14
+#: templates/dynamic/forms/dynamic_file_create.html:10
+#: templates/dynamic/forms/dynamic_file_create.html:14
+#: templates/dynamic/forms/dynamic_image_create.html:10
+#: templates/dynamic/forms/dynamic_image_create.html:14
+#: templates/dynamic/forms/dynamic_tab_create.html:10
+#: templates/dynamic/forms/dynamic_tab_create.html:14
+#: templates/dynamic/forms/dynamic_textbox_create.html:10
+#: templates/dynamic/forms/dynamic_textbox_create.html:14
+#: templates/dynamic/forms/dynamic_time_create.html:10
+#: templates/dynamic/forms/dynamic_time_create.html:14
+msgid "Contact"
+msgstr "Kontak"
+
+#: rcrm_client/apps.py:7 templates/client/forms/address_create.html:10
+#: templates/client/forms/client_create.html:10
+#: templates/client/forms/client_edit.html:10
+#: templates/client/forms/contact_add.html:10
+#: templates/client/forms/email_create.html:10
+#: templates/client/forms/phone_create.html:10
+#: templates/client/forms/social_create.html:10
+#: templates/client/pages/client_list.html:10
+#: templates/partials/sidebar.html:15
+msgid "Clients"
+msgstr "Müşteriler"
+
+#: rcrm_client/forms.py:15 rcrm_contact/forms.py:20 rcrm_contact/models.py:27
+#: rcrm_employee/forms.py:20 rcrm_employee/models.py:29
+#: templates/client/forms/contact_add.html:91
+#: templates/contact/forms/contact_create.html:63
+#: templates/contact/forms/contact_edit.html:63
+#: templates/dynamic/forms/dynamic_tab_create.html:39
+#: templates/employee/forms/employee_create.html:63
+#: templates/employee/forms/employee_edit.html:63
+#: templates/job/forms/job_create.html:40 templates/job/forms/job_edit.html:40
+msgid "Short Description"
+msgstr "Kısa Açıklama"
+
+#: rcrm_client/views.py:87 rcrm_contact/views.py:77 rcrm_contact/views.py:141
+#: rcrm_contact/views.py:205 rcrm_contact/views.py:270
+#: rcrm_contact/views.py:334 rcrm_employee/views.py:69
+#: rcrm_employee/views.py:133 rcrm_employee/views.py:197
+#: rcrm_employee/views.py:262 rcrm_employee/views.py:326 rcrm_job/views.py:73
+msgid "Created successfully, thank you."
+msgstr "Başarıyla oluşturuldu, teşekkürler."
+
+#: rcrm_client/views.py:126 rcrm_client/views.py:257 rcrm_client/views.py:319
+#: rcrm_client/views.py:381 rcrm_client/views.py:443 rcrm_contact/views.py:114
+#: rcrm_contact/views.py:179 rcrm_contact/views.py:243
+#: rcrm_contact/views.py:308 rcrm_contact/views.py:372
+#: rcrm_employee/views.py:106 rcrm_employee/views.py:171
+#: rcrm_employee/views.py:235 rcrm_employee/views.py:300
+#: rcrm_employee/views.py:364 rcrm_job/views.py:112
+msgid "Deleted successfully, thank you."
+msgstr "Başarıyla silindi, teşekkürler."
+
+#: rcrm_contact/forms.py:16 rcrm_employee/forms.py:16
+#: templates/client/forms/contact_add.html:73
+#: templates/contact/forms/contact_create.html:45
+#: templates/contact/forms/contact_edit.html:45
+#: templates/employee/forms/employee_create.html:45
+#: templates/employee/forms/employee_edit.html:45
 msgid "Gender"
 msgstr "Cinsiyet"
 
-#: rcrm_contact/forms.py:14 rcrm_contact/models.py:22
-#: templates/forms/contact_create.html:52 templates/forms/contact_edit.html:52
+#: rcrm_contact/forms.py:17 rcrm_contact/models.py:25 rcrm_employee/forms.py:17
+#: rcrm_employee/models.py:25 templates/client/forms/contact_add.html:79
+#: templates/contact/forms/contact_create.html:51
+#: templates/contact/forms/contact_edit.html:51
+#: templates/employee/forms/employee_create.html:51
+#: templates/employee/forms/employee_edit.html:51
 msgid "Position/Title"
 msgstr "Pozisyon"
 
-#: rcrm_contact/forms.py:33 rcrm_contact/models.py:92
-#: rcrm_contact/models.py:118 templates/forms/address_create.html:34
-#: templates/forms/address_edit.html:34
-#: templates/pages/contact_detail.html:149
+#: rcrm_contact/forms.py:39 rcrm_contact/models.py:110
+#: rcrm_contact/models.py:122 rcrm_employee/forms.py:43
+#: rcrm_employee/models.py:101 rcrm_employee/models.py:113
+#: rcrm_util/forms.py:14 rcrm_util/models.py:15 rcrm_util/models.py:31
+#: templates/client/forms/address_create.html:33
+#: templates/client/forms/address_edit.html:33
+#: templates/client/pages/client_detail.html:177
+#: templates/client/pages/client_list.html:88
+#: templates/contact/forms/address_create.html:33
+#: templates/contact/forms/address_edit.html:33
+#: templates/contact/pages/contact_detail.html:153
+#: templates/contact/pages/contact_list.html:87
+#: templates/employee/forms/address_create.html:33
+#: templates/employee/forms/address_edit.html:33
+#: templates/employee/pages/employee_detail.html:153
+#: templates/employee/pages/employee_list.html:87
 msgid "Address"
 msgstr "Adres"
 
-#: rcrm_contact/forms.py:34 rcrm_contact/models.py:94
-#: templates/forms/address_create.html:40 templates/forms/address_edit.html:40
-#: templates/pages/contact_detail.html:151
+#: rcrm_contact/forms.py:40 rcrm_contact/models.py:112
+#: rcrm_employee/forms.py:44 rcrm_employee/models.py:103 rcrm_util/forms.py:15
+#: rcrm_util/models.py:16 templates/client/forms/address_create.html:39
+#: templates/client/forms/address_edit.html:39
+#: templates/client/pages/client_detail.html:179
+#: templates/contact/forms/address_create.html:39
+#: templates/contact/forms/address_edit.html:39
+#: templates/contact/pages/contact_detail.html:155
+#: templates/employee/forms/address_create.html:39
+#: templates/employee/forms/address_edit.html:39
+#: templates/employee/pages/employee_detail.html:155
+#: templates/job/forms/job_create.html:90 templates/job/forms/job_edit.html:90
+#: templates/job/pages/job_detail.html:82 templates/job/pages/job_list.html:86
 msgid "City"
 msgstr "Şehir"
 
-#: rcrm_contact/forms.py:35 rcrm_contact/models.py:95
-#: templates/forms/address_create.html:46 templates/forms/address_edit.html:46
-#: templates/pages/contact_detail.html:150
+#: rcrm_contact/forms.py:41 rcrm_contact/models.py:113
+#: rcrm_employee/forms.py:45 rcrm_employee/models.py:104 rcrm_util/forms.py:16
+#: rcrm_util/models.py:17 templates/client/forms/address_create.html:45
+#: templates/client/forms/address_edit.html:45
+#: templates/client/pages/client_detail.html:178
+#: templates/contact/forms/address_create.html:45
+#: templates/contact/forms/address_edit.html:45
+#: templates/contact/pages/contact_detail.html:154
+#: templates/employee/forms/address_create.html:45
+#: templates/employee/forms/address_edit.html:45
+#: templates/employee/pages/employee_detail.html:154
 msgid "State"
 msgstr "Bölge"
 
-#: rcrm_contact/forms.py:36 templates/pages/contact_detail.html:152
+#: rcrm_contact/forms.py:42 rcrm_employee/forms.py:46 rcrm_util/forms.py:17
+#: templates/client/pages/client_detail.html:180
+#: templates/contact/pages/contact_detail.html:156
+#: templates/employee/pages/employee_detail.html:156
 msgid "Post Code"
 msgstr "Posta Kodu"
 
-#: rcrm_contact/forms.py:37 templates/forms/address_create.html:58
-#: templates/forms/address_edit.html:58
-#: templates/pages/contact_detail.html:153
-msgid "Country"
-msgstr "Ülke"
-
-#: rcrm_contact/forms.py:61
+#: rcrm_contact/forms.py:73 rcrm_employee/forms.py:77 rcrm_util/forms.py:48
+#: templates/client/pages/client_detail.html:64
 msgid "Phone"
 msgstr "Telefon"
 
-#: rcrm_contact/forms.py:71 rcrm_contact/models.py:127
-#: templates/forms/social_create.html:34 templates/forms/social_edit.html:34
-#: templates/pages/contact_detail.html:203
+#: rcrm_contact/forms.py:86 rcrm_contact/models.py:148
+#: rcrm_employee/forms.py:90 rcrm_employee/models.py:138 rcrm_util/forms.py:61
+#: rcrm_util/models.py:103 templates/client/forms/social_create.html:33
+#: templates/client/forms/social_edit.html:33
+#: templates/client/pages/client_detail.html:231
+#: templates/contact/forms/social_create.html:33
+#: templates/contact/forms/social_edit.html:33
+#: templates/contact/pages/contact_detail.html:207
+#: templates/employee/forms/social_create.html:33
+#: templates/employee/forms/social_edit.html:33
+#: templates/employee/pages/employee_detail.html:207
 msgid "Skype"
 msgstr ""
 
-#: rcrm_contact/forms.py:72 rcrm_contact/models.py:129
-#: templates/forms/social_create.html:40 templates/forms/social_edit.html:40
-#: templates/pages/contact_detail.html:207
+#: rcrm_contact/forms.py:87 rcrm_contact/models.py:150
+#: rcrm_employee/forms.py:91 rcrm_employee/models.py:140 rcrm_util/forms.py:62
+#: rcrm_util/models.py:105 templates/client/forms/social_create.html:39
+#: templates/client/forms/social_edit.html:39
+#: templates/client/pages/client_detail.html:235
+#: templates/contact/forms/social_create.html:39
+#: templates/contact/forms/social_edit.html:39
+#: templates/contact/pages/contact_detail.html:211
+#: templates/employee/forms/social_create.html:39
+#: templates/employee/forms/social_edit.html:39
+#: templates/employee/pages/employee_detail.html:211
 msgid "Twitter"
 msgstr ""
 
-#: rcrm_contact/forms.py:73 rcrm_contact/models.py:130
-#: templates/forms/social_create.html:46 templates/forms/social_edit.html:46
-#: templates/pages/contact_detail.html:211
+#: rcrm_contact/forms.py:88 rcrm_contact/models.py:151
+#: rcrm_employee/forms.py:92 rcrm_employee/models.py:141 rcrm_util/forms.py:63
+#: rcrm_util/models.py:106 templates/client/forms/social_create.html:45
+#: templates/client/forms/social_edit.html:45
+#: templates/client/pages/client_detail.html:239
+#: templates/contact/forms/social_create.html:45
+#: templates/contact/forms/social_edit.html:45
+#: templates/contact/pages/contact_detail.html:215
+#: templates/employee/forms/social_create.html:45
+#: templates/employee/forms/social_edit.html:45
+#: templates/employee/pages/employee_detail.html:215
 msgid "Instagram"
 msgstr ""
 
-#: rcrm_contact/forms.py:74 rcrm_contact/models.py:125
-#: templates/forms/social_create.html:52 templates/forms/social_edit.html:52
-#: templates/pages/contact_detail.html:215
+#: rcrm_contact/forms.py:89 rcrm_contact/models.py:146
+#: rcrm_employee/forms.py:93 rcrm_employee/models.py:136 rcrm_util/forms.py:64
+#: rcrm_util/models.py:101 templates/client/forms/social_create.html:51
+#: templates/client/forms/social_edit.html:51
+#: templates/client/pages/client_detail.html:243
+#: templates/contact/forms/social_create.html:51
+#: templates/contact/forms/social_edit.html:51
+#: templates/contact/pages/contact_detail.html:219
+#: templates/employee/forms/social_create.html:51
+#: templates/employee/forms/social_edit.html:51
+#: templates/employee/pages/employee_detail.html:219
 msgid "Website"
 msgstr "Web sitesi"
 
-#: rcrm_contact/forms.py:75 templates/forms/social_create.html:58
-#: templates/forms/social_edit.html:58 templates/pages/contact_detail.html:219
+#: rcrm_contact/forms.py:90 rcrm_employee/forms.py:94 rcrm_util/forms.py:65
+#: templates/client/forms/social_create.html:57
+#: templates/client/forms/social_edit.html:57
+#: templates/client/pages/client_detail.html:247
+#: templates/contact/forms/social_create.html:57
+#: templates/contact/forms/social_edit.html:57
+#: templates/contact/pages/contact_detail.html:223
+#: templates/employee/forms/social_create.html:57
+#: templates/employee/forms/social_edit.html:57
+#: templates/employee/pages/employee_detail.html:223
 msgid "Linkedin"
 msgstr ""
 
-#: rcrm_contact/forms.py:76 templates/forms/social_create.html:64
-#: templates/forms/social_edit.html:64 templates/pages/contact_detail.html:223
+#: rcrm_contact/forms.py:91 rcrm_employee/forms.py:95 rcrm_util/forms.py:66
+#: templates/client/forms/social_create.html:63
+#: templates/client/forms/social_edit.html:63
+#: templates/client/pages/client_detail.html:251
+#: templates/contact/forms/social_create.html:63
+#: templates/contact/forms/social_edit.html:63
+#: templates/contact/pages/contact_detail.html:227
+#: templates/employee/forms/social_create.html:63
+#: templates/employee/forms/social_edit.html:63
+#: templates/employee/pages/employee_detail.html:227
 msgid "Facebook"
 msgstr ""
 
-#: rcrm_contact/models.py:23 templates/forms/contact_create.html:58
-#: templates/forms/contact_edit.html:58
+#: rcrm_contact/models.py:26 rcrm_employee/models.py:26
+#: templates/client/forms/contact_add.html:85
+#: templates/contact/forms/contact_create.html:57
+#: templates/contact/forms/contact_edit.html:57
+#: templates/employee/forms/employee_create.html:57
+#: templates/employee/forms/employee_edit.html:57
 msgid "Date of Birth"
 msgstr "Doğum Tarihi"
 
-#: rcrm_contact/models.py:91
+#: rcrm_contact/models.py:109 rcrm_util/models.py:14
 msgid "Address Title"
 msgstr "Adres Başlığı"
 
-#: rcrm_contact/models.py:96
+#: rcrm_contact/models.py:114 rcrm_employee/models.py:105
 msgid "Post/Zip-code"
 msgstr "Post Kodu"
 
-#: rcrm_contact/models.py:119
+#: rcrm_contact/models.py:123 rcrm_employee/models.py:114
+#: rcrm_util/models.py:32 templates/client/pages/client_detail.html:50
+#: templates/contact/pages/contact_detail.html:64
+#: templates/employee/pages/employee_detail.html:68
 msgid "Addresses"
 msgstr "Adresler"
 
-#: rcrm_contact/models.py:124
+#: rcrm_contact/models.py:145
 msgid "Social Profile Title"
 msgstr "Sosyal Profil Başlığı"
 
-#: rcrm_contact/models.py:126
+#: rcrm_contact/models.py:147 rcrm_employee/models.py:137
+#: rcrm_util/models.py:102
 msgid "Linkedin URL"
 msgstr ""
 
-#: rcrm_contact/models.py:128
+#: rcrm_contact/models.py:149 rcrm_employee/models.py:139
+#: rcrm_util/models.py:104
 msgid "Facebook URL"
 msgstr ""
 
-#: rcrm_contact/models.py:146
+#: rcrm_contact/models.py:158 rcrm_employee/models.py:149
+#: rcrm_util/models.py:114
 msgid "Social Profile"
 msgstr "Sosyal Profil"
 
-#: rcrm_contact/models.py:147
+#: rcrm_contact/models.py:159 rcrm_employee/models.py:150
+#: rcrm_util/models.py:115 templates/client/pages/client_detail.html:51
+#: templates/contact/pages/contact_detail.html:65
+#: templates/employee/pages/employee_detail.html:69
 msgid "Social Profiles"
 msgstr "Sosyal Profiller"
 
-#: rcrm_contact/models.py:152
+#: rcrm_contact/models.py:176 rcrm_util/models.py:50
 msgid "Phone Title"
 msgstr "Telefon Numarası Başlığı"
 
-#: rcrm_contact/models.py:171
+#: rcrm_contact/models.py:198 rcrm_util/models.py:75
 msgid "Email Title"
-msgstr "Email Başlığı"
+msgstr "E-posta Başlığı"
 
-#: rcrm_contact/utils.py:6
+#: rcrm_contact/utils.py:6 rcrm_util/utils.py:6
 msgid "Switzerland"
 msgstr ""
 
-#: rcrm_contact/utils.py:7
+#: rcrm_contact/utils.py:7 rcrm_util/utils.py:7
 msgid "Afghanistan"
 msgstr ""
 
-#: rcrm_contact/utils.py:8
+#: rcrm_contact/utils.py:8 rcrm_util/utils.py:8
 msgid "Aland Islands"
 msgstr ""
 
-#: rcrm_contact/utils.py:9
+#: rcrm_contact/utils.py:9 rcrm_util/utils.py:9
 msgid "Albania"
 msgstr ""
 
-#: rcrm_contact/utils.py:10
+#: rcrm_contact/utils.py:10 rcrm_util/utils.py:10
 msgid "Algeria"
 msgstr ""
 
-#: rcrm_contact/utils.py:11
+#: rcrm_contact/utils.py:11 rcrm_util/utils.py:11
 msgid "American Samoa"
 msgstr ""
 
-#: rcrm_contact/utils.py:12
+#: rcrm_contact/utils.py:12 rcrm_util/utils.py:12
 msgid "Andorra"
 msgstr ""
 
-#: rcrm_contact/utils.py:13
+#: rcrm_contact/utils.py:13 rcrm_util/utils.py:13
 msgid "Angola"
 msgstr ""
 
-#: rcrm_contact/utils.py:14
+#: rcrm_contact/utils.py:14 rcrm_util/utils.py:14
 msgid "Anguilla"
 msgstr ""
 
-#: rcrm_contact/utils.py:15
+#: rcrm_contact/utils.py:15 rcrm_util/utils.py:15
 msgid "Antarctica"
 msgstr ""
 
-#: rcrm_contact/utils.py:16
+#: rcrm_contact/utils.py:16 rcrm_util/utils.py:16
 msgid "Antigua and Barbuda"
 msgstr ""
 
-#: rcrm_contact/utils.py:17
+#: rcrm_contact/utils.py:17 rcrm_util/utils.py:17
 msgid "Argentina"
 msgstr ""
 
-#: rcrm_contact/utils.py:18
+#: rcrm_contact/utils.py:18 rcrm_util/utils.py:18
 msgid "Armenia"
 msgstr ""
 
-#: rcrm_contact/utils.py:19
+#: rcrm_contact/utils.py:19 rcrm_util/utils.py:19
 msgid "Aruba"
 msgstr ""
 
-#: rcrm_contact/utils.py:20
+#: rcrm_contact/utils.py:20 rcrm_util/utils.py:20
 msgid "Australia"
 msgstr ""
 
-#: rcrm_contact/utils.py:21
+#: rcrm_contact/utils.py:21 rcrm_util/utils.py:21
 msgid "Austria"
 msgstr ""
 
-#: rcrm_contact/utils.py:22
+#: rcrm_contact/utils.py:22 rcrm_util/utils.py:22
 msgid "Azerbaijan"
 msgstr ""
 
-#: rcrm_contact/utils.py:23
+#: rcrm_contact/utils.py:23 rcrm_util/utils.py:23
 msgid "Bahamas"
 msgstr ""
 
-#: rcrm_contact/utils.py:24
+#: rcrm_contact/utils.py:24 rcrm_util/utils.py:24
 msgid "Bahrain"
 msgstr ""
 
-#: rcrm_contact/utils.py:25
+#: rcrm_contact/utils.py:25 rcrm_util/utils.py:25
 msgid "Bangladesh"
 msgstr ""
 
-#: rcrm_contact/utils.py:26
+#: rcrm_contact/utils.py:26 rcrm_util/utils.py:26
 msgid "Barbados"
 msgstr ""
 
-#: rcrm_contact/utils.py:27
+#: rcrm_contact/utils.py:27 rcrm_util/utils.py:27
 msgid "Belarus"
 msgstr ""
 
-#: rcrm_contact/utils.py:28
+#: rcrm_contact/utils.py:28 rcrm_util/utils.py:28
 msgid "Belgium"
 msgstr ""
 
-#: rcrm_contact/utils.py:29
+#: rcrm_contact/utils.py:29 rcrm_util/utils.py:29
 msgid "Belize"
 msgstr ""
 
-#: rcrm_contact/utils.py:30
+#: rcrm_contact/utils.py:30 rcrm_util/utils.py:30
 msgid "Benin"
 msgstr ""
 
-#: rcrm_contact/utils.py:31
+#: rcrm_contact/utils.py:31 rcrm_util/utils.py:31
 msgid "Bermuda"
 msgstr ""
 
-#: rcrm_contact/utils.py:32
+#: rcrm_contact/utils.py:32 rcrm_util/utils.py:32
 msgid "Bhutan"
 msgstr ""
 
-#: rcrm_contact/utils.py:33
+#: rcrm_contact/utils.py:33 rcrm_util/utils.py:33
 msgid "Bolivia"
 msgstr ""
 
-#: rcrm_contact/utils.py:34
+#: rcrm_contact/utils.py:34 rcrm_util/utils.py:34
 msgid "Bosnia and Herzegovina"
 msgstr ""
 
-#: rcrm_contact/utils.py:35
+#: rcrm_contact/utils.py:35 rcrm_util/utils.py:35
 msgid "Botswana"
 msgstr ""
 
-#: rcrm_contact/utils.py:36
+#: rcrm_contact/utils.py:36 rcrm_util/utils.py:36
 msgid "Bouvet Island"
 msgstr ""
 
-#: rcrm_contact/utils.py:37
+#: rcrm_contact/utils.py:37 rcrm_util/utils.py:37
 msgid "Brazil"
 msgstr ""
 
-#: rcrm_contact/utils.py:38
+#: rcrm_contact/utils.py:38 rcrm_util/utils.py:38
 msgid "British Indian Ocean Territory"
 msgstr ""
 
-#: rcrm_contact/utils.py:39
+#: rcrm_contact/utils.py:39 rcrm_util/utils.py:39
 msgid "Brunei Darussalam"
 msgstr ""
 
-#: rcrm_contact/utils.py:40
+#: rcrm_contact/utils.py:40 rcrm_util/utils.py:40
 msgid "Bulgaria"
 msgstr ""
 
-#: rcrm_contact/utils.py:41
+#: rcrm_contact/utils.py:41 rcrm_util/utils.py:41
 msgid "Burkina Faso"
 msgstr ""
 
-#: rcrm_contact/utils.py:42
+#: rcrm_contact/utils.py:42 rcrm_util/utils.py:42
 msgid "Burundi"
 msgstr ""
 
-#: rcrm_contact/utils.py:43
+#: rcrm_contact/utils.py:43 rcrm_util/utils.py:43
 msgid "Cambodia"
 msgstr ""
 
-#: rcrm_contact/utils.py:44
+#: rcrm_contact/utils.py:44 rcrm_util/utils.py:44
 msgid "Cameroon"
 msgstr ""
 
-#: rcrm_contact/utils.py:45
+#: rcrm_contact/utils.py:45 rcrm_util/utils.py:45
 msgid "Canada"
 msgstr ""
 
-#: rcrm_contact/utils.py:46
+#: rcrm_contact/utils.py:46 rcrm_util/utils.py:46
 msgid "Cape Verde"
 msgstr ""
 
-#: rcrm_contact/utils.py:47
+#: rcrm_contact/utils.py:47 rcrm_util/utils.py:47
 msgid "Cayman Islands"
 msgstr ""
 
-#: rcrm_contact/utils.py:48
+#: rcrm_contact/utils.py:48 rcrm_util/utils.py:48
 msgid "Central African Republic"
 msgstr ""
 
-#: rcrm_contact/utils.py:49
+#: rcrm_contact/utils.py:49 rcrm_util/utils.py:49
 msgid "Chad"
 msgstr ""
 
-#: rcrm_contact/utils.py:50
+#: rcrm_contact/utils.py:50 rcrm_util/utils.py:50
 msgid "Chile"
 msgstr ""
 
-#: rcrm_contact/utils.py:51
+#: rcrm_contact/utils.py:51 rcrm_util/utils.py:51
 msgid "China"
 msgstr ""
 
-#: rcrm_contact/utils.py:52
+#: rcrm_contact/utils.py:52 rcrm_util/utils.py:52
 msgid "Christmas Island"
 msgstr ""
 
-#: rcrm_contact/utils.py:53
+#: rcrm_contact/utils.py:53 rcrm_util/utils.py:53
 msgid "Cocos (Keeling) Islands"
 msgstr ""
 
-#: rcrm_contact/utils.py:54
+#: rcrm_contact/utils.py:54 rcrm_util/utils.py:54
 msgid "Colombia"
 msgstr ""
 
-#: rcrm_contact/utils.py:55
+#: rcrm_contact/utils.py:55 rcrm_util/utils.py:55
 msgid "Comoros"
 msgstr ""
 
-#: rcrm_contact/utils.py:56
+#: rcrm_contact/utils.py:56 rcrm_util/utils.py:56
 msgid "Congo"
 msgstr ""
 
-#: rcrm_contact/utils.py:57
+#: rcrm_contact/utils.py:57 rcrm_util/utils.py:57
 msgid "Congo, The Democratic Republic of the"
 msgstr ""
 
-#: rcrm_contact/utils.py:58
+#: rcrm_contact/utils.py:58 rcrm_util/utils.py:58
 msgid "Cook Islands"
 msgstr ""
 
-#: rcrm_contact/utils.py:59
+#: rcrm_contact/utils.py:59 rcrm_util/utils.py:59
 msgid "Costa Rica"
 msgstr ""
 
-#: rcrm_contact/utils.py:60
+#: rcrm_contact/utils.py:60 rcrm_util/utils.py:60
 msgid "Cote d'Ivoire"
 msgstr ""
 
-#: rcrm_contact/utils.py:61
+#: rcrm_contact/utils.py:61 rcrm_util/utils.py:61
 msgid "Croatia"
 msgstr ""
 
-#: rcrm_contact/utils.py:62
+#: rcrm_contact/utils.py:62 rcrm_util/utils.py:62
 msgid "Cuba"
 msgstr ""
 
-#: rcrm_contact/utils.py:63
+#: rcrm_contact/utils.py:63 rcrm_util/utils.py:63
 msgid "Cyprus"
 msgstr ""
 
-#: rcrm_contact/utils.py:64
+#: rcrm_contact/utils.py:64 rcrm_util/utils.py:64
 msgid "Czech Republic"
 msgstr ""
 
-#: rcrm_contact/utils.py:65
+#: rcrm_contact/utils.py:65 rcrm_util/utils.py:65
 msgid "Denmark"
 msgstr ""
 
-#: rcrm_contact/utils.py:66
+#: rcrm_contact/utils.py:66 rcrm_util/utils.py:66
 msgid "Djibouti"
 msgstr ""
 
-#: rcrm_contact/utils.py:67
+#: rcrm_contact/utils.py:67 rcrm_util/utils.py:67
 msgid "Dominica"
 msgstr ""
 
-#: rcrm_contact/utils.py:68
+#: rcrm_contact/utils.py:68 rcrm_util/utils.py:68
 msgid "Dominican Republic"
 msgstr ""
 
-#: rcrm_contact/utils.py:69
+#: rcrm_contact/utils.py:69 rcrm_util/utils.py:69
 msgid "Ecuador"
 msgstr ""
 
-#: rcrm_contact/utils.py:70
+#: rcrm_contact/utils.py:70 rcrm_util/utils.py:70
 msgid "Egypt"
 msgstr ""
 
-#: rcrm_contact/utils.py:71
+#: rcrm_contact/utils.py:71 rcrm_util/utils.py:71
 msgid "El Salvador"
 msgstr ""
 
-#: rcrm_contact/utils.py:72
+#: rcrm_contact/utils.py:72 rcrm_util/utils.py:72
 msgid "Equatorial Guinea"
 msgstr ""
 
-#: rcrm_contact/utils.py:73
+#: rcrm_contact/utils.py:73 rcrm_util/utils.py:73
 msgid "Eritrea"
 msgstr ""
 
-#: rcrm_contact/utils.py:74
+#: rcrm_contact/utils.py:74 rcrm_util/utils.py:74
 msgid "Estonia"
 msgstr ""
 
-#: rcrm_contact/utils.py:75
+#: rcrm_contact/utils.py:75 rcrm_util/utils.py:75
 msgid "Ethiopia"
 msgstr ""
 
-#: rcrm_contact/utils.py:76
+#: rcrm_contact/utils.py:76 rcrm_util/utils.py:76
 msgid "Falkland Islands (Malvinas)"
 msgstr ""
 
-#: rcrm_contact/utils.py:77
+#: rcrm_contact/utils.py:77 rcrm_util/utils.py:77
 msgid "Faroe Islands"
 msgstr ""
 
-#: rcrm_contact/utils.py:78
+#: rcrm_contact/utils.py:78 rcrm_util/utils.py:78
 msgid "Fiji"
 msgstr ""
 
-#: rcrm_contact/utils.py:79
+#: rcrm_contact/utils.py:79 rcrm_util/utils.py:79
 msgid "Finland"
 msgstr ""
 
-#: rcrm_contact/utils.py:80
+#: rcrm_contact/utils.py:80 rcrm_util/utils.py:80
 msgid "France"
 msgstr ""
 
-#: rcrm_contact/utils.py:81
+#: rcrm_contact/utils.py:81 rcrm_util/utils.py:81
 msgid "French Guiana"
 msgstr ""
 
-#: rcrm_contact/utils.py:82
+#: rcrm_contact/utils.py:82 rcrm_util/utils.py:82
 msgid "French Polynesia"
 msgstr ""
 
-#: rcrm_contact/utils.py:83
+#: rcrm_contact/utils.py:83 rcrm_util/utils.py:83
 msgid "French Southern Territories"
 msgstr ""
 
-#: rcrm_contact/utils.py:84
+#: rcrm_contact/utils.py:84 rcrm_util/utils.py:84
 msgid "Gabon"
 msgstr ""
 
-#: rcrm_contact/utils.py:85
+#: rcrm_contact/utils.py:85 rcrm_util/utils.py:85
 msgid "Gambia"
 msgstr ""
 
-#: rcrm_contact/utils.py:86
+#: rcrm_contact/utils.py:86 rcrm_util/utils.py:86
 msgid "Georgia"
 msgstr ""
 
-#: rcrm_contact/utils.py:87
+#: rcrm_contact/utils.py:87 rcrm_util/utils.py:87
 msgid "Germany"
 msgstr ""
 
-#: rcrm_contact/utils.py:88
+#: rcrm_contact/utils.py:88 rcrm_util/utils.py:88
 msgid "Ghana"
 msgstr ""
 
-#: rcrm_contact/utils.py:89
+#: rcrm_contact/utils.py:89 rcrm_util/utils.py:89
 msgid "Gibraltar"
 msgstr ""
 
-#: rcrm_contact/utils.py:90
+#: rcrm_contact/utils.py:90 rcrm_util/utils.py:90
 msgid "Greece"
 msgstr ""
 
-#: rcrm_contact/utils.py:91
+#: rcrm_contact/utils.py:91 rcrm_util/utils.py:91
 msgid "Greenland"
 msgstr ""
 
-#: rcrm_contact/utils.py:92
+#: rcrm_contact/utils.py:92 rcrm_util/utils.py:92
 msgid "Grenada"
 msgstr ""
 
-#: rcrm_contact/utils.py:93
+#: rcrm_contact/utils.py:93 rcrm_util/utils.py:93
 msgid "Guadeloupe"
 msgstr ""
 
-#: rcrm_contact/utils.py:94
+#: rcrm_contact/utils.py:94 rcrm_util/utils.py:94
 msgid "Guam"
 msgstr ""
 
-#: rcrm_contact/utils.py:95
+#: rcrm_contact/utils.py:95 rcrm_util/utils.py:95
 msgid "Guatemala"
 msgstr ""
 
-#: rcrm_contact/utils.py:96
+#: rcrm_contact/utils.py:96 rcrm_util/utils.py:96
 msgid "Guernsey"
 msgstr ""
 
-#: rcrm_contact/utils.py:97
+#: rcrm_contact/utils.py:97 rcrm_util/utils.py:97
 msgid "Guinea"
 msgstr ""
 
-#: rcrm_contact/utils.py:98
+#: rcrm_contact/utils.py:98 rcrm_util/utils.py:98
 msgid "Guinea-Bissau"
 msgstr ""
 
-#: rcrm_contact/utils.py:99
+#: rcrm_contact/utils.py:99 rcrm_util/utils.py:99
 msgid "Guyana"
 msgstr ""
 
-#: rcrm_contact/utils.py:100
+#: rcrm_contact/utils.py:100 rcrm_util/utils.py:100
 msgid "Haiti"
 msgstr ""
 
-#: rcrm_contact/utils.py:101
+#: rcrm_contact/utils.py:101 rcrm_util/utils.py:101
 msgid "Heard Island and McDonald Islands"
 msgstr ""
 
-#: rcrm_contact/utils.py:102
+#: rcrm_contact/utils.py:102 rcrm_util/utils.py:102
 msgid "Holy See (Vatican City State)"
 msgstr ""
 
-#: rcrm_contact/utils.py:103
+#: rcrm_contact/utils.py:103 rcrm_util/utils.py:103
 msgid "Honduras"
 msgstr ""
 
-#: rcrm_contact/utils.py:104
+#: rcrm_contact/utils.py:104 rcrm_util/utils.py:104
 msgid "Hong Kong"
 msgstr ""
 
-#: rcrm_contact/utils.py:105
+#: rcrm_contact/utils.py:105 rcrm_util/utils.py:105
 msgid "Hungary"
 msgstr ""
 
-#: rcrm_contact/utils.py:106
+#: rcrm_contact/utils.py:106 rcrm_util/utils.py:106
 msgid "Iceland"
 msgstr ""
 
-#: rcrm_contact/utils.py:107
+#: rcrm_contact/utils.py:107 rcrm_util/utils.py:107
 msgid "India"
 msgstr ""
 
-#: rcrm_contact/utils.py:108
+#: rcrm_contact/utils.py:108 rcrm_util/utils.py:108
 msgid "Indonesia"
 msgstr ""
 
-#: rcrm_contact/utils.py:109
+#: rcrm_contact/utils.py:109 rcrm_util/utils.py:109
 msgid "Iran, Islamic Republic of"
 msgstr ""
 
-#: rcrm_contact/utils.py:110
+#: rcrm_contact/utils.py:110 rcrm_util/utils.py:110
 msgid "Iraq"
 msgstr ""
 
-#: rcrm_contact/utils.py:111
+#: rcrm_contact/utils.py:111 rcrm_util/utils.py:111
 msgid "Ireland"
 msgstr ""
 
-#: rcrm_contact/utils.py:112
+#: rcrm_contact/utils.py:112 rcrm_util/utils.py:112
 msgid "Isle of Man"
 msgstr ""
 
-#: rcrm_contact/utils.py:113
+#: rcrm_contact/utils.py:113 rcrm_util/utils.py:113
 msgid "Israel"
 msgstr ""
 
-#: rcrm_contact/utils.py:114
+#: rcrm_contact/utils.py:114 rcrm_util/utils.py:114
 msgid "Italy"
 msgstr ""
 
-#: rcrm_contact/utils.py:115
+#: rcrm_contact/utils.py:115 rcrm_util/utils.py:115
 msgid "Jamaica"
 msgstr ""
 
-#: rcrm_contact/utils.py:116
+#: rcrm_contact/utils.py:116 rcrm_util/utils.py:116
 msgid "Japan"
 msgstr ""
 
-#: rcrm_contact/utils.py:117
+#: rcrm_contact/utils.py:117 rcrm_util/utils.py:117
 msgid "Jersey"
 msgstr ""
 
-#: rcrm_contact/utils.py:118
+#: rcrm_contact/utils.py:118 rcrm_util/utils.py:118
 msgid "Jordan"
 msgstr ""
 
-#: rcrm_contact/utils.py:119
+#: rcrm_contact/utils.py:119 rcrm_util/utils.py:119
 msgid "Kazakhstan"
 msgstr ""
 
-#: rcrm_contact/utils.py:120
+#: rcrm_contact/utils.py:120 rcrm_util/utils.py:120
 msgid "Kenya"
 msgstr ""
 
-#: rcrm_contact/utils.py:121
+#: rcrm_contact/utils.py:121 rcrm_util/utils.py:121
 msgid "Kiribati"
 msgstr ""
 
-#: rcrm_contact/utils.py:122
+#: rcrm_contact/utils.py:122 rcrm_util/utils.py:122
 msgid "Korea, Democratic People's Republic of"
 msgstr ""
 
-#: rcrm_contact/utils.py:123
+#: rcrm_contact/utils.py:123 rcrm_util/utils.py:123
 msgid "Korea, Republic of"
 msgstr ""
 
-#: rcrm_contact/utils.py:124
+#: rcrm_contact/utils.py:124 rcrm_util/utils.py:124
 msgid "Kuwait"
 msgstr ""
 
-#: rcrm_contact/utils.py:125
+#: rcrm_contact/utils.py:125 rcrm_util/utils.py:125
 msgid "Kyrgyzstan"
 msgstr ""
 
-#: rcrm_contact/utils.py:126
+#: rcrm_contact/utils.py:126 rcrm_util/utils.py:126
 msgid "Lao People's Democratic Republic"
 msgstr ""
 
-#: rcrm_contact/utils.py:127
+#: rcrm_contact/utils.py:127 rcrm_util/utils.py:127
 msgid "Latvia"
 msgstr ""
 
-#: rcrm_contact/utils.py:128
+#: rcrm_contact/utils.py:128 rcrm_util/utils.py:128
 msgid "Lebanon"
 msgstr ""
 
-#: rcrm_contact/utils.py:129
+#: rcrm_contact/utils.py:129 rcrm_util/utils.py:129
 msgid "Lesotho"
 msgstr ""
 
-#: rcrm_contact/utils.py:130
+#: rcrm_contact/utils.py:130 rcrm_util/utils.py:130
 msgid "Liberia"
 msgstr ""
 
-#: rcrm_contact/utils.py:131
+#: rcrm_contact/utils.py:131 rcrm_util/utils.py:131
 msgid "Libyan Arab Jamahiriya"
 msgstr ""
 
-#: rcrm_contact/utils.py:132
+#: rcrm_contact/utils.py:132 rcrm_util/utils.py:132
 msgid "Liechtenstein"
 msgstr ""
 
-#: rcrm_contact/utils.py:133
+#: rcrm_contact/utils.py:133 rcrm_util/utils.py:133
 msgid "Lithuania"
 msgstr ""
 
-#: rcrm_contact/utils.py:134
+#: rcrm_contact/utils.py:134 rcrm_util/utils.py:134
 msgid "Luxembourg"
 msgstr ""
 
-#: rcrm_contact/utils.py:135
+#: rcrm_contact/utils.py:135 rcrm_util/utils.py:135
 msgid "Macao"
 msgstr ""
 
-#: rcrm_contact/utils.py:136
+#: rcrm_contact/utils.py:136 rcrm_util/utils.py:136
 msgid "Macedonia, The Former Yugoslav Republic of"
 msgstr ""
 
-#: rcrm_contact/utils.py:137
+#: rcrm_contact/utils.py:137 rcrm_util/utils.py:137
 msgid "Madagascar"
 msgstr ""
 
-#: rcrm_contact/utils.py:138
+#: rcrm_contact/utils.py:138 rcrm_util/utils.py:138
 msgid "Malawi"
 msgstr ""
 
-#: rcrm_contact/utils.py:139
+#: rcrm_contact/utils.py:139 rcrm_util/utils.py:139
 msgid "Malaysia"
 msgstr ""
 
-#: rcrm_contact/utils.py:140
+#: rcrm_contact/utils.py:140 rcrm_util/utils.py:140
 msgid "Maldives"
 msgstr ""
 
-#: rcrm_contact/utils.py:141
+#: rcrm_contact/utils.py:141 rcrm_util/utils.py:141
 msgid "Mali"
 msgstr ""
 
-#: rcrm_contact/utils.py:142
+#: rcrm_contact/utils.py:142 rcrm_util/utils.py:142
 msgid "Malta"
 msgstr ""
 
-#: rcrm_contact/utils.py:143
+#: rcrm_contact/utils.py:143 rcrm_util/utils.py:143
 msgid "Marshall Islands"
 msgstr ""
 
-#: rcrm_contact/utils.py:144
+#: rcrm_contact/utils.py:144 rcrm_util/utils.py:144
 msgid "Martinique"
 msgstr ""
 
-#: rcrm_contact/utils.py:145
+#: rcrm_contact/utils.py:145 rcrm_util/utils.py:145
 msgid "Mauritania"
 msgstr ""
 
-#: rcrm_contact/utils.py:146
+#: rcrm_contact/utils.py:146 rcrm_util/utils.py:146
 msgid "Mauritius"
 msgstr ""
 
-#: rcrm_contact/utils.py:147
+#: rcrm_contact/utils.py:147 rcrm_util/utils.py:147
 msgid "Mayotte"
 msgstr ""
 
-#: rcrm_contact/utils.py:148
+#: rcrm_contact/utils.py:148 rcrm_util/utils.py:148
 msgid "Mexico"
 msgstr ""
 
-#: rcrm_contact/utils.py:149
+#: rcrm_contact/utils.py:149 rcrm_util/utils.py:149
 msgid "Micronesia, Federated States of"
 msgstr ""
 
-#: rcrm_contact/utils.py:150
+#: rcrm_contact/utils.py:150 rcrm_util/utils.py:150
 msgid "Moldova"
 msgstr ""
 
-#: rcrm_contact/utils.py:151
+#: rcrm_contact/utils.py:151 rcrm_util/utils.py:151
 msgid "Monaco"
 msgstr ""
 
-#: rcrm_contact/utils.py:152
+#: rcrm_contact/utils.py:152 rcrm_util/utils.py:152
 msgid "Mongolia"
 msgstr ""
 
-#: rcrm_contact/utils.py:153
+#: rcrm_contact/utils.py:153 rcrm_util/utils.py:153
 msgid "Montenegro"
 msgstr ""
 
-#: rcrm_contact/utils.py:154
+#: rcrm_contact/utils.py:154 rcrm_util/utils.py:154
 msgid "Montserrat"
 msgstr ""
 
-#: rcrm_contact/utils.py:155
+#: rcrm_contact/utils.py:155 rcrm_util/utils.py:155
 msgid "Morocco"
 msgstr ""
 
-#: rcrm_contact/utils.py:156
+#: rcrm_contact/utils.py:156 rcrm_util/utils.py:156
 msgid "Mozambique"
 msgstr ""
 
-#: rcrm_contact/utils.py:157
+#: rcrm_contact/utils.py:157 rcrm_util/utils.py:157
 msgid "Myanmar"
 msgstr ""
 
-#: rcrm_contact/utils.py:158
+#: rcrm_contact/utils.py:158 rcrm_util/utils.py:158
 msgid "Namibia"
 msgstr ""
 
-#: rcrm_contact/utils.py:159
+#: rcrm_contact/utils.py:159 rcrm_util/utils.py:159
 msgid "Nauru"
 msgstr ""
 
-#: rcrm_contact/utils.py:160
+#: rcrm_contact/utils.py:160 rcrm_util/utils.py:160
 msgid "Nepal"
 msgstr ""
 
-#: rcrm_contact/utils.py:161
+#: rcrm_contact/utils.py:161 rcrm_util/utils.py:161
 msgid "Netherlands"
 msgstr ""
 
-#: rcrm_contact/utils.py:162
+#: rcrm_contact/utils.py:162 rcrm_util/utils.py:162
 msgid "Netherlands Antilles"
 msgstr ""
 
-#: rcrm_contact/utils.py:163
+#: rcrm_contact/utils.py:163 rcrm_util/utils.py:163
 msgid "New Caledonia"
 msgstr ""
 
-#: rcrm_contact/utils.py:164
+#: rcrm_contact/utils.py:164 rcrm_util/utils.py:164
 msgid "New Zealand"
 msgstr ""
 
-#: rcrm_contact/utils.py:165
+#: rcrm_contact/utils.py:165 rcrm_util/utils.py:165
 msgid "Nicaragua"
 msgstr ""
 
-#: rcrm_contact/utils.py:166
+#: rcrm_contact/utils.py:166 rcrm_util/utils.py:166
 msgid "Niger"
 msgstr ""
 
-#: rcrm_contact/utils.py:167
+#: rcrm_contact/utils.py:167 rcrm_util/utils.py:167
 msgid "Nigeria"
 msgstr ""
 
-#: rcrm_contact/utils.py:168
+#: rcrm_contact/utils.py:168 rcrm_util/utils.py:168
 msgid "Niue"
 msgstr ""
 
-#: rcrm_contact/utils.py:169
+#: rcrm_contact/utils.py:169 rcrm_util/utils.py:169
 msgid "Norfolk Island"
 msgstr ""
 
-#: rcrm_contact/utils.py:170
+#: rcrm_contact/utils.py:170 rcrm_util/utils.py:170
 msgid "Northern Mariana Islands"
 msgstr ""
 
-#: rcrm_contact/utils.py:171
+#: rcrm_contact/utils.py:171 rcrm_util/utils.py:171
 msgid "Norway"
 msgstr ""
 
-#: rcrm_contact/utils.py:172
+#: rcrm_contact/utils.py:172 rcrm_util/utils.py:172
 msgid "Oman"
 msgstr ""
 
-#: rcrm_contact/utils.py:173
+#: rcrm_contact/utils.py:173 rcrm_util/utils.py:173
 msgid "Pakistan"
 msgstr ""
 
-#: rcrm_contact/utils.py:174
+#: rcrm_contact/utils.py:174 rcrm_util/utils.py:174
 msgid "Palau"
 msgstr ""
 
-#: rcrm_contact/utils.py:175
+#: rcrm_contact/utils.py:175 rcrm_util/utils.py:175
 msgid "Palestinian Territory, Occupied"
 msgstr ""
 
-#: rcrm_contact/utils.py:176
+#: rcrm_contact/utils.py:176 rcrm_util/utils.py:176
 msgid "Panama"
 msgstr ""
 
-#: rcrm_contact/utils.py:177
+#: rcrm_contact/utils.py:177 rcrm_util/utils.py:177
 msgid "Papua New Guinea"
 msgstr ""
 
-#: rcrm_contact/utils.py:178
+#: rcrm_contact/utils.py:178 rcrm_util/utils.py:178
 msgid "Paraguay"
 msgstr ""
 
-#: rcrm_contact/utils.py:179
+#: rcrm_contact/utils.py:179 rcrm_util/utils.py:179
 msgid "Peru"
 msgstr ""
 
-#: rcrm_contact/utils.py:180
+#: rcrm_contact/utils.py:180 rcrm_util/utils.py:180
 msgid "Philippines"
 msgstr ""
 
-#: rcrm_contact/utils.py:181
+#: rcrm_contact/utils.py:181 rcrm_util/utils.py:181
 msgid "Pitcairn"
 msgstr ""
 
-#: rcrm_contact/utils.py:182
+#: rcrm_contact/utils.py:182 rcrm_util/utils.py:182
 msgid "Poland"
 msgstr ""
 
-#: rcrm_contact/utils.py:183
+#: rcrm_contact/utils.py:183 rcrm_util/utils.py:183
 msgid "Portugal"
 msgstr ""
 
-#: rcrm_contact/utils.py:184
+#: rcrm_contact/utils.py:184 rcrm_util/utils.py:184
 msgid "Puerto Rico"
 msgstr ""
 
-#: rcrm_contact/utils.py:185
+#: rcrm_contact/utils.py:185 rcrm_util/utils.py:185
 msgid "Qatar"
 msgstr ""
 
-#: rcrm_contact/utils.py:186
+#: rcrm_contact/utils.py:186 rcrm_util/utils.py:186
 msgid "Reunion"
 msgstr ""
 
-#: rcrm_contact/utils.py:187
+#: rcrm_contact/utils.py:187 rcrm_util/utils.py:187
 msgid "Romania"
 msgstr ""
 
-#: rcrm_contact/utils.py:188
+#: rcrm_contact/utils.py:188 rcrm_util/utils.py:188
 msgid "Russian Federation"
 msgstr ""
 
-#: rcrm_contact/utils.py:189
+#: rcrm_contact/utils.py:189 rcrm_util/utils.py:189
 msgid "Rwanda"
 msgstr ""
 
-#: rcrm_contact/utils.py:190
+#: rcrm_contact/utils.py:190 rcrm_util/utils.py:190
 msgid "Saint Barthelemy"
 msgstr ""
 
-#: rcrm_contact/utils.py:191
+#: rcrm_contact/utils.py:191 rcrm_util/utils.py:191
 msgid "Saint Helena"
 msgstr ""
 
-#: rcrm_contact/utils.py:192
+#: rcrm_contact/utils.py:192 rcrm_util/utils.py:192
 msgid "Saint Kitts and Nevis"
 msgstr ""
 
-#: rcrm_contact/utils.py:193
+#: rcrm_contact/utils.py:193 rcrm_util/utils.py:193
 msgid "Saint Lucia"
 msgstr ""
 
-#: rcrm_contact/utils.py:194
+#: rcrm_contact/utils.py:194 rcrm_util/utils.py:194
 msgid "Saint Martin"
 msgstr ""
 
-#: rcrm_contact/utils.py:195
+#: rcrm_contact/utils.py:195 rcrm_util/utils.py:195
 msgid "Saint Pierre and Miquelon"
 msgstr ""
 
-#: rcrm_contact/utils.py:196
+#: rcrm_contact/utils.py:196 rcrm_util/utils.py:196
 msgid "Saint Vincent and the Grenadines"
 msgstr ""
 
-#: rcrm_contact/utils.py:197
+#: rcrm_contact/utils.py:197 rcrm_util/utils.py:197
 msgid "Samoa"
 msgstr ""
 
-#: rcrm_contact/utils.py:198
+#: rcrm_contact/utils.py:198 rcrm_util/utils.py:198
 msgid "San Marino"
 msgstr ""
 
-#: rcrm_contact/utils.py:199
+#: rcrm_contact/utils.py:199 rcrm_util/utils.py:199
 msgid "Sao Tome and Principe"
 msgstr ""
 
-#: rcrm_contact/utils.py:200
+#: rcrm_contact/utils.py:200 rcrm_util/utils.py:200
 msgid "Saudi Arabia"
 msgstr ""
 
-#: rcrm_contact/utils.py:201
+#: rcrm_contact/utils.py:201 rcrm_util/utils.py:201
 msgid "Senegal"
 msgstr ""
 
-#: rcrm_contact/utils.py:202
+#: rcrm_contact/utils.py:202 rcrm_util/utils.py:202
 msgid "Serbia"
 msgstr ""
 
-#: rcrm_contact/utils.py:203
+#: rcrm_contact/utils.py:203 rcrm_util/utils.py:203
 msgid "Seychelles"
 msgstr ""
 
-#: rcrm_contact/utils.py:204
+#: rcrm_contact/utils.py:204 rcrm_util/utils.py:204
 msgid "Sierra Leone"
 msgstr ""
 
-#: rcrm_contact/utils.py:205
+#: rcrm_contact/utils.py:205 rcrm_util/utils.py:205
 msgid "Singapore"
 msgstr ""
 
-#: rcrm_contact/utils.py:206
+#: rcrm_contact/utils.py:206 rcrm_util/utils.py:206
 msgid "Slovakia"
 msgstr ""
 
-#: rcrm_contact/utils.py:207
+#: rcrm_contact/utils.py:207 rcrm_util/utils.py:207
 msgid "Slovenia"
 msgstr ""
 
-#: rcrm_contact/utils.py:208
+#: rcrm_contact/utils.py:208 rcrm_util/utils.py:208
 msgid "Solomon Islands"
 msgstr ""
 
-#: rcrm_contact/utils.py:209
+#: rcrm_contact/utils.py:209 rcrm_util/utils.py:209
 msgid "Somalia"
 msgstr ""
 
-#: rcrm_contact/utils.py:210
+#: rcrm_contact/utils.py:210 rcrm_util/utils.py:210
 msgid "South Africa"
 msgstr ""
 
-#: rcrm_contact/utils.py:211
+#: rcrm_contact/utils.py:211 rcrm_util/utils.py:211
 msgid "South Georgia and the South Sandwich Islands"
 msgstr ""
 
-#: rcrm_contact/utils.py:212
+#: rcrm_contact/utils.py:212 rcrm_util/utils.py:212
 msgid "Spain"
 msgstr ""
 
-#: rcrm_contact/utils.py:213
+#: rcrm_contact/utils.py:213 rcrm_util/utils.py:213
 msgid "Sri Lanka"
 msgstr ""
 
-#: rcrm_contact/utils.py:214
+#: rcrm_contact/utils.py:214 rcrm_util/utils.py:214
 msgid "Sudan"
 msgstr ""
 
-#: rcrm_contact/utils.py:215
+#: rcrm_contact/utils.py:215 rcrm_util/utils.py:215
 msgid "Suriname"
 msgstr ""
 
-#: rcrm_contact/utils.py:216
+#: rcrm_contact/utils.py:216 rcrm_util/utils.py:216
 msgid "Svalbard and Jan Mayen"
 msgstr ""
 
-#: rcrm_contact/utils.py:217
+#: rcrm_contact/utils.py:217 rcrm_util/utils.py:217
 msgid "Swaziland"
 msgstr ""
 
-#: rcrm_contact/utils.py:218
+#: rcrm_contact/utils.py:218 rcrm_util/utils.py:218
 msgid "Sweden"
 msgstr ""
 
-#: rcrm_contact/utils.py:219
+#: rcrm_contact/utils.py:219 rcrm_util/utils.py:219
 msgid "Syrian Arab Republic"
 msgstr ""
 
-#: rcrm_contact/utils.py:220
+#: rcrm_contact/utils.py:220 rcrm_util/utils.py:220
 msgid "Taiwan, Province of China"
 msgstr ""
 
-#: rcrm_contact/utils.py:221
+#: rcrm_contact/utils.py:221 rcrm_util/utils.py:221
 msgid "Tajikistan"
 msgstr ""
 
-#: rcrm_contact/utils.py:222
+#: rcrm_contact/utils.py:222 rcrm_util/utils.py:222
 msgid "Tanzania, United Republic of"
 msgstr ""
 
-#: rcrm_contact/utils.py:223
+#: rcrm_contact/utils.py:223 rcrm_util/utils.py:223
 msgid "Thailand"
 msgstr ""
 
-#: rcrm_contact/utils.py:224
+#: rcrm_contact/utils.py:224 rcrm_util/utils.py:224
 msgid "Timor-Leste"
 msgstr ""
 
-#: rcrm_contact/utils.py:225
+#: rcrm_contact/utils.py:225 rcrm_util/utils.py:225
 msgid "Togo"
 msgstr ""
 
-#: rcrm_contact/utils.py:226
+#: rcrm_contact/utils.py:226 rcrm_util/utils.py:226
 msgid "Tokelau"
 msgstr ""
 
-#: rcrm_contact/utils.py:227
+#: rcrm_contact/utils.py:227 rcrm_util/utils.py:227
 msgid "Tonga"
 msgstr ""
 
-#: rcrm_contact/utils.py:228
+#: rcrm_contact/utils.py:228 rcrm_util/utils.py:228
 msgid "Trinidad and Tobago"
 msgstr ""
 
-#: rcrm_contact/utils.py:229
+#: rcrm_contact/utils.py:229 rcrm_util/utils.py:229
 msgid "Tunisia"
 msgstr ""
 
-#: rcrm_contact/utils.py:230
+#: rcrm_contact/utils.py:230 rcrm_util/utils.py:230
 msgid "Turkey"
 msgstr ""
 
-#: rcrm_contact/utils.py:231
+#: rcrm_contact/utils.py:231 rcrm_util/utils.py:231
 msgid "Turkmenistan"
 msgstr ""
 
-#: rcrm_contact/utils.py:232
+#: rcrm_contact/utils.py:232 rcrm_util/utils.py:232
 msgid "Turks and Caicos Islands"
 msgstr ""
 
-#: rcrm_contact/utils.py:233
+#: rcrm_contact/utils.py:233 rcrm_util/utils.py:233
 msgid "Tuvalu"
 msgstr ""
 
-#: rcrm_contact/utils.py:234
+#: rcrm_contact/utils.py:234 rcrm_util/utils.py:234
 msgid "Uganda"
 msgstr ""
 
-#: rcrm_contact/utils.py:235
+#: rcrm_contact/utils.py:235 rcrm_util/utils.py:235
 msgid "Ukraine"
 msgstr ""
 
-#: rcrm_contact/utils.py:236
+#: rcrm_contact/utils.py:236 rcrm_util/utils.py:236
 msgid "United Arab Emirates"
 msgstr ""
 
-#: rcrm_contact/utils.py:237
+#: rcrm_contact/utils.py:237 rcrm_util/utils.py:237
 msgid "United Kingdom"
 msgstr ""
 
-#: rcrm_contact/utils.py:238
+#: rcrm_contact/utils.py:238 rcrm_util/utils.py:238
 msgid "United States"
 msgstr ""
 
-#: rcrm_contact/utils.py:239
+#: rcrm_contact/utils.py:239 rcrm_util/utils.py:239
 msgid "United States Minor Outlying Islands"
 msgstr ""
 
-#: rcrm_contact/utils.py:240
+#: rcrm_contact/utils.py:240 rcrm_util/utils.py:240
 msgid "Uruguay"
 msgstr ""
 
-#: rcrm_contact/utils.py:241
+#: rcrm_contact/utils.py:241 rcrm_util/utils.py:241
 msgid "Uzbekistan"
 msgstr ""
 
-#: rcrm_contact/utils.py:242
+#: rcrm_contact/utils.py:242 rcrm_util/utils.py:242
 msgid "Vanuatu"
 msgstr ""
 
-#: rcrm_contact/utils.py:243
+#: rcrm_contact/utils.py:243 rcrm_util/utils.py:243
 msgid "Venezuela"
 msgstr ""
 
-#: rcrm_contact/utils.py:244
+#: rcrm_contact/utils.py:244 rcrm_util/utils.py:244
 msgid "Viet Nam"
 msgstr ""
 
-#: rcrm_contact/utils.py:245
+#: rcrm_contact/utils.py:245 rcrm_util/utils.py:245
 msgid "Virgin Islands, British"
 msgstr ""
 
-#: rcrm_contact/utils.py:246
+#: rcrm_contact/utils.py:246 rcrm_util/utils.py:246
 msgid "Virgin Islands, U.S."
 msgstr ""
 
-#: rcrm_contact/utils.py:247
+#: rcrm_contact/utils.py:247 rcrm_util/utils.py:247
 msgid "Wallis and Futuna"
 msgstr ""
 
-#: rcrm_contact/utils.py:248
+#: rcrm_contact/utils.py:248 rcrm_util/utils.py:248
 msgid "Western Sahara"
 msgstr ""
 
-#: rcrm_contact/utils.py:249
+#: rcrm_contact/utils.py:249 rcrm_util/utils.py:249
 msgid "Yemen"
 msgstr ""
 
-#: rcrm_contact/utils.py:250
+#: rcrm_contact/utils.py:250 rcrm_util/utils.py:250
 msgid "Zambia"
 msgstr ""
 
-#: rcrm_contact/utils.py:251
+#: rcrm_contact/utils.py:251 rcrm_util/utils.py:251
 msgid "Zimbabwe"
 msgstr ""
 
@@ -1379,263 +1656,1124 @@ msgstr "Erkek"
 msgid "Female"
 msgstr "Kadın"
 
-#: rcrm_contact/views.py:65 rcrm_contact/views.py:120
-#: rcrm_contact/views.py:175 rcrm_contact/views.py:231
-#: rcrm_contact/views.py:286
-msgid "Created successfully, thank you."
-msgstr "Başarıyla oluşturuldu, teşekkürler"
-
-#: rcrm_contact/views.py:96 rcrm_contact/views.py:152
-#: rcrm_contact/views.py:207 rcrm_contact/views.py:263
-#: rcrm_contact/views.py:318
-msgid "Deleted successfully, thank you."
-msgstr "Başarıyla silindi, teşekkürler"
-
-#: rcrm_contact/views.py:339
+#: rcrm_contact/views.py:391
 msgid "Uploaded successfully, thank you."
 msgstr "Başarıyla yüklendi, teşekkürler"
 
-#: rcrm_contact/views.py:342
+#: rcrm_contact/views.py:394
 msgid "Could not be uploaded!"
 msgstr "Yüklenemedi"
 
-#: templates/forms/address_create.html:13 templates/forms/address_edit.html:13
-#: templates/forms/contact_create.html:13 templates/forms/contact_edit.html:13
-#: templates/forms/email_create.html:13 templates/forms/email_edit.html:13
-#: templates/forms/phone_create.html:13 templates/forms/phone_edit.html:13
-#: templates/forms/social_create.html:13 templates/forms/social_edit.html:13
-#: templates/import.html:11 templates/pages/contact_detail.html:13
-#: templates/pages/contact_list.html:13
-msgid "Home"
-msgstr "Anasayfa"
+#: rcrm_dynamic/models.py:27
+msgid "Charfield"
+msgstr "Yazı Alanı"
 
-#: templates/forms/address_create.html:14 templates/forms/address_edit.html:14
-#: templates/forms/contact_create.html:14 templates/forms/contact_edit.html:14
-#: templates/forms/email_create.html:14 templates/forms/email_edit.html:14
-#: templates/forms/phone_create.html:14 templates/forms/phone_edit.html:14
-#: templates/forms/social_create.html:14 templates/forms/social_edit.html:14
-#: templates/import.html:12 templates/pages/contact_detail.html:14
-#: templates/pages/contact_list.html:14
-msgid "Contact"
-msgstr "Kontak"
+#: rcrm_dynamic/models.py:40
+#: templates/dynamic/forms/dynamic_contact_edit.html:48
+#: templates/dynamic/forms/dynamic_textbox_create.html:39
+msgid "Text Box"
+msgstr "Metin Kutusu"
 
-#: templates/forms/address_create.html:15 templates/forms/address_edit.html:15
-#: templates/forms/contact_create.html:15 templates/forms/contact_edit.html:15
-#: templates/forms/email_create.html:15 templates/forms/email_edit.html:15
-#: templates/forms/phone_create.html:15 templates/forms/phone_edit.html:15
-#: templates/forms/social_create.html:15 templates/forms/social_edit.html:15
-#: templates/pages/contact_list.html:61
-msgid "Contacts"
-msgstr "Kontaklar"
+#: rcrm_dynamic/models.py:53
+#: templates/dynamic/forms/dynamic_image_create.html:39
+msgid "Image"
+msgstr "Resim"
 
-#: templates/forms/address_create.html:16
-msgid "Add Address"
-msgstr "Adres Ekle"
+#: rcrm_dynamic/models.py:66
+#: templates/dynamic/forms/dynamic_file_create.html:39
+msgid "File"
+msgstr "Dosya"
 
-#: templates/forms/address_create.html:52 templates/forms/address_edit.html:52
+#: rcrm_dynamic/models.py:79
+#: templates/dynamic/forms/dynamic_date_create.html:39
+msgid "Date"
+msgstr "Tarih"
+
+#: rcrm_dynamic/models.py:92
+#: templates/dynamic/forms/dynamic_time_create.html:39
+msgid "Time"
+msgstr "Zaman"
+
+#: rcrm_dynamic/models.py:105
+#: templates/dynamic/forms/dynamic_date_time_create.html:39
+msgid "Date Time"
+msgstr "Tarih & Zaman"
+
+#: rcrm_dynamic/models.py:118 rcrm_job/models.py:36
+msgid "URL"
+msgstr ""
+
+#: rcrm_dynamic/models.py:131
+msgid "Boolean"
+msgstr ""
+
+#: rcrm_dynamic/models.py:150
+msgid "*Dynamic Tab"
+msgstr "*Dinamik Tab"
+
+#: rcrm_dynamic/models.py:183
+msgid "*Dynamic"
+msgstr "*Dinamik"
+
+#: rcrm_employee/admin.py:24 rcrm_employee/forms.py:22
+#: templates/employee/forms/employee_create.html:69
+#: templates/employee/forms/employee_edit.html:69
+#: templates/employee/pages/employee_detail.html:59
+#: templates/employee/pages/employee_list.html:88
+msgid "Emergency Contact"
+msgstr "Acil Kontak"
+
+#: rcrm_employee/forms.py:23 templates/employee/forms/employee_create.html:75
+#: templates/employee/forms/employee_edit.html:75
+msgid "Emergency Phone Number"
+msgstr "Acil Telefon Numarası"
+
+#: rcrm_employee/forms.py:96 rcrm_employee/models.py:142
+#: templates/employee/forms/social_create.html:69
+#: templates/employee/forms/social_edit.html:69
+#: templates/employee/pages/employee_detail.html:231
+msgid "Other"
+msgstr "Diğer"
+
+#: rcrm_employee/models.py:117
+msgid "'s Address"
+msgstr "Adresi"
+
+#: rcrm_employee/models.py:153
+msgid "'s Social Profile"
+msgstr "Sosyal Profili"
+
+#: rcrm_employee/models.py:174
+msgid "'s Phone"
+msgstr "Telefonu"
+
+#: rcrm_employee/models.py:195
+msgid "'s Email"
+msgstr "E-postası"
+
+#: rcrm_job/admin.py:25 templates/job/pages/job_detail.html:85
+msgid "Requirements"
+msgstr "Bağımlılıklar"
+
+#: rcrm_job/admin.py:28 templates/job/forms/job_create.html:82
+#: templates/job/forms/job_edit.html:82 templates/job/pages/job_detail.html:80
+msgid "Location"
+msgstr "Konum"
+
+#: rcrm_job/admin.py:31 templates/job/forms/job_create.html:101
+#: templates/job/forms/job_edit.html:101
+msgid "Extra"
+msgstr "Ekstra"
+
+#: rcrm_job/models.py:49
+msgid "Job Opportunity"
+msgstr "İş Fırsatı"
+
+#: rcrm_job/models.py:50
+msgid "Job Opportunities"
+msgstr "İş Fırsatları"
+
+#: rcrm_job/utils.py:4
+msgid "Full-Time"
+msgstr "Tam Zamanlı"
+
+#: rcrm_job/utils.py:5
+msgid "Part-Time"
+msgstr "Yarı Zamanı"
+
+#: rcrm_job/utils.py:6
+msgid "Full-Time / Part-Time"
+msgstr "Tam Zamanlı / Yarı Zamanlı"
+
+#: rcrm_util/apps.py:7
+msgid "Utils"
+msgstr ""
+
+#: rcrm_util/models.py:18 templates/client/forms/address_create.html:51
+#: templates/client/forms/address_edit.html:51
+#: templates/contact/forms/address_create.html:51
+#: templates/contact/forms/address_edit.html:51
+#: templates/employee/forms/address_create.html:51
+#: templates/employee/forms/address_edit.html:51
 msgid "Postcode"
 msgstr "Posta Kodu"
 
-#: templates/forms/address_delete.html:16 templates/forms/email_delete.html:16
-#: templates/forms/phone_delete.html:16 templates/forms/social_delete.html:16
-msgid "Are you sure you would like to delete "
-msgstr ""
+#: rcrm_util/models.py:100 templates/job/forms/job_create.html:34
+#: templates/job/forms/job_edit.html:34 templates/job/pages/job_list.html:84
+msgid "Title"
+msgstr "Başlık"
 
-#: templates/forms/address_delete.html:17 templates/forms/email_delete.html:17
-#: templates/forms/phone_delete.html:17 templates/forms/social_delete.html:17
-#: templates/pages/contact_detail.html:30
-msgid "Delete"
-msgstr "Sil"
+#: templates/404.html:11
+msgid "Page not found"
+msgstr "Sayfa Bulunamadı"
 
-#: templates/forms/address_delete.html:18
-#: templates/forms/contact_delete.html:18 templates/forms/email_delete.html:18
-#: templates/forms/phone_delete.html:18 templates/forms/social_delete.html:18
-#: templates/forms/user_account_delete.html:18
-#: templates/forms/user_request_accept.html:18
-#: templates/forms/user_request_decline.html:18
-msgid "No"
-msgstr "Hayır"
+#: templates/404.html:12
+msgid "Back to home"
+msgstr "Ana sayfaya dön"
 
-#: templates/forms/contact_create.html:16 templates/forms/contact_edit.html:16
-msgid "Add Contact"
-msgstr "Kontak Ekle"
+#: templates/account/forms/user_account_delete.html:4
+#: templates/account/forms/user_request_decline.html:4
+#: templates/client/forms/address_delete.html:4
+#: templates/client/forms/email_delete.html:4
+#: templates/client/forms/phone_delete.html:4
+#: templates/client/forms/social_delete.html:4
+#: templates/contact/forms/address_delete.html:4
+#: templates/contact/forms/email_delete.html:4
+#: templates/contact/forms/phone_delete.html:4
+#: templates/contact/forms/social_delete.html:4
+msgid "Remove User"
+msgstr "Kullanıcıyı Sil"
 
-#: templates/forms/contact_delete.html:16
-#: templates/forms/user_account_delete.html:16
+#: templates/account/forms/user_account_delete.html:16
+#: templates/client/forms/client_delete.html:16
+#: templates/client/forms/contact_delete.html:16
+#: templates/contact/forms/contact_delete.html:16
+#: templates/employee/forms/employee_delete.html:16
+#: templates/job/forms/job_delete.html:16
 msgid "Are you sure you would like to remove "
-msgstr ""
+msgstr "Kaldırmak istediğinizden emin misiniz? :"
 
-#: templates/forms/contact_delete.html:17
-#: templates/forms/user_account_delete.html:17
+#: templates/account/forms/user_account_delete.html:17
+#: templates/client/forms/client_delete.html:17
+#: templates/client/forms/contact_delete.html:17
+#: templates/contact/forms/contact_delete.html:17
+#: templates/employee/forms/employee_delete.html:17
+#: templates/job/forms/job_delete.html:17
 msgid "Yes"
 msgstr "Evet"
 
-#: templates/forms/email_create.html:16
-msgid "Add Email Address"
-msgstr "Email Adresi Ekle"
+#: templates/account/forms/user_account_delete.html:18
+#: templates/account/forms/user_request_accept.html:18
+#: templates/account/forms/user_request_decline.html:18
+#: templates/client/forms/address_delete.html:18
+#: templates/client/forms/client_delete.html:18
+#: templates/client/forms/contact_delete.html:18
+#: templates/client/forms/email_delete.html:18
+#: templates/client/forms/phone_delete.html:18
+#: templates/client/forms/social_delete.html:18
+#: templates/contact/forms/address_delete.html:18
+#: templates/contact/forms/contact_delete.html:18
+#: templates/contact/forms/email_delete.html:18
+#: templates/contact/forms/phone_delete.html:18
+#: templates/contact/forms/social_delete.html:18
+#: templates/employee/forms/address_delete.html:18
+#: templates/employee/forms/email_delete.html:18
+#: templates/employee/forms/employee_delete.html:18
+#: templates/employee/forms/phone_delete.html:18
+#: templates/employee/forms/social_delete.html:18
+#: templates/job/forms/job_delete.html:18
+msgid "No"
+msgstr "Hayır"
 
-#: templates/forms/email_edit.html:16 templates/forms/email_edit.html:29
-#: templates/forms/phone_edit.html:16 templates/forms/phone_edit.html:29
-#: templates/forms/social_edit.html:16 templates/forms/social_edit.html:29
-msgid "Edit "
-msgstr "Düzenle"
+#: templates/account/forms/user_login.html:7
+#: templates/account/forms/user_login.html:46
+#: templates/account/forms/user_registration.html:53
+msgid "Login"
+msgstr "Giriş"
 
-#: templates/forms/phone_create.html:16
-msgid "Add Phone Number"
-msgstr "Telefon Numarası Ekle"
+#: templates/account/forms/user_login.html:48
+msgid "Don't have account ?"
+msgstr "Hesabın yok mu?"
 
-#: templates/forms/phone_create.html:34 templates/forms/phone_edit.html:34
-msgid "Phone Number"
-msgstr "Telefon Numarası"
+#: templates/account/forms/user_login.html:48
+#: templates/account/forms/user_registration.html:7
+#: templates/account/forms/user_registration.html:51
+msgid "Register"
+msgstr "Kayıt Ol"
 
-#: templates/forms/phone_edit.html:40
-msgid "Save"
-msgstr "Kaydet"
+#: templates/account/forms/user_registration.html:53
+msgid "Already have account ?"
+msgstr "Zaten hesabın var mı?"
 
-#: templates/forms/phone_edit.html:42
-msgid "Cancel"
-msgstr "İptal"
+#: templates/account/forms/user_request_accept.html:4
+msgid "Accept User"
+msgstr "Kullanıcıyı Kabul Et"
 
-#: templates/forms/social_create.html:16
-msgid "Add Social Profile"
-msgstr "Sosyal Profil Ekle"
-
-#: templates/forms/user_request_accept.html:16
+#: templates/account/forms/user_request_accept.html:16
 msgid "Are you sure you would like to accept "
 msgstr "Kabul etmek istediğinize emin misiniz? :"
 
-#: templates/forms/user_request_accept.html:17
+#: templates/account/forms/user_request_accept.html:17
 msgid "Accept"
 msgstr "Kabul Et"
 
-#: templates/forms/user_request_decline.html:16
+#: templates/account/forms/user_request_decline.html:16
 msgid "Are you sure you would like to decline "
 msgstr "Reddetmek istediğinize emin misiniz? :"
 
-#: templates/forms/user_request_decline.html:17
+#: templates/account/forms/user_request_decline.html:17
 msgid "Decline"
 msgstr "Reddet"
 
-#: templates/import.html:8
-msgid "Contact Import"
-msgstr "Kontakları İçeri Aktar"
+#: templates/account/pages/account.html:12
+#: templates/account/pages/account.html:16
+msgid "RCRM Account"
+msgstr "RCRM Hesap"
 
-#: templates/import.html:13 templates/pages/contact_list.html:43
-msgid "Import"
-msgstr "İçeri Aktar"
+#: templates/account/pages/account.html:15
+#: templates/account/pages/user_profile.html:13
+#: templates/client/forms/address_create.html:13
+#: templates/client/forms/address_edit.html:13
+#: templates/client/forms/client_create.html:13
+#: templates/client/forms/client_edit.html:13
+#: templates/client/forms/contact_add.html:13
+#: templates/client/forms/email_create.html:13
+#: templates/client/forms/email_edit.html:13
+#: templates/client/forms/phone_create.html:13
+#: templates/client/forms/phone_edit.html:13
+#: templates/client/forms/social_create.html:13
+#: templates/client/forms/social_edit.html:13
+#: templates/client/pages/client_detail.html:13
+#: templates/client/pages/client_list.html:13
+#: templates/contact/forms/address_create.html:13
+#: templates/contact/forms/address_edit.html:13
+#: templates/contact/forms/contact_create.html:13
+#: templates/contact/forms/contact_edit.html:13
+#: templates/contact/forms/email_create.html:13
+#: templates/contact/forms/email_edit.html:13
+#: templates/contact/forms/import_contact.html:11
+#: templates/contact/forms/phone_create.html:13
+#: templates/contact/forms/phone_edit.html:13
+#: templates/contact/forms/social_create.html:13
+#: templates/contact/forms/social_edit.html:13
+#: templates/contact/pages/contact_detail.html:13
+#: templates/contact/pages/contact_list.html:13
+#: templates/dynamic/forms/dynamic_charfield_create.html:13
+#: templates/dynamic/forms/dynamic_contact_create.html:13
+#: templates/dynamic/forms/dynamic_contact_edit.html:13
+#: templates/dynamic/forms/dynamic_date_create.html:13
+#: templates/dynamic/forms/dynamic_date_time_create.html:13
+#: templates/dynamic/forms/dynamic_file_create.html:13
+#: templates/dynamic/forms/dynamic_image_create.html:13
+#: templates/dynamic/forms/dynamic_tab_create.html:13
+#: templates/dynamic/forms/dynamic_textbox_create.html:13
+#: templates/dynamic/forms/dynamic_time_create.html:13
+#: templates/employee/forms/address_create.html:13
+#: templates/employee/forms/address_edit.html:13
+#: templates/employee/forms/email_create.html:13
+#: templates/employee/forms/email_edit.html:13
+#: templates/employee/forms/employee_create.html:13
+#: templates/employee/forms/employee_edit.html:13
+#: templates/employee/forms/phone_create.html:13
+#: templates/employee/forms/phone_edit.html:13
+#: templates/employee/forms/social_create.html:13
+#: templates/employee/forms/social_edit.html:13
+#: templates/employee/pages/employee_detail.html:13
+#: templates/employee/pages/employee_list.html:13
+#: templates/job/forms/job_create.html:13 templates/job/forms/job_edit.html:13
+#: templates/job/pages/job_detail.html:13 templates/job/pages/job_list.html:13
+#: templates/partials/bread_crumb.html:6
+msgid "Home"
+msgstr "Anasayfa"
 
-#: templates/import.html:29
-msgid "Upload"
-msgstr "Yükle"
+#: templates/account/pages/account.html:31
+msgid "Join to a RCRM Account"
+msgstr "RCRM Hesabına Katılın"
 
-#: templates/import.html:30
-msgid "Back"
-msgstr "Geri"
+#: templates/account/pages/account.html:40
+msgid "Send Request"
+msgstr "İstek Gönder"
 
-#: templates/pages/account.html:93
-msgid "Account Name:"
-msgstr "Hesap İsmi"
+#: templates/account/pages/account.html:59
+msgid "RCRM Account Informations"
+msgstr "RCRM Hesap Bilgileri"
 
-#: templates/pages/account.html:99
-msgid "Account Email:"
-msgstr "Hesap Email Adresi"
+#: templates/account/pages/account.html:61
+msgid "or Create a New RCRM Account"
+msgstr "veya Yeni Bir RCRM Hesabı Oluşturun"
 
-#: templates/pages/account.html:105
-msgid "Account Phone Number:"
-msgstr "Hesap Telefon Numarası"
+#: templates/account/pages/account.html:116
+#: templates/account/pages/user_profile.html:60
+#: templates/account/pages/user_profile.html:96
+#: templates/client/forms/client_edit.html:46
+#: templates/client/forms/email_edit.html:39
+#: templates/client/forms/phone_edit.html:39
+#: templates/contact/forms/email_edit.html:39
+#: templates/contact/forms/phone_edit.html:39
+#: templates/employee/forms/email_edit.html:39
+#: templates/employee/forms/employee_edit.html:81
+#: templates/employee/forms/phone_edit.html:39
+#: templates/employee/forms/social_edit.html:75
+#: templates/job/forms/job_edit.html:115
+msgid "Save"
+msgstr "Kaydet"
 
-#: templates/pages/account.html:111
-msgid "Description:"
-msgstr "Açıklama:"
+#: templates/account/pages/account.html:117
+#: templates/client/forms/address_create.html:65
+#: templates/client/forms/address_edit.html:65
+#: templates/client/forms/client_create.html:47
+#: templates/client/forms/client_edit.html:48
+#: templates/client/forms/contact_add.html:41
+#: templates/client/forms/contact_add.html:99
+#: templates/client/forms/email_create.html:41
+#: templates/client/forms/email_edit.html:41
+#: templates/client/forms/phone_create.html:41
+#: templates/client/forms/phone_edit.html:41
+#: templates/client/forms/social_create.html:71
+#: templates/client/forms/social_edit.html:71
+#: templates/contact/forms/address_create.html:65
+#: templates/contact/forms/address_edit.html:65
+#: templates/contact/forms/contact_create.html:71
+#: templates/contact/forms/contact_edit.html:71
+#: templates/contact/forms/email_create.html:41
+#: templates/contact/forms/email_edit.html:41
+#: templates/contact/forms/phone_create.html:41
+#: templates/contact/forms/phone_edit.html:41
+#: templates/contact/forms/social_create.html:71
+#: templates/contact/forms/social_edit.html:71
+#: templates/dynamic/forms/dynamic_charfield_create.html:47
+#: templates/dynamic/forms/dynamic_contact_create.html:41
+#: templates/dynamic/forms/dynamic_contact_edit.html:105
+#: templates/dynamic/forms/dynamic_date_create.html:47
+#: templates/dynamic/forms/dynamic_date_time_create.html:47
+#: templates/dynamic/forms/dynamic_file_create.html:47
+#: templates/dynamic/forms/dynamic_image_create.html:47
+#: templates/dynamic/forms/dynamic_tab_create.html:47
+#: templates/dynamic/forms/dynamic_textbox_create.html:47
+#: templates/dynamic/forms/dynamic_time_create.html:47
+#: templates/employee/forms/address_create.html:65
+#: templates/employee/forms/address_edit.html:65
+#: templates/employee/forms/email_create.html:41
+#: templates/employee/forms/email_edit.html:41
+#: templates/employee/forms/employee_create.html:83
+#: templates/employee/forms/employee_edit.html:83
+#: templates/employee/forms/phone_create.html:41
+#: templates/employee/forms/phone_edit.html:41
+#: templates/employee/forms/social_create.html:77
+#: templates/employee/forms/social_edit.html:77
+#: templates/job/forms/job_create.html:117
+#: templates/job/forms/job_edit.html:117
+msgid "Cancel"
+msgstr "İptal"
 
-#: templates/pages/account.html:117
-msgid "Logo:"
-msgstr "Logo"
-
-#: templates/pages/account.html:144
+#: templates/account/pages/account.html:135
 msgid "Remove / Add"
 msgstr "Sil / Ekle"
 
-#: templates/pages/account.html:151 templates/pages/account.html:204
-#: templates/pages/contact_detail.html:83
-#: templates/pages/contact_detail.html:119
-#: templates/pages/contact_detail.html:160
-#: templates/pages/contact_detail.html:199
-#: templates/pages/contact_list.html:79
+#: templates/account/pages/account.html:142
+#: templates/account/pages/account.html:195
+#: templates/client/pages/client_detail.html:72
+#: templates/client/pages/client_detail.html:111
+#: templates/client/pages/client_detail.html:147
+#: templates/client/pages/client_detail.html:188
+#: templates/client/pages/client_detail.html:227
+#: templates/client/pages/client_list.html:94
+#: templates/contact/pages/contact_detail.html:87
+#: templates/contact/pages/contact_detail.html:123
+#: templates/contact/pages/contact_detail.html:164
+#: templates/contact/pages/contact_detail.html:203
+#: templates/contact/pages/contact_list.html:93
+#: templates/employee/pages/employee_detail.html:87
+#: templates/employee/pages/employee_detail.html:123
+#: templates/employee/pages/employee_detail.html:164
+#: templates/employee/pages/employee_detail.html:203
+#: templates/employee/pages/employee_list.html:94
+#: templates/job/pages/job_list.html:93
 #, python-format
 msgid "%(number)s"
-msgstr ""
+msgstr "%(number)s"
 
-#: templates/pages/account.html:197
+#: templates/account/pages/account.html:179
+msgid "RCRM Account Requests"
+msgstr "RCRM Hesap Talepleri"
+
+#: templates/account/pages/account.html:188
 msgid "Accept / Decline"
 msgstr "Kabul Et / Reddet"
 
-#: templates/pages/account.html:208
+#: templates/account/pages/account.html:199
 msgid " Accept"
 msgstr " Kabul Et"
 
-#: templates/pages/contact_detail.html:29
-msgid "Edit"
-msgstr "Düzenle"
-
-#: templates/pages/contact_detail.html:76
-msgid "Number"
-msgstr "Numara"
-
-#: templates/pages/contact_detail.html:77
-#: templates/pages/contact_detail.html:113
-#: templates/pages/contact_detail.html:154
-#: templates/pages/contact_detail.html:227
-msgid "Edit / Delete"
-msgstr "Düzenle / Sil"
-
-#: templates/pages/contact_detail.html:96
-#: templates/pages/contact_detail.html:132
-#: templates/pages/contact_detail.html:181
-#: templates/pages/contact_detail.html:237
-msgid "Add New"
-msgstr "Yeni Ekle"
-
-#: templates/pages/contact_list.html:46
-msgid "Export"
-msgstr "Dışa Aktar"
-
-#: templates/pages/contact_list.html:49
-msgid "New Contact"
-msgstr "Yeni Kontak"
-
-#: templates/pages/user_profile.html:28
-msgid "Edit Your Profile"
-msgstr "Profilini Güncelle"
-
-#: templates/pages/user_profile.html:34
-msgid "Email:"
-msgstr "Email"
-
-#: templates/pages/user_profile.html:40
-msgid "First Name:"
-msgstr "Ad"
-
-#: templates/pages/user_profile.html:46
-msgid "Last Name:"
-msgstr "Soyad"
-
-#: templates/pages/user_profile.html:64
-msgid "Change Your Password"
-msgstr "Parolanı Değiştir"
-
-#: templates/pages/user_profile.html:70
-msgid "Old Password:"
-msgstr "Şimdiki Parola:"
-
-#: templates/partials/header.html:40
-msgid "Account"
-msgstr "Hesap"
-
-#: templates/partials/header.html:41
+#: templates/account/pages/user_profile.html:10
+#: templates/partials/header.html:45
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/partials/header.html:42
+#: templates/account/pages/user_profile.html:14
+#: templates/partials/bread_crumb.html:3 templates/partials/bread_crumb.html:7
+#: templates/partials/sidebar.html:11
+msgid "Dashboard"
+msgstr "Gösterge Paneli"
+
+#: templates/account/pages/user_profile.html:28
+msgid "Edit Your Profile"
+msgstr "Profilini Güncelle"
+
+#: templates/account/pages/user_profile.html:52
+#: templates/job/forms/job_create.html:77 templates/job/forms/job_edit.html:77
+msgid "Language"
+msgstr "Dil"
+
+#: templates/account/pages/user_profile.html:70
+msgid "Change Your Password"
+msgstr "Parolanı Değiştir"
+
+#: templates/account/pages/user_profile.html:76
+msgid "Old Password"
+msgstr "Eski Parola:"
+
+#: templates/client/forms/address_create.html:4
+#: templates/contact/forms/address_create.html:4
+#: templates/employee/forms/address_create.html:4
+msgid "Add an Address"
+msgstr "Adres Ekle"
+
+#: templates/client/forms/address_create.html:14
+#: templates/client/forms/client_create.html:14
+#: templates/client/forms/client_edit.html:14
+#: templates/client/forms/contact_add.html:14
+#: templates/client/forms/email_create.html:14
+#: templates/client/forms/phone_create.html:14
+#: templates/client/forms/social_create.html:14
+#: templates/client/pages/client_detail.html:10
+#: templates/client/pages/client_detail.html:14
+#: templates/client/pages/client_list.html:14
+#: templates/client/pages/client_list.html:76
+msgid "Client"
+msgstr "Müşteri"
+
+#: templates/client/forms/address_create.html:15
+#: templates/client/forms/address_create.html:28
+#: templates/contact/forms/address_create.html:15
+#: templates/contact/forms/address_create.html:28
+#: templates/employee/forms/address_create.html:15
+#: templates/employee/forms/address_create.html:28
+msgid "Add Address"
+msgstr "Adres Ekle"
+
+#: templates/client/forms/address_create.html:63
+#: templates/client/forms/address_edit.html:63
+#: templates/client/forms/client_create.html:45
+#: templates/client/forms/contact_add.html:39
+#: templates/client/forms/contact_add.html:97
+#: templates/client/forms/email_create.html:39
+#: templates/client/forms/phone_create.html:39
+#: templates/client/forms/social_create.html:69
+#: templates/client/forms/social_edit.html:69
+#: templates/contact/forms/address_create.html:63
+#: templates/contact/forms/address_edit.html:63
+#: templates/contact/forms/contact_create.html:69
+#: templates/contact/forms/contact_edit.html:69
+#: templates/contact/forms/email_create.html:39
+#: templates/contact/forms/phone_create.html:39
+#: templates/contact/forms/social_create.html:69
+#: templates/contact/forms/social_edit.html:69
+#: templates/employee/forms/address_create.html:63
+#: templates/employee/forms/address_edit.html:63
+#: templates/employee/forms/email_create.html:39
+#: templates/employee/forms/employee_create.html:81
+#: templates/employee/forms/phone_create.html:39
+#: templates/employee/forms/social_create.html:75
+#: templates/job/forms/job_create.html:115
+msgid "Add"
+msgstr "Ekle"
+
+#: templates/client/forms/address_delete.html:16
+#: templates/client/forms/email_delete.html:16
+#: templates/client/forms/phone_delete.html:16
+#: templates/client/forms/social_delete.html:16
+#: templates/contact/forms/address_delete.html:16
+#: templates/contact/forms/email_delete.html:16
+#: templates/contact/forms/phone_delete.html:16
+#: templates/contact/forms/social_delete.html:16
+#: templates/employee/forms/address_delete.html:16
+#: templates/employee/forms/email_delete.html:16
+#: templates/employee/forms/phone_delete.html:16
+#: templates/employee/forms/social_delete.html:16
+msgid "Are you sure you would like to delete "
+msgstr "Silmek istediğinize emin misiniz? :"
+
+#: templates/client/forms/address_delete.html:17
+#: templates/client/forms/email_delete.html:17
+#: templates/client/forms/phone_delete.html:17
+#: templates/client/forms/social_delete.html:17
+#: templates/client/pages/client_detail.html:30
+#: templates/contact/forms/address_delete.html:17
+#: templates/contact/forms/email_delete.html:17
+#: templates/contact/forms/phone_delete.html:17
+#: templates/contact/forms/social_delete.html:17
+#: templates/contact/pages/contact_detail.html:30
+#: templates/employee/forms/address_delete.html:17
+#: templates/employee/forms/email_delete.html:17
+#: templates/employee/forms/phone_delete.html:17
+#: templates/employee/forms/social_delete.html:17
+#: templates/employee/pages/employee_detail.html:30
+#: templates/job/pages/job_detail.html:37
+msgid "Delete"
+msgstr "Sil"
+
+#: templates/client/forms/address_edit.html:4
+#: templates/client/forms/contact_add.html:28
+#: templates/client/forms/email_edit.html:4
+#: templates/client/forms/phone_edit.html:4
+#: templates/client/forms/social_edit.html:4
+#: templates/contact/forms/address_edit.html:4
+#: templates/contact/forms/contact_create.html:15
+#: templates/contact/forms/contact_create.html:28
+#: templates/contact/forms/email_create.html:4
+#: templates/contact/forms/email_edit.html:4
+#: templates/contact/forms/phone_create.html:4
+#: templates/contact/forms/phone_edit.html:4
+#: templates/contact/forms/social_create.html:4
+#: templates/contact/forms/social_edit.html:4
+#: templates/dynamic/forms/dynamic_contact_edit.html:4
+msgid "Add Contact"
+msgstr "Kontak Ekle"
+
+#: templates/client/forms/address_edit.html:10
+#: templates/client/forms/email_edit.html:10
+#: templates/client/forms/phone_edit.html:10
+#: templates/client/forms/social_edit.html:10
+#: templates/contact/forms/address_create.html:10
+#: templates/contact/forms/address_edit.html:10
+#: templates/contact/forms/contact_create.html:10
+#: templates/contact/forms/contact_edit.html:10
+#: templates/contact/forms/email_create.html:10
+#: templates/contact/forms/email_edit.html:10
+#: templates/contact/forms/phone_create.html:10
+#: templates/contact/forms/phone_edit.html:10
+#: templates/contact/forms/social_create.html:10
+#: templates/contact/forms/social_edit.html:10
+#: templates/contact/pages/contact_detail.html:10
+#: templates/contact/pages/contact_list.html:10
+#: templates/contact/pages/contact_list.html:76
+#: templates/partials/sidebar.html:18
+msgid "Contacts"
+msgstr "Kontaklar"
+
+#: templates/client/forms/address_edit.html:15
+#: templates/client/forms/address_edit.html:28
+#: templates/client/forms/client_edit.html:4
+#: templates/client/forms/client_edit.html:15
+#: templates/client/forms/client_edit.html:29
+#: templates/client/forms/email_edit.html:15
+#: templates/client/forms/email_edit.html:28
+#: templates/client/forms/phone_edit.html:15
+#: templates/client/forms/phone_edit.html:28
+#: templates/client/forms/social_edit.html:15
+#: templates/client/forms/social_edit.html:28
+#: templates/client/pages/client_detail.html:29
+#: templates/contact/forms/address_edit.html:15
+#: templates/contact/forms/address_edit.html:28
+#: templates/contact/forms/contact_edit.html:4
+#: templates/contact/forms/contact_edit.html:15
+#: templates/contact/forms/contact_edit.html:28
+#: templates/contact/forms/email_edit.html:15
+#: templates/contact/forms/email_edit.html:28
+#: templates/contact/forms/phone_edit.html:15
+#: templates/contact/forms/phone_edit.html:28
+#: templates/contact/forms/social_edit.html:15
+#: templates/contact/forms/social_edit.html:28
+#: templates/contact/pages/contact_detail.html:29
+#: templates/employee/forms/address_edit.html:4
+#: templates/employee/forms/address_edit.html:15
+#: templates/employee/forms/address_edit.html:28
+#: templates/employee/forms/email_edit.html:4
+#: templates/employee/forms/email_edit.html:15
+#: templates/employee/forms/email_edit.html:28
+#: templates/employee/forms/employee_edit.html:4
+#: templates/employee/forms/employee_edit.html:15
+#: templates/employee/forms/employee_edit.html:28
+#: templates/employee/forms/phone_edit.html:4
+#: templates/employee/forms/phone_edit.html:15
+#: templates/employee/forms/phone_edit.html:28
+#: templates/employee/forms/social_edit.html:4
+#: templates/employee/forms/social_edit.html:15
+#: templates/employee/forms/social_edit.html:28
+#: templates/employee/pages/employee_detail.html:29
+#: templates/job/forms/job_edit.html:4 templates/job/forms/job_edit.html:15
+#: templates/job/forms/job_edit.html:29 templates/job/pages/job_detail.html:34
+msgid "Edit"
+msgstr "Düzenle"
+
+#: templates/client/forms/client_create.html:4
+#: templates/client/forms/client_create.html:15
+#: templates/client/forms/client_create.html:28
+#: templates/client/forms/contact_add.html:4
+#: templates/client/forms/contact_add.html:15
+msgid "Add Client"
+msgstr "Müşteri Ekle"
+
+#: templates/client/forms/client_delete.html:4
+#: templates/client/forms/contact_delete.html:4
+#: templates/client/pages/client_detail.html:66
+#: templates/contact/forms/contact_delete.html:4
+#: templates/employee/forms/employee_delete.html:4
+#: templates/job/forms/job_delete.html:4
+msgid "Remove"
+msgstr "Sil"
+
+#: templates/client/forms/contact_add.html:56
+msgid "Create & Add Contact"
+msgstr "Kontak Ekle"
+
+#: templates/client/forms/email_create.html:4
+msgid "Add an Email"
+msgstr "E-posta Ekle"
+
+#: templates/client/forms/email_create.html:15
+#: templates/client/forms/email_create.html:28
+#: templates/contact/forms/email_create.html:15
+#: templates/contact/forms/email_create.html:28
+#: templates/employee/forms/email_create.html:15
+#: templates/employee/forms/email_create.html:28
+msgid "Add Email Address"
+msgstr "E-posta Adresi Ekle"
+
+#: templates/client/forms/phone_create.html:4
+msgid "Add a Phone"
+msgstr "Telefon Ekle"
+
+#: templates/client/forms/phone_create.html:15
+#: templates/client/forms/phone_create.html:28
+#: templates/contact/forms/phone_create.html:15
+#: templates/contact/forms/phone_create.html:28
+#: templates/employee/forms/phone_create.html:4
+#: templates/employee/forms/phone_create.html:15
+#: templates/employee/forms/phone_create.html:28
+msgid "Add Phone Number"
+msgstr "Telefon Numarası Ekle"
+
+#: templates/client/forms/social_create.html:4
+msgid "Add a Social Profile"
+msgstr "Sosyal Profil Ekle"
+
+#: templates/client/forms/social_create.html:15
+#: templates/client/forms/social_create.html:28
+#: templates/contact/forms/social_create.html:15
+#: templates/contact/forms/social_create.html:28
+#: templates/employee/forms/social_create.html:4
+#: templates/employee/forms/social_create.html:15
+#: templates/employee/forms/social_create.html:28
+msgid "Add Social Profile"
+msgstr "Sosyal Profil Ekle"
+
+#: templates/client/pages/client_detail.html:47
+msgid "Contact Persons"
+msgstr "Kontak Kişiler"
+
+#: templates/client/pages/client_detail.html:48
+#: templates/contact/pages/contact_detail.html:62
+#: templates/employee/pages/employee_detail.html:66
+msgid "Phones"
+msgstr "Telefonlar"
+
+#: templates/client/pages/client_detail.html:49
+#: templates/contact/pages/contact_detail.html:63
+#: templates/employee/pages/employee_detail.html:67
+msgid "Emails"
+msgstr "E-postalar"
+
+#: templates/client/pages/client_detail.html:88
+#: templates/client/pages/client_detail.html:124
+#: templates/client/pages/client_detail.html:160
+#: templates/client/pages/client_detail.html:209
+#: templates/client/pages/client_detail.html:265
+#: templates/contact/pages/contact_detail.html:100
+#: templates/contact/pages/contact_detail.html:136
+#: templates/contact/pages/contact_detail.html:185
+#: templates/contact/pages/contact_detail.html:241
+#: templates/contact/pages/contact_detail.html:435
+#: templates/contact/pages/contact_detail.html:437
+#: templates/contact/pages/contact_detail.html:439
+#: templates/contact/pages/contact_detail.html:441
+#: templates/contact/pages/contact_detail.html:443
+#: templates/contact/pages/contact_detail.html:445
+#: templates/contact/pages/contact_detail.html:447
+#: templates/employee/pages/employee_detail.html:100
+#: templates/employee/pages/employee_detail.html:136
+#: templates/employee/pages/employee_detail.html:185
+#: templates/employee/pages/employee_detail.html:245
+msgid "Add New"
+msgstr "Yeni Ekle"
+
+#: templates/client/pages/client_detail.html:104
+#: templates/contact/pages/contact_detail.html:80
+#: templates/employee/pages/employee_detail.html:80
+msgid "Number"
+msgstr "Numara"
+
+#: templates/client/pages/client_detail.html:105
+#: templates/client/pages/client_detail.html:141
+#: templates/client/pages/client_detail.html:182
+#: templates/client/pages/client_detail.html:255
+#: templates/contact/pages/contact_detail.html:81
+#: templates/contact/pages/contact_detail.html:117
+#: templates/contact/pages/contact_detail.html:158
+#: templates/contact/pages/contact_detail.html:231
+#: templates/employee/pages/employee_detail.html:81
+#: templates/employee/pages/employee_detail.html:117
+#: templates/employee/pages/employee_detail.html:158
+#: templates/employee/pages/employee_detail.html:235
+msgid "Edit / Delete"
+msgstr "Düzenle / Sil"
+
+#: templates/client/pages/client_list.html:55
+#: templates/contact/forms/import_contact.html:13
+#: templates/contact/pages/contact_list.html:55
+#: templates/employee/pages/employee_list.html:55
+#: templates/job/pages/job_list.html:55
+msgid "Import"
+msgstr "İçeri Aktar"
+
+#: templates/client/pages/client_list.html:59
+#: templates/contact/pages/contact_list.html:59
+#: templates/employee/pages/employee_list.html:59
+#: templates/job/pages/job_list.html:59
+msgid "Export"
+msgstr "Dışa Aktar"
+
+#: templates/client/pages/client_list.html:63
+msgid "New Client"
+msgstr "Yeni Müşteri"
+
+#: templates/contact/forms/import_contact.html:8
+msgid "Contact Import"
+msgstr "Kontakları İçeri Aktar"
+
+#: templates/contact/forms/import_contact.html:29
+msgid "Upload"
+msgstr "Yükle"
+
+#: templates/contact/forms/import_contact.html:30
+msgid "Back"
+msgstr "Geri"
+
+#: templates/contact/pages/contact_detail.html:69
+msgid "+ Add New Tab"
+msgstr "+ Yeni Tab Ekle"
+
+#: templates/contact/pages/contact_detail.html:270
+msgid "Add Text"
+msgstr "Yeni Yazı Ekle"
+
+#: templates/contact/pages/contact_detail.html:271
+msgid "Single line text input"
+msgstr "Tek satırlık metin girişi"
+
+#: templates/contact/pages/contact_detail.html:284
+#: templates/dynamic/forms/dynamic_textbox_create.html:4
+#: templates/dynamic/forms/dynamic_textbox_create.html:15
+#: templates/dynamic/forms/dynamic_textbox_create.html:28
+msgid "Add Text Box"
+msgstr "Metn Kutusu Ekle"
+
+#: templates/contact/pages/contact_detail.html:285
+msgid "Multi lines text box"
+msgstr "Çok satırlı metin kutusu"
+
+#: templates/contact/pages/contact_detail.html:298
+#: templates/dynamic/forms/dynamic_image_create.html:4
+#: templates/dynamic/forms/dynamic_image_create.html:15
+#: templates/dynamic/forms/dynamic_image_create.html:28
+msgid "Add Image"
+msgstr "Resim Ekle"
+
+#: templates/contact/pages/contact_detail.html:299
+#: templates/dynamic/forms/dynamic_contact_edit.html:62
+msgid "Image Field"
+msgstr "Resim Alanı"
+
+#: templates/contact/pages/contact_detail.html:312
+#: templates/dynamic/forms/dynamic_file_create.html:4
+#: templates/dynamic/forms/dynamic_file_create.html:15
+#: templates/dynamic/forms/dynamic_file_create.html:28
+msgid "Add File"
+msgstr "Dosya Ekle"
+
+#: templates/contact/pages/contact_detail.html:313
+#: templates/dynamic/forms/dynamic_contact_edit.html:76
+msgid "File Field"
+msgstr "Dosya Alanı"
+
+#: templates/contact/pages/contact_detail.html:326
+#: templates/dynamic/forms/dynamic_date_create.html:4
+#: templates/dynamic/forms/dynamic_date_create.html:15
+#: templates/dynamic/forms/dynamic_date_create.html:28
+msgid "Add Date"
+msgstr "Tarih Ekle"
+
+#: templates/contact/pages/contact_detail.html:327
+msgid "Date Field"
+msgstr "Tarih Alanı"
+
+#: templates/contact/pages/contact_detail.html:340
+#: templates/dynamic/forms/dynamic_time_create.html:4
+#: templates/dynamic/forms/dynamic_time_create.html:15
+#: templates/dynamic/forms/dynamic_time_create.html:28
+msgid "Add Time"
+msgstr "Zaman Ekle"
+
+#: templates/contact/pages/contact_detail.html:341
+msgid "Time Field"
+msgstr "Zaman Alanı"
+
+#: templates/contact/pages/contact_detail.html:354
+#: templates/dynamic/forms/dynamic_date_time_create.html:4
+#: templates/dynamic/forms/dynamic_date_time_create.html:15
+#: templates/dynamic/forms/dynamic_date_time_create.html:28
+msgid "Add Date Time"
+msgstr "Tarih & Zaman Ekle"
+
+#: templates/contact/pages/contact_detail.html:355
+msgid "Date Time Field"
+msgstr "Tarih & Zaman Alanı"
+
+#: templates/contact/pages/contact_list.html:63
+msgid "New Contact"
+msgstr "Yeni Kontak"
+
+#: templates/dynamic/forms/dynamic_charfield_create.html:4
+#: templates/dynamic/forms/dynamic_charfield_create.html:15
+#: templates/dynamic/forms/dynamic_charfield_create.html:28
+msgid "Add Single Line Text"
+msgstr "Tek Satır Metin Ekle"
+
+#: templates/dynamic/forms/dynamic_charfield_create.html:33
+msgid "Text Title"
+msgstr "Metin Başlığı"
+
+#: templates/dynamic/forms/dynamic_charfield_create.html:39
+msgid "Text"
+msgstr "Metin"
+
+#: templates/dynamic/forms/dynamic_charfield_create.html:45
+#: templates/dynamic/forms/dynamic_contact_create.html:39
+#: templates/dynamic/forms/dynamic_contact_edit.html:103
+#: templates/dynamic/forms/dynamic_date_create.html:45
+#: templates/dynamic/forms/dynamic_date_time_create.html:45
+#: templates/dynamic/forms/dynamic_file_create.html:45
+#: templates/dynamic/forms/dynamic_image_create.html:45
+#: templates/dynamic/forms/dynamic_tab_create.html:45
+#: templates/dynamic/forms/dynamic_textbox_create.html:45
+#: templates/dynamic/forms/dynamic_time_create.html:45
+msgid "Create"
+msgstr "Oluştur"
+
+#: templates/dynamic/forms/dynamic_contact_create.html:4
+#: templates/dynamic/forms/dynamic_contact_create.html:15
+#: templates/dynamic/forms/dynamic_contact_edit.html:15
+#: templates/dynamic/forms/dynamic_tab_create.html:4
+#: templates/dynamic/forms/dynamic_tab_create.html:15
+msgid "Add Tab"
+msgstr "Tab Ekle"
+
+#: templates/dynamic/forms/dynamic_contact_create.html:28
+#: templates/dynamic/forms/dynamic_contact_edit.html:28
+#: templates/dynamic/forms/dynamic_tab_create.html:28
+msgid "Add New Tab"
+msgstr "Yeni Tab Ekle"
+
+#: templates/dynamic/forms/dynamic_contact_create.html:33
+#: templates/dynamic/forms/dynamic_tab_create.html:33
+msgid "Tab Name"
+msgstr "Tab Adı"
+
+#: templates/dynamic/forms/dynamic_contact_edit.html:34
+msgid "Text Input"
+msgstr "Metin Girişi"
+
+#: templates/dynamic/forms/dynamic_date_create.html:33
+msgid "Date Title"
+msgstr "Tarih Başlığı"
+
+#: templates/dynamic/forms/dynamic_date_time_create.html:33
+msgid "Date Time Title"
+msgstr "Tarih & Zaman Başlığı"
+
+#: templates/dynamic/forms/dynamic_file_create.html:33
+msgid "File Title"
+msgstr "Dosya Başlığı"
+
+#: templates/dynamic/forms/dynamic_image_create.html:33
+msgid "Image Title"
+msgstr "Resim Başlığı"
+
+#: templates/dynamic/forms/dynamic_textbox_create.html:33
+msgid "Text Box Title"
+msgstr "Metin Kutusu Başlığı"
+
+#: templates/dynamic/forms/dynamic_time_create.html:33
+msgid "Time Title"
+msgstr "Zaman Başlığı"
+
+#: templates/employee/forms/address_create.html:10
+#: templates/employee/forms/address_edit.html:10
+#: templates/employee/forms/email_create.html:10
+#: templates/employee/forms/email_edit.html:10
+#: templates/employee/forms/employee_create.html:10
+#: templates/employee/forms/employee_edit.html:10
+#: templates/employee/forms/phone_create.html:10
+#: templates/employee/forms/phone_edit.html:10
+#: templates/employee/forms/social_edit.html:10
+#: templates/employee/pages/employee_list.html:10
+msgid "Employees"
+msgstr "Çalışanlar"
+
+#: templates/employee/forms/address_create.html:14
+#: templates/employee/forms/address_edit.html:14
+#: templates/employee/forms/email_create.html:14
+#: templates/employee/forms/email_edit.html:14
+#: templates/employee/forms/employee_create.html:14
+#: templates/employee/forms/employee_edit.html:14
+#: templates/employee/forms/phone_create.html:14
+#: templates/employee/forms/phone_edit.html:14
+#: templates/employee/forms/social_create.html:10
+#: templates/employee/forms/social_create.html:14
+#: templates/employee/forms/social_edit.html:14
+#: templates/employee/pages/employee_detail.html:10
+#: templates/employee/pages/employee_detail.html:14
+#: templates/employee/pages/employee_list.html:14
+#: templates/employee/pages/employee_list.html:76
+#: templates/partials/sidebar.html:21
+msgid "Employee"
+msgstr "Çalışan"
+
+#: templates/employee/forms/address_delete.html:4
+#: templates/employee/forms/email_delete.html:4
+#: templates/employee/forms/phone_delete.html:4
+#: templates/employee/forms/social_delete.html:4
+msgid "Remove "
+msgstr "Sil"
+
+#: templates/employee/forms/email_create.html:4
+msgid "Add Email"
+msgstr "E-posta Ekle"
+
+#: templates/employee/forms/employee_create.html:4
+#: templates/employee/forms/employee_create.html:15
+#: templates/employee/forms/employee_create.html:28
+msgid "Add Employee"
+msgstr "Çalışan Ekle"
+
+#: templates/employee/pages/employee_list.html:63
+msgid "New Employee"
+msgstr "Yeni Çalışan"
+
+#: templates/job/forms/job_create.html:4 templates/job/forms/job_create.html:15
+#: templates/job/forms/job_create.html:29
+msgid "Add Job"
+msgstr "İş Ekle"
+
+#: templates/job/forms/job_create.html:10 templates/job/forms/job_edit.html:10
+#: templates/job/pages/job_list.html:4 templates/job/pages/job_list.html:10
+#: templates/partials/sidebar.html:24
+msgid "Jobs"
+msgstr "İşler"
+
+#: templates/job/forms/job_create.html:14 templates/job/forms/job_edit.html:14
+#: templates/job/pages/job_detail.html:10
+#: templates/job/pages/job_detail.html:14 templates/job/pages/job_list.html:14
+#: templates/job/pages/job_list.html:76
+msgid "Job"
+msgstr "İş"
+
+#: templates/job/forms/job_create.html:52 templates/job/forms/job_edit.html:52
+#: templates/job/pages/job_list.html:87
+msgid "Type of Employment"
+msgstr "İstihdam Türü"
+
+#: templates/job/forms/job_create.html:57 templates/job/forms/job_edit.html:57
+msgid "Skills"
+msgstr "Yetenekler"
+
+#: templates/job/forms/job_create.html:59 templates/job/forms/job_edit.html:59
+msgid "Talent"
+msgstr "Yetenek"
+
+#: templates/job/forms/job_create.html:65 templates/job/forms/job_edit.html:65
+#: templates/job/pages/job_detail.html:88
+msgid "Experience"
+msgstr "Deneyim"
+
+#: templates/job/forms/job_create.html:71 templates/job/forms/job_edit.html:71
+#: templates/job/pages/job_detail.html:89
+msgid "Education Level"
+msgstr "Eğitim Düzeyi"
+
+#: templates/job/forms/job_create.html:84 templates/job/forms/job_edit.html:84
+#: templates/job/pages/job_detail.html:81 templates/job/pages/job_list.html:85
+msgid "Office"
+msgstr "Ofis"
+
+#: templates/job/forms/job_create.html:103
+#: templates/job/forms/job_edit.html:103
+msgid "Detail URL"
+msgstr "Detay URL"
+
+#: templates/job/forms/job_create.html:109
+#: templates/job/forms/job_edit.html:109
+msgid "image"
+msgstr "resim"
+
+#: templates/job/pages/job_detail.html:29
+msgid "Share on Linkedin"
+msgstr "Linkedin'de Paylaş"
+
+#: templates/job/pages/job_detail.html:52
+msgid "at"
+msgstr ""
+
+#: templates/job/pages/job_detail.html:73
+msgid "Job Description"
+msgstr "İş Açıklaması"
+
+#: templates/job/pages/job_detail.html:86
+msgid "Languages"
+msgstr "Diller"
+
+#: templates/job/pages/job_detail.html:87
+msgid "Talents"
+msgstr "Yetenekler"
+
+#: templates/job/pages/job_list.html:63
+msgid "New Job"
+msgstr "Yeni İş"
+
+#: templates/partials/footer.html:4
+msgid "All Right Reserved"
+msgstr "Tüm Hakları Saklıdır"
+
+#: templates/partials/header.html:46
 msgid "Logout"
 msgstr "Çıkış Yap"
+
+#~ msgid "English"
+#~ msgstr "İngilizce"
+
+#~ msgid "German"
+#~ msgstr "Almanca"
+
+#~ msgid "Turkish"
+#~ msgstr "Türkçe"
+
+#~ msgid "Username"
+#~ msgstr "Kullanıcı Adı"
+
+#~ msgid "Company's Email"
+#~ msgstr "Şirket Email'i"
+
+#~ msgid "Company's Logo"
+#~ msgstr "Şirket Logosu"
+
+#~ msgid "Edit "
+#~ msgstr "Düzenle"
+
+#~ msgid "Account Name:"
+#~ msgstr "Hesap İsmi"
+
+#~ msgid "Account Email:"
+#~ msgstr "Hesap Email Adresi"
+
+#~ msgid "Account Phone Number:"
+#~ msgstr "Hesap Telefon Numarası"
+
+#~ msgid "Email:"
+#~ msgstr "Email"
+
+#~ msgid "First Name:"
+#~ msgstr "Ad"
+
+#~ msgid "Last Name:"
+#~ msgstr "Soyad"
