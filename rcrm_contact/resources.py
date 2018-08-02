@@ -20,10 +20,11 @@ class ContactResource(ModelResource):
 
     class Meta:
         model = Contact
-        fields = ('id', 'first_name', 'last_name', 'gender', 'title', 'date_of_birth', 'description',
-                  'emails', 'phones', 'addresses',
-                  'instagram', 'twitter', 'skype', 'facebook', 'linkedin', 'website'
-                  )
+        fields = (
+            'id', 'account', 'first_name', 'last_name', 'gender', 'title',
+            'date_of_birth', 'description', 'emails', 'phones', 'addresses',
+            'instagram', 'twitter', 'skype', 'facebook', 'linkedin', 'website'
+        )
         export_order = fields
 
     def dehydrate_emails(self, obj):
@@ -76,13 +77,7 @@ class ContactResource(ModelResource):
 
 
 class ContactImportResource(ModelResource):
-    account = Field()
 
     class Meta:
         model = Contact
-        exclude = (
-            'id',
-        )
-
-    def dehydrate_account(self, obj):
-        return self.request.user.account
+        import_id_fields = ('id',)
