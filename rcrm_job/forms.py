@@ -11,32 +11,29 @@ from ckeditor.widgets import CKEditorWidget
 
 
 class JobForm(ModelForm):
-    title = CharField(widget=TextInput(attrs={'class': 'form-control'}))
-    short_description = CharField(widget=Textarea(attrs={'class': 'form-control', 'style': "height:150px"}))
-    description = CharField(widget=CKEditorWidget())
-    type_of_employment = CharField(widget=Select(choices=TYPE_OF_EMPLOYMENT, attrs={'class': 'form-control custom-select'}))
+    title = CharField(label=_('Title'), widget=TextInput())
+    short_description = CharField(label=_('Short Description'), widget=Textarea())
+    description = CharField(label=_('Description'), widget=CKEditorWidget())
+    type_of_employment = CharField(
+        label=_('Type of Employment'), widget=Select(choices=TYPE_OF_EMPLOYMENT)
+    )
 
-    talent = CharField(widget=TextInput(attrs={'class': 'form-control'}))
-    experience = CharField(widget=TextInput(attrs={'class': 'form-control'}))
-    education_level = CharField(widget=TextInput(attrs={'class': 'form-control'}))
-    language = CharField(widget=TextInput(attrs={'class': 'form-control'}))
+    talent = CharField(label=_('Talent'), widget=TextInput())
+    experience = CharField(label=_('Experience'), widget=TextInput())
+    education_level = CharField(label=_('Education Level'), widget=TextInput())
+    language = CharField(label=_('Language'), widget=TextInput())
 
-    url = URLField(required=False, widget=TextInput(attrs={'class': 'form-control'}))
-    image = ImageField(required=False, widget=FileInput(attrs={'class': 'form-control', 'style': 'padding: .50rem .75rem;'}))
+    url = URLField(label=_('Detail URL'), required=False, widget=TextInput())
+    image = ImageField(label=_('Image'), required=False, widget=FileInput())
 
-    office = CharField(widget=TextInput(attrs={'class': 'form-control'}))
-    city = CharField(widget=TextInput(attrs={'class': 'form-control'}))
-    country = CharField(widget=Select(choices=COUNTRIES, attrs={'class': 'form-control custom-select'}))
+    office = CharField(label=_('Office'), widget=TextInput())
+    city = CharField(label=_('City'), widget=TextInput())
+    country = CharField(label=_('Country'), widget=Select(choices=COUNTRIES))
 
     class Meta:
         model = Job
         fields = (
             'title', 'short_description', 'description', 'type_of_employment',
-            'talent', 'experience', 'education_level', 'language',
-            'url', 'image',
-            'office', 'city', 'country'
+            'talent', 'experience', 'education_level', 'language', 'url',
+            'image', 'office', 'city', 'country'
         )
-
-
-
-
