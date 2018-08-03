@@ -128,7 +128,7 @@ class AccountView(UpdateView):
         account_list = [account.name for account in accounts]
         context = super(AccountView, self).get_context_data(**kwargs)
         context['form'] = AccountForm(self.request.POST or None, instance=self.request.user.account)
-        context['add_user_for'] = AccountUserAddForm(self.request.POST or None)
+        context['add_user_form'] = AccountUserAddForm(self.request.POST or None)
         context['account_request_form'] = AccountRequestForm(self.request.POST or None)
         context['account_list'] = account_list
         return context
@@ -161,8 +161,9 @@ class AccountUserCreateView(FormView):
     success_url = reverse_lazy('Accounts:Account')
 
     def form_valid(self, form):
-        email = form.cleaned_data.get('email')
+        email = form.cleaned_data.get('email', None)
         user = User.objects.filter(email=email).first()
+
         if user:
             if not user.account:
                 User.objects.filter(email=email).update(account=self.request.user.account)
@@ -172,7 +173,13 @@ class AccountUserCreateView(FormView):
                 pass
         else:
             messages.error(self.request, _('The user could not be found!'))
+
         return super(AccountUserCreateView, self).form_valid(form=form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, _('Enter a valid email address.'))
+
+        return HttpResponseRedirect(reverse('Accounts:Account'))
 
 
 class UserAccountDeleteView(AccountControlViewMixin, UpdateView):

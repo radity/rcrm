@@ -97,8 +97,7 @@ class AccountUserAddForm(Form):
     """
     The form is for adding a new user
     """
-    email = EmailField(label=_("Email Address"),
-                       widget=TextInput(attrs={'class': 'form-control', 'placeholder': _("example@email.com")}))
+    email = EmailField(label=_("Email Address"), widget=TextInput())
 
 
 class UserAccountForm(ModelForm):
