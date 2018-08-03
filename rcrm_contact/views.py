@@ -380,19 +380,40 @@ def contact_import(request):
     if request.method == 'POST':
         contact_resource = ContactImportResource()
         dataset = Dataset()
-        new_contacts = request.FILES['myfile']
-        account_id = request.user.account.id
-        # imported_data = dataset.load(new_contacts.read())
+        import_file = request.FILES.get('import_file', None)
 
-        result = contact_resource.import_data(dataset, dry_run=True)
-
-        if not result.has_errors():
-            contact_resource.import_data(dataset, dry_run=False)
-            messages.success(request, _('Uploaded successfully, thank you.'))
-            return HttpResponseRedirect(reverse_lazy('Contacts:Contact'))
+        if not import_file:
+            messages.error(request, _('File not found!'))
         else:
-            messages.error(request, _('Could not be uploaded!'))
+            dataset.load(import_file.read(), format='xls')
+
+            if 'account' in dataset.headers:
+                del dataset['account']
+            accounts_id = [request.user.account.id for i in range(len(dataset))]
+            dataset.append_col(accounts_id, header='account')
+
+            result = contact_resource.import_data(
+                dataset,
+                dry_run=True,
+                raise_errors=False,
+                file_name=import_file.name,
+                user=request.user
+            )
+
+            if not result.has_errors():
+                contact_resource.import_data(
+                    dataset,
+                    dry_run=False,
+                    raise_errors=True,
+                    file_name=import_file.name,
+                    user=request.user
+                )
+                messages.success(request, _('Uploaded successfully, thank you.'))
+            else:
+                messages.error(request, _('Could not be uploaded!'))
+
             return HttpResponseRedirect(reverse_lazy('Contacts:Contact'))
+
     return render(request, 'contact/forms/import_contact.html')
 
 
