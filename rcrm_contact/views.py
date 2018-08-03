@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.db.models import Q
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render, reverse
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -51,13 +51,26 @@ class ContactDetailView(AccountControlViewMixin, TemplateView):
     """
     template_name = 'contact/pages/contact_detail.html'
 
+    def dispatch(self, request, pk, *args, **kwargs):
+        try:
+            self.contact = Contact.objects.get(is_deleted=False, id=pk)
+        except Contact.DoesNotExist:
+            raise Http404()
+
+        if self.contact.account != request.user.account:
+            raise Http404()
+
+        return super(ContactDetailView, self).dispatch(request, pk, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
-        id = self.kwargs.get('pk')
-        contact = get_object_or_404(Contact, is_deleted=False, id=id)
         context = super(ContactDetailView, self).get_context_data(**kwargs)
-        context['contact'] = contact
-        context['dynamic_tabs'] = DynamicTab.objects.filter(account=self.request.user.account)
-        context['dynamic_list'] = Dynamic.objects.filter(contact=contact)
+
+        context.update({
+            'contact': self.contact,
+            'dynamic_tabs': DynamicTab.objects.filter(account=self.request.user.account),
+            'dynamic_list': Dynamic.objects.filter(contact=self.contact)
+        })
+
         return context
 
 

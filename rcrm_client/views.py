@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.shortcuts import redirect
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render, reverse
@@ -57,7 +56,7 @@ class ClientDetailView(AccountControlViewMixin, TemplateView):
             raise Http404()
 
         if self.client.account != request.user.account:
-            return redirect('Clients:Client')
+            raise Http404()
 
         return super(ClientDetailView, self).dispatch(request, pk, *args, **kwargs)
 
@@ -95,6 +94,17 @@ class ClientEditView(AccountControlViewMixinTwo, UpdateView):
     model = Client
     form_class = ClientForm
     template_name = 'client/forms/client_edit.html'
+
+    def dispatch(self, request, pk, *args, **kwargs):
+        try:
+            self.client = Client.objects.get(is_deleted=False, id=pk)
+        except Client.DoesNotExist:
+            raise Http404()
+
+        if self.client.account != request.user.account:
+            raise Http404()
+
+        return super(ClientEditView, self).dispatch(request, pk, *args, **kwargs)
 
     def get_success_url(self):
         id = self.kwargs['pk']

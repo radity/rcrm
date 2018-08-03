@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.db.models import Q
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render, reverse
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -49,11 +49,24 @@ class JobDetailView(AccountControlViewMixin, TemplateView):
     """
     template_name = 'job/pages/job_detail.html'
 
+    def dispatch(self, request, pk, *args, **kwargs):
+        try:
+            self.job = Job.objects.get(is_deleted=False, id=pk)
+        except Job.DoesNotExist:
+            raise Http404()
+
+        if self.job.account != request.user.account:
+            raise Http404()
+
+        return super(JobDetailView, self).dispatch(request, pk, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
-        id = self.kwargs.get('pk')
         context = super(JobDetailView, self).get_context_data(**kwargs)
-        job = get_object_or_404(Job, is_deleted=False, id=id)
-        context['job'] = job
+
+        context.update({
+            'job': self.job
+        })
+
         return context
 
 
@@ -81,6 +94,17 @@ class JobEditView(AccountControlViewMixinTwo, UpdateView):
     model = Job
     form_class = JobForm
     template_name = 'job/forms/job_edit.html'
+
+    def dispatch(self, request, pk, *args, **kwargs):
+        try:
+            self.job = Job.objects.get(is_deleted=False, id=pk)
+        except Job.DoesNotExist:
+            raise Http404()
+
+        if self.job.account != request.user.account:
+            raise Http404()
+
+        return super(JobEditView, self).dispatch(request, pk, *args, **kwargs)
 
     def get_success_url(self):
         id = self.kwargs['pk']
