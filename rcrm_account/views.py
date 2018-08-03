@@ -4,9 +4,10 @@ from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
+from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import FormView, DeleteView, UpdateView
+from django.views.generic import TemplateView, FormView, DeleteView, UpdateView
 
 from rcrm.tasks import mail_task
 from rcrm_account.models import CRMAccount, CRMAccountRequest, User
@@ -61,45 +62,48 @@ class RegisterView(FormView):
 # --------------------------------- Profile ---------------------------------
 
 
-class UserProfileView(UpdateView):
-    """
-    A view that allows to a user who can update own information.
-    """
-    form_class = UserProfileForm
+class ProfileView(TemplateView):
     template_name = 'account/pages/user_profile.html'
-    success_url = reverse_lazy('Accounts:User_Profile')
-
-    def get_object(self, queryset=None):
-        return get_object_or_404(User, id=self.request.user.id)
-
-    def form_valid(self, form):
-        form.save()
-        messages.success(self.request, _('Saved successfully, thank you.'))
-        return super(UserProfileView, self).form_valid(form=form)
 
     def get_context_data(self, **kwargs):
-        context = super(UserProfileView, self).get_context_data(**kwargs)
-        context['password_form'] = PasswordChangeForm(data=self.request.POST)
+        context = super(ProfileView, self).get_context_data(**kwargs)
+
+        context.update({
+            'form': UserProfileForm(instance=self.request.user, prefix='form'),
+            'password_form': PasswordChangeForm(prefix='password-form')
+        })
+
         return context
 
+    def post(self, request, *args, **kwargs):
+        context = self.get_context_data()
 
-class ChangePasswordView(UpdateView):
-    """
-    A view that allows to a user who can change own password by entering their old password.
-    """
-    form_class = PasswordChangeForm
-    success_url = reverse_lazy('Accounts:User_Profile')
+        if 'form' in request.POST:
+            form = UserProfileForm(request.POST, instance=request.user, prefix='form')
 
-    def get_object(self, queryset=None):
-        return self.request.user
+            if form.is_valid():
+                form.save(user=request.user)
+                messages.success(self.request, _('Saved successfully, thank you.'))
+                translation.activate(request.user.language)
 
-    def form_valid(self, form):
-        form.save()
-        update_session_auth_hash(self.request, form.instance)
-        user = authenticate(email=self.request.user.email, password=self.request.user.password)
-        login(self.request, user)
-        messages.success(self.request, _('Saved successfully, thank you.'))
-        return super(ChangePasswordView, self).form_valid(form=form)
+            context.update({'form': form})
+
+        if "password-form" in request.POST:
+            password_form = PasswordChangeForm(
+                request.POST, instance=request.user, prefix='password-form'
+            )
+
+            if password_form.is_valid():
+                password_form.save()
+                update_session_auth_hash(self.request, password_form.instance)
+                user = authenticate(email=self.request.user.email, password=self.request.user.password)
+                login(self.request, user)
+
+                messages.success(self.request, _('Saved successfully, thank you.'))
+            else:
+                context.update({'password_form': password_form})
+
+        return super(ProfileView, self).render_to_response(context)
 
 
 # --------------------------------- Account ---------------------------------
