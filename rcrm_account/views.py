@@ -124,13 +124,19 @@ class AccountView(UpdateView):
             return None
 
     def get_context_data(self, **kwargs):
-        accounts = CRMAccount.objects.filter(is_active=True, is_deleted=False)
-        account_list = [account.name for account in accounts]
         context = super(AccountView, self).get_context_data(**kwargs)
-        context['form'] = AccountForm(self.request.POST or None, instance=self.request.user.account)
-        context['add_user_form'] = AccountUserAddForm(self.request.POST or None)
-        context['account_request_form'] = AccountRequestForm(self.request.POST or None)
-        context['account_list'] = account_list
+
+        users = User.objects.filter(is_active=True)
+        accounts = CRMAccount.objects.filter(is_active=True, is_deleted=False)
+
+        context.update({
+            'form': AccountForm(self.request.POST or None, instance=self.request.user.account),
+            'add_user_form': AccountUserAddForm(self.request.POST or None),
+            'account_request_form': AccountRequestForm(self.request.POST or None),
+            'user_list_email': [user.email for user in users],
+            'account_list_name': [account.name for account in accounts]
+        })
+
         return context
 
     def form_valid(self, form):
