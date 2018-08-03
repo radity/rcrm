@@ -97,7 +97,7 @@ class AccountUserAddForm(Form):
     """
     The form is for adding a new user
     """
-    email = EmailField(label=_("Email Address"), widget=TextInput())
+    email = EmailField(label=_("Email Address"))
 
 
 class UserAccountForm(ModelForm):
@@ -113,35 +113,21 @@ class AccountRequestForm(Form):
     """
     A form that lets a user to request to an account
     """
-    account = CharField(label=_("Account Name"),
-                        widget=TextInput(attrs={'class': 'form-control', 'id': 'autocomplete-input'}))
+    account = CharField(label=_("Account Name"))
 
 
 class UserProfileForm(ModelForm):
     """
     A form that lets a user edit own profile
     """
-    email = EmailField(
-        label=_("Email"), widget=TextInput()
-    )
-    first_name = CharField(
-        label=_("First Name"), required=False, widget=TextInput()
-    )
-    last_name = CharField(
-        label=_("Last Name"), required=False, widget=TextInput()
-    )
-    language = CharField(
-        label=_("Language"), widget=Select(choices=settings.LANGUAGES)
-    )
+    email = EmailField(label=_("Email"))
+    first_name = CharField(label=_("First Name"), required=False)
+    last_name = CharField(label=_("Last Name"), required=False)
+    language = CharField(label=_("Language"), widget=Select(choices=settings.LANGUAGES))
 
     class Meta:
         model = User
-        fields = (
-            'email',
-            'first_name',
-            'last_name',
-            'language'
-        )
+        fields = ('email', 'first_name', 'last_name', 'language')
 
     def save(self, user=None, commit=True):
         if commit and user:

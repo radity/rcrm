@@ -27,11 +27,17 @@
         <div class="row p-t-20">
           <div class="col-md-6">
             <form method="post" action="{% url 'Accounts:Account_Request' %}">
-            {% csrf_token %}
+              {% csrf_token %}
+              {% if account_request_form.non_field_errors %}
+                {% include 'partials/message.html' with message=account_request_form.non_field_errors status='error' %}
+              {% endif %}
               <h3 class="card-title m-t-15">{% trans 'Join to a RCRM Account' %}</h3>
               <div class="form-group">
                 {% with field=account_request_form.account %}
-                {{ field }}
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" id="autocomplete-input" data_autocomplete_type="name" %}
                 {% endwith %}
                 <div class="autocomplete-results">
                 </div>
@@ -159,16 +165,20 @@
             <form method="post" action="{% url 'Accounts:Account_Add_User' %}">
               {% csrf_token %}
               {% if add_user_form.non_field_errors %}
-                {% include 'partials/message.html' with message=form.non_field_errors status='error' %}
+                {% include 'partials/message.html' with message=add_user_form.non_field_errors status='error' %}
               {% endif %}
               <th>+</th>
               <td>
-                {% with field=add_user_form.email %}
-                  {% if field.errors %}
-                    {% include 'partials/message.html' with message=field.errors status='error' %}
-                  {% endif %}
-                  {% add_attrs field class="form-control" placeholder="example@email.com" %}
-                {% endwith %}
+                <div class="form-group">
+                  {% with field=add_user_form.email %}
+                    {% if field.errors %}
+                      {% include 'partials/message.html' with message=field.errors status='error' %}
+                    {% endif %}
+                    {% add_attrs field class="form-control" id="autocomplete-input" data_autocomplete_type="email" placeholder="example@email.com" %}
+                  {% endwith %}
+                  <div class="autocomplete-results">
+                  </div>
+                </div>
               </td>
               <td>
                 <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i></button>
@@ -222,31 +232,41 @@
   <script>
     const resultWrapper = $(".autocomplete-results");
     resultWrapper.hide();
-    let result = {{ account_list|safe }};
+    let result = [];
+    let result_name = {{ account_list_name|safe }};
+    let result_email = {{ user_list_email|safe }};
 
     $("#autocomplete-input").on("input", function(e) {
-    const val = this.value;
-    resultWrapper.html("");
-    let resultCount = 0;
-    for (let i = 0; i < result.length; i++) {
-      if (
-      val.length != 0 &&
-      result[i].substr(0, val.length).toUpperCase() === val.toUpperCase()
-      ) {
-      const markup = `
-            <div id="result${i}" class="autocomplete-result">${
-        result[i]
-      }</div>
-            `;
-      resultWrapper.append(markup);
-      $("#result" + i + "").on("click", function(e) {
-        $("#autocomplete-input").val(e.target.innerHTML);
-        resultWrapper.hide();
-      });
-      resultCount += 1;
+      const val = this.value;
+      var type = this.getAttribute("data-autocomplete-type");
+      resultWrapper.html("");
+      let resultCount = 0;
+
+      if (type === "name") {
+        result = result_name
+      } else if (type === "email") {
+        result = result_email
       }
-    }
-    resultCount ? resultWrapper.show() : resultWrapper.hide();
+
+      for (let i = 0; i < result.length; i++) {
+        if (
+        val.length != 0 &&
+        result[i].substr(0, val.length).toUpperCase() === val.toUpperCase()
+        ) {
+        const markup = `
+              <div id="result${i}" class="autocomplete-result">${
+          result[i]
+        }</div>
+              `;
+        resultWrapper.append(markup);
+        $("#result" + i + "").on("click", function(e) {
+          $("#autocomplete-input").val(e.target.innerHTML);
+          resultWrapper.hide();
+        });
+        resultCount += 1;
+        }
+      }
+      resultCount ? resultWrapper.show() : resultWrapper.hide();
     });
   </script>
 
