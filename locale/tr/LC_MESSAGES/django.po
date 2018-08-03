@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-02 13:25+0000\n"
+"POT-Creation-Date: 2018-08-03 13:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,8 +38,7 @@ msgstr "Tarih & Zaman"
 #: rcrm_account/forms.py:20 rcrm_account/forms.py:40 rcrm_account/forms.py:125
 #: rcrm_account/models.py:22 rcrm_contact/forms.py:60 rcrm_employee/forms.py:64
 #: rcrm_util/forms.py:35 templates/account/pages/account.html:134
-#: templates/account/pages/account.html:187
-#: templates/account/pages/user_profile.html:34
+#: templates/account/pages/account.html:193
 #: templates/client/pages/client_detail.html:65
 #: templates/client/pages/client_detail.html:140
 #: templates/client/pages/client_list.html:86
@@ -51,7 +50,6 @@ msgid "Email"
 msgstr "E-posta"
 
 #: rcrm_account/forms.py:21 rcrm_account/forms.py:41
-#: templates/account/pages/user_profile.html:82
 msgid "Password"
 msgstr "Parola"
 
@@ -59,7 +57,7 @@ msgstr "Parola"
 msgid "Wrong email or password!"
 msgstr "Yanlış e-posta veya parola"
 
-#: rcrm_account/forms.py:43 templates/account/pages/user_profile.html:88
+#: rcrm_account/forms.py:43
 msgid "Password Confirmation"
 msgstr "Parola Doğrulama"
 
@@ -101,17 +99,12 @@ msgstr "RCRM Hesap Logosu"
 msgid "Email Address"
 msgstr "E-posta Adresi"
 
-#: rcrm_account/forms.py:101
-msgid "example@email.com"
-msgstr "example@email.com"
-
-#: rcrm_account/forms.py:117
+#: rcrm_account/forms.py:116
 msgid "Account Name"
 msgstr "Hesap İsmi"
 
-#: rcrm_account/forms.py:126 rcrm_client/forms.py:14 rcrm_contact/forms.py:14
-#: rcrm_employee/forms.py:14 templates/account/pages/user_profile.html:40
-#: templates/client/forms/contact_add.html:61
+#: rcrm_account/forms.py:128 rcrm_client/forms.py:14 rcrm_contact/forms.py:14
+#: rcrm_employee/forms.py:14 templates/client/forms/contact_add.html:61
 #: templates/contact/forms/contact_create.html:33
 #: templates/contact/forms/contact_edit.html:33
 #: templates/employee/forms/employee_create.html:33
@@ -119,8 +112,7 @@ msgstr "Hesap İsmi"
 msgid "First Name"
 msgstr "Ad"
 
-#: rcrm_account/forms.py:127 rcrm_contact/forms.py:15 rcrm_employee/forms.py:15
-#: templates/account/pages/user_profile.html:46
+#: rcrm_account/forms.py:131 rcrm_contact/forms.py:15 rcrm_employee/forms.py:15
 #: templates/client/forms/contact_add.html:67
 #: templates/contact/forms/contact_create.html:39
 #: templates/contact/forms/contact_edit.html:39
@@ -129,39 +121,27 @@ msgstr "Ad"
 msgid "Last Name"
 msgstr "Soyad"
 
-#: rcrm_account/forms.py:128 rcrm_contact/forms.py:43 rcrm_employee/forms.py:47
-#: rcrm_util/forms.py:18 rcrm_util/models.py:19
-#: templates/client/forms/address_create.html:57
-#: templates/client/forms/address_edit.html:57
-#: templates/client/pages/client_detail.html:181
-#: templates/contact/forms/address_create.html:57
-#: templates/contact/forms/address_edit.html:57
-#: templates/contact/pages/contact_detail.html:157
-#: templates/employee/forms/address_create.html:57
-#: templates/employee/forms/address_edit.html:57
-#: templates/employee/pages/employee_detail.html:157
-#: templates/job/forms/job_create.html:96 templates/job/forms/job_edit.html:96
-#: templates/job/pages/job_detail.html:83
-msgid "Country"
-msgstr "Ülke"
+#: rcrm_account/forms.py:134 rcrm_job/forms.py:24
+msgid "Language"
+msgstr "Dil"
 
-#: rcrm_account/forms.py:147
+#: rcrm_account/forms.py:163
 msgid "The two password fields didn't match."
 msgstr "İki parola alanı eşleşmedi."
 
-#: rcrm_account/forms.py:150
+#: rcrm_account/forms.py:166
 msgid "New password"
 msgstr "Yeni Parola"
 
-#: rcrm_account/forms.py:155
+#: rcrm_account/forms.py:169
 msgid "New password confirmation"
 msgstr "Yeni Parola Doğrulama"
 
-#: rcrm_account/forms.py:189
+#: rcrm_account/forms.py:201
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr "Eski parola yanlış. Lütfen tekrar giriniz."
 
-#: rcrm_account/forms.py:192
+#: rcrm_account/forms.py:204
 msgid "Old password"
 msgstr "Eski Parola"
 
@@ -195,9 +175,9 @@ msgstr "Ad"
 msgid "Phone Number"
 msgstr "Telefon Numarası"
 
-#: rcrm_account/models.py:24 templates/client/forms/client_create.html:39
+#: rcrm_account/models.py:24 rcrm_job/forms.py:16
+#: templates/client/forms/client_create.html:39
 #: templates/client/forms/client_edit.html:40
-#: templates/job/forms/job_create.html:46 templates/job/forms/job_edit.html:46
 msgid "Description"
 msgstr "Açıklama"
 
@@ -285,76 +265,81 @@ msgstr "Kullanıcılar"
 msgid "CRM Account Request"
 msgstr "CRM Hesap Talebi"
 
-#: rcrm_account/views.py:57
+#: rcrm_account/views.py:58
 msgid "You need to join to an account or create an account to use RCRM!"
 msgstr ""
-"RCRM'i kullanmak için bir hesap oluşturmanız veya başka bir hesaba katılmanız "
-"gerekmektedir."
+"RCRM'i kullanmak için bir hesap oluşturmanız veya başka bir hesaba "
+"katılmanız gerekmektedir."
 
-#: rcrm_account/views.py:77 rcrm_account/views.py:101 rcrm_client/views.py:106
-#: rcrm_client/views.py:240 rcrm_client/views.py:302 rcrm_client/views.py:364
-#: rcrm_client/views.py:426 rcrm_contact/views.py:94 rcrm_contact/views.py:161
-#: rcrm_contact/views.py:225 rcrm_contact/views.py:290
-#: rcrm_contact/views.py:354 rcrm_employee/views.py:86
-#: rcrm_employee/views.py:153 rcrm_employee/views.py:217
-#: rcrm_employee/views.py:282 rcrm_employee/views.py:346 rcrm_job/views.py:92
+#: rcrm_account/views.py:86 rcrm_account/views.py:102 rcrm_client/views.py:116
+#: rcrm_client/views.py:250 rcrm_client/views.py:312 rcrm_client/views.py:374
+#: rcrm_client/views.py:436 rcrm_contact/views.py:107 rcrm_contact/views.py:174
+#: rcrm_contact/views.py:238 rcrm_contact/views.py:303
+#: rcrm_contact/views.py:367 rcrm_employee/views.py:99
+#: rcrm_employee/views.py:166 rcrm_employee/views.py:230
+#: rcrm_employee/views.py:295 rcrm_employee/views.py:359 rcrm_job/views.py:123
 msgid "Saved successfully, thank you."
 msgstr "Başarıyla kaydedildi, teşekkürler"
 
-#: rcrm_account/views.py:165 rcrm_client/views.py:151 rcrm_client/views.py:178
-#: rcrm_client/views.py:221 rcrm_client/views.py:283 rcrm_client/views.py:345
-#: rcrm_client/views.py:407
+#: rcrm_account/views.py:170 rcrm_client/views.py:161 rcrm_client/views.py:188
+#: rcrm_client/views.py:231 rcrm_client/views.py:293 rcrm_client/views.py:355
+#: rcrm_client/views.py:417
 msgid "Added successfully, thank you."
 msgstr "Başarıyla eklendi, teşekkürler."
 
-#: rcrm_account/views.py:167
+#: rcrm_account/views.py:172
 msgid "The user already has an account!"
 msgstr "Kullanıcı zaten bir hesaba sahip!"
 
-#: rcrm_account/views.py:170
+#: rcrm_account/views.py:175
 msgid "The user could not be found!"
 msgstr "Kullanıcı bulunamadı!"
 
-#: rcrm_account/views.py:187 rcrm_client/views.py:195
+#: rcrm_account/views.py:180
+msgid "Enter a valid email address."
+msgstr "Geçerli bir e-posta adresi girin."
+
+#: rcrm_account/views.py:198 rcrm_client/views.py:205
 msgid "Removed successfully, thank you."
 msgstr "Başarıyla silindi, teşekkürler."
 
-#: rcrm_account/views.py:209
+#: rcrm_account/views.py:220
 msgid "Your request has been sent successfully, thank you."
 msgstr "Talebiniz başarıyla gönderildi, teşekkürler."
 
-#: rcrm_account/views.py:212
+#: rcrm_account/views.py:223
 msgid "There is an Access Request to Your RCRM Account!"
 msgstr "RCRM Hesabınıza Bir Erişim Talebi Var!"
 
-#: rcrm_account/views.py:227
+#: rcrm_account/views.py:238
 msgid "You have already requested to "
 msgstr "Daha önce talep gönderildi "
 
-#: rcrm_account/views.py:230
+#: rcrm_account/views.py:241
 msgid "The account could not found!"
 msgstr "Hesap bulunamadı!"
 
-#: rcrm_account/views.py:248
+#: rcrm_account/views.py:259
 msgid "The user has an account!"
 msgstr "Kullanıcının bir hesabı var!"
 
-#: rcrm_account/views.py:252
+#: rcrm_account/views.py:263
 msgid "Accepted successfully, thank you."
 msgstr "Başarıyla kabul edildi, teşekkürler."
 
-#: rcrm_account/views.py:255
+#: rcrm_account/views.py:266
 msgid "Your Request Has Been Accepted"
 msgstr "Talebiniz kabul edildi."
 
-#: rcrm_account/views.py:256
+#: rcrm_account/views.py:267
 msgid ""
 "Your RCRM account request has been accepted. To reach the account: "
 "http://127.0.0.1:8000/accounts/"
-msgstr "RCRM hesap başvurunuz kabul edildi. Hesaba ulaşmak için: "
+msgstr ""
+"RCRM hesap başvurunuz kabul edildi. Hesaba ulaşmak için: "
 "http://127.0.0.1:8000/accounts/"
 
-#: rcrm_account/views.py:281
+#: rcrm_account/views.py:292
 msgid "Declined, thank you."
 msgstr "Reddedildi, teşekkürler"
 
@@ -373,7 +358,7 @@ msgstr "Kontak Kişi"
 #: templates/contact/forms/contact_edit.html:14
 #: templates/contact/forms/email_create.html:14
 #: templates/contact/forms/email_edit.html:14
-#: templates/contact/forms/import_contact.html:12
+#: templates/contact/forms/import_contact.html:14
 #: templates/contact/forms/phone_create.html:14
 #: templates/contact/forms/phone_edit.html:14
 #: templates/contact/forms/social_create.html:14
@@ -416,32 +401,31 @@ msgid "Clients"
 msgstr "Müşteriler"
 
 #: rcrm_client/forms.py:15 rcrm_contact/forms.py:20 rcrm_contact/models.py:27
-#: rcrm_employee/forms.py:20 rcrm_employee/models.py:29
+#: rcrm_employee/forms.py:20 rcrm_employee/models.py:29 rcrm_job/forms.py:15
 #: templates/client/forms/contact_add.html:91
 #: templates/contact/forms/contact_create.html:63
 #: templates/contact/forms/contact_edit.html:63
 #: templates/dynamic/forms/dynamic_tab_create.html:39
 #: templates/employee/forms/employee_create.html:63
 #: templates/employee/forms/employee_edit.html:63
-#: templates/job/forms/job_create.html:40 templates/job/forms/job_edit.html:40
 msgid "Short Description"
 msgstr "Kısa Açıklama"
 
-#: rcrm_client/views.py:87 rcrm_contact/views.py:77 rcrm_contact/views.py:141
-#: rcrm_contact/views.py:205 rcrm_contact/views.py:270
-#: rcrm_contact/views.py:334 rcrm_employee/views.py:69
-#: rcrm_employee/views.py:133 rcrm_employee/views.py:197
-#: rcrm_employee/views.py:262 rcrm_employee/views.py:326 rcrm_job/views.py:73
+#: rcrm_client/views.py:86 rcrm_contact/views.py:90 rcrm_contact/views.py:154
+#: rcrm_contact/views.py:218 rcrm_contact/views.py:283
+#: rcrm_contact/views.py:347 rcrm_employee/views.py:82
+#: rcrm_employee/views.py:146 rcrm_employee/views.py:210
+#: rcrm_employee/views.py:275 rcrm_employee/views.py:339 rcrm_job/views.py:86
 msgid "Created successfully, thank you."
 msgstr "Başarıyla oluşturuldu, teşekkürler."
 
-#: rcrm_client/views.py:126 rcrm_client/views.py:257 rcrm_client/views.py:319
-#: rcrm_client/views.py:381 rcrm_client/views.py:443 rcrm_contact/views.py:114
-#: rcrm_contact/views.py:179 rcrm_contact/views.py:243
-#: rcrm_contact/views.py:308 rcrm_contact/views.py:372
-#: rcrm_employee/views.py:106 rcrm_employee/views.py:171
-#: rcrm_employee/views.py:235 rcrm_employee/views.py:300
-#: rcrm_employee/views.py:364 rcrm_job/views.py:112
+#: rcrm_client/views.py:136 rcrm_client/views.py:267 rcrm_client/views.py:329
+#: rcrm_client/views.py:391 rcrm_client/views.py:453 rcrm_contact/views.py:127
+#: rcrm_contact/views.py:192 rcrm_contact/views.py:256
+#: rcrm_contact/views.py:321 rcrm_contact/views.py:385
+#: rcrm_employee/views.py:119 rcrm_employee/views.py:184
+#: rcrm_employee/views.py:248 rcrm_employee/views.py:313
+#: rcrm_employee/views.py:377 rcrm_job/views.py:149
 msgid "Deleted successfully, thank you."
 msgstr "Başarıyla silindi, teşekkürler."
 
@@ -483,8 +467,9 @@ msgid "Address"
 msgstr "Adres"
 
 #: rcrm_contact/forms.py:40 rcrm_contact/models.py:112
-#: rcrm_employee/forms.py:44 rcrm_employee/models.py:103 rcrm_util/forms.py:15
-#: rcrm_util/models.py:16 templates/client/forms/address_create.html:39
+#: rcrm_employee/forms.py:44 rcrm_employee/models.py:103 rcrm_job/forms.py:30
+#: rcrm_util/forms.py:15 rcrm_util/models.py:16
+#: templates/client/forms/address_create.html:39
 #: templates/client/forms/address_edit.html:39
 #: templates/client/pages/client_detail.html:179
 #: templates/contact/forms/address_create.html:39
@@ -493,7 +478,6 @@ msgstr "Adres"
 #: templates/employee/forms/address_create.html:39
 #: templates/employee/forms/address_edit.html:39
 #: templates/employee/pages/employee_detail.html:155
-#: templates/job/forms/job_create.html:90 templates/job/forms/job_edit.html:90
 #: templates/job/pages/job_detail.html:82 templates/job/pages/job_list.html:86
 msgid "City"
 msgstr "Şehir"
@@ -518,6 +502,21 @@ msgstr "Bölge"
 #: templates/employee/pages/employee_detail.html:156
 msgid "Post Code"
 msgstr "Posta Kodu"
+
+#: rcrm_contact/forms.py:43 rcrm_employee/forms.py:47 rcrm_job/forms.py:31
+#: rcrm_util/forms.py:18 rcrm_util/models.py:19
+#: templates/client/forms/address_create.html:57
+#: templates/client/forms/address_edit.html:57
+#: templates/client/pages/client_detail.html:181
+#: templates/contact/forms/address_create.html:57
+#: templates/contact/forms/address_edit.html:57
+#: templates/contact/pages/contact_detail.html:157
+#: templates/employee/forms/address_create.html:57
+#: templates/employee/forms/address_edit.html:57
+#: templates/employee/pages/employee_detail.html:157
+#: templates/job/pages/job_detail.html:83
+msgid "Country"
+msgstr "Ülke"
 
 #: rcrm_contact/forms.py:73 rcrm_employee/forms.py:77 rcrm_util/forms.py:48
 #: templates/client/pages/client_detail.html:64
@@ -1656,11 +1655,15 @@ msgstr "Erkek"
 msgid "Female"
 msgstr "Kadın"
 
-#: rcrm_contact/views.py:391
+#: rcrm_contact/views.py:399
+msgid "File not found!"
+msgstr "Dosya Bulunamadı!"
+
+#: rcrm_contact/views.py:424
 msgid "Uploaded successfully, thank you."
 msgstr "Başarıyla yüklendi, teşekkürler"
 
-#: rcrm_contact/views.py:394
+#: rcrm_contact/views.py:426
 msgid "Could not be uploaded!"
 msgstr "Yüklenemedi"
 
@@ -1674,7 +1677,7 @@ msgstr "Yazı Alanı"
 msgid "Text Box"
 msgstr "Metin Kutusu"
 
-#: rcrm_dynamic/models.py:53
+#: rcrm_dynamic/models.py:53 rcrm_job/forms.py:27
 #: templates/dynamic/forms/dynamic_image_create.html:39
 msgid "Image"
 msgstr "Resim"
@@ -1755,15 +1758,45 @@ msgstr "E-postası"
 msgid "Requirements"
 msgstr "Bağımlılıklar"
 
-#: rcrm_job/admin.py:28 templates/job/forms/job_create.html:82
-#: templates/job/forms/job_edit.html:82 templates/job/pages/job_detail.html:80
+#: rcrm_job/admin.py:28 templates/job/forms/job_create.html:110
+#: templates/job/forms/job_edit.html:107 templates/job/pages/job_detail.html:80
 msgid "Location"
 msgstr "Konum"
 
-#: rcrm_job/admin.py:31 templates/job/forms/job_create.html:101
-#: templates/job/forms/job_edit.html:101
+#: rcrm_job/admin.py:31 templates/job/forms/job_create.html:138
+#: templates/job/forms/job_edit.html:135
 msgid "Extra"
 msgstr "Ekstra"
+
+#: rcrm_job/forms.py:14 rcrm_util/models.py:100
+#: templates/job/pages/job_list.html:84
+msgid "Title"
+msgstr "Başlık"
+
+#: rcrm_job/forms.py:18 templates/job/pages/job_list.html:87
+msgid "Type of Employment"
+msgstr "İstihdam Türü"
+
+#: rcrm_job/forms.py:21
+msgid "Talent"
+msgstr "Yetenek"
+
+#: rcrm_job/forms.py:22 templates/job/pages/job_detail.html:88
+msgid "Experience"
+msgstr "Deneyim"
+
+#: rcrm_job/forms.py:23 templates/job/pages/job_detail.html:89
+msgid "Education Level"
+msgstr "Eğitim Düzeyi"
+
+#: rcrm_job/forms.py:26
+msgid "Detail URL"
+msgstr "Detay URL"
+
+#: rcrm_job/forms.py:29 templates/job/pages/job_detail.html:81
+#: templates/job/pages/job_list.html:85
+msgid "Office"
+msgstr "Ofis"
 
 #: rcrm_job/models.py:49
 msgid "Job Opportunity"
@@ -1785,6 +1818,10 @@ msgstr "Yarı Zamanı"
 msgid "Full-Time / Part-Time"
 msgstr "Tam Zamanlı / Yarı Zamanlı"
 
+#: rcrm_job/views.py:91 rcrm_job/views.py:128
+msgid "Please correct the errors and try again."
+msgstr ""
+
 #: rcrm_util/apps.py:7
 msgid "Utils"
 msgstr ""
@@ -1797,11 +1834,6 @@ msgstr ""
 #: templates/employee/forms/address_edit.html:51
 msgid "Postcode"
 msgstr "Posta Kodu"
-
-#: rcrm_util/models.py:100 templates/job/forms/job_create.html:34
-#: templates/job/forms/job_edit.html:34 templates/job/pages/job_list.html:84
-msgid "Title"
-msgstr "Başlık"
 
 #: templates/404.html:11
 msgid "Page not found"
@@ -1911,7 +1943,7 @@ msgid "RCRM Account"
 msgstr "RCRM Hesap"
 
 #: templates/account/pages/account.html:15
-#: templates/account/pages/user_profile.html:13
+#: templates/account/pages/user_profile.html:16
 #: templates/client/forms/address_create.html:13
 #: templates/client/forms/address_edit.html:13
 #: templates/client/forms/client_create.html:13
@@ -1931,7 +1963,7 @@ msgstr "RCRM Hesap"
 #: templates/contact/forms/contact_edit.html:13
 #: templates/contact/forms/email_create.html:13
 #: templates/contact/forms/email_edit.html:13
-#: templates/contact/forms/import_contact.html:11
+#: templates/contact/forms/import_contact.html:13
 #: templates/contact/forms/phone_create.html:13
 #: templates/contact/forms/phone_edit.html:13
 #: templates/contact/forms/social_create.html:13
@@ -1960,7 +1992,7 @@ msgstr "RCRM Hesap"
 #: templates/employee/forms/social_edit.html:13
 #: templates/employee/pages/employee_detail.html:13
 #: templates/employee/pages/employee_list.html:13
-#: templates/job/forms/job_create.html:13 templates/job/forms/job_edit.html:13
+#: templates/job/forms/job_create.html:15 templates/job/forms/job_edit.html:15
 #: templates/job/pages/job_detail.html:13 templates/job/pages/job_list.html:13
 #: templates/partials/bread_crumb.html:6
 msgid "Home"
@@ -1983,8 +2015,8 @@ msgid "or Create a New RCRM Account"
 msgstr "veya Yeni Bir RCRM Hesabı Oluşturun"
 
 #: templates/account/pages/account.html:116
-#: templates/account/pages/user_profile.html:60
-#: templates/account/pages/user_profile.html:96
+#: templates/account/pages/user_profile.html:76
+#: templates/account/pages/user_profile.html:124
 #: templates/client/forms/client_edit.html:46
 #: templates/client/forms/email_edit.html:39
 #: templates/client/forms/phone_edit.html:39
@@ -1994,7 +2026,7 @@ msgstr "veya Yeni Bir RCRM Hesabı Oluşturun"
 #: templates/employee/forms/employee_edit.html:81
 #: templates/employee/forms/phone_edit.html:39
 #: templates/employee/forms/social_edit.html:75
-#: templates/job/forms/job_edit.html:115
+#: templates/job/forms/job_edit.html:155
 msgid "Save"
 msgstr "Kaydet"
 
@@ -2041,8 +2073,8 @@ msgstr "Kaydet"
 #: templates/employee/forms/phone_edit.html:41
 #: templates/employee/forms/social_create.html:77
 #: templates/employee/forms/social_edit.html:77
-#: templates/job/forms/job_create.html:117
-#: templates/job/forms/job_edit.html:117
+#: templates/job/forms/job_create.html:160
+#: templates/job/forms/job_edit.html:157
 msgid "Cancel"
 msgstr "İptal"
 
@@ -2051,7 +2083,7 @@ msgid "Remove / Add"
 msgstr "Sil / Ekle"
 
 #: templates/account/pages/account.html:142
-#: templates/account/pages/account.html:195
+#: templates/account/pages/account.html:201
 #: templates/client/pages/client_detail.html:72
 #: templates/client/pages/client_detail.html:111
 #: templates/client/pages/client_detail.html:147
@@ -2073,45 +2105,36 @@ msgstr "Sil / Ekle"
 msgid "%(number)s"
 msgstr "%(number)s"
 
-#: templates/account/pages/account.html:179
+#: templates/account/pages/account.html:185
 msgid "RCRM Account Requests"
 msgstr "RCRM Hesap Talepleri"
 
-#: templates/account/pages/account.html:188
+#: templates/account/pages/account.html:194
 msgid "Accept / Decline"
 msgstr "Kabul Et / Reddet"
 
-#: templates/account/pages/account.html:199
+#: templates/account/pages/account.html:205
 msgid " Accept"
 msgstr " Kabul Et"
 
-#: templates/account/pages/user_profile.html:10
+#: templates/account/pages/user_profile.html:13
 #: templates/partials/header.html:45
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/account/pages/user_profile.html:14
+#: templates/account/pages/user_profile.html:17
 #: templates/partials/bread_crumb.html:3 templates/partials/bread_crumb.html:7
 #: templates/partials/sidebar.html:11
 msgid "Dashboard"
 msgstr "Gösterge Paneli"
 
-#: templates/account/pages/user_profile.html:28
+#: templates/account/pages/user_profile.html:32
 msgid "Edit Your Profile"
 msgstr "Profilini Güncelle"
 
-#: templates/account/pages/user_profile.html:52
-#: templates/job/forms/job_create.html:77 templates/job/forms/job_edit.html:77
-msgid "Language"
-msgstr "Dil"
-
-#: templates/account/pages/user_profile.html:70
+#: templates/account/pages/user_profile.html:89
 msgid "Change Your Password"
 msgstr "Parolanı Değiştir"
-
-#: templates/account/pages/user_profile.html:76
-msgid "Old Password"
-msgstr "Eski Parola:"
 
 #: templates/client/forms/address_create.html:4
 #: templates/contact/forms/address_create.html:4
@@ -2165,7 +2188,7 @@ msgstr "Adres Ekle"
 #: templates/employee/forms/employee_create.html:81
 #: templates/employee/forms/phone_create.html:39
 #: templates/employee/forms/social_create.html:75
-#: templates/job/forms/job_create.html:115
+#: templates/job/forms/job_create.html:158
 msgid "Add"
 msgstr "Ekle"
 
@@ -2282,8 +2305,8 @@ msgstr "Kontaklar"
 #: templates/employee/forms/social_edit.html:15
 #: templates/employee/forms/social_edit.html:28
 #: templates/employee/pages/employee_detail.html:29
-#: templates/job/forms/job_edit.html:4 templates/job/forms/job_edit.html:15
-#: templates/job/forms/job_edit.html:29 templates/job/pages/job_detail.html:34
+#: templates/job/forms/job_edit.html:7 templates/job/forms/job_edit.html:17
+#: templates/job/forms/job_edit.html:30 templates/job/pages/job_detail.html:34
 msgid "Edit"
 msgstr "Düzenle"
 
@@ -2410,7 +2433,7 @@ msgid "Edit / Delete"
 msgstr "Düzenle / Sil"
 
 #: templates/client/pages/client_list.html:55
-#: templates/contact/forms/import_contact.html:13
+#: templates/contact/forms/import_contact.html:15
 #: templates/contact/pages/contact_list.html:55
 #: templates/employee/pages/employee_list.html:55
 #: templates/job/pages/job_list.html:55
@@ -2428,15 +2451,15 @@ msgstr "Dışa Aktar"
 msgid "New Client"
 msgstr "Yeni Müşteri"
 
-#: templates/contact/forms/import_contact.html:8
+#: templates/contact/forms/import_contact.html:9
 msgid "Contact Import"
 msgstr "Kontakları İçeri Aktar"
 
-#: templates/contact/forms/import_contact.html:29
+#: templates/contact/forms/import_contact.html:30
 msgid "Upload"
 msgstr "Yükle"
 
-#: templates/contact/forms/import_contact.html:30
+#: templates/contact/forms/import_contact.html:31
 msgid "Back"
 msgstr "Geri"
 
@@ -2651,61 +2674,27 @@ msgstr "Çalışan Ekle"
 msgid "New Employee"
 msgstr "Yeni Çalışan"
 
-#: templates/job/forms/job_create.html:4 templates/job/forms/job_create.html:15
-#: templates/job/forms/job_create.html:29
+#: templates/job/forms/job_create.html:7 templates/job/forms/job_create.html:17
+#: templates/job/forms/job_create.html:33
 msgid "Add Job"
 msgstr "İş Ekle"
 
-#: templates/job/forms/job_create.html:10 templates/job/forms/job_edit.html:10
+#: templates/job/forms/job_create.html:12 templates/job/forms/job_edit.html:12
 #: templates/job/pages/job_list.html:4 templates/job/pages/job_list.html:10
 #: templates/partials/sidebar.html:24
 msgid "Jobs"
 msgstr "İşler"
 
-#: templates/job/forms/job_create.html:14 templates/job/forms/job_edit.html:14
+#: templates/job/forms/job_create.html:16 templates/job/forms/job_edit.html:16
 #: templates/job/pages/job_detail.html:10
 #: templates/job/pages/job_detail.html:14 templates/job/pages/job_list.html:14
 #: templates/job/pages/job_list.html:76
 msgid "Job"
 msgstr "İş"
 
-#: templates/job/forms/job_create.html:52 templates/job/forms/job_edit.html:52
-#: templates/job/pages/job_list.html:87
-msgid "Type of Employment"
-msgstr "İstihdam Türü"
-
-#: templates/job/forms/job_create.html:57 templates/job/forms/job_edit.html:57
+#: templates/job/forms/job_create.html:73 templates/job/forms/job_edit.html:70
 msgid "Skills"
 msgstr "Yetenekler"
-
-#: templates/job/forms/job_create.html:59 templates/job/forms/job_edit.html:59
-msgid "Talent"
-msgstr "Yetenek"
-
-#: templates/job/forms/job_create.html:65 templates/job/forms/job_edit.html:65
-#: templates/job/pages/job_detail.html:88
-msgid "Experience"
-msgstr "Deneyim"
-
-#: templates/job/forms/job_create.html:71 templates/job/forms/job_edit.html:71
-#: templates/job/pages/job_detail.html:89
-msgid "Education Level"
-msgstr "Eğitim Düzeyi"
-
-#: templates/job/forms/job_create.html:84 templates/job/forms/job_edit.html:84
-#: templates/job/pages/job_detail.html:81 templates/job/pages/job_list.html:85
-msgid "Office"
-msgstr "Ofis"
-
-#: templates/job/forms/job_create.html:103
-#: templates/job/forms/job_edit.html:103
-msgid "Detail URL"
-msgstr "Detay URL"
-
-#: templates/job/forms/job_create.html:109
-#: templates/job/forms/job_edit.html:109
-msgid "image"
-msgstr "resim"
 
 #: templates/job/pages/job_detail.html:29
 msgid "Share on Linkedin"
@@ -2738,6 +2727,15 @@ msgstr "Tüm Hakları Saklıdır"
 #: templates/partials/header.html:46
 msgid "Logout"
 msgstr "Çıkış Yap"
+
+#~ msgid "example@email.com"
+#~ msgstr "example@email.com"
+
+#~ msgid "Old Password"
+#~ msgstr "Eski Parola:"
+
+#~ msgid "image"
+#~ msgstr "resim"
 
 #~ msgid "English"
 #~ msgstr "İngilizce"

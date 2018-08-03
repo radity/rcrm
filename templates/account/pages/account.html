@@ -158,10 +158,16 @@
           <tr>
             <form method="post" action="{% url 'Accounts:Account_Add_User' %}">
               {% csrf_token %}
+              {% if add_user_form.non_field_errors %}
+                {% include 'partials/message.html' with message=form.non_field_errors status='error' %}
+              {% endif %}
               <th>+</th>
               <td>
-                {% with field=add_user_for.email %}
-                {{ field }}
+                {% with field=add_user_form.email %}
+                  {% if field.errors %}
+                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                  {% endif %}
+                  {% add_attrs field class="form-control" placeholder="example@email.com" %}
                 {% endwith %}
               </td>
               <td>
