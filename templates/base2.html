@@ -3,34 +3,38 @@
 <!DOCTYPE html>
 <html lang="{% if request.user.is_authenticated %}{{ request.user.language }}{% else %}en{% endif %}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% block title %}RCRM{% endblock %}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}RCRM{% endblock %}</title>
+
+  {% block styles %}
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'css/lib/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
     <!-- Custom CSS -->
-
     <link href="{% static 'css/lib/calendar2/semantic.ui.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/lib/calendar2/pignose.calendar.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/lib/owl.carousel.min.css' %}" rel="stylesheet" />
     <link href="{% static 'css/lib/owl.theme.default.min.css' %}" rel="stylesheet" />
     <link href="{% static 'css/helper.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
-    <!--[if lt IE 9]>
-    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+  {% endblock %}
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
+  <!--[if lt IE 9]>
+  <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  {% block  extrastyles %}{% endblock %}
 </head>
 <body class="fix-header fix-sidebar">
-    <div id="main-wrapper">
-        {% include 'partials/messages.html' %}
-        {% block content %}
+  <div id="main-wrapper">
+    {% include 'partials/messages.html' %}
 
+    {% block content %}{% endblock %}
+  </div>
 
-        {% endblock %}
-    </div>
+  {% block scripts %}
     <!-- End Wrapper -->
     <!-- All Jquery -->
     <script src="{% static 'js/lib/jquery/jquery.min.js' %}"></script>
@@ -52,7 +56,7 @@
     <script src="{% static 'js/lib/morris-chart/dashboard1-init.js' %}"></script>
 
 
-	<script src="{% static 'js/lib/calendar-2/moment.latest.min.js' %}"></script>
+    <script src="{% static 'js/lib/calendar-2/moment.latest.min.js' %}"></script>
     <!-- scripit init-->
     <script src="{% static 'js/lib/calendar-2/semantic.ui.min.js' %}"></script>
     <!-- scripit init-->
@@ -64,9 +68,8 @@
 
     <script src="{% static 'js/lib/owl-carousel/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/lib/owl-carousel/owl.carousel-init.js' %}"></script>
+  {% endblock %}
 
-    <!-- scripit init-->
-
-    <script src="js/scripts.js"></script>
+  {% block extrascripts %}{% endblock %}
 </body>
 </html>

@@ -1,57 +1,58 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
 {% load i18n static %}
 
-{% block title %}{% trans 'Edit' %} {{ object }} - {{ block.super }}{% endblock %}
+
+{% block title %}{% trans "Edit" %} {{ object }} - {{ block.super }}{% endblock %}
 
 {% block breadcrumb %}
-
-<div class="row page-titles">
+  <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-primary">{% trans 'Clients' %}</h3></div>
-    <div class="col-md-7 align-self-center">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
-            <li class="breadcrumb-item active"><a href="{% url 'Employees:Employee' %}">{% trans 'Client' %}</a></li>
-            <li class="breadcrumb-item active">{% trans 'Edit' %}&nbsp;{{ object }}</li>
-        </ol>
+      <h3 class="text-primary">{% trans "Clients" %}</h3>
     </div>
-</div>
-
+    <div class="col-md-7 align-self-center">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans "Home" %}</a></li>
+        <li class="breadcrumb-item active"><a href="{% url 'Employees:Employee' %}">{% trans "Client" %}</a></li>
+        <li class="breadcrumb-item active">{% trans "Edit" %}&nbsp;{{ object }}</li>
+      </ol>
+    </div>
+  </div>
 {% endblock %}
 
 {% block content %}
-<div class="card card-outline-primary">
+  <div class="card card-outline-primary">
     <div class="card-body">
-        <form method="post">
-            {% csrf_token %}
-            {{ form.media }}
-            <div class="form-body">
-                <h3 class="card-title m-t-15">{% trans 'Edit' %}&nbsp;{{ object }}</h3>
-                <hr>
-                <div class="row p-t-20">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>{% trans 'Name' %}:</label>
-                            {% with field=form.name %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'Description' %}:</label>
-                            {% with field=form.description %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans 'Save' %}</button>
-                            <a href="{{ request.META.HTTP_REFERER }}">
-                                <button type="button" class="btn btn-inverse">{% trans 'Cancel' %}</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.media }}
+        <div class="form-body">
+          <h3 class="card-title m-t-15">{% trans "Edit" %}&nbsp;{{ object }}</h3>
+          <hr>
+          <div class="row p-t-20">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>{% trans "Name" %}:</label>
+                {% with field=form.name %}
+                  {{ field }}
+                {% endwith %}
+              </div>
+              <div class="form-group">
+                <label>{% trans "Description" %}:</label>
+                {% with field=form.description %}
+                  {{ field }}
+                {% endwith %}
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans "Save" %}</button>
+                <a href="{{ request.META.HTTP_REFERER }}">
+                  <button type="button" class="btn btn-inverse">{% trans "Cancel" %}</button>
+                </a>
+              </div>
             </div>
-        </form>
+          </div>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
 {% endblock %}

@@ -1,16 +1,19 @@
-{% extends 'base2.html' %}
+{% extends "base2.html" %}
+
 {% load i18n static %}
 
-{% block title %}Page Not Found - {{ block.super }}{% endblock %}
+
+{% block title %}{% trans "Page not found" %} - {{ block.super }}{% endblock %}
 
 {% block content %}
 <div class="error-page" id="wrapper">
-    <div class="error-box">
-        <div class="error-body text-center">
-            <h1>404</h1>
-            <h3 class="text-uppercase">{% trans 'Page not found' %} </h3>
-            <a class="btn btn-info btn-rounded waves-effect waves-light m-b-40" href="{% url 'Dashboard:Home' %}">{% trans 'Back to home' %}</a> </div>
-        <footer class="footer text-center">&copy; 2018 Radity.</footer>
+  <div class="error-box">
+    <div class="error-body text-center">
+      <h1>404</h1>
+      <h3 class="text-uppercase">{% trans "Page not found" %}</h3>
+      <a class="btn btn-info btn-rounded waves-effect waves-light m-b-40" href="{% url 'Dashboard:Home' %}">{% trans "Back to home" %}</a>
     </div>
+    <footer class="footer text-center">&copy; 2018 Radity.</footer>
+  </div>
 </div>
 {% endblock %}

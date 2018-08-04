@@ -1,106 +1,105 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
 {% load i18n static %}
 
-{% block title %}{% trans 'Jobs' %} - {{ block.super }}{% endblock %}
+
+{% block title %}{% trans "Jobs" %} - {{ block.super }}{% endblock %}
 
 {% block breadcrumb %}
-
-<div class="row page-titles">
+  <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-primary">{% trans 'Jobs' %}</h3></div>
-    <div class="col-md-7 align-self-center">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
-            <li class="breadcrumb-item active"><a href="{% url 'Jobs:Job' %}">{% trans 'Job' %}</a></li>
-        </ol>
+      <h3 class="text-primary">{% trans "Jobs" %}</h3>
     </div>
-</div>
-
+    <div class="col-md-7 align-self-center">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans "Home" %}</a></li>
+        <li class="breadcrumb-item active"><a href="{% url 'Jobs:Job' %}">{% trans "Job" %}</a></li>
+      </ol>
+    </div>
+  </div>
 {% endblock %}
 
 {% block content %}
-
-<div class="col-lg-12">
+  <div class="col-lg-12">
     <div class="card">
-        <div class="row" style="height:43px;">
-            <div class="col-4">
-                <form method="get">
-                    <div class="form-group">
-                        <div class="input-group input-group-default">
-                                <input type="text" value="{{ request.GET.q }}" placeholder="Search" name="q" class="form-control">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="submit">
-                                        <i class="ti-search"></i>
-                                    </button>
-                                </span>
+      <div class="row" style="height:43px;">
+        <div class="col-4">
+          <form method="get">
+            <div class="form-group">
+              <div class="input-group input-group-default">
+                  <input type="text" value="{{ request.GET.q }}" placeholder="{% trans 'Search' %}" name="q" class="form-control">
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">
+                      <i class="ti-search"></i>
+                    </button>
+                  </span>
 
-                            {% if all_jobs.count > jobs.count %}
-                            <div style="padding-left:5px;">
-                                <a href="{% url 'Jobs:Job' %}"><span class="input-group-btn">
-                                    <button type="button" class="btn btn-inverse">
-                                        <i class="fa fa-close"></i>
-                                    </button>
-                                </span>
-                                </a>
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-3"></div>
-            <div class="col-5">
-                <div class="pull-right">
-                    <!--<a href="#">
-                        <button type="button" class="btn btn-inverse"><i class="fa fa-upload"></i> {% trans 'Import' %}
-                        </button>
-                    </a>
-                    <a href="{% url 'Employees:Employee_Export' %}">
-                        <button type="button" class="btn btn-inverse"><i class="fa fa-download"></i> {% trans 'Export' %}
-                        </button>
-                    </a>-->
-                    <a href="{% url 'Jobs:Job_Create' %}">
-                        <button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'New Job' %}
-                        </button>
-                    </a>
+                {% if all_jobs.count > jobs.count %}
+                <div style="padding-left:5px;">
+                  <a href="{% url 'Jobs:Job' %}"><span class="input-group-btn">
+                    <button type="button" class="btn btn-inverse">
+                      <i class="fa fa-close"></i>
+                    </button>
+                  </span>
+                  </a>
                 </div>
+                {% endif %}
+              </div>
             </div>
+          </form>
         </div>
+        <div class="col-3"></div>
+        <div class="col-5">
+          <div class="pull-right">
+            <!--<a href="#">
+              <button type="button" class="btn btn-inverse"><i class="fa fa-upload"></i> {% trans 'Import' %}
+              </button>
+            </a>
+            <a href="{% url 'Employees:Employee_Export' %}">
+              <button type="button" class="btn btn-inverse"><i class="fa fa-download"></i> {% trans 'Export' %}
+              </button>
+            </a>-->
+            <a href="{% url 'Jobs:Job_Create' %}">
+              <button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans "New Job" %}
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
-
-<div class="col-lg-12">
+  <div class="col-lg-12">
     <div class="card">
-        <div class="card-title">
-            <h4>{% trans 'Job' %}</h4>
+      <div class="card-title">
+        <h4>{% trans "Job" %}</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>{% trans "Title" %}</th>
+              <th>{% trans "Office" %}</th>
+              <th>{% trans "City" %}</th>
+              <th>{% trans "Type of Employment" %}</th>
+            </tr>
+            </thead>
+            <tbody>
+              {% for job in jobs %}
+                <tr>
+                  <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}</th>
+                  <td><a href="{{ job.get_absolute_url }}">{{ job }}</a></td>
+                  <td>{{ job.office }}</td>
+                  <td>{{ job.city }}</td>
+                  <td>{{ job.get_type_of_employment_display }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>{% trans 'Title' %}</th>
-                        <th>{% trans 'Office' %}</th>
-                        <th>{% trans 'City' %}</th>
-                        <th>{% trans 'Type of Employment' %}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for job in jobs %}
-                    <tr>
-                        <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}</th>
-                        <td><a href="{{ job.get_absolute_url }}">{{ job }}</a></td>
-                        <td>{{ job.office }}</td>
-                        <td>{{ job.city }}</td>
-                        <td>{{ job.get_type_of_employment_display }}</td>
-                    </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+      </div>
     </div>
-</div>
+  </div>
 {% endblock %}

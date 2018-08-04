@@ -1,10 +1,10 @@
-{% extends 'base2.html' %}
+{% extends "base2.html" %}
 
 {% load i18n static %}
 {% load rcrm_extras %}
 
 
-{% block title %}{% trans 'Login' %} - {{ block.super }}{% endblock %}
+{% block title %}{% trans "Login" %} - {{ block.super }}{% endblock %}
 
 {% block content %}
   <div id="main-wrapper">
@@ -18,13 +18,13 @@
                 <form method="post">
                   {% csrf_token %}
                   {% if form.non_field_errors %}
-                    {% include 'partials/message.html' with message=form.non_field_errors status='error' %}
+                    {% include "partials/message.html" with message=form.non_field_errors status="error" %}
                   {% endif %}
                   {% with field=form.email %}
                     <div class="form-group">
                       <label>{{ field.label }}:</label>
                       {% if field.errors %}
-                        {% include 'partials/message.html' with message=field.errors status='error' %}
+                        {% include "partials/message.html" with message=field.errors status="error" %}
                       {% endif %}
                       {% add_attrs field class="form-control" %}
                     </div>
@@ -33,7 +33,7 @@
                     <div class="form-group">
                       <label>{{ field.label }}:</label>
                       {% if field.errors %}
-                        {% include 'partials/message.html' with message=field.errors status='error' %}
+                        {% include "partials/message.html" with message=field.errors status="error" %}
                       {% endif %}
                       {% add_attrs field class="form-control" %}
                     </div>
@@ -43,9 +43,9 @@
                         <a href="#">Forgotten Password?</a>
                       </label>
                   </div>-->
-                  <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">{% trans 'Login' %}</button>
+                  <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">{% trans "Login" %}</button>
                   <div class="register-link m-t-15 text-center">
-                    <p>{% trans "Don't have account ?" %}<a href="{% url 'Accounts:Register' %}"> {% trans 'Register' %}</a></p>
+                    <p>{% trans "Don't have account?" %}<a href="{% url 'Accounts:Register' %}"> {% trans "Register" %}</a></p>
                   </div>
                 </form>
               </div>

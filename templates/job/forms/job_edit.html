@@ -1,20 +1,21 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% load i18n static %}
 {% load rcrm_extras %}
 
 
-{% block title %}{% trans 'Edit' %} {{ object }} - {{ block.super }}{% endblock %}
+{% block title %}{% trans "Edit" %} {{ object }} - {{ block.super }}{% endblock %}
 
 {% block breadcrumb %}
   <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-      <h3 class="text-primary">{% trans 'Jobs' %}</h3></div>
+      <h3 class="text-primary">{% trans "Jobs" %}</h3>
+    </div>
     <div class="col-md-7 align-self-center">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
-        <li class="breadcrumb-item active"><a href="{% url 'Employees:Employee' %}">{% trans 'Job' %}</a></li>
-        <li class="breadcrumb-item active">{% trans 'Edit' %}&nbsp;{{ object }}</li>
+        <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans "Home" %}</a></li>
+        <li class="breadcrumb-item active"><a href="{% url 'Employees:Employee' %}">{% trans "Job" %}</a></li>
+        <li class="breadcrumb-item active">{% trans "Edit" %}&nbsp;{{ object }}</li>
       </ol>
     </div>
   </div>
@@ -27,7 +28,7 @@
         {% csrf_token %}
         {{ form.media }}
         <div class="form-body">
-          <h3 class="card-title m-t-15">{% trans 'Edit' %}&nbsp;{{ object }}</h3>
+          <h3 class="card-title m-t-15">{% trans "Edit" %}&nbsp;{{ object }}</h3>
           <hr>
           <div class="row p-t-20">
             <div class="col-md-6">
@@ -35,7 +36,7 @@
                 <div class="form-group">
                   <label>{{ field.label }}:</label>
                   {% if field.errors %}
-                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                    {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
                   {% add_attrs field class="form-control" %}
                 </div>
@@ -44,7 +45,7 @@
                 <div class="form-group">
                   <label>{{ field.label }}:</label>
                   {% if field.errors %}
-                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                    {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
                   {% add_attrs field class="form-control" style="height: 150px;" %}
                 </div>
@@ -53,7 +54,7 @@
                 <div class="form-group">
                   <label>{{ field.label }}:</label>
                   {% if field.errors %}
-                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                    {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
                   {% add_attrs field class="form-control" %}
                 </div>
@@ -62,17 +63,17 @@
                 <div class="form-group">
                   <label>{{ field.label }}:</label>
                   {% if field.errors %}
-                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                    {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
                   {% add_attrs field class="form-control" %}
                 </div>
               {% endwith %}
-              <br><h4 class="card-title m-t-15">{% trans 'Skills' %}</h4><hr>
+              <br><h4 class="card-title m-t-15">{% trans "Skills" %}</h4><hr>
               {% with field=form.talent %}
                 <div class="form-group">
                   <label>{{ field.label }}:</label>
                   {% if field.errors %}
-                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                    {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
                   {% add_attrs field class="form-control" %}
                 </div>
@@ -81,7 +82,7 @@
                 <div class="form-group">
                   <label>{{ field.label }}:</label>
                   {% if field.errors %}
-                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                    {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
                   {% add_attrs field class="form-control" %}
                 </div>
@@ -90,7 +91,7 @@
                 <div class="form-group">
                   <label>{{ field.label }}:</label>
                   {% if field.errors %}
-                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                    {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
                   {% add_attrs field class="form-control" %}
                 </div>
@@ -99,17 +100,17 @@
                 <div class="form-group">
                   <label>{{ field.label }}:</label>
                   {% if field.errors %}
-                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                    {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
                   {% add_attrs field class="form-control" %}
                 </div>
               {% endwith %}
-              <br><h4 class="card-title m-t-15">{% trans 'Location' %}</h4><hr>
+              <br><h4 class="card-title m-t-15">{% trans "Location" %}</h4><hr>
               {% with field=form.office %}
                 <div class="form-group">
                   <label>{{ field.label }}:</label>
                   {% if field.errors %}
-                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                    {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
                   {% add_attrs field class="form-control" %}
                 </div>
@@ -118,7 +119,7 @@
                 <div class="form-group">
                   <label>{{ field.label }}:</label>
                   {% if field.errors %}
-                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                    {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
                   {% add_attrs field class="form-control" %}
                 </div>
@@ -127,17 +128,17 @@
                 <div class="form-group">
                   <label>{{ field.label }}:</label>
                   {% if field.errors %}
-                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                    {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
                   {% add_attrs field class="form-control" %}
                 </div>
               {% endwith %}
-              <br><h4 class="card-title m-t-15">{% trans 'Extra' %}</h4><hr>
+              <br><h4 class="card-title m-t-15">{% trans "Extra" %}</h4><hr>
               {% with field=form.url %}
                 <div class="form-group">
                   <label>{{ field.label }}:</label>
                   {% if field.errors %}
-                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                    {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
                   {% add_attrs field class="form-control" %}
                 </div>
@@ -146,15 +147,15 @@
                 <div class="form-group">
                   <label>{{ field.label }}:</label>
                   {% if field.errors %}
-                    {% include 'partials/message.html' with message=field.errors status='error' %}
+                    {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
                   {% add_attrs field class="form-control" style="padding: .50rem .75rem;" %}
                 </div>
               {% endwith %}
               <div class="form-actions">
-                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans 'Save' %}</button>
+                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans "Save" %}</button>
                 <a href="{{ request.META.HTTP_REFERER }}">
-                  <button type="button" class="btn btn-inverse">{% trans 'Cancel' %}</button>
+                  <button type="button" class="btn btn-inverse">{% trans "Cancel" %}</button>
                 </a>
               </div>
             </div>
