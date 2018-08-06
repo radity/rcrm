@@ -147,18 +147,40 @@ class ContactAddView(FormView):
     form_class = ClientContactForm
     template_name = 'client/forms/contact_add.html'
 
+    def dispatch(self, request, pk, *args, **kwargs):
+        try:
+            self.client = Client.objects.get(is_deleted=False, id=pk)
+        except Client.DoesNotExist:
+            raise Http404()
+
+        if self.client.account != request.user.account:
+            raise Http404()
+
+        return super(ContactAddView, self).dispatch(request, pk, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('Clients:Client_Detail', args=(self.client.id,))
+
     def get_context_data(self, **kwargs):
-        id = self.kwargs['pk']
         context = super(ContactAddView, self).get_context_data(**kwargs)
-        context['form_c'] = ContactForm(self.request.POST or None)
-        context['client'] = get_object_or_404(Client, id=id)
+
+        context.update({
+            'form_c': ContactForm(self.request.POST or None),
+            'client': self.client
+        })
+
         return context
 
     def form_valid(self, form):
-        id = self.kwargs['pk']
-        client = get_object_or_404(Client, id=id)
-        client.contact.add(form.contact)
-        messages.success(self.request, _('Added successfully, thank you.'))
+        contact = form.cleaned_data.get('contact', None)
+
+        if contact:
+            if not contact in self.client.contact.all():
+                self.client.contact.add(contact)
+                messages.success(self.request, _('Added successfully, thank you.'))
+            else:
+                messages.error(self.request, _('Contact already exists.'))
+
         return super(ContactAddView, self).form_valid(form=form)
 
     def get_form_kwargs(self):
@@ -174,18 +196,27 @@ class ContactCreateView(CreateView):
     model = Contact
     form_class = ContactForm
 
+    def dispatch(self, request, pk, *args, **kwargs):
+        try:
+            self.client = Client.objects.get(is_deleted=False, id=pk)
+        except Client.DoesNotExist:
+            raise Http404()
+
+        if self.client.account != request.user.account:
+            raise Http404()
+
+        return super(ContactCreateView, self).dispatch(request, pk, *args, **kwargs)
+
     def get_success_url(self):
-        id = self.kwargs['pk']
-        client = get_object_or_404(Client, id=id)
-        return reverse('Clients:Client_Detail', args=[client.id])
+        return reverse('Clients:Client_Detail', args=(self.client.id,))
 
     def form_valid(self, form):
-        id = self.kwargs['pk']
-        client = get_object_or_404(Client, id=id)
-        form_c = form.save(commit=False)
-        form_c.account = self.request.user.account
-        client.contact.add(form_c)
+        contact = form.save(commit=False)
+        contact.account = self.request.user.account
+        contact.save()
+        self.client.contact.add(contact)
         messages.success(self.request, _('Added successfully, thank you.'))
+
         return super(ContactCreateView, self).form_valid(form=form)
 
 
