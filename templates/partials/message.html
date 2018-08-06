@@ -1,7 +1,7 @@
-{% if type == 'large' %}
+{% if type == "large" %}
   <ul>
     <h2>
-      {% if status == 'success' %}
+      {% if status == "success" %}
         <div class="alert alert-info" id="message">
           {{ message }}
         </div>
@@ -13,7 +13,7 @@
     </h2>
   </ul>
 {% else %}
-  {% if status == 'success' %}
+  {% if status == "success" %}
       <div class="alert alert-info" id="message">
         {{ message }}
       </div>

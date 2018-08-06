@@ -1,80 +1,81 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
 {% load i18n static %}
 
-{% block title %}{% trans 'Add Contact' %} - {{ block.super }}{% endblock %}
+
+{% block title %}{% trans "Add Contact" %} - {{ block.super }}{% endblock %}
 
 {% block breadcrumb %}
-
-<div class="row page-titles">
+  <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-primary">{% trans 'Contacts' %}</h3></div>
-    <div class="col-md-7 align-self-center">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
-            <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contact' %}</a></li>
-            <li class="breadcrumb-item active">{% trans 'Add Social Profile' %}</li>
-        </ol>
+      <h3 class="text-primary">{% trans "Contacts" %}</h3>
     </div>
-</div>
-
+    <div class="col-md-7 align-self-center">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans "Home" %}</a></li>
+        <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans "Contact" %}</a></li>
+        <li class="breadcrumb-item active">{% trans "Add Social Profile" %}</li>
+      </ol>
+    </div>
+  </div>
 {% endblock %}
 
 {% block content %}
-<div class="card card-outline-primary">
+  <div class="card card-outline-primary">
     <div class="card-body">
-        <form method="post">
-            {% csrf_token %}
-            <div class="form-body">
-                <h3 class="card-title m-t-15">{% trans 'Add Social Profile' %}</h3>
-                <hr>
-                <div class="row p-t-20">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>{% trans 'Skype' %}:</label>
-                            {% with field=form.skype %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'Twitter' %}:</label>
-                            {% with field=form.twitter %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'Instagram' %}:</label>
-                            {% with field=form.instagram %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'Website' %}:</label>
-                            {% with field=form.website %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'Linkedin' %}:</label>
-                            {% with field=form.linkedin %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-group">
-                            <label>{% trans 'Facebook' %}:</label>
-                            {% with field=form.facebook %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans 'Add' %}</button>
-                            <a href="{{ request.META.HTTP_REFERER }}">
-                                <button type="button" class="btn btn-inverse">{% trans 'Cancel' %}</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-body">
+          <h3 class="card-title m-t-15">{% trans "Add Social Profile" %}</h3>
+          <hr>
+          <div class="row p-t-20">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>{% trans "Skype" %}:</label>
+                {% with field=form.skype %}
+                  {{ field }}
+                {% endwith %}
+              </div>
+              <div class="form-group">
+                <label>{% trans "Twitter" %}:</label>
+                {% with field=form.twitter %}
+                  {{ field }}
+                {% endwith %}
+              </div>
+              <div class="form-group">
+                <label>{% trans "Instagram" %}:</label>
+                {% with field=form.instagram %}
+                  {{ field }}
+                {% endwith %}
+              </div>
+              <div class="form-group">
+                <label>{% trans "Website" %}:</label>
+                {% with field=form.website %}
+                  {{ field }}
+                {% endwith %}
+              </div>
+              <div class="form-group">
+                <label>{% trans "Linkedin" %}:</label>
+                {% with field=form.linkedin %}
+                  {{ field }}
+                {% endwith %}
+              </div>
+              <div class="form-group">
+                <label>{% trans "Facebook" %}:</label>
+                {% with field=form.facebook %}
+                  {{ field }}
+                {% endwith %}
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans "Add" %}</button>
+                <a href="{{ request.META.HTTP_REFERER }}">
+                  <button type="button" class="btn btn-inverse">{% trans "Cancel" %}</button>
+                </a>
+              </div>
             </div>
-        </form>
+          </div>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
 {% endblock %}

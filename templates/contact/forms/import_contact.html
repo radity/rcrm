@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% load i18n static %}
 
@@ -6,13 +6,13 @@
 {% block breadcrumb %}
   <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-      <h3 class="text-primary">{% trans 'Contact Import' %}</h3>
+      <h3 class="text-primary">{% trans "Contact Import" %}</h3>
     </div>
     <div class="col-md-7 align-self-center">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
-        <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contact' %}</a></li>
-        <li class="breadcrumb-item active">{% trans 'Import' %}</li>
+        <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans "Home" %}</a></li>
+        <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans "Contact" %}</a></li>
+        <li class="breadcrumb-item active">{% trans "Import" %}</li>
       </ol>
     </div>
   </div>

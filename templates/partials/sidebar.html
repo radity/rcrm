@@ -1,31 +1,33 @@
 {% load i18n static %}
+
+
 <div class="left-sidebar">
-    <!-- Sidebar scroll-->
-    <div class="scroll-sidebar">
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
-            <ul id="sidebarnav">
-                <li class="nav-devider"></li>
-                <li class="nav-label">Home</li>
-                <li>
-                    <a class="has-arrow  " href="{% url 'Dashboard:Home' %}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">{% trans 'Dashboard' %}</span></a>
-                </li>
-                <li class="nav-label">RCRM</li>
-                <li>
-                    <a class="has-arrow  " href="{% url 'Clients:Client' %}" aria-expanded="false"><i class="fa fa-building"></i><span class="hide-menu">{% trans 'Clients' %}</span></a>
-                </li>
-                <li>
-                    <a class="has-arrow  " href="{% url 'Contacts:Contact' %}" aria-expanded="false"><i class="fa fa-address-book"></i><span class="hide-menu">{% trans 'Contacts' %}</span></a>
-                </li>
-                <li>
-                    <a class="has-arrow  " href="{% url 'Employees:Employee' %}" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">{% trans 'Employee' %}</span></a>
-                </li>
-                <li>
-                    <a class="has-arrow  " href="{% url 'Jobs:Job' %}" aria-expanded="false"><i class="fa fa-bullhorn"></i><span class="hide-menu">{% trans 'Jobs' %}</span></a>
-                </li>
-            </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
-    </div>
-    <!-- End Sidebar scroll-->
+  <!-- Sidebar scroll-->
+  <div class="scroll-sidebar">
+    <!-- Sidebar navigation-->
+    <nav class="sidebar-nav">
+      <ul id="sidebarnav">
+        <li class="nav-devider"></li>
+        <li class="nav-label">{% trans "Home" %}</li>
+        <li>
+          <a class="has-arrow  " href="{% url 'Dashboard:Home' %}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">{% trans "Dashboard" %}</span></a>
+        </li>
+        <li class="nav-label">RCRM</li>
+        <li>
+          <a class="has-arrow  " href="{% url 'Clients:Client' %}" aria-expanded="false"><i class="fa fa-building"></i><span class="hide-menu">{% trans "Clients" %}</span></a>
+        </li>
+        <li>
+          <a class="has-arrow  " href="{% url 'Contacts:Contact' %}" aria-expanded="false"><i class="fa fa-address-book"></i><span class="hide-menu">{% trans "Contacts" %}</span></a>
+        </li>
+        <li>
+          <a class="has-arrow  " href="{% url 'Employees:Employee' %}" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">{% trans "Employee" %}</span></a>
+        </li>
+        <li>
+          <a class="has-arrow  " href="{% url 'Jobs:Job' %}" aria-expanded="false"><i class="fa fa-bullhorn"></i><span class="hide-menu">{% trans "Jobs" %}</span></a>
+        </li>
+      </ul>
+    </nav>
+    <!-- End Sidebar navigation -->
+  </div>
+  <!-- End Sidebar scroll-->
 </div>

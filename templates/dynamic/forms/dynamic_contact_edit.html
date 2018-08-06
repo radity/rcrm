@@ -1,114 +1,115 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
 {% load i18n static %}
 
-{% block title %}{% trans 'Add Contact' %} - {{ block.super }}{% endblock %}
+
+{% block title %}{% trans "Add Contact" %} - {{ block.super }}{% endblock %}
 
 {% block breadcrumb %}
-
-<div class="row page-titles">
+  <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-primary">{% trans 'Contact' %}</h3></div>
-    <div class="col-md-7 align-self-center">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
-            <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contact' %}</a></li>
-            <li class="breadcrumb-item active">{% trans 'Add Tab' %}</li>
-        </ol>
+      <h3 class="text-primary">{% trans "Contact" %}</h3>
     </div>
-</div>
-
+    <div class="col-md-7 align-self-center">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans "Home" %}</a></li>
+        <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans "Contact" %}</a></li>
+        <li class="breadcrumb-item active">{% trans "Add Tab" %}</li>
+      </ol>
+    </div>
+  </div>
 {% endblock %}
 
 {% block content %}
-<div class="card card-outline-primary">
+  <div class="card card-outline-primary">
     <div class="card-body">
-        <form method="post">
-            {% csrf_token %}
-            <div class="form-body">
-                <h3 class="card-title m-t-15">{% trans 'Add New Tab' %}</h3>
-                <hr>
-                <div class="row p-t-20">
-                    <div class="col-md-6">
-                        {% if object.on_off_charfield is True %}
-                        <div class="form-group">
-                            <label>{% trans 'Text Input' %}:</label>
-                            {% with field=form.on_off_charfield %}
-                            {{ field }}
-                            {% endwith %}
-                            {% with field=form.charfied_name %}
-                            {{ field }}
-                            {% endwith %}
-                            {% with field=form.charfied %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        {% endif %}
-                        {% if object.on_off_textbox is True %}
-                        <div class="form-group">
-                            <label>{% trans 'Text Box' %}:</label>
-                            {% with field=form.on_off_textbox %}
-                            {{ field }}
-                            {% endwith %}
-                            {% with field=form.textbox_name %}
-                            {{ field }}
-                            {% endwith %}
-                            {% with field=form.textbox %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        {% endif %}
-                        {% if object.on_off_image is True %}
-                        <div class="form-group">
-                            <label>{% trans 'Image Field' %}:</label>
-                            {% with field=form.on_off_image %}
-                            {{ field }}
-                            {% endwith %}
-                            {% with field=form.image_name %}
-                            {{ field }}
-                            {% endwith %}
-                            {% with field=form.image %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        {% endif %}
-                        {% if object.on_off_file is True %}
-                        <div class="form-group">
-                            <label>{% trans 'File Field' %}:</label>
-                            {% with field=form.on_off_file %}
-                            {{ field }}
-                            {% endwith %}
-                            {% with field=form.file_name %}
-                            {{ field }}
-                            {% endwith %}
-                            {% with field=form.file %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        {% endif %}
-                        {% if object.on_off_date_time is True %}
-                        <div class="form-group">
-                            <label>{% trans 'Date & Time' %}:</label>
-                            {% with field=form.on_off_date_time %}
-                            {{ field }}
-                            {% endwith %}
-                            {% with field=form.date_time_name %}
-                            {{ field }}
-                            {% endwith %}
-                            {% with field=form.date_time %}
-                            {{ field }}
-                            {% endwith %}
-                        </div>
-                        {% endif %}
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans 'Create' %}</button>
-                            <a href="{{ request.META.HTTP_REFERER }}">
-                                <button type="button" class="btn btn-inverse">{% trans 'Cancel' %}</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-body">
+          <h3 class="card-title m-t-15">{% trans "Add New Tab" %}</h3>
+          <hr>
+          <div class="row p-t-20">
+            <div class="col-md-6">
+              {% if object.on_off_charfield is True %}
+              <div class="form-group">
+                <label>{% trans "Text Input" %}:</label>
+                {% with field=form.on_off_charfield %}
+                  {{ field }}
+                {% endwith %}
+                {% with field=form.charfied_name %}
+                  {{ field }}
+                {% endwith %}
+                {% with field=form.charfied %}
+                  {{ field }}
+                {% endwith %}
+              </div>
+              {% endif %}
+              {% if object.on_off_textbox is True %}
+              <div class="form-group">
+                <label>{% trans "Text Box" %}:</label>
+                {% with field=form.on_off_textbox %}
+                  {{ field }}
+                {% endwith %}
+                {% with field=form.textbox_name %}
+                  {{ field }}
+                {% endwith %}
+                {% with field=form.textbox %}
+                  {{ field }}
+                {% endwith %}
+              </div>
+              {% endif %}
+              {% if object.on_off_image is True %}
+              <div class="form-group">
+                <label>{% trans "Image Field" %}:</label>
+                {% with field=form.on_off_image %}
+                  {{ field }}
+                {% endwith %}
+                {% with field=form.image_name %}
+                  {{ field }}
+                {% endwith %}
+                {% with field=form.image %}
+                  {{ field }}
+                {% endwith %}
+              </div>
+              {% endif %}
+              {% if object.on_off_file is True %}
+              <div class="form-group">
+                <label>{% trans "File Field" %}:</label>
+                {% with field=form.on_off_file %}
+                  {{ field }}
+                {% endwith %}
+                {% with field=form.file_name %}
+                  {{ field }}
+                {% endwith %}
+                {% with field=form.file %}
+                  {{ field }}
+                {% endwith %}
+              </div>
+              {% endif %}
+              {% if object.on_off_date_time is True %}
+              <div class="form-group">
+                <label>{% trans "Date & Time" %}:</label>
+                {% with field=form.on_off_date_time %}
+                  {{ field }}
+                {% endwith %}
+                {% with field=form.date_time_name %}
+                  {{ field }}
+                {% endwith %}
+                {% with field=form.date_time %}
+                  {{ field }}
+                {% endwith %}
+              </div>
+              {% endif %}
+              <div class="form-actions">
+                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> {% trans "Create" %}</button>
+                <a href="{{ request.META.HTTP_REFERER }}">
+                  <button type="button" class="btn btn-inverse">{% trans "Cancel" %}</button>
+                </a>
+              </div>
             </div>
-        </form>
+          </div>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
 {% endblock %}

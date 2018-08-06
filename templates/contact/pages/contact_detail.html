@@ -1,464 +1,471 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
 {% load i18n static %}
+
 
 {% block title %}{{ contact }} - {{ block.super }}{% endblock %}
 
 {% block breadcrumb %}
-
-<div class="row page-titles">
+  <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-primary">{% trans 'Contacts' %}</h3></div>
-    <div class="col-md-7 align-self-center">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans 'Home' %}</a></li>
-            <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans 'Contact' %}</a></li>
-            <li class="breadcrumb-item active">{{ contact }}</li>
-        </ol>
+      <h3 class="text-primary">{% trans "Contacts" %}</h3>
     </div>
-</div>
-
+    <div class="col-md-7 align-self-center">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'Dashboard:Home' %}">{% trans "Home" %}</a></li>
+        <li class="breadcrumb-item active"><a href="{% url 'Contacts:Contact' %}">{% trans "Contact" %}</a></li>
+        <li class="breadcrumb-item active">{{ contact }}</li>
+      </ol>
+    </div>
+  </div>
 {% endblock %}
 
 {% block content %}
-
-<div class="col-lg-12 align-self-center">
+  <div class="col-lg-12 align-self-center">
     <div class="card">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="pull-right">
-                    <a href="{{ contact.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans 'Edit' %}</button></a>
-                    <a href="{{ contact.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i> {% trans 'Delete' %}</button></a>
-                </div>
-            </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="pull-right">
+            <a href="{{ contact.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i> {% trans "Edit" %}</button></a>
+            <a href="{{ contact.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i> {% trans "Delete" %}</button></a>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<div class="col-lg-12">
+  <div class="col-lg-12">
     <div class="card">
-        <div class="card-body">
-            <div class="card-two">
-                <header>
-                    <div class="avatar">
-                        {% if contact.gender == 'M' %}
-                        <img src="{% static 'icons/icons/man.png' %}" alt="{{ contact }}"/>
-                        {% elif contact.gender == 'F' %}
-                        <img src="{% static 'icons/icons/woman.png' %}" alt="{{ contact }}"/>
+      <div class="card-body">
+        <div class="card-two">
+          <header>
+            <div class="avatar">
+              {% if contact.gender == "M" %}
+                <img src="{% static 'icons/icons/man.png' %}" alt="{{ contact }}"/>
+              {% elif contact.gender == "F" %}
+                <img src="{% static 'icons/icons/woman.png' %}" alt="{{ contact }}"/>
+              {% else %}
+                <img src="{% static 'icons/icons/person.png' %}" alt="{{ contact }}"/>
+              {% endif %}
+            </div>
+          </header>
+
+          <h3>{{ contact }}</h3>
+          <div class="desc">{{ contact.title }} - {{ contact.date_of_birth }}</div>
+          <div class="desc">
+            {{ contact.description }}
+          </div>
+        </div>
+      </div>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs profile-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#phones" role="tab">{% trans "Phones" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#emails" role="tab">{% trans "Emails" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#addresses" role="tab">{% trans "Addresses" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#social" role="tab">{% trans "Social Profiles" %}</a>
+        </li>
+        {% for dynamic_tab in dynamic_tabs %}
+          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#{{ dynamic_tab.name }}" role="tab">{{ dynamic_tab.name }}</a></li>
+        {% endfor %}
+        <li class="nav-item"><a class="nav-link" href="{{ contact.get_create_dynamic_tab_url }}">+{% trans "Add New Tab" %}</a></li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active" id="phones" role="tabpanel">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>{% trans "Number" %}</th>
+                  <th>{% trans "Edit" %} / {% trans "Delete" %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {% for phone in contact.phones %}
+                    <tr>
+                      <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                      </th>
+                      <td>{{ phone.phone }}</td>
+                      <td>
+                        <a href="{{ phone.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                        <a href="{{ phone.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <a href="{{ contact.get_add_phone_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans "Add New" %}</button></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!--second tab-->
+        <div class="tab-pane" id="emails" role="tabpanel">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>{% trans "Email" %}</th>
+                  <th>{% trans "Edit" %} / {% trans "Delete" %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {% for email in contact.emails %}
+                    <tr>
+                      <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                      </th>
+                      <td>{{ email.email }}</td>
+                      <td>
+                        <a href="{{ email.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                        <a href="{{ email.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <a href="{{ contact.get_add_email_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans "Add New" %}</button></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!--third tab-->
+        <div class="tab-pane" id="addresses" role="tabpanel">
+          <div class="card-body">
+            <div class="row">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>{% trans "Address" %}</th>
+                    <th>{% trans "State" %}</th>
+                    <th>{% trans "City" %}</th>
+                    <th>{% trans "Post Code" %}</th>
+                    <th>{% trans "Country" %}</th>
+                    <th>{% trans "Edit" %} / {% trans "Delete" %}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for address in contact.addresses %}
+                      <tr>
+                        <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                        </th>
+                        <td>{{ address.address }}</td>
+                        <td>{{ address.state }}</td>
+                        <td>{{ address.city }}</td>
+                        <td>{{ address.postcode }}</td>
+                        <td>{{ address.get_country_display }}</td>
+                        <td>
+                          <a href="{{ address.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                          <a href="{{ address.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <a href="{{ contact.get_add_address_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans "Add New" %}</button></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--fourth tab-->
+        <div class="tab-pane" id="social" role="tabpanel">
+          <div class="card-body">
+            <div class="row">
+              <div class="table-responsive">
+                <table class="table">
+                  {% for social in contact.social_profiles %}
+                    <tr>
+                      <th>#</th>
+                      <td scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>{% trans "Skype" %}</th>
+                      <td>{{ social.skype }}</td>
+                    </tr>
+                    <tr>
+                      <th>{% trans "Twitter" %}</th>
+                      <td>{{ social.twitter }}</td>
+                    </tr>
+                    <tr>
+                      <th>{% trans "Instagram" %}</th>
+                      <td>{{ social.instagram }}</td>
+                    </tr>
+                    <tr>
+                      <th>{% trans "Website" %}</th>
+                      <td>{{ social.website }}</td>
+                    </tr>
+                    <tr>
+                      <th>{% trans "Linkedin" %}</th>
+                      <td>{{ social.linkedin }}</td>
+                    </tr>
+                    <tr>
+                      <th>{% trans "Facebook" %}</th>
+                      <td>{{ social.facebook }}</td>
+                    </tr>
+                    <tr>
+                      <th>{% trans "Edit" %} / {% trans "Delete" %}</th>
+                      <td>
+                        <a href="{{ social.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
+                        <a href="{{ social.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  <tr>
+                    <th></th>
+                    <td>
+                      <a href="{{ contact.get_add_social_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans "Add New" %}</button></a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--dynamic tab(s)-->
+        {% for dynamic_tab in dynamic_tabs %}
+          <div class="tab-pane" id="{{ dynamic_tab.name }}" role="tabpanel">
+            <div class="card-body">
+              <div class="row">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                    <h4 style="padding: 10px 0 0 5px;">{{ dynamic_tab.name }}</h4>
+                    </thead>
+                    <tbody>
+                      {% for dynamic in dynamic_tab.dynamics %}
+                        {% if not dynamic.contact == contact %}
+                          <div class="row">
+                            <div class="col-md-3">
+                              <a href="{{ dynamic.get_add_charfield_url }}">
+                                <div class="card bg-primary p-20">
+                                  <div class="media-left meida media-middle">
+                                    <span><i class="ti-plus f-s-40"></i></span>
+                                  </div>
+                                  <div class="media-body media-text-right">
+                                    <h3 class="color-white">{% trans "Add Text" %}</h3>
+                                    <p class="m-b-0" style="color:white">{% trans "Single line text input" %}</p>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+
+                            <div class="col-md-3">
+                              <a href="{{ dynamic.get_add_textbox_url }}">
+                                <div class="card bg-pink p-20">
+                                  <div class="media-left meida media-middle">
+                                    <span><i class="ti-plus f-s-40"></i></span>
+                                  </div>
+                                  <div class="media-body media-text-right">
+                                    <h3 class="color-white">{% trans "Add Text Box" %}</h3>
+                                    <p class="m-b-0" style="color:white">{% trans "Multi lines text box" %}</p>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+
+                            <div class="col-md-3">
+                              <a href="{{ dynamic.get_add_image_url }}">
+                                <div class="card bg-success p-20">
+                                  <div class="media-left meida media-middle">
+                                    <span><i class="ti-plus f-s-40"></i></span>
+                                  </div>
+                                  <div class="media-body media-text-right">
+                                    <h3 class="color-white">{% trans "Add Image" %}</h3>
+                                    <p class="m-b-0" style="color:white">{% trans "Image Field" %}</p>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+
+                            <div class="col-md-3">
+                              <a href="{{ dynamic.get_add_file_url }}">
+                                <div class="card bg-danger p-20">
+                                  <div class="media-left meida media-middle">
+                                    <span><i class="ti-plus f-s-40"></i></span>
+                                  </div>
+                                  <div class="media-body media-text-right">
+                                    <h3 class="color-white">{% trans "Add File" %}</h3>
+                                    <p class="m-b-0" style="color:white">{% trans "File Field" %}</p>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+
+                            <div class="col-md-3">
+                              <a href="{{ dynamic.get_add_date_url }}">
+                                <div class="card bg-dark p-20">
+                                  <div class="media-left meida media-middle">
+                                    <span><i class="ti-plus f-s-40"></i></span>
+                                  </div>
+                                  <div class="media-body media-text-right">
+                                    <h3 class="color-white">{% trans "Add Date" %}</h3>
+                                    <p class="m-b-0" style="color:white">{% trans "Date Field" %}</p>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+
+                            <div class="col-md-3">
+                              <a href="{{ dynamic.get_add_time_url }}">
+                                <div class="card bg-info p-20">
+                                  <div class="media-left meida media-middle">
+                                    <span><i class="ti-plus f-s-40"></i></span>
+                                  </div>
+                                  <div class="media-body media-text-right">
+                                    <h3 class="color-white">{% trans "Add Time" %}</h3>
+                                    <p class="m-b-0" style="color:white">{% trans "Time Field" %}</p>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+
+                            <div class="col-md-3">
+                              <a href="{{ dynamic.get_add_date_time_url }}">
+                                <div class="card bg-warning p-20">
+                                  <div class="media-left meida media-middle">
+                                    <span><i class="ti-plus f-s-40"></i></span>
+                                  </div>
+                                  <div class="media-body media-text-right">
+                                    <h3 class="color-white">{% trans "Add Date Time" %}</h3>
+                                    <p class="m-b-0" style="color:white">{% trans "Date Time Field" %}</p>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
                         {% else %}
-                        <img src="{% static 'icons/icons/person.png' %}" alt="{{ contact }}"/>
+                            {% for obj in dynamic.charfield.all %}
+                          <tr>
+                            <th>{{ obj.name }}</th>
+                            <td>{{ obj.charfield }}</td>
+                          </tr>
+                            {% endfor %}
+                            {% for obj in dynamic.text_box.all %}
+                          <tr>
+
+                            <th>{{ obj.name }}</th>
+                            <td>{{ obj.textbox }}</td>
+                          </tr>
+                            {% endfor %}
+                            {% for obj in dynamic.image.all %}
+                          <tr>
+
+                            <th>{{ obj.name }}</th>
+                            <td>{{ obj.image }}</td>
+                          </tr>
+                            {% endfor %}
+                            {% for obj in dynamic.file.all %}
+                          <tr>
+
+                            <th>{{ obj.name }}</th>
+                            <td>{{ obj.file }}</td>
+                          </tr>
+                            {% endfor %}
+                            {% for obj in dynamic.date.all %}
+                          <tr>
+
+                            <th>{{ obj.name }}</th>
+                            <td>{{ obj.date }}</td>
+                          </tr>
+                            {% endfor %}
+                            {% for obj in dynamic.time.all %}
+                          <tr>
+
+                            <th>{{ obj.name }}</th>
+                            <td>{{ obj.date }}</td>
+                          </tr>
+                            {% endfor %}
+                            {% for obj in dynamic.date_time.all %}
+                          <tr>
+
+                            <th>{{ obj.name }}</th>
+                            <td>{{ obj.date }}</td>
+                          </tr>
+                            {% endfor %}
+                            {% for obj in dynamic.url.all %}
+                          <tr>
+
+                            <th>{{ obj.name }}</th>
+                            <td>{{ obj.url }}</td>
+                          </tr>
+                            {% endfor %}
+                            {% for obj in dynamic.url.all %}
+                          <tr>
+
+                            <th>{{ obj.name }}</th>
+                            <td>{{ obj.date }}</td>
+                          </tr>
+                            {% endfor %}
+                            {% for obj in dynamic.yes_no.all %}
+                          <tr>
+
+                            <th>{{ obj.name }}</th>
+                            <td>{{ obj.boolean }}</td>
+                          </tr>
+                            {% endfor %}
+                          <tr>
+                            <th></th>
+                            <td>
+                              {% if dynamic.charfield.all.count > 0 %}
+                                <a href="{{ dynamic.get_add_charfield_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans "Add New" %}</button></a>
+                              {% elif dynamic.text_box.all.count > 0 %}
+                                <a href="{{ dynamic.get_add_textbox_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans "Add New" %}</button></a>
+                              {% elif dynamic.image.all.count > 0 %}
+                                <a href="{{ dynamic.get_add_image_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans "Add New" %}</button></a>
+                              {% elif dynamic.file.all.count > 0 %}
+                                <a href="{{ dynamic.get_add_file_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans "Add New" %}</button></a>
+                              {% elif dynamic.date.all.count > 0 %}
+                                <a href="{{ dynamic.get_add_date_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans "Add New" %}</button></a>
+                              {% elif dynamic.time.all.count > 0 %}
+                                <a href="{{ dynamic.get_add_time_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans "Add New" %}</button></a>
+                              {% elif dynamic.date_time.all.count > 0 %}
+                                <a href="{{ dynamic.get_add_date_time_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans "Add New" %}</button></a>
+                              {% endif %}
+                            </td>
+                          </tr>
                         {% endif %}
-                    </div>
-                </header>
-
-                <h3>{{ contact }}</h3>
-                <div class="desc">{{ contact.title }} - {{ contact.date_of_birth }}</div>
-                <div class="desc">
-                    {{ contact.description }}
+                      {% endfor %}
+                    </tbody>
+                  </table>
                 </div>
+              </div>
             </div>
-        </div>
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs profile-tab" role="tablist">
-            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#phones" role="tab">{% trans 'Phones' %}</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#emails" role="tab">{% trans 'Emails' %}</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#addresses" role="tab">{% trans 'Addresses' %}</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#social" role="tab">{% trans 'Social Profiles' %}</a></li>
-            {% for dynamic_tab in dynamic_tabs %}
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#{{ dynamic_tab.name }}" role="tab">{{ dynamic_tab.name }}</a></li>
-            {% endfor %}
-            <li class="nav-item"><a class="nav-link" href="{{ contact.get_create_dynamic_tab_url }}">{% trans '+ Add New Tab' %}</a></li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <div class="tab-pane active" id="phones" role="tabpanel">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>{% trans 'Number' %}</th>
-                                <th>{% trans 'Edit / Delete' %}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for phone in contact.phones %}
-                            <tr>
-                                <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
-                                </th>
-                                <td>{{ phone.phone }}</td>
-                                <td>
-                                    <a href="{{ phone.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
-                                    <a href="{{ phone.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <a href="{{ contact.get_add_phone_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!--second tab-->
-            <div class="tab-pane" id="emails" role="tabpanel">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>{% trans 'Email' %}</th>
-                                <th>{% trans 'Edit / Delete' %}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for email in contact.emails %}
-                            <tr>
-                                <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
-                                </th>
-                                <td>{{ email.email }}</td>
-                                <td>
-                                    <a href="{{ email.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
-                                    <a href="{{ email.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <a href="{{ contact.get_add_email_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!--third tab-->
-            <div class="tab-pane" id="addresses" role="tabpanel">
-                <div class="card-body">
-                <div class="row">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>{% trans 'Address' %}</th>
-                                <th>{% trans 'State' %}</th>
-                                <th>{% trans 'City' %}</th>
-                                <th>{% trans 'Post Code' %}</th>
-                                <th>{% trans 'Country' %}</th>
-                                <th>{% trans 'Edit / Delete' %}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for address in contact.addresses %}
-                            <tr>
-                                <th scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
-                                </th>
-                                <td>{{ address.address }}</td>
-                                <td>{{ address.state }}</td>
-                                <td>{{ address.city }}</td>
-                                <td>{{ address.postcode }}</td>
-                                <td>{{ address.get_country_display }}</td>
-                                <td>
-                                    <a href="{{ address.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
-                                    <a href="{{ address.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <a href="{{ contact.get_add_address_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <!--fourth tab-->
-            <div class="tab-pane" id="social" role="tabpanel">
-                <div class="card-body">
-                <div class="row">
-                    <div class="table-responsive">
-                        <table class="table">
-                            {% for social in contact.social_profiles %}
-                            <tr>
-                                <th>#</th>
-                                <td scope="row">{% blocktrans with number=forloop.counter %}{{ number }}{% endblocktrans %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>{% trans 'Skype' %}</th>
-                                <td>{{ social.skype }}</td>
-                            </tr>
-                            <tr>
-                                <th>{% trans 'Twitter' %}</th>
-                                <td>{{ social.twitter }}</td>
-                            </tr>
-                            <tr>
-                                <th>{% trans 'Instagram' %}</th>
-                                <td>{{ social.instagram }}</td>
-                            </tr>
-                            <tr>
-                                <th>{% trans 'Website' %}</th>
-                                <td>{{ social.website }}</td>
-                            </tr>
-                            <tr>
-                                <th>{% trans 'Linkedin' %}</th>
-                                <td>{{ social.linkedin }}</td>
-                            </tr>
-                            <tr>
-                                <th>{% trans 'Facebook' %}</th>
-                                <td>{{ social.facebook }}</td>
-                            </tr>
-                            <tr>
-                                <th>{% trans 'Edit / Delete' %}</th>
-                                <td>
-                                    <a href="{{ social.get_edit_url }}"><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></a>
-                                    <a href="{{ social.get_delete_url }}"><button type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                            <tr>
-                                <th></th>
-                                <td>
-                                    <a href="{{ contact.get_add_social_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <!--dynamic tab(s)-->
-            {% for dynamic_tab in dynamic_tabs %}
-            <div class="tab-pane" id="{{ dynamic_tab.name }}" role="tabpanel">
-                <div class="card-body">
-                <div class="row">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            <h4 style="padding: 10px 0 0 5px;">{{ dynamic_tab.name }}</h4>
-                            </thead>
-                            <tbody>
-                            {% for dynamic in dynamic_tab.dynamics %}
-                            {% if not dynamic.contact == contact %}
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <a href="{{ dynamic.get_add_charfield_url }}">
-                                            <div class="card bg-primary p-20">
-                                                <div class="media-left meida media-middle">
-                                                    <span><i class="ti-plus f-s-40"></i></span>
-                                                </div>
-                                                <div class="media-body media-text-right">
-                                                    <h3 class="color-white">{% trans 'Add Text' %}</h3>
-                                                    <p class="m-b-0" style="color:white">{% trans 'Single line text input' %}</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <a href="{{ dynamic.get_add_textbox_url }}">
-                                            <div class="card bg-pink p-20">
-                                                <div class="media-left meida media-middle">
-                                                    <span><i class="ti-plus f-s-40"></i></span>
-                                                </div>
-                                                <div class="media-body media-text-right">
-                                                    <h3 class="color-white">{% trans 'Add Text Box' %}</h3>
-                                                    <p class="m-b-0" style="color:white">{% trans 'Multi lines text box' %}</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <a href="{{ dynamic.get_add_image_url }}">
-                                            <div class="card bg-success p-20">
-                                                <div class="media-left meida media-middle">
-                                                    <span><i class="ti-plus f-s-40"></i></span>
-                                                </div>
-                                                <div class="media-body media-text-right">
-                                                    <h3 class="color-white">{% trans 'Add Image' %}</h3>
-                                                    <p class="m-b-0" style="color:white">{% trans 'Image Field' %}</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <a href="{{ dynamic.get_add_file_url }}">
-                                            <div class="card bg-danger p-20">
-                                                <div class="media-left meida media-middle">
-                                                    <span><i class="ti-plus f-s-40"></i></span>
-                                                </div>
-                                                <div class="media-body media-text-right">
-                                                    <h3 class="color-white">{% trans 'Add File' %}</h3>
-                                                    <p class="m-b-0" style="color:white">{% trans 'File Field' %}</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <a href="{{ dynamic.get_add_date_url }}">
-                                            <div class="card bg-dark p-20">
-                                                <div class="media-left meida media-middle">
-                                                    <span><i class="ti-plus f-s-40"></i></span>
-                                                </div>
-                                                <div class="media-body media-text-right">
-                                                    <h3 class="color-white">{% trans 'Add Date' %}</h3>
-                                                    <p class="m-b-0" style="color:white">{% trans 'Date Field' %}</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <a href="{{ dynamic.get_add_time_url }}">
-                                            <div class="card bg-info p-20">
-                                                <div class="media-left meida media-middle">
-                                                    <span><i class="ti-plus f-s-40"></i></span>
-                                                </div>
-                                                <div class="media-body media-text-right">
-                                                    <h3 class="color-white">{% trans 'Add Time' %}</h3>
-                                                    <p class="m-b-0" style="color:white">{% trans 'Time Field' %}</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <a href="{{ dynamic.get_add_date_time_url }}">
-                                            <div class="card bg-warning p-20">
-                                                <div class="media-left meida media-middle">
-                                                    <span><i class="ti-plus f-s-40"></i></span>
-                                                </div>
-                                                <div class="media-body media-text-right">
-                                                    <h3 class="color-white">{% trans 'Add Date Time' %}</h3>
-                                                    <p class="m-b-0" style="color:white">{% trans 'Date Time Field' %}</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                    </div>
-                            {% else %}
-                                    {% for obj in dynamic.charfield.all %}
-                                <tr>
-                                    <th>{{ obj.name }}</th>
-                                    <td>{{ obj.charfield }}</td>
-                                </tr>
-                                    {% endfor %}
-                                    {% for obj in dynamic.text_box.all %}
-                                <tr>
-
-                                    <th>{{ obj.name }}</th>
-                                    <td>{{ obj.textbox }}</td>
-                                </tr>
-                                    {% endfor %}
-                                    {% for obj in dynamic.image.all %}
-                                <tr>
-
-                                    <th>{{ obj.name }}</th>
-                                    <td>{{ obj.image }}</td>
-                                </tr>
-                                    {% endfor %}
-                                    {% for obj in dynamic.file.all %}
-                                <tr>
-
-                                    <th>{{ obj.name }}</th>
-                                    <td>{{ obj.file }}</td>
-                                </tr>
-                                    {% endfor %}
-                                    {% for obj in dynamic.date.all %}
-                                <tr>
-
-                                    <th>{{ obj.name }}</th>
-                                    <td>{{ obj.date }}</td>
-                                </tr>
-                                    {% endfor %}
-                                    {% for obj in dynamic.time.all %}
-                                <tr>
-
-                                    <th>{{ obj.name }}</th>
-                                    <td>{{ obj.date }}</td>
-                                </tr>
-                                    {% endfor %}
-                                    {% for obj in dynamic.date_time.all %}
-                                <tr>
-
-                                    <th>{{ obj.name }}</th>
-                                    <td>{{ obj.date }}</td>
-                                </tr>
-                                    {% endfor %}
-                                    {% for obj in dynamic.url.all %}
-                                <tr>
-
-                                    <th>{{ obj.name }}</th>
-                                    <td>{{ obj.url }}</td>
-                                </tr>
-                                    {% endfor %}
-                                    {% for obj in dynamic.url.all %}
-                                <tr>
-
-                                    <th>{{ obj.name }}</th>
-                                    <td>{{ obj.date }}</td>
-                                </tr>
-                                    {% endfor %}
-                                    {% for obj in dynamic.yes_no.all %}
-                                <tr>
-
-                                    <th>{{ obj.name }}</th>
-                                    <td>{{ obj.boolean }}</td>
-                                </tr>
-                                    {% endfor %}
-                                <tr>
-                                    <th></th>
-                                    <td>
-                                        {% if dynamic.charfield.all.count > 0 %}
-                                            <a href="{{ dynamic.get_add_charfield_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
-                                        {% elif dynamic.text_box.all.count > 0 %}
-                                            <a href="{{ dynamic.get_add_textbox_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
-                                        {% elif dynamic.image.all.count > 0 %}
-                                            <a href="{{ dynamic.get_add_image_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
-                                        {% elif dynamic.file.all.count > 0 %}
-                                            <a href="{{ dynamic.get_add_file_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
-                                        {% elif dynamic.date.all.count > 0 %}
-                                            <a href="{{ dynamic.get_add_date_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
-                                        {% elif dynamic.time.all.count > 0 %}
-                                            <a href="{{ dynamic.get_add_time_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
-                                        {% elif dynamic.date_time.all.count > 0 %}
-                                            <a href="{{ dynamic.get_add_date_time_url }}"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> {% trans 'Add New' %}</button></a>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                            {% endif %}
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-            {% endfor %}
-        </div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
-</div>
+  </div>
 {% endblock %}

@@ -1,26 +1,28 @@
-{% extends 'base2.html' %}
+{% extends "base2.html" %}
+
 {% load i18n static %}
 
-{% block title %}{% trans 'Remove User' %} - {{ block.super }}{% endblock %}
+
+{% block title %}{% trans "Remove User" %} - {{ block.super }}{% endblock %}
 
 {% block content %}
-<!-- Main wrapper  -->
-<div id="main-wrapper">
+  <!-- Main wrapper  -->
+  <div id="main-wrapper">
     <div class="unix-login">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="card">
-                        <form method="post">
-                            {% csrf_token %}
-                            {% trans "Are you sure you would like to decline " %}<strong>"{{ object.user.email }}"</strong>?<br><br>
-                            <button type="submit" class="btn btn-success">{% trans "Decline" %}</button>
-                            <a href="{% url 'Accounts:Account' %}">{% trans "No" %}</a>
-                        </form>
-                    </div>
-                </div>
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <div class="card">
+              <form method="post">
+                {% csrf_token %}
+                {% trans "Are you sure you would like to decline" %} <strong>"{{ object.user.email }}"</strong>?<br><br>
+                <button type="submit" class="btn btn-success">{% trans "Decline" %}</button>
+                <a href="{% url 'Accounts:Account' %}">{% trans "No" %}</a>
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 {% endblock %}
