@@ -50,7 +50,9 @@ INSTALLED_APPS = [
 
     # Apps
     'rcrm',
+    'rcrm_core',
     'rcrm_account',
+    'rcrm_key',
     'rcrm_client',
     'rcrm_contact',
     'rcrm_dashboard',

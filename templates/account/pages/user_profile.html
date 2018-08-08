@@ -25,9 +25,11 @@
     <div class="card-body">
       <form method="post">
         {% csrf_token %}
-        {% if form.non_field_errors %}
-          {% include "partials/message.html" with message=form.non_field_errors status="error" %}
-        {% endif %}
+        {% with non_field_errors=form.non_field_errors %}
+          {% for non_field_error in non_field_errors %}
+            {% include "partials/message.html" with message=non_field_error status="error" %}
+          {% endfor %}
+        {% endwith %}
         <div class="form-body">
           <h3 class="card-title m-t-15">{% trans "Edit Your Profile" %}</h3>
           <hr>
@@ -82,9 +84,11 @@
     <div class="card-body">
       <form method="post">
         {% csrf_token %}
-        {% if password_form.non_field_errors %}
-          {% include "partials/message.html" with message=password_form.non_field_errors status="error" %}
-        {% endif %}
+        {% with non_field_errors=password_form.non_field_errors %}
+          {% for non_field_error in non_field_errors %}
+            {% include "partials/message.html" with message=non_field_error status="error" %}
+          {% endfor %}
+        {% endwith %}
         <div class="form-body">
           <h3 class="card-title m-t-15">{% trans "Change Your Password" %}</h3>
           <hr>

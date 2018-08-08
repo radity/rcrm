@@ -2,7 +2,7 @@ import json
 from django.conf import settings
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils import translation
@@ -10,9 +10,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView, FormView, DeleteView, UpdateView
 
 from rcrm.tasks import mail_task
+from rcrm.modules import KeyModule
 from rcrm_account.models import CRMAccount, CRMAccountRequest, User
-from rcrm_account.forms import LoginForm, RegisterForm, UserProfileForm, PasswordChangeForm, \
-    AccountForm, AccountUserAddForm, AccountRequestForm
+from rcrm_account.forms import (LoginForm, RegisterForm, ForgotPasswordForm, ResetPasswordForm, UserProfileForm,
+                                PasswordChangeForm, AccountForm, AccountUserAddForm, AccountRequestForm)
 from rcrm_account.utils import AccountControlViewMixin
 
 # Create your views here.
@@ -57,6 +58,97 @@ class RegisterView(FormView):
             login(self.request, user)
             messages.success(self.request, _('You need to join to an account or create an account to use RCRM!'))
         return super(RegisterView, self).form_valid(form)
+
+
+class ForgotPasswordView(TemplateView):
+    template_name = 'account/forms/user_forgot_password.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ForgotPasswordView, self).get_context_data(**kwargs)
+
+        context.update({
+            'forgot_password_form': ForgotPasswordForm(prefix='forgot-password-form')
+        })
+
+        return context
+
+    def post(self, request, *args, **kwargs):
+        context = self.get_context_data()
+
+        if 'forgot-password-form' in request.POST:
+            forgot_password_form = ForgotPasswordForm(request.POST, prefix='forgot-password-form')
+
+            if forgot_password_form.is_valid():
+                user = forgot_password_form.user
+
+                if user:
+                    reset_password_key = KeyModule.create_reset_password_key(user)
+                    reset_password_url = request.build_absolute_uri(
+                        reverse('Accounts:Reset_Password', args=[reset_password_key.key])
+                    )
+                    message = _(
+                        "RCRM \n"
+                        "Hello, {email} \n"
+                        "Reset Password = {reset_password_url} \n"
+                    ).format(email=user.email, reset_password_url=reset_password_url)
+                    context = {
+                        'subject': _('Forgot Password'),
+                        'message': message,
+                        #'html_message': message,
+                        'from_email': settings.EMAIL_HOST_USER,
+                        'recipient_list': [user.email],
+                        'fail_silently': False
+                    }
+
+                    mail_task.delay(context, 'forgot-password')
+
+                forgot_password_form = ForgotPasswordForm(prefix='forgot-password-form')
+                messages.success(request, _('If you have an account we have sent you an email.'))
+
+            context.update({'forgot_password_form': forgot_password_form})
+
+        return super(ForgotPasswordView, self).render_to_response(context)
+
+
+class ResetPasswordView(TemplateView):
+    template_name = 'account/forms/user_reset_password.html'
+
+    def dispatch(self, request, key, *args, **kwargs):
+        self.reset_password_key = KeyModule.get_reset_password_key(key)
+
+        if not self.reset_password_key:
+            raise Http404()
+
+        return super(ResetPasswordView, self).dispatch(request, key, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(ResetPasswordView, self).get_context_data(**kwargs)
+
+        context.update({
+            'reset_password_key': self.reset_password_key,
+            'reset_password_form': ResetPasswordForm(prefix='reset-password-form')
+        })
+
+        return context
+
+    def post(self, request, *args, **kwargs):
+        context = self.get_context_data()
+
+        if 'reset-password-form' in request.POST:
+            reset_password_form = ResetPasswordForm(self.request.POST, prefix='reset-password-form')
+
+            if reset_password_form.is_valid():
+                user = reset_password_form.save(self.reset_password_key)
+
+                if user:
+                    messages.success(request, _('Your password has been successfully changed.'))
+                    return HttpResponseRedirect(reverse('Accounts:Login'))
+
+            context.update({
+                'reset_password_form': reset_password_form,
+            })
+
+        return super(ResetPasswordView, self).render_to_response(context)
 
 
 # --------------------------------- Profile ---------------------------------
