@@ -27,9 +27,11 @@
       <form method="post">
         {% csrf_token %}
         {{ form.media }}
-        {% if form.non_field_errors %}
-          {% include "partials/message.html" with message=form.non_field_errors status="error" %}
-        {% endif %}
+        {% with non_field_errors=form.non_field_errors %}
+          {% for non_field_error in non_field_errors %}
+            {% include "partials/message.html" with message=non_field_error status="error" %}
+          {% endfor %}
+        {% endwith %}
         <div class="form-body">
           <h3 class="card-title m-t-15">{% trans "Add Job" %}</h3>
           <hr>

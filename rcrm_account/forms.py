@@ -4,7 +4,8 @@ from django.forms import Form, ModelForm,\
     CharField, EmailField, ImageField,\
     PasswordInput, ValidationError,\
     TextInput, Textarea, FileInput,\
-    Select
+    Select, PasswordInput
+from django.contrib.auth import password_validation
 from django.utils.translation import ugettext_lazy as _
 
 from rcrm_account.models import CRMAccount, User
@@ -64,6 +65,66 @@ class RegisterForm(ModelForm):
             raise ValidationError(_('Password can not be confirmed!'))
 
         return confirm_password
+
+
+class ForgotPasswordForm(Form):
+    """
+    The form is for user forgot password.
+    """
+    email = EmailField(label=_('Email'))
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email', '')
+
+        try:
+            self.user = User.objects.get(email=email)
+        except:
+            self.user = None
+
+        return email
+
+
+class ResetPasswordForm(Form):
+    error_messages = {
+        'password_mismatch': _("The two password fields didn't match."),
+    }
+    password = CharField(
+        label=_('Password'), widget=PasswordInput(), strip=False, required=True,
+        help_text=password_validation.password_validators_help_text_html(),
+    )
+    confirm_password = CharField(
+        label=_('Confirm Password'), widget=PasswordInput(), strip=False, required=True
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(ResetPasswordForm, self).__init__(*args, **kwargs)
+
+    def clean(self):
+        password = self.cleaned_data.get('password')
+        confirm_password = self.cleaned_data.get('confirm_password')
+
+        if password and confirm_password:
+            if password != confirm_password:
+                raise ValidationError(self.error_messages['password_mismatch'], code='password_mismatch')
+            else:
+                password_validation.validate_password(confirm_password)
+
+        return self.cleaned_data
+
+    def save(self, key, commit=True):
+        user = None
+
+        if commit:
+            # Set Password
+            user = key.user
+            user.set_password(self.cleaned_data['password'])
+            user.save()
+
+            # Key Updated
+            key.is_used = True
+            key.save()
+
+        return user
 
 
 class AccountForm(ModelForm):

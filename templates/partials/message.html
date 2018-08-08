@@ -5,8 +5,12 @@
         <div class="alert alert-info" id="message">
           {{ message }}
         </div>
+      {% elif status == "error" %}
+        <div class="alert alert-danger" id="message">
+          {{ message }}
+        </div>
       {% else %}
-        <div class="alert alert-danger" id="message_error">
+        <div class="alert alert-warning" id="message_error">
           {{ message }}
         </div>
       {% endif %}
@@ -14,12 +18,16 @@
   </ul>
 {% else %}
   {% if status == "success" %}
-      <div class="alert alert-info" id="message">
-        {{ message }}
-      </div>
-    {% else %}
-      <div class="alert alert-danger" id="message_error">
-        {{ message }}
-      </div>
-    {% endif %}
+    <div class="alert alert-info" id="message">
+      {{ message }}
+    </div>
+  {% elif status == "error" %}
+    <div class="alert alert-danger" id="message">
+      {{ message }}
+    </div>
+  {% else %}
+    <div class="alert alert-warning" id="message_error">
+      {{ message }}
+    </div>
+  {% endif %}
 {% endif %}

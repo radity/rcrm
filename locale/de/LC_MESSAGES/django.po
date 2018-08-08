@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-04 18:09+0000\n"
+"POT-Creation-Date: 2018-08-08 14:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,10 +35,11 @@ msgstr ""
 msgid "Date & Time"
 msgstr ""
 
-#: rcrm_account/forms.py:20 rcrm_account/forms.py:40 rcrm_account/forms.py:125
-#: rcrm_account/models.py:22 rcrm_contact/forms.py:60 rcrm_employee/forms.py:64
-#: rcrm_util/forms.py:35 templates/account/pages/account.html:133
-#: templates/account/pages/account.html:192
+#: rcrm_account/forms.py:21 rcrm_account/forms.py:41 rcrm_account/forms.py:74
+#: rcrm_account/forms.py:186 rcrm_account/models.py:22 rcrm_contact/forms.py:60
+#: rcrm_employee/forms.py:64 rcrm_util/forms.py:35
+#: templates/account/pages/account.html:135
+#: templates/account/pages/account.html:196
 #: templates/client/pages/client_detail.html:81
 #: templates/client/pages/client_detail.html:156
 #: templates/client/pages/client_list.html:85
@@ -49,47 +50,55 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: rcrm_account/forms.py:21 rcrm_account/forms.py:41
+#: rcrm_account/forms.py:22 rcrm_account/forms.py:42 rcrm_account/forms.py:92
 msgid "Password"
 msgstr ""
 
-#: rcrm_account/forms.py:31
+#: rcrm_account/forms.py:32
 msgid "Wrong email or password!"
 msgstr ""
 
-#: rcrm_account/forms.py:43
+#: rcrm_account/forms.py:44
 msgid "Password Confirmation"
 msgstr ""
 
-#: rcrm_account/forms.py:55
+#: rcrm_account/forms.py:56
 msgid "This email already exists!"
 msgstr ""
 
-#: rcrm_account/forms.py:64
+#: rcrm_account/forms.py:65
 msgid "Password can not be confirmed!"
 msgstr ""
 
-#: rcrm_account/forms.py:73
+#: rcrm_account/forms.py:89 rcrm_account/forms.py:224
+msgid "The two password fields didn't match."
+msgstr ""
+
+#: rcrm_account/forms.py:96
+msgid "Confirm Password"
+msgstr ""
+
+#: rcrm_account/forms.py:134
 msgid "RCRM Account Name"
 msgstr ""
 
-#: rcrm_account/forms.py:74
+#: rcrm_account/forms.py:135
 msgid "RCRM Account Email"
 msgstr ""
 
-#: rcrm_account/forms.py:76
+#: rcrm_account/forms.py:137
 msgid "RCRM Account Phone Number"
 msgstr ""
 
-#: rcrm_account/forms.py:79
+#: rcrm_account/forms.py:140
 msgid "RCRM Account Description"
 msgstr ""
 
-#: rcrm_account/forms.py:82
+#: rcrm_account/forms.py:143
 msgid "RCRM Account Logo"
 msgstr ""
 
-#: rcrm_account/forms.py:100 rcrm_util/models.py:76
+#: rcrm_account/forms.py:161 rcrm_util/models.py:76
 #: templates/client/forms/email_create.html:34
 #: templates/client/forms/email_edit.html:34
 #: templates/contact/forms/email_create.html:34
@@ -99,11 +108,11 @@ msgstr ""
 msgid "Email Address"
 msgstr ""
 
-#: rcrm_account/forms.py:116
+#: rcrm_account/forms.py:177
 msgid "Account Name"
 msgstr ""
 
-#: rcrm_account/forms.py:128 rcrm_client/forms.py:14 rcrm_contact/forms.py:14
+#: rcrm_account/forms.py:189 rcrm_client/forms.py:14 rcrm_contact/forms.py:14
 #: rcrm_employee/forms.py:14 templates/client/forms/contact_add.html:62
 #: templates/contact/forms/contact_create.html:34
 #: templates/contact/forms/contact_edit.html:34
@@ -112,7 +121,7 @@ msgstr ""
 msgid "First Name"
 msgstr ""
 
-#: rcrm_account/forms.py:131 rcrm_contact/forms.py:15 rcrm_employee/forms.py:15
+#: rcrm_account/forms.py:192 rcrm_contact/forms.py:15 rcrm_employee/forms.py:15
 #: templates/client/forms/contact_add.html:68
 #: templates/contact/forms/contact_create.html:40
 #: templates/contact/forms/contact_edit.html:40
@@ -121,27 +130,23 @@ msgstr ""
 msgid "Last Name"
 msgstr ""
 
-#: rcrm_account/forms.py:134 rcrm_job/forms.py:24
+#: rcrm_account/forms.py:195 rcrm_job/forms.py:24
 msgid "Language"
 msgstr ""
 
-#: rcrm_account/forms.py:163
-msgid "The two password fields didn't match."
-msgstr ""
-
-#: rcrm_account/forms.py:166
+#: rcrm_account/forms.py:227
 msgid "New password"
 msgstr ""
 
-#: rcrm_account/forms.py:169
+#: rcrm_account/forms.py:230
 msgid "New password confirmation"
 msgstr ""
 
-#: rcrm_account/forms.py:201
+#: rcrm_account/forms.py:262
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr ""
 
-#: rcrm_account/forms.py:204
+#: rcrm_account/forms.py:265
 msgid "Old password"
 msgstr ""
 
@@ -253,11 +258,11 @@ msgstr ""
 msgid "Is Staff?"
 msgstr ""
 
-#: rcrm_account/models.py:72
+#: rcrm_account/models.py:72 rcrm_key/models.py:22
 msgid "User"
 msgstr ""
 
-#: rcrm_account/models.py:73 templates/account/pages/account.html:125
+#: rcrm_account/models.py:73 templates/account/pages/account.html:127
 msgid "Users"
 msgstr ""
 
@@ -265,13 +270,34 @@ msgstr ""
 msgid "CRM Account Request"
 msgstr ""
 
-#: rcrm_account/views.py:58
+#: rcrm_account/views.py:59
 msgid "You need to join to an account or create an account to use RCRM!"
 msgstr ""
 
-#: rcrm_account/views.py:86 rcrm_account/views.py:102 rcrm_client/views.py:116
-#: rcrm_client/views.py:250 rcrm_client/views.py:312 rcrm_client/views.py:374
-#: rcrm_client/views.py:436 rcrm_contact/views.py:107 rcrm_contact/views.py:174
+#: rcrm_account/views.py:90
+#, python-brace-format
+msgid ""
+"RCRM \n"
+"Hello, {email} \n"
+"Reset Password = {reset_password_url} \n"
+msgstr ""
+
+#: rcrm_account/views.py:95 templates/account/forms/user_forgot_password.html:7
+#: templates/account/forms/user_forgot_password.html:17
+msgid "Forgot Password"
+msgstr ""
+
+#: rcrm_account/views.py:106
+msgid "If you have an account we have sent you an email."
+msgstr ""
+
+#: rcrm_account/views.py:144
+msgid "Your password has been successfully changed."
+msgstr ""
+
+#: rcrm_account/views.py:178 rcrm_account/views.py:194 rcrm_client/views.py:116
+#: rcrm_client/views.py:281 rcrm_client/views.py:343 rcrm_client/views.py:405
+#: rcrm_client/views.py:467 rcrm_contact/views.py:107 rcrm_contact/views.py:174
 #: rcrm_contact/views.py:238 rcrm_contact/views.py:303
 #: rcrm_contact/views.py:367 rcrm_employee/views.py:99
 #: rcrm_employee/views.py:166 rcrm_employee/views.py:230
@@ -279,63 +305,63 @@ msgstr ""
 msgid "Saved successfully, thank you."
 msgstr ""
 
-#: rcrm_account/views.py:170 rcrm_client/views.py:161 rcrm_client/views.py:188
-#: rcrm_client/views.py:231 rcrm_client/views.py:293 rcrm_client/views.py:355
-#: rcrm_client/views.py:417
+#: rcrm_account/views.py:262 rcrm_client/views.py:180 rcrm_client/views.py:218
+#: rcrm_client/views.py:262 rcrm_client/views.py:324 rcrm_client/views.py:386
+#: rcrm_client/views.py:448
 msgid "Added successfully, thank you."
 msgstr ""
 
-#: rcrm_account/views.py:172
+#: rcrm_account/views.py:264
 msgid "The user already has an account!"
 msgstr ""
 
-#: rcrm_account/views.py:175
+#: rcrm_account/views.py:267
 msgid "The user could not be found!"
 msgstr ""
 
-#: rcrm_account/views.py:180
+#: rcrm_account/views.py:272
 msgid "Enter a valid email address."
 msgstr ""
 
-#: rcrm_account/views.py:198 rcrm_client/views.py:205
+#: rcrm_account/views.py:290 rcrm_client/views.py:236
 msgid "Removed successfully, thank you."
 msgstr ""
 
-#: rcrm_account/views.py:220
+#: rcrm_account/views.py:312
 msgid "Your request has been sent successfully, thank you."
 msgstr ""
 
-#: rcrm_account/views.py:223
+#: rcrm_account/views.py:315
 msgid "There is an Access Request to Your RCRM Account!"
 msgstr ""
 
-#: rcrm_account/views.py:238
+#: rcrm_account/views.py:330
 msgid "You have already requested to "
 msgstr ""
 
-#: rcrm_account/views.py:241
+#: rcrm_account/views.py:333
 msgid "The account could not found!"
 msgstr ""
 
-#: rcrm_account/views.py:259
+#: rcrm_account/views.py:351
 msgid "The user has an account!"
 msgstr ""
 
-#: rcrm_account/views.py:263
+#: rcrm_account/views.py:355
 msgid "Accepted successfully, thank you."
 msgstr ""
 
-#: rcrm_account/views.py:266
+#: rcrm_account/views.py:358
 msgid "Your Request Has Been Accepted"
 msgstr ""
 
-#: rcrm_account/views.py:267
+#: rcrm_account/views.py:359
 msgid ""
 "Your RCRM account request has been accepted. To reach the account: "
 "http://127.0.0.1:8000/accounts/"
 msgstr ""
 
-#: rcrm_account/views.py:292
+#: rcrm_account/views.py:384
 msgid "Declined, thank you."
 msgstr ""
 
@@ -416,14 +442,18 @@ msgstr ""
 msgid "Created successfully, thank you."
 msgstr ""
 
-#: rcrm_client/views.py:136 rcrm_client/views.py:267 rcrm_client/views.py:329
-#: rcrm_client/views.py:391 rcrm_client/views.py:453 rcrm_contact/views.py:127
+#: rcrm_client/views.py:136 rcrm_client/views.py:298 rcrm_client/views.py:360
+#: rcrm_client/views.py:422 rcrm_client/views.py:484 rcrm_contact/views.py:127
 #: rcrm_contact/views.py:192 rcrm_contact/views.py:256
 #: rcrm_contact/views.py:321 rcrm_contact/views.py:385
 #: rcrm_employee/views.py:119 rcrm_employee/views.py:184
 #: rcrm_employee/views.py:248 rcrm_employee/views.py:313
 #: rcrm_employee/views.py:377 rcrm_job/views.py:149
 msgid "Deleted successfully, thank you."
+msgstr ""
+
+#: rcrm_client/views.py:182
+msgid "Contact already exists."
 msgstr ""
 
 #: rcrm_contact/forms.py:16 rcrm_employee/forms.py:16
@@ -1664,6 +1694,18 @@ msgstr ""
 msgid "Could not be uploaded!"
 msgstr ""
 
+#: rcrm_core/apps.py:7
+msgid "Core"
+msgstr ""
+
+#: rcrm_core/models.py:7
+msgid "Create Date"
+msgstr ""
+
+#: rcrm_core/models.py:8
+msgid "Update Date"
+msgstr ""
+
 #: rcrm_dynamic/models.py:27
 msgid "Charfield"
 msgstr ""
@@ -1755,13 +1797,13 @@ msgstr ""
 msgid "Requirements"
 msgstr ""
 
-#: rcrm_job/admin.py:28 templates/job/forms/job_create.html:111
-#: templates/job/forms/job_edit.html:108 templates/job/pages/job_detail.html:85
+#: rcrm_job/admin.py:28 templates/job/forms/job_create.html:113
+#: templates/job/forms/job_edit.html:113 templates/job/pages/job_detail.html:85
 msgid "Location"
 msgstr ""
 
-#: rcrm_job/admin.py:31 templates/job/forms/job_create.html:139
-#: templates/job/forms/job_edit.html:136
+#: rcrm_job/admin.py:31 templates/job/forms/job_create.html:141
+#: templates/job/forms/job_edit.html:141
 msgid "Extra"
 msgstr ""
 
@@ -1817,6 +1859,26 @@ msgstr ""
 
 #: rcrm_job/views.py:91 rcrm_job/views.py:128
 msgid "Please correct the errors and try again."
+msgstr ""
+
+#: rcrm_key/apps.py:7
+msgid "Keys"
+msgstr ""
+
+#: rcrm_key/models.py:9
+msgid "Key"
+msgstr ""
+
+#: rcrm_key/models.py:10
+msgid "Used"
+msgstr ""
+
+#: rcrm_key/models.py:26
+msgid "Reset Password Key"
+msgstr ""
+
+#: rcrm_key/models.py:27
+msgid "Reset Password Keys"
 msgstr ""
 
 #: rcrm_util/apps.py:7
@@ -1894,25 +1956,33 @@ msgstr ""
 msgid "No"
 msgstr ""
 
+#: templates/account/forms/user_forgot_password.html:34
+#: templates/account/forms/user_reset_password.html:43
+msgid "Send"
+msgstr ""
+
+#: templates/account/forms/user_forgot_password.html:36
+#: templates/account/forms/user_registration.html:55
+msgid "Already have account?"
+msgstr ""
+
+#: templates/account/forms/user_forgot_password.html:36
 #: templates/account/forms/user_login.html:7
-#: templates/account/forms/user_login.html:46
-#: templates/account/forms/user_registration.html:53
+#: templates/account/forms/user_login.html:17
+#: templates/account/forms/user_login.html:48
+#: templates/account/forms/user_registration.html:55
 msgid "Login"
 msgstr ""
 
-#: templates/account/forms/user_login.html:48
+#: templates/account/forms/user_login.html:50
 msgid "Don't have account?"
 msgstr ""
 
-#: templates/account/forms/user_login.html:48
+#: templates/account/forms/user_login.html:50
 #: templates/account/forms/user_registration.html:7
 #: templates/account/forms/user_registration.html:18
-#: templates/account/forms/user_registration.html:51
-msgid "Register"
-msgstr ""
-
 #: templates/account/forms/user_registration.html:53
-msgid "Already have account?"
+msgid "Register"
 msgstr ""
 
 #: templates/account/forms/user_request_accept.html:6
@@ -1924,8 +1994,8 @@ msgid "Are you sure you would like to accept"
 msgstr ""
 
 #: templates/account/forms/user_request_accept.html:19
-#: templates/account/pages/account.html:193
-#: templates/account/pages/account.html:204
+#: templates/account/pages/account.html:197
+#: templates/account/pages/account.html:208
 msgid "Accept"
 msgstr ""
 
@@ -1934,8 +2004,13 @@ msgid "Are you sure you would like to decline"
 msgstr ""
 
 #: templates/account/forms/user_request_decline.html:19
-#: templates/account/pages/account.html:193
+#: templates/account/pages/account.html:197
 msgid "Decline"
+msgstr ""
+
+#: templates/account/forms/user_reset_password.html:7
+#: templates/account/forms/user_reset_password.html:17
+msgid "Reset Password"
 msgstr ""
 
 #: templates/account/pages/account.html:12
@@ -2008,17 +2083,17 @@ msgstr ""
 msgid "Send Request"
 msgstr ""
 
-#: templates/account/pages/account.html:58
+#: templates/account/pages/account.html:60
 msgid "RCRM Account Informations"
 msgstr ""
 
-#: templates/account/pages/account.html:60
+#: templates/account/pages/account.html:62
 msgid "or Create a New RCRM Account"
 msgstr ""
 
-#: templates/account/pages/account.html:115
-#: templates/account/pages/user_profile.html:76
-#: templates/account/pages/user_profile.html:124
+#: templates/account/pages/account.html:117
+#: templates/account/pages/user_profile.html:78
+#: templates/account/pages/user_profile.html:128
 #: templates/client/forms/client_edit.html:47
 #: templates/client/forms/email_edit.html:40
 #: templates/client/forms/phone_edit.html:40
@@ -2028,11 +2103,11 @@ msgstr ""
 #: templates/employee/forms/employee_edit.html:82
 #: templates/employee/forms/phone_edit.html:40
 #: templates/employee/forms/social_edit.html:76
-#: templates/job/forms/job_edit.html:156
+#: templates/job/forms/job_edit.html:161
 msgid "Save"
 msgstr ""
 
-#: templates/account/pages/account.html:116
+#: templates/account/pages/account.html:118
 #: templates/client/forms/address_create.html:66
 #: templates/client/forms/address_edit.html:66
 #: templates/client/forms/client_create.html:48
@@ -2075,12 +2150,12 @@ msgstr ""
 #: templates/employee/forms/phone_edit.html:42
 #: templates/employee/forms/social_create.html:78
 #: templates/employee/forms/social_edit.html:78
-#: templates/job/forms/job_create.html:161
-#: templates/job/forms/job_edit.html:158
+#: templates/job/forms/job_create.html:163
+#: templates/job/forms/job_edit.html:163
 msgid "Cancel"
 msgstr ""
 
-#: templates/account/pages/account.html:134
+#: templates/account/pages/account.html:136
 #: templates/client/forms/client_delete.html:6
 #: templates/client/forms/contact_delete.html:6
 #: templates/client/pages/client_detail.html:82
@@ -2094,7 +2169,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: templates/account/pages/account.html:134
+#: templates/account/pages/account.html:136
 #: templates/client/forms/address_create.html:64
 #: templates/client/forms/address_edit.html:64
 #: templates/client/forms/client_create.html:46
@@ -2118,12 +2193,12 @@ msgstr ""
 #: templates/employee/forms/employee_create.html:82
 #: templates/employee/forms/phone_create.html:40
 #: templates/employee/forms/social_create.html:76
-#: templates/job/forms/job_create.html:159
+#: templates/job/forms/job_create.html:161
 msgid "Add"
 msgstr ""
 
-#: templates/account/pages/account.html:141
-#: templates/account/pages/account.html:200
+#: templates/account/pages/account.html:143
+#: templates/account/pages/account.html:204
 #: templates/client/pages/client_detail.html:88
 #: templates/client/pages/client_detail.html:127
 #: templates/client/pages/client_detail.html:163
@@ -2145,7 +2220,7 @@ msgstr ""
 msgid "%(number)s"
 msgstr ""
 
-#: templates/account/pages/account.html:184
+#: templates/account/pages/account.html:188
 msgid "RCRM Account Requests"
 msgstr ""
 
@@ -2161,11 +2236,11 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: templates/account/pages/user_profile.html:32
+#: templates/account/pages/user_profile.html:34
 msgid "Edit Your Profile"
 msgstr ""
 
-#: templates/account/pages/user_profile.html:89
+#: templates/account/pages/user_profile.html:93
 msgid "Change Your Password"
 msgstr "Ändern Sie Ihr Passwort"
 
@@ -2338,7 +2413,7 @@ msgstr ""
 #: templates/employee/pages/employee_detail.html:166
 #: templates/employee/pages/employee_detail.html:243
 #: templates/job/forms/job_edit.html:7 templates/job/forms/job_edit.html:18
-#: templates/job/forms/job_edit.html:31 templates/job/pages/job_detail.html:36
+#: templates/job/forms/job_edit.html:36 templates/job/pages/job_detail.html:36
 msgid "Edit"
 msgstr ""
 
@@ -2681,7 +2756,7 @@ msgid "New Employee"
 msgstr ""
 
 #: templates/job/forms/job_create.html:7 templates/job/forms/job_create.html:18
-#: templates/job/forms/job_create.html:34
+#: templates/job/forms/job_create.html:36
 msgid "Add Job"
 msgstr ""
 
@@ -2698,7 +2773,7 @@ msgstr ""
 msgid "Job"
 msgstr ""
 
-#: templates/job/forms/job_create.html:74 templates/job/forms/job_edit.html:71
+#: templates/job/forms/job_create.html:76 templates/job/forms/job_edit.html:76
 msgid "Skills"
 msgstr ""
 
