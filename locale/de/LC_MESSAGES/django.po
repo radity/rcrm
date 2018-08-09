@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-08 14:06+0000\n"
+"POT-Creation-Date: 2018-08-09 19:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,8 +35,8 @@ msgstr ""
 msgid "Date & Time"
 msgstr ""
 
-#: rcrm_account/forms.py:21 rcrm_account/forms.py:41 rcrm_account/forms.py:74
-#: rcrm_account/forms.py:186 rcrm_account/models.py:22 rcrm_contact/forms.py:60
+#: rcrm_account/forms.py:21 rcrm_account/forms.py:41 rcrm_account/forms.py:76
+#: rcrm_account/forms.py:187 rcrm_account/models.py:22 rcrm_contact/forms.py:60
 #: rcrm_employee/forms.py:64 rcrm_util/forms.py:35
 #: templates/account/pages/account.html:135
 #: templates/account/pages/account.html:196
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: rcrm_account/forms.py:22 rcrm_account/forms.py:42 rcrm_account/forms.py:92
+#: rcrm_account/forms.py:22 rcrm_account/forms.py:42 rcrm_account/forms.py:94
 msgid "Password"
 msgstr ""
 
@@ -70,35 +70,35 @@ msgstr ""
 msgid "Password can not be confirmed!"
 msgstr ""
 
-#: rcrm_account/forms.py:89 rcrm_account/forms.py:224
+#: rcrm_account/forms.py:91 rcrm_account/forms.py:225
 msgid "The two password fields didn't match."
 msgstr ""
 
-#: rcrm_account/forms.py:96
+#: rcrm_account/forms.py:98
 msgid "Confirm Password"
 msgstr ""
 
-#: rcrm_account/forms.py:134
+#: rcrm_account/forms.py:135
 msgid "RCRM Account Name"
 msgstr ""
 
-#: rcrm_account/forms.py:135
+#: rcrm_account/forms.py:136
 msgid "RCRM Account Email"
 msgstr ""
 
-#: rcrm_account/forms.py:137
+#: rcrm_account/forms.py:138
 msgid "RCRM Account Phone Number"
 msgstr ""
 
-#: rcrm_account/forms.py:140
+#: rcrm_account/forms.py:141
 msgid "RCRM Account Description"
 msgstr ""
 
-#: rcrm_account/forms.py:143
+#: rcrm_account/forms.py:144
 msgid "RCRM Account Logo"
 msgstr ""
 
-#: rcrm_account/forms.py:161 rcrm_util/models.py:76
+#: rcrm_account/forms.py:162 rcrm_util/models.py:76
 #: templates/client/forms/email_create.html:34
 #: templates/client/forms/email_edit.html:34
 #: templates/contact/forms/email_create.html:34
@@ -108,11 +108,11 @@ msgstr ""
 msgid "Email Address"
 msgstr ""
 
-#: rcrm_account/forms.py:177
+#: rcrm_account/forms.py:178
 msgid "Account Name"
 msgstr ""
 
-#: rcrm_account/forms.py:189 rcrm_client/forms.py:14 rcrm_contact/forms.py:14
+#: rcrm_account/forms.py:190 rcrm_client/forms.py:14 rcrm_contact/forms.py:14
 #: rcrm_employee/forms.py:14 templates/client/forms/contact_add.html:62
 #: templates/contact/forms/contact_create.html:34
 #: templates/contact/forms/contact_edit.html:34
@@ -121,7 +121,7 @@ msgstr ""
 msgid "First Name"
 msgstr ""
 
-#: rcrm_account/forms.py:192 rcrm_contact/forms.py:15 rcrm_employee/forms.py:15
+#: rcrm_account/forms.py:193 rcrm_contact/forms.py:15 rcrm_employee/forms.py:15
 #: templates/client/forms/contact_add.html:68
 #: templates/contact/forms/contact_create.html:40
 #: templates/contact/forms/contact_edit.html:40
@@ -130,23 +130,23 @@ msgstr ""
 msgid "Last Name"
 msgstr ""
 
-#: rcrm_account/forms.py:195 rcrm_job/forms.py:24
+#: rcrm_account/forms.py:196 rcrm_job/forms.py:24
 msgid "Language"
 msgstr ""
 
-#: rcrm_account/forms.py:227
+#: rcrm_account/forms.py:228
 msgid "New password"
 msgstr ""
 
-#: rcrm_account/forms.py:230
+#: rcrm_account/forms.py:231
 msgid "New password confirmation"
 msgstr ""
 
-#: rcrm_account/forms.py:262
+#: rcrm_account/forms.py:263
 msgid "Your old password was entered incorrectly. Please enter it again."
 msgstr ""
 
-#: rcrm_account/forms.py:265
+#: rcrm_account/forms.py:266
 msgid "Old password"
 msgstr ""
 
