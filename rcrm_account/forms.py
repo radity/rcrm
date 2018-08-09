@@ -63,6 +63,8 @@ class RegisterForm(ModelForm):
 
         if password != confirm_password:
             raise ValidationError(_('Password can not be confirmed!'))
+        else:
+            password_validation.validate_password(confirm_password)
 
         return confirm_password
 
@@ -103,11 +105,10 @@ class ResetPasswordForm(Form):
         password = self.cleaned_data.get('password')
         confirm_password = self.cleaned_data.get('confirm_password')
 
-        if password and confirm_password:
-            if password != confirm_password:
-                raise ValidationError(self.error_messages['password_mismatch'], code='password_mismatch')
-            else:
-                password_validation.validate_password(confirm_password)
+        if password != confirm_password:
+            raise ValidationError(self.error_messages['password_mismatch'], code='password_mismatch')
+        else:
+            password_validation.validate_password(confirm_password)
 
         return self.cleaned_data
 
