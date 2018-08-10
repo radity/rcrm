@@ -95,7 +95,7 @@ class ForgotPasswordView(TemplateView):
                         'subject': _('Forgot Password'),
                         'message': message,
                         #'html_message': message,
-                        'from_email': settings.EMAIL_HOST_USER,
+                        'from_email': settings.DEFAULT_FROM_EMAIL,
                         'recipient_list': [user.email],
                         'fail_silently': False
                     }
@@ -321,7 +321,7 @@ class AccountRequestCreateView(FormView):
                 'subject': subject,
                 'message': message,
                 'html_message': message,
-                'from_email': settings.EMAIL_HOST_USER,
+                'from_email': settings.DEFAULT_FROM_EMAIL,
                 'recipient_list': recipient_list,
                 'fail_silently': False
             }
@@ -362,7 +362,7 @@ class AccountRequestAcceptView(AccountControlViewMixin, DeleteView):
                 'subject': subject,
                 'message': message,
                 'html_message': message,
-                'from_email': settings.EMAIL_HOST_USER,
+                'from_email': settings.DEFAULT_FROM_EMAIL,
                 'recipient_list': [user.email],
                 'fail_silently': False
             }
