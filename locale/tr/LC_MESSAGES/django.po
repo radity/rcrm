@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-09 19:25+0000\n"
+"POT-Creation-Date: 2018-08-12 11:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,48 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: rcrm/modules.py:82
+#, python-brace-format
+msgid ""
+"RCRM \n"
+"Hello, {email} \n"
+"Reset Password = {reset_password_url}"
+msgstr ""
+"RCRM \n"
+"Merhaba, {email} \n"
+"Parolayı Yenile = {reset_password_url}"
+
+#: rcrm/modules.py:88 templates/account/forms/user_forgot_password.html:7
+#: templates/account/forms/user_forgot_password.html:17
+#: templates/account/forms/user_login.html:45
+msgid "Forgot Password"
+msgstr "Parolanızı mı unuttunuz"
+
+#: rcrm/modules.py:101
+#, python-brace-format
+msgid ""
+"{user_email} requested to be a user of your account to accept/decline keep "
+"going on the link below.\n"
+"{url}"
+msgstr ""
+
+#: rcrm/modules.py:107
+msgid "There is an Access Request to Your RCRM Account!"
+msgstr "RCRM Hesabınıza Bir Erişim Talebi Var!"
+
+#: rcrm/modules.py:119
+#, python-brace-format
+msgid ""
+"Your RCRM account request has been accepted.\n"
+"To reach the account: {url}"
+msgstr ""
+"RCRM hesap başvurunuz kabul edildi.\n"
+"Hesaba ulaşmak için: {url}"
+
+#: rcrm/modules.py:124
+msgid "Your Request Has Been Accepted"
+msgstr "Talebiniz kabul edildi."
 
 #: rcrm_account/admin.py:26 rcrm_account/admin.py:53 rcrm_client/admin.py:30
 #: rcrm_contact/admin.py:25 rcrm_employee/admin.py:27 rcrm_job/admin.py:34
@@ -270,37 +312,21 @@ msgstr "Kullanıcılar"
 msgid "CRM Account Request"
 msgstr "CRM Hesap Talebi"
 
-#: rcrm_account/views.py:59
+#: rcrm_account/views.py:58
 msgid "You need to join to an account or create an account to use RCRM!"
 msgstr ""
 "RCRM'i kullanmak için bir hesap oluşturmanız veya başka bir hesaba "
 "katılmanız gerekmektedir."
 
-#: rcrm_account/views.py:90
-#, python-brace-format
-msgid ""
-"RCRM \n"
-"Hello, {email} \n"
-"Reset Password = {reset_password_url} \n"
-msgstr ""
-"RCRM \n"
-"Merhaba, {email} \n"
-"Parolayı Yenile = {reset_password_url} \n"
-
-#: rcrm_account/views.py:95 templates/account/forms/user_forgot_password.html:7
-#: templates/account/forms/user_forgot_password.html:17
-msgid "Forgot Password"
-msgstr "Parolanızı mı unuttunuz"
-
-#: rcrm_account/views.py:106
+#: rcrm_account/views.py:88
 msgid "If you have an account we have sent you an email."
 msgstr "Bir hesabınız varsa size bir e-posta gönderdik."
 
-#: rcrm_account/views.py:144
+#: rcrm_account/views.py:126
 msgid "Your password has been successfully changed."
 msgstr "Parolanız başarıyla değiştirildi."
 
-#: rcrm_account/views.py:178 rcrm_account/views.py:194 rcrm_client/views.py:116
+#: rcrm_account/views.py:160 rcrm_account/views.py:176 rcrm_client/views.py:116
 #: rcrm_client/views.py:281 rcrm_client/views.py:343 rcrm_client/views.py:405
 #: rcrm_client/views.py:467 rcrm_contact/views.py:107 rcrm_contact/views.py:174
 #: rcrm_contact/views.py:238 rcrm_contact/views.py:303
@@ -310,65 +336,49 @@ msgstr "Parolanız başarıyla değiştirildi."
 msgid "Saved successfully, thank you."
 msgstr "Başarıyla kaydedildi, teşekkürler"
 
-#: rcrm_account/views.py:262 rcrm_client/views.py:180 rcrm_client/views.py:218
+#: rcrm_account/views.py:244 rcrm_client/views.py:180 rcrm_client/views.py:218
 #: rcrm_client/views.py:262 rcrm_client/views.py:324 rcrm_client/views.py:386
 #: rcrm_client/views.py:448
 msgid "Added successfully, thank you."
 msgstr "Başarıyla eklendi, teşekkürler."
 
-#: rcrm_account/views.py:264
+#: rcrm_account/views.py:246
 msgid "The user already has an account!"
 msgstr "Kullanıcı zaten bir hesaba sahip!"
 
-#: rcrm_account/views.py:267
+#: rcrm_account/views.py:249
 msgid "The user could not be found!"
 msgstr "Kullanıcı bulunamadı!"
 
-#: rcrm_account/views.py:272
+#: rcrm_account/views.py:254
 msgid "Enter a valid email address."
 msgstr "Geçerli bir e-posta adresi girin."
 
-#: rcrm_account/views.py:290 rcrm_client/views.py:236
+#: rcrm_account/views.py:272 rcrm_client/views.py:236
 msgid "Removed successfully, thank you."
 msgstr "Başarıyla silindi, teşekkürler."
 
-#: rcrm_account/views.py:312
+#: rcrm_account/views.py:294
 msgid "Your request has been sent successfully, thank you."
 msgstr "Talebiniz başarıyla gönderildi, teşekkürler."
 
-#: rcrm_account/views.py:315
-msgid "There is an Access Request to Your RCRM Account!"
-msgstr "RCRM Hesabınıza Bir Erişim Talebi Var!"
-
-#: rcrm_account/views.py:330
+#: rcrm_account/views.py:299
 msgid "You have already requested to "
 msgstr "Daha önce talep gönderildi "
 
-#: rcrm_account/views.py:333
+#: rcrm_account/views.py:301
 msgid "The account could not found!"
 msgstr "Hesap bulunamadı!"
 
-#: rcrm_account/views.py:351
+#: rcrm_account/views.py:318
 msgid "The user has an account!"
 msgstr "Kullanıcının bir hesabı var!"
 
-#: rcrm_account/views.py:355
+#: rcrm_account/views.py:322
 msgid "Accepted successfully, thank you."
 msgstr "Başarıyla kabul edildi, teşekkürler."
 
-#: rcrm_account/views.py:358
-msgid "Your Request Has Been Accepted"
-msgstr "Talebiniz kabul edildi."
-
-#: rcrm_account/views.py:359
-msgid ""
-"Your RCRM account request has been accepted. To reach the account: "
-"http://127.0.0.1:8000/accounts/"
-msgstr ""
-"RCRM hesap başvurunuz kabul edildi. Hesaba ulaşmak için: "
-"http://127.0.0.1:8000/accounts/"
-
-#: rcrm_account/views.py:384
+#: rcrm_account/views.py:340
 msgid "Declined, thank you."
 msgstr "Reddedildi, teşekkürler"
 

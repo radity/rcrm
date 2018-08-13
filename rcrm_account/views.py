@@ -9,8 +9,7 @@ from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView, FormView, DeleteView, UpdateView
 
-from rcrm.tasks import mail_task
-from rcrm.modules import KeyModule
+from rcrm.modules import KeyModule, MailModule
 from rcrm_account.models import CRMAccount, CRMAccountRequest, User
 from rcrm_account.forms import (LoginForm, RegisterForm, ForgotPasswordForm, ResetPasswordForm, UserProfileForm,
                                 PasswordChangeForm, AccountForm, AccountUserAddForm, AccountRequestForm)
@@ -82,25 +81,8 @@ class ForgotPasswordView(TemplateView):
                 user = forgot_password_form.user
 
                 if user:
-                    reset_password_key = KeyModule.create_reset_password_key(user)
-                    reset_password_url = request.build_absolute_uri(
-                        reverse('Accounts:Reset_Password', args=[reset_password_key.key])
-                    )
-                    message = _(
-                        "RCRM \n"
-                        "Hello, {email} \n"
-                        "Reset Password = {reset_password_url} \n"
-                    ).format(email=user.email, reset_password_url=reset_password_url)
-                    context = {
-                        'subject': _('Forgot Password'),
-                        'message': message,
-                        #'html_message': message,
-                        'from_email': settings.DEFAULT_FROM_EMAIL,
-                        'recipient_list': [user.email],
-                        'fail_silently': False
-                    }
-
-                    mail_task.delay(context, 'forgot-password')
+                    # Send Email
+                    MailModule.send_forgot_password_mail(user, request)
 
                 forgot_password_form = ForgotPasswordForm(prefix='forgot-password-form')
                 messages.success(request, _('If you have an account we have sent you an email.'))
@@ -312,26 +294,11 @@ class AccountRequestCreateView(FormView):
             messages.success(self.request, _('Your request has been sent successfully, thank you.'))
 
             # Send Email
-            subject = _('There is an Access Request to Your RCRM Account!')
-            message = str(user.email) + ' requested to be a user of your account to accept/decline keep going on ' \
-                                        'the link below.<br<br>' + 'http://127.0.0.1:8000/accounts/'
-            recipient_list = [account_user.email for account_user in account_users]
-
-            context = {
-                'subject': subject,
-                'message': message,
-                'html_message': message,
-                'from_email': settings.DEFAULT_FROM_EMAIL,
-                'recipient_list': recipient_list,
-                'fail_silently': False
-            }
-            mail_task.delay(context, 'account-request-create')
+            MailModule.send_account_request_create_mail(account_users, user, self.request)
         elif account and already_requested:
             messages.error(self.request, _('You have already requested to ' + str(account.name) + '!'))
-            pass
         else:
             messages.error(self.request, _('The account could not found!'))
-            pass
         return super(AccountRequestCreateView, self).form_valid(form=form)
 
 
@@ -354,19 +321,8 @@ class AccountRequestAcceptView(AccountControlViewMixin, DeleteView):
             User.objects.filter(id=account_request.user.id).update(account=account_request.account)
             messages.success(self.request, _('Accepted successfully, thank you.'))
 
-            # Send Email
-            subject = _('Your Request Has Been Accepted')
-            message = _('Your RCRM account request has been accepted. To reach the account: http://127.0.0.1:8000/accounts/')
-
-            context = {
-                'subject': subject,
-                'message': message,
-                'html_message': message,
-                'from_email': settings.DEFAULT_FROM_EMAIL,
-                'recipient_list': [user.email],
-                'fail_silently': False
-            }
-            mail_task.delay(context, 'account-request-accept')
+            # Send Email
+            MailModule.send_account_request_accept_mail(user, request)
 
         return super(AccountRequestAcceptView, self).delete(request, *args, **kwargs)
 
