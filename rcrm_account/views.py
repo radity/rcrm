@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib import messages
 from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
@@ -28,6 +28,12 @@ class LoginView(FormView):
     template_name = 'account/forms/user_login.html'
     success_url = reverse_lazy('Dashboard:Home')
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+
+        return super(LoginView, self).dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         if form.is_valid():
             email = form.cleaned_data.get('email')
@@ -45,6 +51,12 @@ class RegisterView(FormView):
     template_name = 'account/forms/user_registration.html'
     success_url = reverse_lazy('Accounts:Account')
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+
+        return super(RegisterView, self).dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         if form.is_valid():
             user = form.save(commit=False)
@@ -61,6 +73,12 @@ class RegisterView(FormView):
 
 class ForgotPasswordView(TemplateView):
     template_name = 'account/forms/user_forgot_password.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+
+        return super(ForgotPasswordView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(ForgotPasswordView, self).get_context_data(**kwargs)

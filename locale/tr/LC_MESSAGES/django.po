@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-12 11:38+0000\n"
+"POT-Creation-Date: 2018-08-14 12:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -312,21 +312,21 @@ msgstr "Kullanıcılar"
 msgid "CRM Account Request"
 msgstr "CRM Hesap Talebi"
 
-#: rcrm_account/views.py:58
+#: rcrm_account/views.py:70
 msgid "You need to join to an account or create an account to use RCRM!"
 msgstr ""
 "RCRM'i kullanmak için bir hesap oluşturmanız veya başka bir hesaba "
 "katılmanız gerekmektedir."
 
-#: rcrm_account/views.py:88
+#: rcrm_account/views.py:106
 msgid "If you have an account we have sent you an email."
 msgstr "Bir hesabınız varsa size bir e-posta gönderdik."
 
-#: rcrm_account/views.py:126
+#: rcrm_account/views.py:144
 msgid "Your password has been successfully changed."
 msgstr "Parolanız başarıyla değiştirildi."
 
-#: rcrm_account/views.py:160 rcrm_account/views.py:176 rcrm_client/views.py:116
+#: rcrm_account/views.py:178 rcrm_account/views.py:194 rcrm_client/views.py:116
 #: rcrm_client/views.py:281 rcrm_client/views.py:343 rcrm_client/views.py:405
 #: rcrm_client/views.py:467 rcrm_contact/views.py:107 rcrm_contact/views.py:174
 #: rcrm_contact/views.py:238 rcrm_contact/views.py:303
@@ -336,49 +336,49 @@ msgstr "Parolanız başarıyla değiştirildi."
 msgid "Saved successfully, thank you."
 msgstr "Başarıyla kaydedildi, teşekkürler"
 
-#: rcrm_account/views.py:244 rcrm_client/views.py:180 rcrm_client/views.py:218
+#: rcrm_account/views.py:262 rcrm_client/views.py:180 rcrm_client/views.py:218
 #: rcrm_client/views.py:262 rcrm_client/views.py:324 rcrm_client/views.py:386
 #: rcrm_client/views.py:448
 msgid "Added successfully, thank you."
 msgstr "Başarıyla eklendi, teşekkürler."
 
-#: rcrm_account/views.py:246
+#: rcrm_account/views.py:264
 msgid "The user already has an account!"
 msgstr "Kullanıcı zaten bir hesaba sahip!"
 
-#: rcrm_account/views.py:249
+#: rcrm_account/views.py:267
 msgid "The user could not be found!"
 msgstr "Kullanıcı bulunamadı!"
 
-#: rcrm_account/views.py:254
+#: rcrm_account/views.py:272
 msgid "Enter a valid email address."
 msgstr "Geçerli bir e-posta adresi girin."
 
-#: rcrm_account/views.py:272 rcrm_client/views.py:236
+#: rcrm_account/views.py:290 rcrm_client/views.py:236
 msgid "Removed successfully, thank you."
 msgstr "Başarıyla silindi, teşekkürler."
 
-#: rcrm_account/views.py:294
+#: rcrm_account/views.py:312
 msgid "Your request has been sent successfully, thank you."
 msgstr "Talebiniz başarıyla gönderildi, teşekkürler."
 
-#: rcrm_account/views.py:299
+#: rcrm_account/views.py:317
 msgid "You have already requested to "
 msgstr "Daha önce talep gönderildi "
 
-#: rcrm_account/views.py:301
+#: rcrm_account/views.py:319
 msgid "The account could not found!"
 msgstr "Hesap bulunamadı!"
 
-#: rcrm_account/views.py:318
+#: rcrm_account/views.py:336
 msgid "The user has an account!"
 msgstr "Kullanıcının bir hesabı var!"
 
-#: rcrm_account/views.py:322
+#: rcrm_account/views.py:340
 msgid "Accepted successfully, thank you."
 msgstr "Başarıyla kabul edildi, teşekkürler."
 
-#: rcrm_account/views.py:340
+#: rcrm_account/views.py:358
 msgid "Declined, thank you."
 msgstr "Reddedildi, teşekkürler"
 
