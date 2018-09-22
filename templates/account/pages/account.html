@@ -107,7 +107,9 @@
                   {% if field.errors %}
                     {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
-                  {% add_attrs field class="form-control" style="padding: .50rem .75rem;" %}
+				  	<div class="logoDiv">
+				  	<input type="file" name="logo" id="id_logo"/>
+				  	</div>
                 </div>
               {% endwith %}
             </div>
@@ -251,6 +253,53 @@
     }
     resultCount ? resultWrapper.show() : resultWrapper.hide();
     });
+  </script>
+
+<style>
+.pip{
+	float:right;
+}
+
+.imageThumb{
+		padding-right:8px;
+}
+
+.logoDiv{
+	padding-top:4px;
+	padding-left:4px;
+	height:35px;
+	border:1px solid black;
+	max-width:600px;
+}
+
+</style>
+  <script>
+	$(document).ready(function() {
+ 		 if (window.File && window.FileList && window.FileReader) {
+    		$("#id_logo").on("change", function(e) {
+      			var files = e.target.files,
+        		filesLength = files.length;
+      			for (var i = 0; i < filesLength; i++) {
+        			var f = files[i]
+       	 			var fileReader = new FileReader();
+        			fileReader.onload = (function(e) {
+          				var file = e.target;
+          				$("<span class=\"pip\">" +
+            			"<img height=\"25\"class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+            			"<button class=\"remove\">Remove image</button>" +
+            			"</span>").insertAfter("#id_logo");
+          				$(".remove").click(function(){
+							$("#id_logo").replaceWith($("#id_logo").val('').clone(true));
+         	 			});
+          
+        			});
+        			fileReader.readAsDataURL(f);
+      				}
+    			});
+  			} else {
+   				alert("Your browser doesn't support to File API")
+  		}
+	});
   </script>
 
 {% endblock %}
