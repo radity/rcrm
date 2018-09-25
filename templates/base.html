@@ -28,7 +28,7 @@
 
   {% block extrastyles %}{% endblock %}
 </head>
-<body class="fix-header fix-sidebar">
+<body class="fix-header fix-sidebar" onload="auto_complete({{account_list|safe}})">
   <div id="main-wrapper">
     {% include "partials/header.html" %}
     {% if request.user.account %}
