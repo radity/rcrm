@@ -6909,12 +6909,22 @@ tbody tr td:last-child {
   }
 }
 
+.remove{
+  background-color: #fedee5;
+  border-color: #fc6180;
+  color: #fc6180;
+  height:35px;
+
+}
+
 .pip{
 	float:right;
 }
+
 .imageThumb{
 		padding-right:8px;
 }
+
 .logoDiv{
 	padding-top:4px;
 	padding-left:4px;

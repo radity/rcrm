@@ -10,10 +10,11 @@ $(document).ready(function() {
           				var file = e.target;
           				$("<span class=\"pip\">" +
             			"<img height=\"25\"class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
-            			"<button class=\"remove\">Remove image</button>" +
+            			"<span class=\"remove\">Remove image</span>" +
             			"</span>").insertAfter("#id_logo");
           				$(".remove").click(function(){
 							$("#id_logo").replaceWith($("#id_logo").val('').clone(true));
+							$(".pip").remove();
          	 			});
           
         			});
