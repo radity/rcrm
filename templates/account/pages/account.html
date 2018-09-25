@@ -107,7 +107,9 @@
                   {% if field.errors %}
                     {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
-                  {% add_attrs field class="form-control" style="padding: .50rem .75rem;" %}
+				  	<div class="logoDiv">
+				  	<input type="file" name="logo" id="id_logo"/>
+				  	</div>
                 </div>
               {% endwith %}
             </div>
@@ -219,38 +221,5 @@
       </div>
     {% endif %}
   {% endif %}
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script>
-    const resultWrapper = $(".autocomplete-results");
-    resultWrapper.hide();
-    let result = {{ account_list|safe }};
-
-    $("#autocomplete-input").on("input", function(e) {
-    const val = this.value;
-    resultWrapper.html("");
-    let resultCount = 0;
-    for (let i = 0; i < result.length; i++) {
-      if (
-      val.length != 0 &&
-      result[i].substr(0, val.length).toUpperCase() === val.toUpperCase()
-      ) {
-      const markup = `
-            <div id="result${i}" class="autocomplete-result">${
-        result[i]
-      }</div>
-            `;
-      resultWrapper.append(markup);
-      $("#result" + i + "").on("click", function(e) {
-        $("#autocomplete-input").val(e.target.innerHTML);
-        resultWrapper.hide();
-      });
-      resultCount += 1;
-      }
-    }
-    resultCount ? resultWrapper.show() : resultWrapper.hide();
-    });
-  </script>
 
 {% endblock %}

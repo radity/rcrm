@@ -1,3 +1,60 @@
+$(document).ready(function() {
+ 		 if (window.File && window.FileList && window.FileReader) {
+    		$("#id_logo").on("change", function(e) {
+      			var files = e.target.files,
+        		filesLength = files.length;
+      			for (var i = 0; i < filesLength; i++) {
+        			var f = files[i]
+       	 			var fileReader = new FileReader();
+        			fileReader.onload = (function(e) {
+          				var file = e.target;
+          				$("<span class=\"pip\">" +
+            			"<img height=\"25\"class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+            			"<span class=\"remove\">Remove image</span>" +
+            			"</span>").insertAfter("#id_logo");
+          				$(".remove").click(function(){
+							$("#id_logo").replaceWith($("#id_logo").val('').clone(true));
+							$(".pip").remove();
+         	 			});
+          
+        			});
+        			fileReader.readAsDataURL(f);
+      				}
+    			});
+  			} else {
+   				alert("Your browser doesn't support to File API")
+  		}
+	});
+
+function auto_complete(account_list){
+	const resultWrapper = $(".autocomplete-results");
+    resultWrapper.hide();
+    let result = account_list;
+    $("#autocomplete-input").on("input", function(e) {
+    const val = this.value;
+    resultWrapper.html("");
+    let resultCount = 0;
+    for (let i = 0; i < result.length; i++) {
+      if (
+      val.length != 0 &&
+      result[i].substr(0, val.length).toUpperCase() === val.toUpperCase()
+      ) {
+      const markup = `
+            <div id="result${i}" class="autocomplete-result">${
+        result[i]
+      }</div>
+            `;
+      resultWrapper.append(markup);
+      $("#result" + i + "").on("click", function(e) {
+        $("#autocomplete-input").val(e.target.innerHTML);
+        resultWrapper.hide();
+      });
+      resultCount += 1;
+      }
+    }
+    resultCount ? resultWrapper.show() : resultWrapper.hide();
+    });
+}
 $(function() {
     "use strict";
     $(function() {
