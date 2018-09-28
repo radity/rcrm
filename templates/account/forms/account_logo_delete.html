@@ -1,0 +1,28 @@
+{% extends "base2.html" %}
+
+{% load i18n static %}
+
+
+{% block title %}{% trans "Delete Logo" %} - {{ block.super }}{% endblock %}
+
+{% block content %}
+  <!-- Main wrapper  -->
+  <div id="main-wrapper">
+    <div class="unix-login">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-lg-4">
+            <div class="card">
+					<form method="post" action={% url 'Accounts:Account_Logo' account.id%}>
+                {% csrf_token %}
+				{% trans "Are you sure you would delete account logo "  %}<img height="25px" src="{% get_media_prefix %}{{account.logo}}">?<br><br>
+                <button type="submit" class="btn btn-success">{% trans "Yes" %}</button>
+                <a href="{% url 'Accounts:Account' %}">{% trans "No" %}</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
