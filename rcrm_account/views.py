@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib import messages
 from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
@@ -207,6 +207,7 @@ class AccountView(UpdateView):
     """
     template_name = 'account/pages/account.html'
     success_url = reverse_lazy('Accounts:Account')
+    logo_delete_confirm = 'account/forms/account_logo_delete.html'
     form_class = AccountForm
 
     def get_object(self):
@@ -217,15 +218,20 @@ class AccountView(UpdateView):
 
     def dispatch(self, request, *args, **kwargs):
         #Account logo deletion.
-        if request.user.is_authenticated and 'logo' in request.path:
+        if request.user.is_authenticated and 'confirm' not in request.path and 'logo' in request.path:
             id = self.kwargs['pk']
             account = get_object_or_404(CRMAccount, id=id)
             if account.logo:    #if account has any logo
                 account.logo.delete() 
                 messages.success(self.request, _('Logo deleted successfully, thank you.'))
-            else:
-                messages.error(self.request, _('Your account does not have any logo!'))
             return HttpResponseRedirect(self.success_url)
+
+        #Confirmation dialog for account logo deletion.
+        elif request.user.is_authenticated and 'confirm' in request.path:
+            id = self.kwargs['pk']
+            account = get_object_or_404(CRMAccount, id=id)
+            return render(request, self.logo_delete_confirm, {'account':account}) #render confirmation dialog
+
         return super(AccountView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
