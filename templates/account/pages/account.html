@@ -104,18 +104,16 @@
 
               {% with field=form.logo %}
                 <div class="form-group">
-					<label class="control-label">{{ field.label }}</label>
+						<label class="control-label">{{ field.label }}</label>
 						{% if account.logo %}
 							<a href="{% url 'Accounts:Account_Logo_Confirmation' account.id %}">
 							<button  style="float:right" type="button" class="btn btn-danger"><i class="fa fa-close"></i></button></a>
 							<img height="30px" style="float:right;padding-right:5px" src="{% get_media_prefix %}{{account.logo}}">
-							{% endif %}
+						{% endif %}
                   {% if field.errors %}
                     {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
-				  	<div class="logoDiv">
-				  	<input type="file" name="logo" id="id_logo"/>
-				  	</div>
+				  {% add_attrs field class="form-control" style="width:100%; padding:.50rem .75rem;" %}
                 </div>
               {% endwith %}
 
