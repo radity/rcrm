@@ -101,9 +101,16 @@
                   {% add_attrs field class="form-control" style="height: 150px" %}
                 </div>
               {% endwith %}
+
               {% with field=form.logo %}
                 <div class="form-group">
-                  <label class="control-label">{{ field.label }}:</label>
+					<label class="control-label">{{ field.label }}
+						{% if account.logo %}
+							<img height="25px" style="margin-left:10px" src="{% get_media_prefix%}{{account.logo}}">
+							<a href="{% url 'Accounts:Account_Logo' account.id %}">
+							<button onclick="return confirm('Are you sure you would like to delete logo ?')" style="margin-left:10px" type="button" class="btn btn-danger"><i class="fa fa-close"></i>Delete Logo</button></a>
+							{% endif %}
+				  </label>
                   {% if field.errors %}
                     {% include "partials/message.html" with message=field.errors status="error" %}
                   {% endif %}
@@ -112,6 +119,7 @@
 				  	</div>
                 </div>
               {% endwith %}
+
             </div>
           </div>
         </div>

@@ -215,6 +215,19 @@ class AccountView(UpdateView):
         else:
             return None
 
+    def dispatch(self, request, *args, **kwargs):
+        #Account logo deletion.
+        if request.user.is_authenticated and 'logo' in request.path:
+            id = self.kwargs['pk']
+            account = get_object_or_404(CRMAccount, id=id)
+            if account.logo:    #if account has any logo
+                account.logo.delete() 
+                messages.success(self.request, _('Logo deleted successfully, thank you.'))
+            else:
+                messages.error(self.request, _('Your account does not have any logo!'))
+            return HttpResponseRedirect(self.success_url)
+        return super(AccountView, self).dispatch(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         accounts = CRMAccount.objects.filter(is_active=True, is_deleted=False)
         account_list = [account.name for account in accounts]

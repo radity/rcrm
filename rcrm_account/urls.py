@@ -18,6 +18,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page=reverse_lazy('Dashboard:Home')), name='Logout'),
     # Account
     path('', login_required(AccountView.as_view()), name='Account'),
+    path('<int:pk>/logo', login_required(AccountView.as_view()), name='Account_Logo'),
     # Account User
     path('add/user/', login_required(AccountUserCreateView.as_view()), name='Account_Add_User'),
     path('<int:pk>/delete/', login_required(UserAccountDeleteView.as_view()), name='User_Delete'),
