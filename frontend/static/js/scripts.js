@@ -1,4 +1,5 @@
-$(document).ready(function() {
+//preview function
+/*$(document).ready(function() {
  		 if (window.File && window.FileList && window.FileReader) {
     		$("#id_logo").on("change", function(e) {
       			var files = e.target.files,
@@ -10,9 +11,9 @@ $(document).ready(function() {
           				var file = e.target;
           				$("<span class=\"pip\">" +
             			"<img height=\"25\"class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
-            			"<span class=\"remove\">Remove image</span>" +
+            			"<button id=\"remove\" type=\"button\"class=\"btn btn-danger\"><i class=\"fa fa-close\"></i></button>" +
             			"</span>").insertAfter("#id_logo");
-          				$(".remove").click(function(){
+          				$("#remove").click(function(){
 							$("#id_logo").replaceWith($("#id_logo").val('').clone(true));
 							$(".pip").remove();
          	 			});
@@ -25,7 +26,7 @@ $(document).ready(function() {
    				alert("Your browser doesn't support to File API")
   		}
 	});
-
+*/
 function auto_complete(account_list){
 	const resultWrapper = $(".autocomplete-results");
     resultWrapper.hide();

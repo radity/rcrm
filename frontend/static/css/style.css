@@ -6909,6 +6909,7 @@ tbody tr td:last-child {
   }
 }
 
+/*
 .remove{
   background-color: #fedee5;
   border-color: #fc6180;
@@ -6919,19 +6920,23 @@ tbody tr td:last-child {
 
 .pip{
 	float:right;
+	padding-right:5px;
+
 }
 
+#logo_link{
+	padding-right:100px;
+	margin-right:100px;
+}
 .imageThumb{
 		padding-right:8px;
 }
 
-.logoDiv{
-	padding-top:4px;
-	padding-left:4px;
-	height:35px;
-	border:1px solid black;
-	max-width:600px;
+.logo_div{
+		display:inline-block;
 }
+*/
+
 /*  10 - media screen and (max-width: 320px)
 ---------------------------------------------------------------------- */
 /*---------------------------------------------------------------*/
